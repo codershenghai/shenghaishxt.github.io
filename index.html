@@ -350,13 +350,13 @@
       
         
           
-            <h1 id="使用线性规划来近似顶点覆盖问题"><a href="#使用线性规划来近似顶点覆盖问题" class="headerlink" title="使用线性规划来近似顶点覆盖问题"></a>使用线性规划来近似顶点覆盖问题</h1><p>##ILP（整数线性规划）</p>
-<p>对于每一个顶点$v\in V$，有$x(v) \in {0, 1}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(v)\geq1$。这样就引出了以下用于寻找最小顶点覆盖的<strong>0-1整数规划</strong> 。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad x(v)\in {0, 1} \quad \forall v \in V<br>$$</p>
-<p>##relax to LP（线性规划松弛）</p>
-<p>假设去掉了$x(v) \in {0, 1}​$这一限制，并代之以$0\leq x(v) \leq 1​$，就可以得到以下的线性规划，称为线性规划松弛。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad 0\leq x(v) \leq 1 \quad \forall v \in V<br>$$</p>
+            <h1 id="使用线性规划来近似顶点覆盖问题"><a href="#使用线性规划来近似顶点覆盖问题" class="headerlink" title="使用线性规划来近似顶点覆盖问题"></a>使用线性规划来近似顶点覆盖问题</h1><h2 id="ILP（整数线性规划）"><a href="#ILP（整数线性规划）" class="headerlink" title="ILP（整数线性规划）"></a>ILP（整数线性规划）</h2><p>对于每一个顶点$v\in V$，有$x(v) \in {0, 1}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(v)\geq1$。这样就引出了以下用于寻找最小顶点覆盖的<strong>0-1整数规划</strong> 。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad x(v)\in {0, 1} \quad \forall v \in V<br>$$</p>
+<h2 id="relax-to-LP（线性规划松弛）"><a href="#relax-to-LP（线性规划松弛）" class="headerlink" title="relax to LP（线性规划松弛）"></a>relax to LP（线性规划松弛）</h2><p>假设去掉了$x(v) \in {0, 1}​$这一限制，并代之以$0\leq x(v) \leq 1​$，就可以得到以下的线性规划，称为线性规划松弛。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad 0\leq x(v) \leq 1 \quad \forall v \in V<br>$$</p>
 <h2 id="Rounding（使用Rounding的方法来构造近似算法）"><a href="#Rounding（使用Rounding的方法来构造近似算法）" class="headerlink" title="Rounding（使用Rounding的方法来构造近似算法）"></a>Rounding（使用Rounding的方法来构造近似算法）</h2><p>对于每一个顶点v，都会求得一个$x(v)$的值$x^*(v)$，对$x(v)$做以下的rounding：</p>
-<p>若$x^*(v)\geq 1/2$，则将该顶点加入到点覆盖集合中（$x(v)= 1$），否则舍去顶点v（$x(v) = 0$），直至图中的所有顶点处理完毕。</p>
-<p>由以上算法可看出：<br>$$<br>\sum_{u \in V}x^<em>(v)\leq \sum_{u \in V} x(v) \leq 2\sum_{u \in V}x^</em>(v)<br>$$<br>故此算法是一个近似度为2的近似算法。</p>
+<p>若$x^*(v)\geq 1/2$，则将该顶点加入到点覆盖集合中（$x(v)= 1$），否则舍去顶点v（$x(v) = 0​$），直至图中的所有顶点处理完毕。</p>
+<p>由以上算法可看出：</p>
+<p><img src="/images/asdf.png" alt="asdf"></p>
+<p>故此算法是一个近似度为2的近似算法。</p>
 
           
         
