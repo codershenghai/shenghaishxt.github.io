@@ -1227,7 +1227,7 @@
 <li><strong>合并（Combine）</strong>：将子问题的结果合并成原问题的解。</li>
 </ul>
 <p>假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分解和合并的时间各为D(n)和C(n)，则可得到递归式：</p>
-<p><img src="/images/1550314374(1" alt="1550314374(1)">.png)</p>
+<p><img src="/images/1550314374as.png" alt="1550314374(1)"></p>
 <h1 id="合并排序（Merge-Sort）"><a href="#合并排序（Merge-Sort）" class="headerlink" title="合并排序（Merge Sort）"></a>合并排序（Merge Sort）</h1><p>当合并排序的运行时间如下分解：</p>
 <ul>
 <li><strong>分解</strong>：仅计算出子数组的中间位置，需要常量时间，故$D(n) = \Theta(1)$。</li>
@@ -1235,7 +1235,7 @@
 <li><strong>合并</strong>：在一个含有n个元素的子数组上，MERGE过程的运行时间为$\Theta(n)$，则$C(n) = \Theta(n)$。</li>
 </ul>
 <p>因此，合并排序的最坏运行时间$T(n)$的递归表示是：</p>
-<p><img src="/images/1550314397(1" alt="1550314397(1)">.png)</p>
+<p><img src="/images/15503143971.png" alt="15503143971"></p>
 <p>由之前第一章介绍的主定理，我们可以得到$T(n) = \Theta(nlgn)$，这里的$lgn$代表$log_2n$。同样，我们也可以通过递归树得到相同的答案。</p>
 <h1 id="最大子数组问题（Maximum-Subarray-Problem）"><a href="#最大子数组问题（Maximum-Subarray-Problem）" class="headerlink" title="最大子数组问题（Maximum Subarray Problem）"></a>最大子数组问题（Maximum Subarray Problem）</h1><p>对于一个具有连续连续值的数组A，寻找A的和最大的非空连续子数组，<strong>我们称这样的连续子数组为最大子数组</strong>。例如，对于下图的数组，A[1…16]的最大子数组是A[8…11]，其和为43。在实际的例子中可表示在第8天买入股票，并在第11天卖出，获得的收益为43美元。</p>
 <p><img src="/images/1544079475779.png" alt="1544079475779"></p>
