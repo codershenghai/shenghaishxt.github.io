@@ -666,9 +666,9 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">APPROX-TSP-TOUR(G, c)</span><br><span class="line">    任意选择V中的一个顶点r，作为树根节点</span><br><span class="line">    调用Prim算法得到图G的最小生成树T</span><br><span class="line">    先序遍历T，得到顶点序列L</span><br><span class="line">    删除L中的重复顶点形成哈密顿环C</span><br><span class="line">    输出C</span><br></pre></td></tr></table></figure>
 <h1 id="算法运行过程-1"><a href="#算法运行过程-1" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是APPROX-TSP-TOUR的操作过程，(a)示出了给定点的集合，(b)示出了一个最小生成树T，它是由MST-PRIM计算出来的，根为a节点，(c)是对T进行先序遍历时的顶点序列，(d)是近似算法得到的路线。</p>
 <p><img src="/images/asd.png" alt="asd"></p>
-<h1 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h1><p>假设$H^<em>$是一个最优游程，如图e所示。由于我们通过删除一个游程路线中的任一边而得到一棵生成树，故最小生成树$T$的权值是最优游程代价的一个下界，即$c(T)\leq c(H^</em>)$。</p>
-<p>假设图c中的遍历的代价为$c(W)$，该遍历经过了$T$的每条边两次，则有$c(W) = 2c(T)$，两式联立有$c(W) \leq2c(H^<em>)$。由于$H$是从完全遍历$W$中删除了某些顶点得到的，故有$c(H) \leq c(W)$，则$c(H) \leq2c(H^</em>)​$。</p>
-<p>则<br>$$<br>\frac{C(H)}{C({H^*})} \leq 2<br>$$</p>
+<h1 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h1><p>假设$H ^ {opt}​$是一个最优游程，如图e所示。由于我们通过删除一个游程路线中的任一边而得到一棵生成树，故最小生成树$T​$的权值是最优游程代价的一个下界，即$c(T) \leq  c(H^{opt})​$。</p>
+<p>假设图c中的遍历的代价为$c(W)$，该遍历经过了$T$的每条边两次，则有$c(W) = 2c(T)$，两式联立有$c(W) \leq 2c(H^{opt})$。由于$H$是从完全遍历$W$中删除了某些顶点得到的，故有$c(H) \leq c(W)$，则$c(H) \leq2c(H^{opt})$。</p>
+<p>则<br>$$<br>\frac{C(H)}{C({H^{opt}})} \leq 2<br>$$</p>
 
           
         
@@ -917,7 +917,7 @@
 </li>
 <li><p>在多项式时间内将哈密顿回路归约到TSP：</p>
 <p>设G=(V, E)是HAM-CYCLE的一个实例，可以构造对应的一个TSP实例。建立一个完全图G‘=(V, E’)，定义费用函数c为：</p>
-<p><img src="/images/1550314005(1" alt="1550314005(1)">.png)</p>
+<p><img src="/images/1550314005.png" alt="1550314005"></p>
 <p>然后求解完全图G’上最大限定花费为0的路线即可。</p>
 <p>下面来说明当且仅当图G’中有一个费用至多为0的回路的时候，G中才具有一个哈密顿回路：</p>
 <ol>
