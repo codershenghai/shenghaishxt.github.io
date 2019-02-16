@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,17 +84,19 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="CHAPTER6 动态规划">
 <meta property="og:url" content="http://yoursite.com/2018/12/06/CHAPTER6 动态规划/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ʥ���Ĳ��� | shxt">
 <meta property="og:description" content="概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。 动态规划的算法可分为以下4个步骤：  描述最优解的结构。 递归定义最优解的值。 按自底向上的方式计算最优解的值。 由计算的结果构造">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/1544592877589.png">
 <meta property="og:image" content="http://yoursite.com/images/1544592877589.png">
 <meta property="og:image" content="http://yoursite.com/images/1544593909399.png">
 <meta property="og:image" content="http://yoursite.com/images/1544593909399.png">
+<meta property="og:image" content="http://yoursite.com/images/1550314202(1">
 <meta property="og:image" content="http://yoursite.com/images/1542016271345.png">
 <meta property="og:image" content="http://yoursite.com/images/1543639539255.png">
+<meta property="og:image" content="http://yoursite.com/images/1550314287(1">
 <meta property="og:image" content="http://yoursite.com/images/1543639181690.png">
-<meta property="og:updated_time" content="2019-02-16T09:38:09.027Z">
+<meta property="og:updated_time" content="2019-02-16T10:51:53.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CHAPTER6 动态规划">
 <meta name="twitter:description" content="概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。 动态规划的算法可分为以下4个步骤：  描述最优解的结构。 递归定义最优解的值。 按自底向上的方式计算最优解的值。 由计算的结果构造">
@@ -134,7 +136,7 @@
 
 
 
-  <title>CHAPTER6 动态规划 | Hexo</title>
+  <title>CHAPTER6 动态规划 | ʥ���Ĳ��� | shxt</title>
   
 
 
@@ -146,7 +148,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -164,12 +166,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">ʥ���Ĳ��� | shxt</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">good good study up up every day</p>
       
   </div>
 
@@ -294,13 +296,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/CHAPTER6 动态规划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="shenghai">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ʥ���Ĳ��� | shxt">
     </span>
 
     
@@ -389,7 +391,8 @@
 <li>如果$x_m \neq y_n$，那么$z_k \neq x_m$意味着$Z$是 $X_{m-1}$和$Y$的一个LCS。</li>
 <li>如果$x_m \neq y_n$，那么$z_k \neq y_n$意味着$Z$是 $X$和$Y_{n-1}$的一个LCS。</li>
 </ol>
-<h2 id="Step2-递归定义最优解的值（递归解决）"><a href="#Step2-递归定义最优解的值（递归解决）" class="headerlink" title="Step2 递归定义最优解的值（递归解决）"></a>Step2 递归定义最优解的值（递归解决）</h2><p>用$C[i,j]$表示$X_i$和$Y_j$的最长公共子序列LCS的长度，则有公式：<br>$$<br>C[i,j]=   \begin{cases}<br> 0， &amp;        当 i=0或j=0\<br>C[i-1,j-1]+1，&amp;当i,j&gt;0 且x_i=y_j \<br>max(C[i,j-1],C[i-1,j])&amp;当i,j&gt;0且x_i≠y_j<br>  \end{cases}<br>$$</p>
+<h2 id="Step2-递归定义最优解的值（递归解决）"><a href="#Step2-递归定义最优解的值（递归解决）" class="headerlink" title="Step2 递归定义最优解的值（递归解决）"></a>Step2 递归定义最优解的值（递归解决）</h2><p>用$C[i,j]$表示$X_i$和$Y_j$的最长公共子序列LCS的长度，则有公式：</p>
+<p><img src="/images/1550314202(1" alt="1550314202(1)">.png)</p>
 <h2 id="Step3-按自底向上的方式计算最优解的值（计算LCS的长度）"><a href="#Step3-按自底向上的方式计算最优解的值（计算LCS的长度）" class="headerlink" title="Step3 按自底向上的方式计算最优解的值（计算LCS的长度）"></a>Step3 按自底向上的方式计算最优解的值（计算LCS的长度）</h2><p>LCS_LENGTH以两个序列为输入，将LCS的长度保存到二维数组c中，将构造过程保存到另一个二维数组b中，伪代码如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LCS_LENGTH</span><span class="params">(X,Y)</span>:</span></span><br><span class="line">	m = length(X)</span><br><span class="line">	n = length(Y)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to m:</span><br><span class="line">		c[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n:</span><br><span class="line">		c[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment"># 计算LCS的长度</span></span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to m:</span><br><span class="line">		<span class="keyword">for</span> j = <span class="number">1</span> to n:</span><br><span class="line">            <span class="keyword">if</span> x[i] == y[j]:</span><br><span class="line">                c[i, j] = c[i<span class="number">-1</span>, j<span class="number">-1</span>] + <span class="number">1</span></span><br><span class="line">               	b[i, j] = <span class="string">'\'</span></span><br><span class="line"><span class="string">            elif c[i-1, j] &gt;= c[i, j-1]:</span></span><br><span class="line"><span class="string">                c[i, j] = c[i-1, j]</span></span><br><span class="line"><span class="string">                b[i, j] = '</span>|<span class="string">'</span></span><br><span class="line"><span class="string">            else:</span></span><br><span class="line"><span class="string">                c[i, j] = c[i, j-1]</span></span><br><span class="line"><span class="string">                b[i, j] = '</span>-<span class="string">'</span></span><br><span class="line"><span class="string">return c, b</span></span><br></pre></td></tr></table></figure>
 <h2 id="Step4-由计算的结果构造一个最优解（构建LCS）"><a href="#Step4-由计算的结果构造一个最优解（构建LCS）" class="headerlink" title="Step4 由计算的结果构造一个最优解（构建LCS）"></a>Step4 由计算的结果构造一个最优解（构建LCS）</h2><p>根据LCS_LENGTH返回的表b，可以构建一个LCS序列，输出所有值为’\’的元素，即可得到LCS，PRINT_LCS的伪代码如下所示：</p>
@@ -403,8 +406,10 @@
 <p>下面给出一个例子，具体的实现与LCS类似，这里不再赘述。</p>
 <p><img src="/images/1543639539255.png" alt="1543639539255"></p>
 <h1 id="矩阵连乘问题（Chain-MatrixMultiplication）"><a href="#矩阵连乘问题（Chain-MatrixMultiplication）" class="headerlink" title="矩阵连乘问题（Chain MatrixMultiplication）"></a>矩阵连乘问题（Chain MatrixMultiplication）</h1><p>给定n个矩阵$｛A1,A2,…,An｝$，其中$Ai$与$Ai+1$是可乘的，$i=1,2 ,…,n-1$。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
-<p>假如我们要得到计算从$A_i$到$A_j$的最优计算次序。首先假设这个计算次序在矩阵$A_k$和$A_{k+1}$之间断开，且$i \leq k &lt; j$，则计算量为前一部分的计算量、后一部分的计算量以及两部分相乘的计算量之和。</p>
-<p>可以递归地定义$C[i, j]$为：<br>$$<br>C(i,j)=   \begin{cases} 0 &amp;i=j \min_{i \leq k &lt; j}(C(i,k)+C(k+1,j)+m_{i-1}m_km_j)&amp; i&lt;j  \end{cases}<br>$$<br>可以看到，$k$的位置只有$j-i$种可能，此算法的时间复杂度为$O(n^3)$，给出一个这种动态规划算法的计算实例。</p>
+<p>假如我们要得到计算从$A_i​$到$A_j​$的最优计算次序。首先假设这个计算次序在矩阵$A_k​$和$A_{k+1}​$之间断开，且$i \leq k &lt; j​$，则计算量为前一部分的计算量、后一部分的计算量以及两部分相乘的计算量之和。</p>
+<p>可以递归地定义$C[i, j]​$为：</p>
+<p><img src="/images/1550314287(1" alt="1550314287(1)">.png)</p>
+<p>可以看到，$k$的位置只有$j-i$种可能，此算法的时间复杂度为$O(n^3)$，给出一个这种动态规划算法的计算实例。</p>
 <p><img src="/images/1543639181690.png" alt="1543639181690"></p>
 
       
@@ -516,8 +521,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -597,7 +602,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
 
   
 </div>

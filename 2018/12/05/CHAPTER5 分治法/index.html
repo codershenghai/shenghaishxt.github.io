@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,9 +84,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="CHAPTER5 分治法">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/CHAPTER5 分治法/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ʥ���Ĳ��� | shxt">
 <meta property="og:description" content="分治法是将一个复杂的问题分成一些规模较小而结构与原问题相似的子问题，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。  分治法在每一层的递归上都有三个步骤：  分解（Divided）：将原问题分解成一系列子问题。 解决（Conquer）：递归地解各子问题。 合并（Combine）：将子问题的结果合并成原问题的解。  假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/1550314374(1">
+<meta property="og:image" content="http://yoursite.com/images/1550314397(1">
 <meta property="og:image" content="http://yoursite.com/images/1544079475779.png">
 <meta property="og:image" content="http://yoursite.com/images/1544080110175.png">
 <meta property="og:image" content="http://yoursite.com/images/1544080142084.png">
@@ -98,11 +100,11 @@
 <meta property="og:image" content="http://yoursite.com/images/1544083404788.png">
 <meta property="og:image" content="http://yoursite.com/images/1544083714346.png">
 <meta property="og:image" content="http://yoursite.com/images/1544084698606.png">
-<meta property="og:updated_time" content="2019-02-16T09:36:01.381Z">
+<meta property="og:updated_time" content="2019-02-16T10:53:53.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CHAPTER5 分治法">
 <meta name="twitter:description" content="分治法是将一个复杂的问题分成一些规模较小而结构与原问题相似的子问题，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。  分治法在每一层的递归上都有三个步骤：  分解（Divided）：将原问题分解成一系列子问题。 解决（Conquer）：递归地解各子问题。 合并（Combine）：将子问题的结果合并成原问题的解。  假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分">
-<meta name="twitter:image" content="http://yoursite.com/images/1544079475779.png">
+<meta name="twitter:image" content="http://yoursite.com/images/1550314374(1">
 
 
 
@@ -138,7 +140,7 @@
 
 
 
-  <title>CHAPTER5 分治法 | Hexo</title>
+  <title>CHAPTER5 分治法 | ʥ���Ĳ��� | shxt</title>
   
 
 
@@ -150,7 +152,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -168,12 +170,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">ʥ���Ĳ��� | shxt</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">good good study up up every day</p>
       
   </div>
 
@@ -298,13 +300,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/CHAPTER5 分治法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="shenghai">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ʥ���Ĳ��� | shxt">
     </span>
 
     
@@ -371,14 +373,17 @@
 <li><strong>解决（Conquer）</strong>：递归地解各子问题。</li>
 <li><strong>合并（Combine）</strong>：将子问题的结果合并成原问题的解。</li>
 </ul>
-<p>假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分解和合并的时间各为D(n)和C(n)，则可得到递归式：<br>$$<br>T(n) = \left{ \begin{array}{rcl}<br>\Theta(1) &amp; \mbox{if} &amp;n \leq c\<br>aT(n/b)+D(n)+C(n) &amp; \mbox{else} &amp;<br>\end{array}\right.<br>$$</p>
+<p>假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分解和合并的时间各为D(n)和C(n)，则可得到递归式：</p>
+<p><img src="/images/1550314374(1" alt="1550314374(1)">.png)</p>
 <h1 id="合并排序（Merge-Sort）"><a href="#合并排序（Merge-Sort）" class="headerlink" title="合并排序（Merge Sort）"></a>合并排序（Merge Sort）</h1><p>当合并排序的运行时间如下分解：</p>
 <ul>
 <li><strong>分解</strong>：仅计算出子数组的中间位置，需要常量时间，故$D(n) = \Theta(1)$。</li>
 <li><strong>解决</strong>：递归地解两个规模为n/2的子问题，时间为$2T(n/2)$。</li>
 <li><strong>合并</strong>：在一个含有n个元素的子数组上，MERGE过程的运行时间为$\Theta(n)$，则$C(n) = \Theta(n)$。</li>
 </ul>
-<p>因此，合并排序的最坏运行时间$T(n)$的递归表示是：<br>$$<br>T(n) = \left{ \begin{array}{rcl}<br>\Theta(1) &amp; \mbox{if} &amp;n = 1\<br>2T(n/2)+ \Theta(n) &amp; \mbox{if} &amp; n&gt; 1 &amp;<br>\end{array}\right.<br>$$<br>由之前第一章介绍的主定理，我们可以得到$T(n) = \Theta(nlgn)$，这里的$lgn$代表$log_2n$。同样，我们也可以通过递归树得到相同的答案。</p>
+<p>因此，合并排序的最坏运行时间$T(n)$的递归表示是：</p>
+<p><img src="/images/1550314397(1" alt="1550314397(1)">.png)</p>
+<p>由之前第一章介绍的主定理，我们可以得到$T(n) = \Theta(nlgn)$，这里的$lgn$代表$log_2n$。同样，我们也可以通过递归树得到相同的答案。</p>
 <h1 id="最大子数组问题（Maximum-Subarray-Problem）"><a href="#最大子数组问题（Maximum-Subarray-Problem）" class="headerlink" title="最大子数组问题（Maximum Subarray Problem）"></a>最大子数组问题（Maximum Subarray Problem）</h1><p>对于一个具有连续连续值的数组A，寻找A的和最大的非空连续子数组，<strong>我们称这样的连续子数组为最大子数组</strong>。例如，对于下图的数组，A[1…16]的最大子数组是A[8…11]，其和为43。在实际的例子中可表示在第8天买入股票，并在第11天卖出，获得的收益为43美元。</p>
 <p><img src="/images/1544079475779.png" alt="1544079475779"></p>
 <p>使用分治法可以求解最大子数组问题。首先找到数组的中间点，将数组分为左右两个数组，那么最大子数组可能存在于下列三种情况之一：</p>
@@ -542,8 +547,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -623,7 +628,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
 
   
 </div>
