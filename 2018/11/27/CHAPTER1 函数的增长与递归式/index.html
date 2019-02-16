@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N={ 0, 1, 2, …}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CHAPTER1 函数的增长与递归式">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/CHAPTER1 函数的增长与递归式/index.html">
+<meta property="og:site_name" content="shenghai&#39;s blog | shxt">
+<meta property="og:description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N={ 0, 1, 2, …}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/1544505383438.png">
+<meta property="og:image" content="http://yoursite.com/images/1544505763866.png">
+<meta property="og:image" content="http://yoursite.com/images/1544506062143.png">
+<meta property="og:image" content="http://yoursite.com/images/1544506461279.png">
+<meta property="og:image" content="http://yoursite.com/images/1544506877918.png">
+<meta property="og:image" content="http://yoursite.com/images/1544507209464.png">
+<meta property="og:image" content="http://yoursite.com/images/1544512143984.png">
+<meta property="og:image" content="http://yoursite.com/images/1544509457275.png">
+<meta property="og:image" content="http://yoursite.com/images/1544511737093.png">
+<meta property="og:updated_time" content="2019-02-16T11:23:49.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CHAPTER1 函数的增长与递归式">
+<meta name="twitter:description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N={ 0, 1, 2, …}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_">
+<meta name="twitter:image" content="http://yoursite.com/images/1544505383438.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/CHAPTER1 函数的增长与递归式/">
+
+
+
+
+
+  <title>CHAPTER1 函数的增长与递归式 | shenghai's blog | shxt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenghai's blog | shxt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">good good study up up every day</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/CHAPTER1 函数的增长与递归式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CHAPTER1 函数的增长与递归式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T15:09:00+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计与分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h1><p>用来表示算法的渐进运行时间的记号是用定义域为自然数集$N={ 0, 1, 2, …}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。</p>
+<h2 id="Theta-记号（紧渐进界）"><a href="#Theta-记号（紧渐进界）" class="headerlink" title="$\Theta$记号（紧渐进界）"></a>$\Theta$记号（紧渐进界）</h2><p>对于$\Theta​$记号有如下的定义：</p>
+<p><img src="/images/1544505383438.png" alt="1544505383438"></p>
+<p> $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_1, c_2$使得在$n_0$右边$f(n)$的值永远在$c_1g(n)$与$c_2g(n)$之间，那么可以写成$f(n) = \Theta(g(n))​$。</p>
+<h2 id="O记号（渐进上界）"><a href="#O记号（渐进上界）" class="headerlink" title="O记号（渐进上界）"></a>O记号（渐进上界）</h2><p>对于$O$记号有如下的定义：</p>
+<p><img src="/images/1544505763866.png" alt="1544505763866"></p>
+<p>$O$记号给出一个函数在常数因子内的上限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或小于$cg(n)$，那么可以写成$f(n) = O(g(n))$。</p>
+<h2 id="Ω记号（渐进下界）"><a href="#Ω记号（渐进下界）" class="headerlink" title="Ω记号（渐进下界）"></a>Ω记号（渐进下界）</h2><p>对于$Ω​$记号有如下的定义：</p>
+<p><img src="/images/1544506062143.png" alt="1544506062143"></p>
+<p>$Ω$记号给出一个函数在常数因子内的下限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或大于$cg(n)$，那么可以写成$f(n) = Ω(g(n))$。</p>
+<h2 id="o记号（渐进非紧上界）"><a href="#o记号（渐进非紧上界）" class="headerlink" title="o记号（渐进非紧上界）"></a>o记号（渐进非紧上界）</h2><p>$O$记号所提供的渐进上界可能是紧的，但也有可能不是。例如，$2n^2=O(n^2)$是一个紧的上界，但$2n=O(n^2)$却不是一个紧的上界。于是，我们使用$o$记号来表示一个紧的上界。</p>
+<p>对于$o​$记号有如下的定义：</p>
+<p><img src="/images/1544506461279.png" alt="1544506461279"></p>
+<p>例如，$2n=o(n^2)$，但$2n^2 \neq o(n^2)$。</p>
+<p>$O$记号与$o$记号的定义是类似的，主要区别在于对于$f(n)=O(g(n))$，界$0 \leq f(n) \leq cg(n)$对某个常数$c&gt;0$成立即可，而对于$f(n)=o(g(n))$，界$0 \leq f(n) \leq cg(n)$对所有常数$c&gt;0$成立。</p>
+<h2 id="ω-记号（渐进非紧下界）"><a href="#ω-记号（渐进非紧下界）" class="headerlink" title="$ω$记号（渐进非紧下界）"></a>$ω$记号（渐进非紧下界）</h2><p>$ω$记号与$Ω$记号的关系就与前面小o和大o之间的关系是类似的，我们用$ω$记号表示一个紧的下界。</p>
+<p>对于$ω$记号有如下的定义：</p>
+<p><img src="/images/1544506877918.png" alt="1544506877918"></p>
+<p>例如，$n^2/2=ω(n)$，但$n^2/2\neqω(n^2)$。</p>
+<h2 id="函数间的比较"><a href="#函数间的比较" class="headerlink" title="函数间的比较"></a>函数间的比较</h2><p>实数的许多关系属性可以用于渐进比较，以上的记号之间具有传递性和对称性，下面假设$f(n)$和$g(n)$是渐进正值函数。</p>
+<p><img src="/images/1544507209464.png" alt="1544507209464"></p>
+<h1 id="解递归式的三种方法"><a href="#解递归式的三种方法" class="headerlink" title="解递归式的三种方法"></a>解递归式的三种方法</h1><p>求解递归式，即找出解的渐进“$\Theta$”或“$O$”界的方法主要有三种：</p>
+<ul>
+<li><strong>代换法</strong>：先猜某个界存在，然后用数学归纳法证明该猜测的正确性。</li>
+<li><strong>递归树方法</strong>：将递归式转换成树形结构，树中的节点代表在不同递归层次付出的代价。</li>
+<li><strong>主方法</strong>：给出递归形式$T(n) = aT(n/b)+f(n)$的界，其中$a \geq 1, b&gt;1$，$f(n)$是给定的函数。这种方法要记忆三种情况，就可以确定很多简单递归式的界了。</li>
+</ul>
+<h2 id="代换法"><a href="#代换法" class="headerlink" title="代换法"></a>代换法</h2><p>用代换法解递归式需要两个步骤：</p>
+<ol>
+<li>猜测解的形式。</li>
+<li>用数学归纳法找出使解真正有效地常数。</li>
+</ol>
+<h2 id="递归树方法"><a href="#递归树方法" class="headerlink" title="递归树方法"></a>递归树方法</h2><p>虽然代换法给递归式的解的正确性提供了一种简单的证明方法，但是有的时候很难得到一个好的猜测。此时，画出一个递归树是一种得到好猜测的直接方法。</p>
+<p>设$T(n) = 3T(n/4)+n^2​$，则使用递归树求解该递归式的过程如下图所示：</p>
+<p><img src="/images/1544512143984.png" alt="1544512143984"></p>
+<h2 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h2><p>设$a \geq 1, b&gt;1$，$f(n) $为一函数，$T(n)$由递归式<br>$$<br>T(n) = aT(n/b)+f(n)<br>$$<br>对非负整数定义，那么$T(n)$有如下的渐进界：</p>
+<p><img src="/images/1544509457275.png" alt="1544509457275"></p>
+<p>求解和式时有一个比较常用的公式，假设$f(k)$是单调递增的函数，那么有如下的性质：</p>
+<p><img src="/images/1544511737093.png" alt="1544511737093"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/01/CHAPTER2 最大流与最小割/" rel="prev" title="CHAPTER2 最大流与最小割">
+                CHAPTER2 最大流与最小割 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#渐进记号"><span class="nav-number">1.</span> <span class="nav-text">渐进记号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Theta-记号（紧渐进界）"><span class="nav-number">1.1.</span> <span class="nav-text">$\Theta$记号（紧渐进界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#O记号（渐进上界）"><span class="nav-number">1.2.</span> <span class="nav-text">O记号（渐进上界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ω记号（渐进下界）"><span class="nav-number">1.3.</span> <span class="nav-text">Ω记号（渐进下界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#o记号（渐进非紧上界）"><span class="nav-number">1.4.</span> <span class="nav-text">o记号（渐进非紧上界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ω-记号（渐进非紧下界）"><span class="nav-number">1.5.</span> <span class="nav-text">$ω$记号（渐进非紧下界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数间的比较"><span class="nav-number">1.6.</span> <span class="nav-text">函数间的比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解递归式的三种方法"><span class="nav-number">2.</span> <span class="nav-text">解递归式的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代换法"><span class="nav-number">2.1.</span> <span class="nav-text">代换法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归树方法"><span class="nav-number">2.2.</span> <span class="nav-text">递归树方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主方法"><span class="nav-number">2.3.</span> <span class="nav-text">主方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
