@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="P问题、NP问题、NPC问题的概念本章节对于概念要特别清楚，因此首先给出这三个问题的概念：  P问题：能够在多项式时间内解决的问题。  NP问题：能够在多项式时间内验证一个解的正确性的问题。  NPC问题：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。  首先，它是NP问题。 其次，所有其他的NP问题都能够在多项式时间内归约到此问题上。   NPC问题是NP问题的子集。   NP-h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/16/CHAPTER9 NP完全性/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="P问题、NP问题、NPC问题的概念本章节对于概念要特别清楚，因此首先给出这三个问题的概念：  P问题：能够在多项式时间内解决的问题。  NP问题：能够在多项式时间内验证一个解的正确性的问题。  NPC问题：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。  首先，它是NP问题。 其次，所有其他的NP问题都能够在多项式时间内归约到此问题上。   NPC问题是NP问题的子集。   NP-h">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="c:/Users/78247/AppData/Local/Temp/1543324527401.png">
+<meta property="og:updated_time" content="2018-11-29T07:42:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="P问题、NP问题、NPC问题的概念本章节对于概念要特别清楚，因此首先给出这三个问题的概念：  P问题：能够在多项式时间内解决的问题。  NP问题：能够在多项式时间内验证一个解的正确性的问题。  NPC问题：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。  首先，它是NP问题。 其次，所有其他的NP问题都能够在多项式时间内归约到此问题上。   NPC问题是NP问题的子集。   NP-h">
+<meta name="twitter:image" content="c:/Users/78247/AppData/Local/Temp/1543324527401.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/16/CHAPTER9 NP完全性/">
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER9 NP完全性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="P问题、NP问题、NPC问题的概念"><a href="#P问题、NP问题、NPC问题的概念" class="headerlink" title="P问题、NP问题、NPC问题的概念"></a>P问题、NP问题、NPC问题的概念</h1><p>本章节对于概念要特别清楚，因此首先给出这三个问题的概念：</p>
+<ul>
+<li><p><strong>P问题</strong>：能够在多项式时间内解决的问题。</p>
+</li>
+<li><p><strong>NP问题</strong>：能够在多项式时间内验证一个解的正确性的问题。</p>
+</li>
+<li><p><strong>NPC问题</strong>：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。</p>
+<ul>
+<li>首先，它是NP问题。</li>
+<li>其次，所有其他的NP问题都能够在多项式时间内归约到此问题上。</li>
+</ul>
+<blockquote>
+<p>NPC问题是NP问题的子集。</p>
+</blockquote>
+</li>
+<li><p><strong>NP-hard问题</strong>：问题A不一定是一个NP问题，但是所有的NPC问题都可以在多项式时间内转化为A，则称A为NP-hard问题。</p>
+<blockquote>
+<p>NPC问题一定是NP-hard问题。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="一些典型的NP完全问题"><a href="#一些典型的NP完全问题" class="headerlink" title="一些典型的NP完全问题"></a>一些典型的NP完全问题</h1><p>通过问题变换的技巧，可以将2个不同问题的计算复杂性联系在一起。这样就可以将一个问题的计算复杂性归约为另一个问题的计算复杂性，从而实现问题的计算复杂性归约。</p>
+<p>证明一个问题是NP完全问题分为两个步骤：</p>
+<ol>
+<li><p>证明该问题是NP问题。</p>
+</li>
+<li><p>证明NP问题中的每一个问题都能在多项式时间内归约为该问题。</p>
+<blockquote>
+<p>由于多项式问题具有传递性，因此只需证明一个已知的NP完全问题能够在多项式时间内归约到该问题即可。</p>
+</blockquote>
+</li>
+</ol>
+<p>下图给出了《算法导论》中进行NP完全证明的结构，树的根为CIRCUIT-SAT。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543324527401.png" alt="1543324527401"></p>
+<h2 id="电路可满足性问题（CIRCUIT-SAT）"><a href="#电路可满足性问题（CIRCUIT-SAT）" class="headerlink" title="电路可满足性问题（CIRCUIT-SAT）"></a>电路可满足性问题（CIRCUIT-SAT）</h2><h2 id="合取范式的可满足性问题（CNF-SAT）"><a href="#合取范式的可满足性问题（CNF-SAT）" class="headerlink" title="合取范式的可满足性问题（CNF-SAT）"></a>合取范式的可满足性问题（CNF-SAT）</h2><p>##三元合取范式的可满足性问题（3-SAT）</p>
+<h2 id="团问题（clique）"><a href="#团问题（clique）" class="headerlink" title="团问题（clique）"></a>团问题（clique）</h2><h2 id="顶点覆盖问题（VERTEX-COVER）"><a href="#顶点覆盖问题（VERTEX-COVER）" class="headerlink" title="顶点覆盖问题（VERTEX-COVER）"></a>顶点覆盖问题（VERTEX-COVER）</h2><h2 id="哈密顿回路问题（HAM-CYCLE）"><a href="#哈密顿回路问题（HAM-CYCLE）" class="headerlink" title="哈密顿回路问题（HAM-CYCLE）"></a>哈密顿回路问题（HAM-CYCLE）</h2><h2 id="旅行商问题（TSP）"><a href="#旅行商问题（TSP）" class="headerlink" title="旅行商问题（TSP）"></a>旅行商问题（TSP）</h2><p><strong>证明：</strong></p>
+<ol>
+<li><p>TSP∈ NP：</p>
+<p>给定该问题的一个实例，用n个顶点组成的回路作为证书，验证该回路是否只包含每个顶点一次，并且检查各边费用之和是否小于k。这个过程能够在多项式时间内完成。</p>
+</li>
+<li><p>把哈密顿回路归约到TSP：</p>
+<p>设$G=(V, E)$是HAM-CYCLE的一个实例，可以构造对应的一个TSP实例。建立一个完全图$G‘=(V, E’)$，定义费用函数c为：<br>$$<br>c(i, j) = \left{ \begin{array}{rcl}<br>0 &amp; 如果(i, j) \in E<br>\<br>1 &amp; 如果(i, j) \notin E<br>\end{array}\right.<br>$$<br>下面来说明当且仅当图G’中有一个费用至多为0的回路的时候，G中才具有一个哈密顿回路：</p>
+<ol>
+<li>假定图G中有一个哈密顿回路h。h中的每条边都属于E，因此在G’中的费用为0。因此，h在G‘中是费用为0的回路。</li>
+<li>反之，假定图G’中有一个费用h‘至多为0的回路，回路上每条边的费用必为0。因此，h’仅包含E中的边。</li>
+<li>这样，我们就得出结论，h’是图G中的一个哈密顿回路。</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/16/CHAPTER8 最短路径/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/16/CHAPTER10 近似算法/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P问题、NP问题、NPC问题的概念"><span class="nav-number">1.</span> <span class="nav-text">P问题、NP问题、NPC问题的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些典型的NP完全问题"><span class="nav-number">2.</span> <span class="nav-text">一些典型的NP完全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#电路可满足性问题（CIRCUIT-SAT）"><span class="nav-number">2.1.</span> <span class="nav-text">电路可满足性问题（CIRCUIT-SAT）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合取范式的可满足性问题（CNF-SAT）"><span class="nav-number">2.2.</span> <span class="nav-text">合取范式的可满足性问题（CNF-SAT）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#团问题（clique）"><span class="nav-number">2.3.</span> <span class="nav-text">团问题（clique）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点覆盖问题（VERTEX-COVER）"><span class="nav-number">2.4.</span> <span class="nav-text">顶点覆盖问题（VERTEX-COVER）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈密顿回路问题（HAM-CYCLE）"><span class="nav-number">2.5.</span> <span class="nav-text">哈密顿回路问题（HAM-CYCLE）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旅行商问题（TSP）"><span class="nav-number">2.6.</span> <span class="nav-text">旅行商问题（TSP）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

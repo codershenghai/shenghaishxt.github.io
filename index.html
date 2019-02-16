@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/yyyesssd/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER6 分治法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -298,7 +298,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/16/yyyesssd/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2019/02/16/CHAPTER6 分治法/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -310,7 +310,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T14:54:15+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
                 2019-02-16
               </time>
             
@@ -350,7 +350,77 @@
       
         
           
-            <h1 id="adsffd"><a href="#adsffd" class="headerlink" title="adsffd"></a>adsffd</h1><h3 id="dasff"><a href="#dasff" class="headerlink" title="dasff"></a>dasff</h3>
+            <blockquote>
+<p>分治法是将一个复杂的问题分成一些规模较小而结构与原问题相似的子问题，递归地解这些子问题，然后将各子问题的解合并得到原问题的解。</p>
+</blockquote>
+<p>分治法在每一层的递归上都有三个步骤：</p>
+<ul>
+<li><strong>分解（Divided）</strong>：将原问题分解成一系列子问题。</li>
+<li><strong>解决（Conquer）</strong>：递归地解各子问题。</li>
+<li><strong>合并（Combine）</strong>：将子问题的结果合并成原问题的解。</li>
+</ul>
+<p>假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分解和合并的时间各为D(n)和C(n)，则可得到递归式：<br>$$<br>T(n) = \left{ \begin{array}{rcl}<br>\Theta(1) &amp; \mbox{if} &amp;n \leq c\<br>aT(n/b)+D(n)+C(n) &amp; \mbox{else} &amp;<br>\end{array}\right.<br>$$</p>
+<h1 id="合并排序（Merge-Sort）"><a href="#合并排序（Merge-Sort）" class="headerlink" title="合并排序（Merge Sort）"></a>合并排序（Merge Sort）</h1><p>当合并排序的运行时间如下分解：</p>
+<ul>
+<li><strong>分解</strong>：仅计算出子数组的中间位置，需要常量时间，故$D(n) = \Theta(1)$。</li>
+<li><strong>解决</strong>：递归地解两个规模为n/2的子问题，时间为$2T(n/2)$。</li>
+<li><strong>合并</strong>：在一个含有n个元素的子数组上，MERGE过程的运行时间为$\Theta(n)$，则$C(n) = \Theta(n)$。</li>
+</ul>
+<p>因此，合并排序的最坏运行时间$T(n)$的递归表示是：<br>$$<br>T(n) = \left{ \begin{array}{rcl}<br>\Theta(1) &amp; \mbox{if} &amp;n = 1\<br>2T(n/2)+ \Theta(n) &amp; \mbox{if} &amp; n&gt; 1 &amp;<br>\end{array}\right.<br>$$<br>由之前第一章介绍的主定理，我们可以得到$T(n) = \Theta(nlgn)$，这里的$lgn$代表$log_2n$。同样，我们也可以通过递归树得到相同的答案。</p>
+<h1 id="最大子数组问题（Maximum-Subarray-Problem）"><a href="#最大子数组问题（Maximum-Subarray-Problem）" class="headerlink" title="最大子数组问题（Maximum Subarray Problem）"></a>最大子数组问题（Maximum Subarray Problem）</h1><p>对于一个具有连续连续值的数组A，寻找A的和最大的非空连续子数组，<strong>我们称这样的连续子数组为最大子数组</strong>。例如，对于下图的数组，A[1…16]的最大子数组是A[8…11]，其和为43。在实际的例子中可表示在第8天买入股票，并在第11天卖出，获得的收益为43美元。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544079475779.png" alt="1544079475779"></p>
+<p>使用分治法可以求解最大子数组问题。首先找到数组的中间点，将数组分为左右两个数组，那么最大子数组可能存在于下列三种情况之一：</p>
+<ul>
+<li>完全位于左边的数组中。</li>
+<li>完全位于右边的数组中。</li>
+<li>跨越了左右两个数组。</li>
+</ul>
+<p>对于前两种情况，使用同样的方式递归地划分为规模最小的子数组求解即可。对于第三种情况，我们采用的算法是从中间点向两边遍历，分别求出两边的最大子数组，然后将左右两边的子数组相加即为跨越中点的最大子数组。</p>
+<p>下面给出算法的伪代码：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544080110175.png" alt="1544080110175"></p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544080142084.png" alt="1544080142084"></p>
+<p>对FIND-MAXIMUM-SUBARRAY算法的运行时间进行分析：</p>
+<p>首先计算出子数组的中间位置，需要常量时间$\Theta(1)$，然后递归地解两个规模为n/2的子问题，时间为$2T(n/2)$，调用FIND-MAX-CROSSING-SUBARRAY花费了$\Theta(n)$时间，则$T(n) = \Theta(1) + 2T(n/2) + \Theta(n) $，用主方法或递归树求解此递归式可得$T(n) = \Theta(nlgn)$。</p>
+<h1 id="斐波那契数列（Fibonacci-Number）"><a href="#斐波那契数列（Fibonacci-Number）" class="headerlink" title="斐波那契数列（Fibonacci Number）"></a>斐波那契数列（Fibonacci Number）</h1><p>对于斐波那契数，我们有$F_0=0, F_1=1, F_n=F_{n-1}+F_{n-2}$。利用分治策略，我们可以将斐波那契数列转换为矩阵乘幂的问题，如下图所示：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544080873200.png" alt="1544080873200"></p>
+<p>使用分治法，我们将矩阵递归地分解成两个相同的矩阵，再将这两个矩阵相乘即可。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544081045038.png" alt="1544081045038"></p>
+<p>故$T(n) = T(n/2)+O(1) = T(n)/4+2O(1) = … = T(n/2^{logn})+O(logn)×O(1)$。</p>
+<h1 id="整数乘法（Integer-Multiplication）"><a href="#整数乘法（Integer-Multiplication）" class="headerlink" title="整数乘法（Integer Multiplication）"></a>整数乘法（Integer Multiplication）</h1><p>假设x, y分别为两个n-bit的整数，如果要将它们相乘，模拟使用手动乘法得到的时间复杂度是$\Theta(n^2)$，考虑分治法。</p>
+<p>令$x = (10^ma+b), y=(10^mc+d)$，如$x=1234567890, m=5, a=12345, b=67890$。那么$x×y = (10^ma+b)(10^mc+d)= 10^{2m}ac+10^m(bc+ad)+bd$，这里的时间复杂度$T(n) = 4T(n/2)+O(n)$，使用主方法可得$T(n) = O(n^2)$。</p>
+<p>Anatolii, Karatsuba在1962年提出了一个只需要三次子乘法就可以完成运算的算法，其时间复杂度的递归表示为$T(n) = 3T(n/2)+O(n)$，使用主方法可得$T(n) = O(n^{lg3})$。</p>
+<h1 id="矩阵乘法（Matrix-multiplication）"><a href="#矩阵乘法（Matrix-multiplication）" class="headerlink" title="矩阵乘法（Matrix multiplication）"></a>矩阵乘法（Matrix multiplication）</h1><p>给定一个n维矩阵X和Y，计算Z=XY。我们可以使用分治法求解这个问题。</p>
+<ul>
+<li><strong>分解</strong>：将X和Y分解为n/2维的矩阵。</li>
+<li><strong>解决</strong>：使用8次矩阵乘法递归地将这些n/2维的矩阵相乘。</li>
+<li><strong>合并</strong>：使用4次矩阵加法将矩阵合并。</li>
+</ul>
+<p>下面给出一个例子：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544083200877.png" alt="1544083200877"></p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544083215150.png" alt="1544083215150"></p>
+<p>1969年Strassen提出了一个只需要7次矩阵乘法就可以完成运算的算法，算法将原矩阵分为7个新的子矩阵如下图所示：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544083361771.png" alt="1544083361771"></p>
+<p>然后进行计算：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544083404788.png" alt="1544083404788"></p>
+<p>此算法的时间复杂度为$T(n) = 7T(n/2)+\Theta(n^2)=O(n{log_27})=O(n^{2.81})$。</p>
+<h1 id="凸包问题（The-Convex-Hull-Problem）"><a href="#凸包问题（The-Convex-Hull-Problem）" class="headerlink" title="凸包问题（The Convex Hull Problem）"></a>凸包问题（The Convex Hull Problem）</h1><p>假设平面上有一系列点，过某些点作一个多边形，使这个多边形能把所有点都“包”起来，当这个多边形是凸多边形的时候，我们就叫它<strong>凸包</strong>，凸包问题就是求构成凸包的点，如下图所示。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544083714346.png" alt="1544083714346"></p>
+<p>使用蛮力法是最容易想到的，思路是由两点确定一条直线，如果剩余的点都在这条直线的同一侧，那么认为这两个点是构成凸包的点。蛮力法的时间复杂度为$O(n^3)$。</p>
+<p>下面我们介绍解决凸包问题的分治法，下面为具体步骤和图例：</p>
+<ol>
+<li>将所有点放在二维坐标系里，那么横坐标最大的两个点$p_1、p_n$一定是凸包上的点（具体可以用反证法证明，这里不展开说）。直线$p_1p_n$将点集合分为了两部分，分别叫上包和下包。</li>
+<li>对于上包，求距离直线$p_1p_n$最远的点，即下图中的$p_{max}$。</li>
+<li>作直线$p_1p_{max}$和$p_np_{max}$，把$p_1p_{max}$左侧的点当作上包，把$p_np_{max}$右侧的点也当作是上包。</li>
+<li>重复步骤2、3。</li>
+<li>对下包也做类似的操作。</li>
+</ol>
+<p>分治法的时间复杂度为$T(n) = 2T(n/2) + O(n) = O(nlogn)$。</p>
+<h1 id="三格骨牌问题（Tromino-Tiling）"><a href="#三格骨牌问题（Tromino-Tiling）" class="headerlink" title="三格骨牌问题（Tromino Tiling）"></a>三格骨牌问题（Tromino Tiling）</h1><p>对于三格骨牌问题，同样可以用分治法求解，解决这个问题的思想是每次都将平板分成四块同等大小的子平板。</p>
+<p>例如，在插入三格骨牌时，将平板分成四块，由于洞位于左上方的子平板，因此将三个骨牌放置为如图所示的位置，以确保四块子平板的大小相等。递归地进行这个过程即可得出结果。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544084698606.png" alt="1544084698606"></p>
+<h1 id="最邻近点问题（Finding-the-Closest-Pair-of-Points）"><a href="#最邻近点问题（Finding-the-Closest-Pair-of-Points）" class="headerlink" title="最邻近点问题（Finding the Closest Pair of Points）"></a>最邻近点问题（Finding the Closest Pair of Points）</h1><p>顾名思义，最邻近点问题即在平面点集中找出距离最近的两个点。使用时间复杂度为$O(n^2)$的蛮力法可以解决这个问题。</p>
+<p>下面我们介绍解决这个问题的分治法，首先将点集划分为两个部分，然后递归地寻找最近的点，若找到最近的两个点之间的距离为$\delta$，则寻找是否存在分别属于两个部分的点之间的距离小于$\delta$，算法的时间复杂度为$T(n) = O(n)+2T(n/2)+O(n)=O(nlgn)$。</p>
+
           
         
       
@@ -398,7 +468,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER5 贪心算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -417,7 +487,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/16/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2019/02/16/CHAPTER5 贪心算法/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -429,7 +499,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T14:11:29+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
                 2019-02-16
               </time>
             
@@ -469,15 +539,1218 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>贪心算法即不从整体最优考虑，只是做出在当前看来最好的选择，它所做出的选择只是在某种意义上的局部最优选择。贪心算法对于大多数优化问题都能得到整体最优解（如单源最短路径问题、最小生成树问题等），虽然说并不总是这样的。在一些情况下，即使贪心算法不能得到整体最优解，但是其最终的结果是最优解的近似。</p>
+<p>动态规划算法通常以<strong>自底向上</strong>的方式解各子问题，而贪心算法则通常以<strong>自顶向下</strong>的方式进行，每作一次贪心选择就将所求问题简化为规模更小的子问题。</p>
+<p>下面来看一些具体的例子。</p>
+<h1 id="区间调度（Interval-Scheduling）"><a href="#区间调度（Interval-Scheduling）" class="headerlink" title="区间调度（Interval Scheduling）"></a>区间调度（Interval Scheduling）</h1><p><strong>问题描述</strong>：假如我们有多个任务，每个任务都具有各自的开始时间和结束时间，求在任务不重叠的情况下任务的最大组合数。</p>
+<p>根据贪心算法，我们可以从不同的角度分析这个问题。</p>
+<h2 id="Rule1：选择开始最早的任务"><a href="#Rule1：选择开始最早的任务" class="headerlink" title="Rule1：选择开始最早的任务"></a>Rule1：选择开始最早的任务</h2><p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543679483153.png" alt="1543679483153"></p>
+<p>每次选择当前最先开始的任务，并依次选到最后一个。</p>
+<p>从这个例子看出，失败！</p>
+<h2 id="Rule2：选择区间最短的任务"><a href="#Rule2：选择区间最短的任务" class="headerlink" title="Rule2：选择区间最短的任务"></a>Rule2：选择区间最短的任务</h2><p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543679632245.png" alt="1543679632245"></p>
+<p>从最短的任务开始选择，并依次选择不重复的当前最短的任务，按照所用时间长短排序。</p>
+<p>从这个例子看出，失败！</p>
+<h2 id="Rule3：选择冲突最少的任务"><a href="#Rule3：选择冲突最少的任务" class="headerlink" title="Rule3：选择冲突最少的任务"></a>Rule3：选择冲突最少的任务</h2><p>对于每一个任务，计算与它冲突的任务个数，每次选择当前与其冲突最少的任务。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543679890679.png" alt="1543679890679"></p>
+<p>从这个例子看出，还是失败了。</p>
+<h2 id="Rule4：选择结束最早的任务"><a href="#Rule4：选择结束最早的任务" class="headerlink" title="Rule4：选择结束最早的任务"></a>Rule4：选择结束最早的任务</h2><p>每次选择当前最早结束的任务，并依次选到最后一个。</p>
+<p>可以看出，在上面的三个例子中，本算法都是可行的。事实上，Rule4的算法是解决区间调度问题的一个可行算法。直观上来说，按这种方法选取的任务为未安排的任务留下了尽可能多的时间。也就是说，该算法的贪心选择使剩余的可安排时间段极大化，以安排尽可能多的不重叠活动。这个算法的时间复杂度是$O(nlogn)$。</p>
+<h1 id="集合覆盖（Set-Cover）"><a href="#集合覆盖（Set-Cover）" class="headerlink" title="集合覆盖（Set Cover）"></a>集合覆盖（Set Cover）</h1><p><strong>问题描述</strong>：在一个集合$B$以及$B$内元素构成的若干集合$S_1, S_2, … , S_m$中，找到数目最少的$S_i$使得$S_i$中的所有元素都包含了$B$中所有元素。为便于理解，给一个具体的例子。例如，$B$={1,2,3,4,5}，$S_1$={1,2,3}，$S_2$={2,4}，$S_3$={3,4}，$S_4$={4,5}，可以找到一个集合覆盖$S_1,  S_4$。</p>
+<p>其实集合覆盖问题是一个NP难的问题，但是我们仍然可以用贪心算法得到这个问题的近似解。</p>
+<p>假设我们要在城镇里建几所学校，需要满足两点：1、每个学校都要建在一个城镇里。2、城镇离学校的距离不能超过30英里。</p>
+<p>根据贪心算法，我们可以得到非常接近的解：</p>
+<ol>
+<li>选出这样一个学校，即它覆盖了数量最多的城镇。</li>
+<li>重复第一步，直到覆盖所有的城镇。</li>
+</ol>
+<p>这是一种近似算法，贪心算法的运行时间为$O(n^2)$，可得到如下图所示的结果，图中点的位置代表城镇的位置。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543682867114.png" alt="1543682867114"></p>
+<h1 id="最小生成树（Minimum-Spanning-Tree）"><a href="#最小生成树（Minimum-Spanning-Tree）" class="headerlink" title="最小生成树（Minimum Spanning Tree）"></a>最小生成树（Minimum Spanning Tree）</h1><p>用贪心算法设计策略可以设计出构造最小生成树的有效算法，如Prim算法和Kruskal算法，尽管它们做贪心选择的方式不同。</p>
+<p>关于MST的这两个算法大家应该都十分熟悉了，这里便不再展开。</p>
+<h1 id="哈夫曼编码（Huffman-Code）"><a href="#哈夫曼编码（Huffman-Code）" class="headerlink" title="哈夫曼编码（Huffman Code）"></a>哈夫曼编码（Huffman Code）</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER4 最大匹配问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER4 最大匹配问题/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关于匹配的几个定义"><a href="#关于匹配的几个定义" class="headerlink" title="关于匹配的几个定义"></a>关于匹配的几个定义</h1><h2 id="匹配（Matching）"><a href="#匹配（Matching）" class="headerlink" title="匹配（Matching）"></a>匹配（Matching）</h2><p>一个匹配是一个边的子集合$M\subseteq E$，且满足对所有顶点$v\in V$，$M$中至多有一条边与$v$相关联。也可以简单地说，一个匹配就是一个边的集合，其中任意两条边之间都没有公共顶点。</p>
+<p>下面给出一个例子：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543564294412.png" alt="1543564294412"></p>
+<h2 id="最大匹配（Maximum-Matching）"><a href="#最大匹配（Maximum-Matching）" class="headerlink" title="最大匹配（Maximum Matching）"></a>最大匹配（Maximum Matching）</h2><p>简单地说，最大匹配是一个图的所有匹配中边数最多的那个匹配。给出一个例子：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543564418707.png" alt="1543564418707"></p>
+<h2 id="二分图（Bipartite-Graph）"><a href="#二分图（Bipartite-Graph）" class="headerlink" title="二分图（Bipartite Graph）"></a>二分图（Bipartite Graph）</h2><p>二分图是图论中的一种特殊模型，设$G=(V,E)$是一个无向图，如果顶点$V$可分割为两个互不相交的子集$(A,B)$，并且图中的每条边$(i，j)$所关联的两个顶点$i$和$j$分别属于这两个不同的顶点集，则称图$G$为一个二分图。</p>
+<h2 id="完全匹配（Perfect-Matching）"><a href="#完全匹配（Perfect-Matching）" class="headerlink" title="完全匹配（Perfect Matching）"></a>完全匹配（Perfect Matching）</h2><p>简单地说，当一个图的某个匹配中所有的顶点都是匹配点，那么这个匹配就是完美匹配。同样给出一个例子：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543565323927.png" alt="1543565323927"></p>
+<h1 id="在二分图中寻找最大匹配"><a href="#在二分图中寻找最大匹配" class="headerlink" title="在二分图中寻找最大匹配"></a>在二分图中寻找最大匹配</h1><p>从本质上来说，二分图匹配其实是最大流的一种特殊情况。是解决这个问题的关键技巧在于建立一个流网络，其中流对应于匹配，如下图所示。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543565692040.png" alt="1543565692040"></p>
+<p>可以看出，图中添加了源点s和汇点t，它们是不属于V的新顶点。令已有边的容量为无穷大，且令s和t分别连接二分图，并设置其容量为1。这时，我们通过Ford-Fulkerson方法计算得到的最大流就等于最大二分匹配。</p>
+<h1 id="在一般图中寻找最大匹配"><a href="#在一般图中寻找最大匹配" class="headerlink" title="在一般图中寻找最大匹配"></a>在一般图中寻找最大匹配</h1><p>在一般图中，我们使用<strong>增广路径（Agumenting path）</strong>来寻找最大匹配。如果一条路径的首尾是非匹配点，路径中除此之外（如果有）其他的点均是匹配点，那么这条路径就是一条<strong>增广路径</strong>。</p>
+<p>如下图所示，我们从非匹配点9出发，经过匹配点4、8、1、6，最后在非匹配点2停止。所以，9-&gt;4-&gt;8-&gt;1-&gt;6-&gt;2 就是一条增广路径。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543566626645.png" alt="1543566626645"></p>
+<p>由于增广路径的首尾是非匹配点，那么增广路径的首尾边必为非匹配边。由于增广路径中匹配边与非匹配边一次交替，所以非匹配边的数目比匹配边多一条。我们可以利用这个特性来改进匹配，只要将匹配边与非匹配边互换即可，如下图所示。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543566981146.png" alt="1543566981146"></p>
+<p>所以，只要不断地迭代这个过程，直至找不到增广路径为止，就可以找到一般图的最大匹配。</p>
+<blockquote>
+<p>补充：若要寻找带权一般图上的最大匹配，则在上面算法的基础上加个权重和判断即可。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER3 最大流与最小割/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER3 最大流与最小割/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="流网络"><a href="#流网络" class="headerlink" title="流网络"></a>流网络</h1><p>$G=(V, E)$是一个简单有向图，在V中指定顶点s和t，分别称为<strong>源点</strong>和<strong>汇点</strong>，有向图G中的每一条边$(u, v) \in E$，对应有一个值$cap(u, v) \geq0$，称为边的容量，这样的有向图G称作一个<strong>流网络</strong>，下图是一个例子。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543641577594.png" alt="1543641577594"></p>
+<p>$f(v, u)$称作是从顶点u到顶点v的流，它满足以下性质：</p>
+<ul>
+<li><strong>容量限制</strong>：对所有$u, v \in V$，要求$f(u, v) \leq c(u, v)$。</li>
+<li><strong>反对称性</strong>：对所有$u, v \in V$，要求$f(u, v) = -f(v, u)$。</li>
+</ul>
+<p>如果有一组流满足以下条件，那么这组流就成为一个<strong>可行流</strong>：</p>
+<ul>
+<li>源点s：流出量 = 整个网络的流量</li>
+<li>汇点t：流入量 = 整个网络的流量</li>
+<li>中间点：总流入量 = 总流出量</li>
+</ul>
+<p><strong>最大流</strong>即网络G所有的可行流中，流量最大的一个可行流。</p>
+<h1 id="Ford-Fulkerson方法"><a href="#Ford-Fulkerson方法" class="headerlink" title="Ford-Fulkerson方法"></a>Ford-Fulkerson方法</h1><p>之所以称为Ford-Fulkerson方法而不是算法，是由于它包含具有不同运行时间的几种实现。Ford-Fulkerson方法依赖于三种重要思想：<strong>残留网络</strong>、<strong>增广路径</strong>、<strong>割</strong>。这三种思想是最大流最小割定理的精髓，该定理用流网络的割来描述最大流的值，我们将会在后面谈到。以下给出Ford-Fulkerson方法的伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ford-Fulkerson-Method(G, s, t):</span><br><span class="line">	initialize flow f to 0</span><br><span class="line">	while there exists an augmenting path p:</span><br><span class="line">		do augment flow f along p</span><br><span class="line">	return f</span><br></pre></td></tr></table></figure>
+<h2 id="最大流最小割定理"><a href="#最大流最小割定理" class="headerlink" title="最大流最小割定理"></a>最大流最小割定理</h2><p>首先来介绍割的概念，一个割会把图G的顶点分成两个不相交的集合，其中s在一个集合中，t在另外一个集合中。割的容量就是<strong>从A指向B</strong>的所有边的容量和，最小割问题就是要找到割的容量最小的情况。下面给出两个例子，割的容量分别为30和62。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543643142886.png" alt="1543643142886"></p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543643168807.png" alt="1543643168807"></p>
+<p>接着介绍<strong>残留网络</strong>和<strong>增广路径</strong>的概念，给定一个流网络$G$和一个可行流，流的<strong>残留网络</strong>$G_f$拥有与原网相同的顶点。流网络$G$中每条边将对应残留网中一条或者两条边，对于原流网络中的任意边(u, v)，流量为f(u, v)，容量为c(u, v)：</p>
+<ul>
+<li><p>如果f(u, v) &gt; 0，则在残留网中包含一条容量为f(u, v)的边(v, u);</p>
+</li>
+<li><p>如果f(u, v) &lt; c(u, v)，则在残留网中包含一条容量为c(u, v) - f(u, v)的边(u, v)。</p>
+</li>
+</ul>
+<p>下图为一个例子：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543646139323.png" alt="1543646139323"></p>
+<p>对于一个已知的流网络$G=(V, E)$和流$f$，<strong>增广路径</strong>$p$为残留网络$G_f$中从s到t的一条简单路径。</p>
+<p><strong>最大流最小割定理</strong>：<strong>网络的最大流等于某一最小割的容量</strong>，并且下列条件是等价的：</p>
+<ul>
+<li>$f$是$G$的一个最大流。</li>
+<li>残留网络$G_f$不包含增广路径。</li>
+<li>对$G$的某个割$(S, T)$，有$|f| = c(S, T)$。</li>
+</ul>
+<h2 id="基本的Ford-Fulkerson算法"><a href="#基本的Ford-Fulkerson算法" class="headerlink" title="基本的Ford-Fulkerson算法"></a>基本的Ford-Fulkerson算法</h2><p>根据，我们可以求给定有向图的最大流。下面给出《算法导论》中的一个实例：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543648474242.png" alt="1543648474242"></p>
+<p>上图中的左边表示开始时的残留网络，右边表示将增广路径加入残留网络后得到的新的可行流，通过三次迭代即可得到最大流，根据最大流最小割定理，我们同样可以得到最小割。</p>
+<p>再通过本课程课件上的一个例题进行练习。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543650269357.png" alt="1543650269357"></p>
+<p>同样通过基本的Ford-Fulkerson算法，可得到答案如下。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543651515848.png" alt="1543651515848"></p>
+<h2 id="Edmonds-Karp算法"><a href="#Edmonds-Karp算法" class="headerlink" title="Edmonds-Karp算法"></a>Edmonds-Karp算法</h2><p>Edmonds和Karp曾经证明了如果每步的增广路径都是最短，那么整个算法会执行$O(mn)$步，Edmonds-Karp算法是用广度优先搜索来实现对增广路径p的计算的，实现的伪代码如下图所示。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543649596080.png" alt="1543649596080"></p>
+<p>由于在广度优先搜索时最坏情况下需要$O(m)$次操作，所以此算法的复杂度为$O(m^2n)$。之后，Dinitz改进了Edmonds-Karp算法，得到一个时间复杂度为$O(mn^2)$的算法，下面给出一张关于最短增广路径算法研究历史的表，这里就不再展开了。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1543649990367.png" alt="1543649990367"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER1 函数的增长与递归式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER1 函数的增长与递归式/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h1><p>用来表示算法的渐进运行时间的记号是用定义域为自然数集$N={ 0, 1, 2, …}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)$一般仅定义于整数的输入规模上。</p>
+<h2 id="Theta-记号（紧渐进界）"><a href="#Theta-记号（紧渐进界）" class="headerlink" title="$\Theta$记号（紧渐进界）"></a>$\Theta$记号（紧渐进界）</h2><p>对于$\Theta$记号有如下的定义：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544505383438.png" alt="1544505383438"></p>
+<p> $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_1, c_2$使得在$n_0$右边$f(n)$的值永远在$c_1g(n)$与$c_2g(n)$之间，那么可以写成$f(n) = \Theta(g(n))$。</p>
+<h2 id="O记号（渐进上界）"><a href="#O记号（渐进上界）" class="headerlink" title="O记号（渐进上界）"></a>O记号（渐进上界）</h2><p>对于$O$记号有如下的定义：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544505763866.png" alt="1544505763866"></p>
+<p>$O$记号给出一个函数在常数因子内的上限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或小于$cg(n)$，那么可以写成$f(n) = O(g(n))$。</p>
+<h2 id="Ω记号（渐进下界）"><a href="#Ω记号（渐进下界）" class="headerlink" title="Ω记号（渐进下界）"></a>Ω记号（渐进下界）</h2><p>对于$Ω$记号有如下的定义：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544506062143.png" alt="1544506062143"></p>
+<p>$Ω$记号给出一个函数在常数因子内的下限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或大于$cg(n)$，那么可以写成$f(n) = Ω(g(n))$。</p>
+<h2 id="o记号（渐进非紧上界）"><a href="#o记号（渐进非紧上界）" class="headerlink" title="o记号（渐进非紧上界）"></a>o记号（渐进非紧上界）</h2><p>$O$记号所提供的渐进上界可能是紧的，但也有可能不是。例如，$2n^2=O(n^2)$是一个紧的上界，但$2n=O(n^2)$却不是一个紧的上界。于是，我们使用$o$记号来表示一个紧的上界。</p>
+<p>对于$o$记号有如下的定义：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544506461279.png" alt="1544506461279"></p>
+<p>例如，$2n=o(n^2)$，但$2n^2 \neq o(n^2)$。</p>
+<p>$O$记号与$o$记号的定义是类似的，主要区别在于对于$f(n)=O(g(n))$，界$0 \leq f(n) \leq cg(n)$对某个常数$c&gt;0$成立即可，而对于$f(n)=o(g(n))$，界$0 \leq f(n) \leq cg(n)$对所有常数$c&gt;0$成立。</p>
+<h2 id="ω-记号（渐进非紧下界）"><a href="#ω-记号（渐进非紧下界）" class="headerlink" title="$ω$记号（渐进非紧下界）"></a>$ω$记号（渐进非紧下界）</h2><p>$ω$记号与$Ω$记号的关系就与前面小o和大o之间的关系是类似的，我们用$ω$记号表示一个紧的下界。</p>
+<p>对于$ω$记号有如下的定义：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544506877918.png" alt="1544506877918"></p>
+<p>例如，$n^2/2=ω(n)$，但$n^2/2\neqω(n^2)$。</p>
+<h2 id="函数间的比较"><a href="#函数间的比较" class="headerlink" title="函数间的比较"></a>函数间的比较</h2><p>实数的许多关系属性可以用于渐进比较，以上的记号之间具有传递性和对称性，下面假设$f(n)$和$g(n)$是渐进正值函数。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544507209464.png" alt="1544507209464"></p>
+<h1 id="解递归式的三种方法"><a href="#解递归式的三种方法" class="headerlink" title="解递归式的三种方法"></a>解递归式的三种方法</h1><p>求解递归式，即找出解的渐进“$\Theta$”或“$O$”界的方法主要有三种：</p>
+<ul>
+<li><strong>代换法</strong>：先猜某个界存在，然后用数学归纳法证明该猜测的正确性。</li>
+<li><strong>递归树方法</strong>：将递归式转换成树形结构，树中的节点代表在不同递归层次付出的代价。</li>
+<li><strong>主方法</strong>：给出递归形式$T(n) = aT(n/b)+f(n)$的界，其中$a \geq 1, b&gt;1$，$f(n)$是给定的函数。这种方法要记忆三种情况，就可以确定很多简单递归式的界了。</li>
+</ul>
+<h2 id="代换法"><a href="#代换法" class="headerlink" title="代换法"></a>代换法</h2><p>用代换法解递归式需要两个步骤：</p>
+<ol>
+<li>猜测解的形式。</li>
+<li>用数学归纳法找出使解真正有效地常数。</li>
+</ol>
+<h2 id="递归树方法"><a href="#递归树方法" class="headerlink" title="递归树方法"></a>递归树方法</h2><p>虽然代换法给递归式的解的正确性提供了一种简单的证明方法，但是有的时候很难得到一个好的猜测。此时，画出一个递归树是一种得到好猜测的直接方法。</p>
+<p>设$T(n) = 3T(n/4)+n^2$，则使用递归树求解该递归式的过程如下图所示：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544512143984.png" alt="1544512143984"></p>
+<h2 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h2><p>设$a \geq 1, b&gt;1$，$f(n) $为一函数，$T(n)$由递归式<br>$$<br>T(n) = aT(n/b)+f(n)<br>$$<br>对非负整数定义，那么$T(n)$有如下的渐进界：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544509457275.png" alt="1544509457275"></p>
+<p>求解和式时有一个比较常用的公式，假设$f(k)$是单调递增的函数，那么有如下的性质：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544511737093.png" alt="1544511737093"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER13 线性规划在近似算法中的应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER13 线性规划在近似算法中的应用/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用线性规划来近似顶点覆盖问题"><a href="#使用线性规划来近似顶点覆盖问题" class="headerlink" title="使用线性规划来近似顶点覆盖问题"></a>使用线性规划来近似顶点覆盖问题</h1><p>##ILP（整数线性规划）</p>
+<p>对于每一个顶点$v\in V$，有$x(v) \in {0, 1}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(v)\geq1$。这样就引出了以下用于寻找最小顶点覆盖的<strong>0-1整数规划</strong> 。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad x(v)\in {0, 1} \quad \forall v \in V<br>$$</p>
+<p>##relax to LP（线性规划松弛）</p>
+<p>假设去掉了$x(v) \in {0, 1}​$这一限制，并代之以$0\leq x(v) \leq 1​$，就可以得到以下的线性规划，称为线性规划松弛。<br>$$<br>min \sum_{v\in V} x(v)\<br>s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \<br> \quad 0\leq x(v) \leq 1 \quad \forall v \in V<br>$$</p>
+<h2 id="Rounding（使用Rounding的方法来构造近似算法）"><a href="#Rounding（使用Rounding的方法来构造近似算法）" class="headerlink" title="Rounding（使用Rounding的方法来构造近似算法）"></a>Rounding（使用Rounding的方法来构造近似算法）</h2><p>对于每一个顶点v，都会求得一个$x(v)$的值$x^*(v)$，对$x(v)$做以下的rounding：</p>
+<p>若$x^*(v)\geq 1/2$，则将该顶点加入到点覆盖集合中（$x(v)= 1$），否则舍去顶点v（$x(v) = 0$），直至图中的所有顶点处理完毕。</p>
+<p>由以上算法可看出：<br>$$<br>\sum_{u \in V}x^<em>(v)\leq \sum_{u \in V} x(v) \leq 2\sum_{u \in V}x^</em>(v)<br>$$<br>故此算法是一个近似度为2的近似算法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER12 线性规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER12 线性规划/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="线性规划概述"><a href="#线性规划概述" class="headerlink" title="线性规划概述"></a>线性规划概述</h1><p>在给定有限的资源和竞争约束情况下，很多问题都可以表达为最大化或最小化某个目标。如果可以把目标指定为某些变量的一个线性函数，而且如果可以将资源的约束指定为这些变量的等式或不等式，则得到一个<strong>线性规划问题（Linear-Programming Problem）</strong>。</p>
+<p>在求解线性规划时又两种有用的格式：<strong>标准型</strong>和<strong>松弛型</strong>。在标准型中所有的约束都是不等式，而在松弛型中所有的约束都是等式。</p>
+<p>下面给出一个将实际问题转换为线性规划形式的例子。</p>
+<blockquote>
+<p>有m种不同的食物$F_1, …, F_m$，这些食物能够提供n种营养$N_1, …, N_n$，营养$N_j$每天的最低需求量是$c_j$，$b_i$是$F_i$的单位价格。$a_{ij}$代表食物$F_i$单位体积所含的营养$N_j$。问题是求在满足营养需求下的最小花费。 </p>
+<p>假设每种食物的数量为$x_i$，则使用线性规划的形式可表示为：<br>$$<br>min \sum_i b_i x_i \<br>s.t. \sum_i a_{ij}x_i \geq c_j<br>$$<br>这个问题的目标是求满足营养需求的条件下最小化价格，接下来我们会看到，其实它的对偶问题就是最大化营养的需求量。</p>
+</blockquote>
+<h1 id="单纯形算法"><a href="#单纯形算法" class="headerlink" title="单纯形算法"></a>单纯形算法</h1><p>解决线性规划问题主要用三种算法：</p>
+<ul>
+<li><strong>单纯形算法</strong>：指数时间的复杂度，但是在实际中应用广泛，当它被精心实现时，通常能够快速地解决一般的线性规划问题。</li>
+<li><strong>椭圆算法</strong>：第一个指数时间算法，但是在实际中运行缓慢。</li>
+<li><strong>内点法</strong>：在理论和实际中都能比较有效率地解决线性规划问题。</li>
+</ul>
+<p>本章我们主要讨论在实际问题中应用广泛的单纯形算法。</p>
+<p>首先从一个例子开始，考虑下列松弛型的线性规划并将等式重写后可得到一个tableau：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544442718659.png" alt="1544442718659"></p>
+<p>现在，$x_3, x_4, x_5$是基本解，令$x_1=x_2=0$，可得$x_3=1, x_4=3, x_5=2$，且$z=0$。</p>
+<p>我们当然希望改善$z$的值，很明显需要增加$x_1$或者$x_2$。令$x_1=0$，由于$x_1, …, x_5 \geq 0$，$x_2$最大可取至1，此时$x_3=0$。现在基本解变为$x_2, x_4, x_5$，重写tableau：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544443321276.png" alt="1544443321276"></p>
+<p>重复上面的过程，为了增加$z$的值，我们可以增加$x_1$（由于$x_3$的系数是负数，因此增加$x_3$是无效的）。令$x_3=0$，$x_1$最大可取至1，此时$x_5=0$。这时基本解变为$x_1, x_2, x_4$，重写tableau：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544443580576.png" alt="1544443580576"></p>
+<p>重复上面的过程，为了增加$z$的值，我们可以增加$x_3$（由于$x_5$的系数是负数，因此增加$x_5$是无效的）。令$x_5=0$，$x_3$最大可取至2，此时$x_4$变为0。这时基本解变为$x_1, x_2, x_3$，重写tableau：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544443828880.png" alt="1544443828880"></p>
+<p>此时可看出$z$的取值已达最优，因此解是$x_1=3, x_2=2, x_3=2, x_4=0, x_5=0$，目标值$z=5$。</p>
+<h1 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h1><p>对偶性是个非常重要的性质。在一个最优化问题中，一个对偶问题的识别几乎总是伴随着一个多项式时间算法的发现。</p>
+<p>在线性规划的形式下，对偶问题可互相转化，具体如下图所示：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544429945627.png" alt="1544429945627"></p>
+<p>下面给出一个实际例子，照着原问题的线性规划形式，我们即可写出对偶问题的线性规划形式。</p>
+<blockquote>
+<p><strong>原问题有多少个未知数，对偶问题就有多少个式子；原问题有多少个式子，对偶问题就有多少个未知数。</strong></p>
+</blockquote>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544430309809.png" alt="1544430309809"></p>
+<p>如下图所示，原问题给出了对偶问题的可行解的下界，对偶问题给出了原问题的可行解的上界。</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544444626329.png" alt="1544444626329"></p>
+<p>总结几个经典的对偶问题：</p>
+<ul>
+<li>最大流的对偶问题是最小割</li>
+<li>最大匹配的对偶问题是最小顶点覆盖</li>
+<li>最优匹配的对偶问题是最小定标和</li>
+</ul>
+<h1 id="最大流与最小割的线性规划表示"><a href="#最大流与最小割的线性规划表示" class="headerlink" title="最大流与最小割的线性规划表示"></a>最大流与最小割的线性规划表示</h1><p>最大流满足两个性质：<strong>反对称性</strong>、<strong>容量限制</strong>。最大流是满足这两个约束和最大化流量值的流，其中流量值是从源流出的总流量。因此，流满足线性约束，且流的值是一个线性函数。可以将最大流问题表示为线性规划并作如下的转换：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544445419718.png" alt="1544445419718"></p>
+<p>其对偶问题的实际意义是最小割：</p>
+<p><img src="C:\Users\78247\AppData\Roaming\Typora\typora-user-images\1544445484728.png" alt="1544445484728"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER11 平摊分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER11 平摊分析/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER10 近似算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER10 近似算法/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：</p>
+<ul>
+<li>只对问题的特殊实例求解</li>
+<li>用动态规划法或分支限界法求解</li>
+<li>用概率算法求解</li>
+<li>只求近似解</li>
+<li>用启发式方法求解</li>
+</ul>
+<p>本节主要讨论的是解NP完全问题的近似算法。</p>
+<h1 id="近似算法的性能"><a href="#近似算法的性能" class="headerlink" title="近似算法的性能"></a>近似算法的性能</h1><p>若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将<strong>近似算法的性能比</strong>定义为：<br>$$<br>\eta = max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}})<br>$$<br>通常情况下，该性能比是问题输入规模$n$的一个函数$\rho(n)$，即<br>$$<br>max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)<br>$$</p>
+<h1 id="顶点覆盖问题的近似算法"><a href="#顶点覆盖问题的近似算法" class="headerlink" title="顶点覆盖问题的近似算法"></a>顶点覆盖问题的近似算法</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>无向图$G=(V,E)$的顶点覆盖是它的顶点集$V$的一个子集$V’⊆V$，使得若$(u,v)$是$G$的一条边，则$v∈V’$或$u∈V’$。顶点覆盖V’的大小是它所包含的顶点个数$|V’|$。 下面给出一个近似比为2的算法的伪代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VertexSet <span class="title">approxVextexCover</span><span class="params">(Graph g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cset = <span class="literal">NULL</span>;</span><br><span class="line">    e = g.e;</span><br><span class="line">    <span class="keyword">while</span> (e != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        从e中任取一条边(u, v);</span><br><span class="line">        将顶点u,v加入cset;</span><br><span class="line">        从e中删去与u和v相关联的边;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="算法运行过程"><a href="#算法运行过程" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是《算法导论》中顶点覆盖问题近似算法的图例，说明了算法的运行过程和结果。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543309870963.png" alt="1543309870963"></p>
+<p>图(e)表示近似算法产生的近似最优顶点覆盖cset，它由顶点b,c,d,e,f,g所组成。图(f)是图G的一个最小顶点覆盖，它只含有3个顶点：b,d和e。</p>
+<h1 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h1><p>假定算法选取的边集为A，则返回的顶点个数为2A。即$|C| = 2|A|$。图G的任一顶点覆盖都至少包含A中各条边中的一个顶点，即$|C^{OPT}| \geq |A|$。</p>
+<p>则<br>$$<br>\rho =  \frac{|C|}{|C^{OPT}|} \leq 2<br>$$</p>
+<h1 id="旅行商问题的近似算法"><a href="#旅行商问题的近似算法" class="headerlink" title="旅行商问题的近似算法"></a>旅行商问题的近似算法</h1><h1 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h1><p>给定一个完全无向图$G=(V,E)$，其每一边$(u,v)∈E$有一非负整数费用$c(u,v)$。要找出$G$的最小费用哈密顿回路。</p>
+<p>费用函数c往往具有三角不等式性质，即对任意的3个顶点$u,v,w∈V$，有：$c(u,w)≤c(u,v)+c(v,w)$。</p>
+<p>在费用函数不一定满足三角不等式的一般情况下，不存在具有常数性能比的解TSP问题的多项式时间近似算法，除非$P=NP$。换句话说，若$P≠NP$，则对任意常数$ρ&gt;1$，不存在性能比为ρ的解决旅行售货员问题的多项式时间近似算法。</p>
+<p>下面给出一个解决满足三角不等式的旅行商问题的近似算法伪代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">APPROX-TSP-TOUR(G, c)</span><br><span class="line">    任意选择V中的一个顶点r，作为树根节点</span><br><span class="line">    调用Prim算法得到图G的最小生成树T</span><br><span class="line">    先序遍历T，得到顶点序列L</span><br><span class="line">    删除L中的重复顶点形成哈密顿环C</span><br><span class="line">    输出C</span><br></pre></td></tr></table></figure>
+<h1 id="算法运行过程-1"><a href="#算法运行过程-1" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是APPROX-TSP-TOUR的操作过程，(a)示出了给定点的集合，(b)示出了一个最小生成树T，它是由MST-PRIM计算出来的，根为a节点，(c)是对T进行先序遍历时的顶点序列，(d)是近似算法得到的路线。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543316660511.png" alt="1543316660511"></p>
+<h1 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h1><p>假设$H^<em>$是一个最优游程，如图e所示。由于我们通过删除一个游程路线中的任一边而得到一棵生成树，故最小生成树$T$的权值是最优游程代价的一个下界，即$c(T)\leq c(H^</em>)$。</p>
+<p>假设图c中的遍历的代价为$c(W)$，该遍历经过了$T$的每条边两次，则有$c(W) = 2c(T)$，两式联立有$c(W) \leq2c(H^<em>)$。由于$H$是从完全遍历$W$中删除了某些顶点得到的，故有$c(H) \leq c(W)$，则$c(H) \leq2c(H^</em>)$。</p>
+<p>则<br>$$<br>\frac{C(H)}{C({H^*})} \leq 2<br>$$</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER9 NP完全性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/16/CHAPTER9 NP完全性/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="P问题、NP问题、NPC问题的概念"><a href="#P问题、NP问题、NPC问题的概念" class="headerlink" title="P问题、NP问题、NPC问题的概念"></a>P问题、NP问题、NPC问题的概念</h1><p>本章节对于概念要特别清楚，因此首先给出这三个问题的概念：</p>
+<ul>
+<li><p><strong>P问题</strong>：能够在多项式时间内解决的问题。</p>
+</li>
+<li><p><strong>NP问题</strong>：能够在多项式时间内验证一个解的正确性的问题。</p>
+</li>
+<li><p><strong>NPC问题</strong>：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。</p>
+<ul>
+<li>首先，它是NP问题。</li>
+<li>其次，所有其他的NP问题都能够在多项式时间内归约到此问题上。</li>
+</ul>
+<blockquote>
+<p>NPC问题是NP问题的子集。</p>
+</blockquote>
+</li>
+<li><p><strong>NP-hard问题</strong>：问题A不一定是一个NP问题，但是所有的NPC问题都可以在多项式时间内转化为A，则称A为NP-hard问题。</p>
+<blockquote>
+<p>NPC问题一定是NP-hard问题。</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="一些典型的NP完全问题"><a href="#一些典型的NP完全问题" class="headerlink" title="一些典型的NP完全问题"></a>一些典型的NP完全问题</h1><p>通过问题变换的技巧，可以将2个不同问题的计算复杂性联系在一起。这样就可以将一个问题的计算复杂性归约为另一个问题的计算复杂性，从而实现问题的计算复杂性归约。</p>
+<p>证明一个问题是NP完全问题分为两个步骤：</p>
+<ol>
+<li><p>证明该问题是NP问题。</p>
+</li>
+<li><p>证明NP问题中的每一个问题都能在多项式时间内归约为该问题。</p>
+<blockquote>
+<p>由于多项式问题具有传递性，因此只需证明一个已知的NP完全问题能够在多项式时间内归约到该问题即可。</p>
+</blockquote>
+</li>
+</ol>
+<p>下图给出了《算法导论》中进行NP完全证明的结构，树的根为CIRCUIT-SAT。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543324527401.png" alt="1543324527401"></p>
+<h2 id="电路可满足性问题（CIRCUIT-SAT）"><a href="#电路可满足性问题（CIRCUIT-SAT）" class="headerlink" title="电路可满足性问题（CIRCUIT-SAT）"></a>电路可满足性问题（CIRCUIT-SAT）</h2><h2 id="合取范式的可满足性问题（CNF-SAT）"><a href="#合取范式的可满足性问题（CNF-SAT）" class="headerlink" title="合取范式的可满足性问题（CNF-SAT）"></a>合取范式的可满足性问题（CNF-SAT）</h2><p>##三元合取范式的可满足性问题（3-SAT）</p>
+<h2 id="团问题（clique）"><a href="#团问题（clique）" class="headerlink" title="团问题（clique）"></a>团问题（clique）</h2><h2 id="顶点覆盖问题（VERTEX-COVER）"><a href="#顶点覆盖问题（VERTEX-COVER）" class="headerlink" title="顶点覆盖问题（VERTEX-COVER）"></a>顶点覆盖问题（VERTEX-COVER）</h2><h2 id="哈密顿回路问题（HAM-CYCLE）"><a href="#哈密顿回路问题（HAM-CYCLE）" class="headerlink" title="哈密顿回路问题（HAM-CYCLE）"></a>哈密顿回路问题（HAM-CYCLE）</h2><h2 id="旅行商问题（TSP）"><a href="#旅行商问题（TSP）" class="headerlink" title="旅行商问题（TSP）"></a>旅行商问题（TSP）</h2><p><strong>证明：</strong></p>
+<ol>
+<li><p>TSP∈ NP：</p>
+<p>给定该问题的一个实例，用n个顶点组成的回路作为证书，验证该回路是否只包含每个顶点一次，并且检查各边费用之和是否小于k。这个过程能够在多项式时间内完成。</p>
+</li>
+<li><p>把哈密顿回路归约到TSP：</p>
+<p>设$G=(V, E)$是HAM-CYCLE的一个实例，可以构造对应的一个TSP实例。建立一个完全图$G‘=(V, E’)$，定义费用函数c为：<br>$$<br>c(i, j) = \left{ \begin{array}{rcl}<br>0 &amp; 如果(i, j) \in E<br>\<br>1 &amp; 如果(i, j) \notin E<br>\end{array}\right.<br>$$<br>下面来说明当且仅当图G’中有一个费用至多为0的回路的时候，G中才具有一个哈密顿回路：</p>
+<ol>
+<li>假定图G中有一个哈密顿回路h。h中的每条边都属于E，因此在G’中的费用为0。因此，h在G‘中是费用为0的回路。</li>
+<li>反之，假定图G’中有一个费用h‘至多为0的回路，回路上每条边的费用必为0。因此，h’仅包含E中的边。</li>
+<li>这样，我们就得出结论，h’是图G中的一个哈密顿回路。</li>
+</ol>
+</li>
+</ol>
 
           
         
@@ -516,6 +1789,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -559,7 +1836,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

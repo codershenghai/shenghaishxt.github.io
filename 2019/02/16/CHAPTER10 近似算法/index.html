@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/16/CHAPTER10 近似算法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：$">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="c:/Users/78247/AppData/Local/Temp/1543309870963.png">
+<meta property="og:image" content="c:/Users/78247/AppData/Local/Temp/1543316660511.png">
+<meta property="og:updated_time" content="2018-12-12T08:39:55.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：$">
+<meta name="twitter:image" content="c:/Users/78247/AppData/Local/Temp/1543309870963.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/16/CHAPTER10 近似算法/">
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/CHAPTER10 近似算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-16T16:10:37+08:00">
+                2019-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：</p>
+<ul>
+<li>只对问题的特殊实例求解</li>
+<li>用动态规划法或分支限界法求解</li>
+<li>用概率算法求解</li>
+<li>只求近似解</li>
+<li>用启发式方法求解</li>
+</ul>
+<p>本节主要讨论的是解NP完全问题的近似算法。</p>
+<h1 id="近似算法的性能"><a href="#近似算法的性能" class="headerlink" title="近似算法的性能"></a>近似算法的性能</h1><p>若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将<strong>近似算法的性能比</strong>定义为：<br>$$<br>\eta = max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}})<br>$$<br>通常情况下，该性能比是问题输入规模$n$的一个函数$\rho(n)$，即<br>$$<br>max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)<br>$$</p>
+<h1 id="顶点覆盖问题的近似算法"><a href="#顶点覆盖问题的近似算法" class="headerlink" title="顶点覆盖问题的近似算法"></a>顶点覆盖问题的近似算法</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>无向图$G=(V,E)$的顶点覆盖是它的顶点集$V$的一个子集$V’⊆V$，使得若$(u,v)$是$G$的一条边，则$v∈V’$或$u∈V’$。顶点覆盖V’的大小是它所包含的顶点个数$|V’|$。 下面给出一个近似比为2的算法的伪代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VertexSet <span class="title">approxVextexCover</span><span class="params">(Graph g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cset = <span class="literal">NULL</span>;</span><br><span class="line">    e = g.e;</span><br><span class="line">    <span class="keyword">while</span> (e != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        从e中任取一条边(u, v);</span><br><span class="line">        将顶点u,v加入cset;</span><br><span class="line">        从e中删去与u和v相关联的边;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="算法运行过程"><a href="#算法运行过程" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是《算法导论》中顶点覆盖问题近似算法的图例，说明了算法的运行过程和结果。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543309870963.png" alt="1543309870963"></p>
+<p>图(e)表示近似算法产生的近似最优顶点覆盖cset，它由顶点b,c,d,e,f,g所组成。图(f)是图G的一个最小顶点覆盖，它只含有3个顶点：b,d和e。</p>
+<h1 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h1><p>假定算法选取的边集为A，则返回的顶点个数为2A。即$|C| = 2|A|$。图G的任一顶点覆盖都至少包含A中各条边中的一个顶点，即$|C^{OPT}| \geq |A|$。</p>
+<p>则<br>$$<br>\rho =  \frac{|C|}{|C^{OPT}|} \leq 2<br>$$</p>
+<h1 id="旅行商问题的近似算法"><a href="#旅行商问题的近似算法" class="headerlink" title="旅行商问题的近似算法"></a>旅行商问题的近似算法</h1><h1 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h1><p>给定一个完全无向图$G=(V,E)$，其每一边$(u,v)∈E$有一非负整数费用$c(u,v)$。要找出$G$的最小费用哈密顿回路。</p>
+<p>费用函数c往往具有三角不等式性质，即对任意的3个顶点$u,v,w∈V$，有：$c(u,w)≤c(u,v)+c(v,w)$。</p>
+<p>在费用函数不一定满足三角不等式的一般情况下，不存在具有常数性能比的解TSP问题的多项式时间近似算法，除非$P=NP$。换句话说，若$P≠NP$，则对任意常数$ρ&gt;1$，不存在性能比为ρ的解决旅行售货员问题的多项式时间近似算法。</p>
+<p>下面给出一个解决满足三角不等式的旅行商问题的近似算法伪代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">APPROX-TSP-TOUR(G, c)</span><br><span class="line">    任意选择V中的一个顶点r，作为树根节点</span><br><span class="line">    调用Prim算法得到图G的最小生成树T</span><br><span class="line">    先序遍历T，得到顶点序列L</span><br><span class="line">    删除L中的重复顶点形成哈密顿环C</span><br><span class="line">    输出C</span><br></pre></td></tr></table></figure>
+<h1 id="算法运行过程-1"><a href="#算法运行过程-1" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是APPROX-TSP-TOUR的操作过程，(a)示出了给定点的集合，(b)示出了一个最小生成树T，它是由MST-PRIM计算出来的，根为a节点，(c)是对T进行先序遍历时的顶点序列，(d)是近似算法得到的路线。</p>
+<p><img src="C:\Users\78247\AppData\Local\Temp\1543316660511.png" alt="1543316660511"></p>
+<h1 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h1><p>假设$H^<em>$是一个最优游程，如图e所示。由于我们通过删除一个游程路线中的任一边而得到一棵生成树，故最小生成树$T$的权值是最优游程代价的一个下界，即$c(T)\leq c(H^</em>)$。</p>
+<p>假设图c中的遍历的代价为$c(W)$，该遍历经过了$T$的每条边两次，则有$c(W) = 2c(T)$，两式联立有$c(W) \leq2c(H^<em>)$。由于$H$是从完全遍历$W$中删除了某些顶点得到的，故有$c(H) \leq c(W)$，则$c(H) \leq2c(H^</em>)$。</p>
+<p>则<br>$$<br>\frac{C(H)}{C({H^*})} \leq 2<br>$$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/16/CHAPTER9 NP完全性/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/16/CHAPTER11 平摊分析/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#近似算法的性能"><span class="nav-number">1.</span> <span class="nav-text">近似算法的性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顶点覆盖问题的近似算法"><span class="nav-number">2.</span> <span class="nav-text">顶点覆盖问题的近似算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法运行过程"><span class="nav-number">3.</span> <span class="nav-text">算法运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能分析"><span class="nav-number">4.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旅行商问题的近似算法"><span class="nav-number">5.</span> <span class="nav-text">旅行商问题的近似算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述-1"><span class="nav-number">6.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法运行过程-1"><span class="nav-number">7.</span> <span class="nav-text">算法运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能分析-1"><span class="nav-number">8.</span> <span class="nav-text">性能分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
