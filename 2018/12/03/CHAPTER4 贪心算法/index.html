@@ -462,6 +462,8 @@
           
 
   
+ <div id="gitalk-container"></div>
+  
 
 
 
@@ -776,6 +778,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '5c0d83957b4c4c12a83c',
+          clientSecret: 'c36c9f061f3e30e28ea7e33d2aab645619fe5c3e',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['github�ʺ�'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
