@@ -2164,6 +2164,25 @@ NPC问题：当一个问题满足下面两个条件的时候，那么这个问�
 
 
   
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        av: AV, 
+        el: '#comments' ,
+        appId: 'L3RMSXUsVAD4fyXhcwChRKQQ-gzGzoHsz',
+        appKey: '0XVENmt7LWUdxFkKF6QNd5JU',
+        placeholder: 'sdafasdsafdasfd',
+    });
+  </script>
+
+  
 
 
 
