@@ -2,23 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.zhangshenghai.com/playlist/index.html</loc>
+    <loc>http://www.zhangshenghai.com/2019/02/18/%E8%B0%83%E6%95%B4%E4%B8%BB%E9%A1%B5%E7%9A%84%E5%AE%BD%E5%BA%A6/</loc>
     
-    <lastmod>2019-02-21T09:08:40.391Z</lastmod>
+    <lastmod>2019-02-21T09:15:50.082Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.zhangshenghai.com/2019/02/18/%E4%BD%BF%E7%94%A8DNSPOD%E8%BF%9B%E8%A1%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/</loc>
+    
+    <lastmod>2019-02-21T09:15:42.603Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.zhangshenghai.com/2019/02/20/%E6%90%AD%E5%BB%BAJupyter%20Notebook%E8%BF%9C%E7%A8%8B%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    
+    <lastmod>2019-02-21T09:15:36.354Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.zhangshenghai.com/2019/02/21/Hexo%E6%B7%BB%E5%8A%A0Aplayer%E6%92%AD%E6%94%BE%E5%99%A8/</loc>
     
-    <lastmod>2019-02-21T09:03:40.692Z</lastmod>
+    <lastmod>2019-02-21T09:15:26.589Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.zhangshenghai.com/about/index.html</loc>
     
-    <lastmod>2019-02-21T08:34:58.945Z</lastmod>
+    <lastmod>2019-02-21T09:15:03.864Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.zhangshenghai.com/playlist/index.html</loc>
+    
+    <lastmod>2019-02-21T09:08:40.391Z</lastmod>
     
   </url>
   
@@ -33,27 +54,6 @@
     <loc>http://www.zhangshenghai.com/baidu_verify_8yu2qxxw9b.html</loc>
     
     <lastmod>2019-02-20T04:46:39.989Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.zhangshenghai.com/2019/02/18/%E4%BD%BF%E7%94%A8DNSPOD%E8%BF%9B%E8%A1%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/</loc>
-    
-    <lastmod>2019-02-20T03:13:23.597Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.zhangshenghai.com/2019/02/18/%E8%B0%83%E6%95%B4%E4%B8%BB%E9%A1%B5%E7%9A%84%E5%AE%BD%E5%BA%A6/</loc>
-    
-    <lastmod>2019-02-20T03:12:19.623Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.zhangshenghai.com/2019/02/20/%E6%90%AD%E5%BB%BAJupyter%20Notebook%E8%BF%9C%E7%A8%8B%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    
-    <lastmod>2019-02-20T03:12:09.624Z</lastmod>
     
   </url>
   

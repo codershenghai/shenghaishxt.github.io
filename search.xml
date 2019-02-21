@@ -5,7 +5,7 @@
     <url>%2F2019%2F02%2F21%2FHexo%E6%B7%BB%E5%8A%A0Aplayer%E6%92%AD%E6%94%BE%E5%99%A8%2F</url>
     <content type="text"><![CDATA[感谢开源！！让我们用上了这么好的插件！ 创建歌单页面由于我想在单独的页面加入歌单，所以额外创了个页面，也可以直接在文章中插入，原理都是一样的。 新建页面，命名为playlist： 1hexo new page playlist 这时候在 /Hexo/source 文件夹下会生成一个playlist文件夹，打开里面的index.md，修改如下： 123title: 歌单date: 2019-02-21 16:14:00type: &quot;playlist&quot; 打开主题的 _config.yml文件，在menu下新建一个名为playlist的类（注意这里使用的图标是图标库中的图标，网址为 http://www.fontawesome.com.cn/faicons/ 。可以选择自己喜欢的图标，我这里选择的是music）。完成后如下所示： 1234567menu: home: / || home categories: /categories/ || th tags: /tags/ || tags archives: /archives/ || archive playlist: /playlist/ || music about: /about/ || user 打开/Hexo/themes/hexo-theme-next/languages/zh-Hans.yml，添加对应的中文翻译： 12menu: playlist: 歌单 这样歌单就创建完成啦~ 使用 hexo-tag-aplayer 插件 hexo-tag-aplayer 是Aplayer在hexo上的插件，这里的配置参考的是官方文档 https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md，第一步安装 hexo-tag-aplayer： 1npm install --save hexo-tag-aplayer 最新版的 hexo-tag-aplayer 已经支持了MetingJS的使用，可以直接解析网络平台的歌曲（简直是神器），首先要在站点配置文件中开启meting模式，添加以下代码在配置文件的最后： 12aplayer: meting: true 在markdown文件中使用： 1&#123;% meting &quot;6726552355&quot; &quot;tencent&quot; &quot;playlist&quot; &quot;theme:#FF4081&quot; &quot;mode:circulation&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125; 效果还是很不错的：]]></content>
       <categories>
-        <category>技术</category>
+        <category>倒腾记录</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
@@ -16,7 +16,7 @@
     <url>%2F2019%2F02%2F20%2F%E6%90%AD%E5%BB%BAJupyter%20Notebook%E8%BF%9C%E7%A8%8B%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
     <content type="text"><![CDATA[将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-config 3、设置密码打开Python终端，输入 1234In [1]: from IPython.lib import passwdIn [2]: passwd()Enter password: Verify password: 4、设置配置文件1vim /home/zsh/jupyter/jupyter_notebook_config.py 在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改） 12345c.NotebookApp.ip = &apos;0.0.0.0&apos; # 所有IP都可以访问c.NotebookApp.port = 8888 # 默认的端口是8888c.NotebookApp.open_browser = False # 禁止在服务器上打开jupyterc.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos; # 设置Jupyter的根目录c.NotebookApp.allow_root = True # 以root权限启动jupyter 5、启动Jupyter Notebook1jupyter notebook 这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。]]></content>
       <categories>
-        <category>技术</category>
+        <category>倒腾记录</category>
       </categories>
       <tags>
         <tag>Linux</tag>
@@ -38,7 +38,7 @@
     <url>%2F2019%2F02%2F18%2F%E8%B0%83%E6%95%B4%E4%B8%BB%E9%A1%B5%E7%9A%84%E5%AE%BD%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[博客在浏览器上的留白太多，因此想增加文章的宽度。对于Pisces Scheme，修改页面宽度的方式与其他三个主题不太一样，因此列出Pisces Scheme的修改方式。 打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可： 12$main-desktop = 1200px $content-desktop = 900px]]></content>
       <categories>
-        <category>技术</category>
+        <category>倒腾记录</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
@@ -49,7 +49,7 @@
     <url>%2F2019%2F02%2F18%2F%E4%BD%BF%E7%94%A8DNSPOD%E8%BF%9B%E8%A1%8C%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%2F</url>
     <content type="text"><![CDATA[目前的域名解析有两种方法，一种是直接利用域名注册商的解析，另一种就是更换DNS用第三方的解析。为了便于管理，也为了更好的速度，将域名的解析方式由namesilo默认的解析方式改为使用国内的DNSPOD进行解析。 首先在namesilo上更换域名DNS（即Change Name Servers），将原来默认的Name Servers改为 12f1g1ns1.dnspod.netf1g1ns1.dnspod.net 删除默认的A记录和CNAME记录，等待DNSPOD的免费DNS更新完毕后就可以放心地关闭namesilo了。 然后打开DNSPOD控制台，添加域名即可。由于本博客是用Github托管的，因此这里记录了连接到Github博客的设置，也可以连接到自己的VPS，IP改为自己的VPS地址即可。 123@ A 192.30.252.153@ A 192.30.252.154www CNAME shenghaishxt.github.io A： 用来指定域名为 IPv4 的地址（如：8.8.8.8），如果需要将域名指向一个IP地址，就需要添加 A 记录。CNAME： 如果需要将域名指向另一个域名，再由另一个域名提供 ip 地址，就需要添加 CNAME 记录。 最后在本地的/Hexo/source文件夹下新建CNAME文件，注意不要带任何后缀，如果想要自己的网站是带有www的二级域名，那么就输入带有www的域名，否则的话直接添加自己购买的域名就好。我这里添加的是带有www的二级域名。 1www.zhangshenghai.com 接下来就等待DNS的解析啦，不知道为什么我的解析好像挺慢的。十几分钟后zhangshenghai.com这个域名是可以ping通，但加了www的域名就总是ping不通。貌似是过了一个晚上，我第二天打开才可以登陆上。]]></content>
       <categories>
-        <category>技术</category>
+        <category>倒腾记录</category>
       </categories>
       <tags>
         <tag>DNS</tag>
