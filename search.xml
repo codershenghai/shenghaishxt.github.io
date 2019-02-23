@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[搭建Jupyter Notebook远程云服务器]]></title>
     <url>%2F2019%2F02%2F20%2F%E6%90%AD%E5%BB%BAJupyter%20Notebook%E8%BF%9C%E7%A8%8B%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-config 3、设置密码打开Python终端，输入 1234In [1]: from IPython.lib import passwdIn [2]: passwd()Enter password: Verify password: 4、设置配置文件1vim /home/zsh/jupyter/jupyter_notebook_config.py 在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改） 12345c.NotebookApp.ip = &apos;0.0.0.0&apos; # 所有IP都可以访问c.NotebookApp.port = 8888 # 默认的端口是8888c.NotebookApp.open_browser = False # 禁止在服务器上打开jupyterc.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos; # 设置Jupyter的根目录c.NotebookApp.allow_root = True # 以root权限启动jupyter 5、启动Jupyter Notebook1jupyter notebook 这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。]]></content>
+    <content type="text"><![CDATA[将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-config 3、设置密码打开Python终端，输入 1234In [1]: from IPython.lib import passwdIn [2]: passwd()Enter password: Verify password: 4、设置配置文件1vim /home/zsh/jupyter/jupyter_notebook_config.py 在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改） 12345c.NotebookApp.ip = &apos;0.0.0.0&apos; # 所有IP都可以访问c.NotebookApp.port = 8888 # 默认的端口是8888c.NotebookApp.open_browser = False # 禁止在服务器上打开jupyterc.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos; # 设置Jupyter的根目录c.NotebookApp.allow_root = True # 以root权限启动jupyter 5、启动Jupyter Notebook1jupyter notebook 这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。]]></content>
       <categories>
         <category>倒腾记录</category>
       </categories>
@@ -25,7 +25,7 @@
   <entry>
     <title><![CDATA[Linux命令使用全纪录]]></title>
     <url>%2F2019%2F02%2F20%2FLinux%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件 1ls -a]]></content>
+    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2]]></content>
       <categories>
         <category>Linux命令使用全纪录</category>
       </categories>
