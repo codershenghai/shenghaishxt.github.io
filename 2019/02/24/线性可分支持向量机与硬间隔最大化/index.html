@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="SVM,">
 
 
 
@@ -81,16 +81,24 @@
 
 
 
-<meta name="description" content="good good study up up every day">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shenghai&#39;s blog | shxt">
-<meta property="og:url" content="http://www.zhangshenghai.com/categories/算法设计与分析/index.html">
+<meta name="description" content="线性可分支持向量机与硬间隔最大化支持向量机的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。 线性可分支持向量机 考虑一个二分类问题， 假设输入空间和特征空间是两个不同的空间。   输入空间：欧式空间或离散集合  特征空间：欧式空间或希尔伯特空间  线性可分支持向量机、线性支持向量机：假设这两个空间中的元素一一对应，并将输入空间 中的输入映射为特征空间中的特征向量  非线性支持向">
+<meta name="keywords" content="SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性可分支持向量机与硬间隔最大化">
+<meta property="og:url" content="http://www.zhangshenghai.com/2019/02/24/线性可分支持向量机与硬间隔最大化/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="good good study up up every day">
+<meta property="og:description" content="线性可分支持向量机与硬间隔最大化支持向量机的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。 线性可分支持向量机 考虑一个二分类问题， 假设输入空间和特征空间是两个不同的空间。   输入空间：欧式空间或离散集合  特征空间：欧式空间或希尔伯特空间  线性可分支持向量机、线性支持向量机：假设这两个空间中的元素一一对应，并将输入空间 中的输入映射为特征空间中的特征向量  非线性支持向">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190223193958.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190223194019.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190223200044.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/TIM截图20190224133308.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190224140154.png">
+<meta property="og:updated_time" content="2019-02-24T06:10:20.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
-<meta name="twitter:description" content="good good study up up every day">
+<meta name="twitter:title" content="线性可分支持向量机与硬间隔最大化">
+<meta name="twitter:description" content="线性可分支持向量机与硬间隔最大化支持向量机的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。 线性可分支持向量机 考虑一个二分类问题， 假设输入空间和特征空间是两个不同的空间。   输入空间：欧式空间或离散集合  特征空间：欧式空间或希尔伯特空间  线性可分支持向量机、线性支持向量机：假设这两个空间中的元素一一对应，并将输入空间 中的输入映射为特征空间中的特征向量  非线性支持向">
+<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190223193958.png">
 
 
 
@@ -120,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/categories/算法设计与分析/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/2019/02/24/线性可分支持向量机与硬间隔最大化/">
 
 
 
 
 
-  <title>分类: 算法设计与分析 | shenghai's blog | shxt</title>
+  <title>线性可分支持向量机与硬间隔最大化 | shenghai's blog | shxt</title>
   
 
 
@@ -145,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,287 +298,272 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>算法设计与分析<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/2019/02/24/线性可分支持向量机与硬间隔最大化/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/12/CHAPTER10 线性规划在近似算法中的应用/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER10 线性规划在近似算法中的应用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">线性可分支持向量机与硬间隔最大化</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-12T15:02:00+08:00" content="2018-12-12">
-          12-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T13:54:19+08:00">
+                2019-02-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/统计学习方法读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">统计学习方法读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/24/线性可分支持向量机与硬间隔最大化/" class="leancloud_visitors" data-flag-title="线性可分支持向量机与硬间隔最大化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/11/CHAPTER9 线性规划/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER9 线性规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-11T17:58:00+08:00" content="2018-12-11">
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/10/CHAPTER8 近似算法/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER8 近似算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-10T08:19:00+08:00" content="2018-12-10">
-          12-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/09/CHAPTER7 NP完全性/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER7 NP完全性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-09T21:34:00+08:00" content="2018-12-09">
-          12-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/06/CHAPTER6 动态规划/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER6 动态规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T18:08:00+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/05/CHAPTER5 分治法/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER5 分治法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-05T19:12:00+08:00" content="2018-12-05">
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/03/CHAPTER4 贪心算法/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER4 贪心算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-03T09:18:00+08:00" content="2018-12-03">
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/02/CHAPTER3 最大匹配问题/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER3 最大匹配问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-02T16:45:00+08:00" content="2018-12-02">
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/01/CHAPTER2 最大流与最小割/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER2 最大流与最小割</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-01T16:06:00+08:00" content="2018-12-01">
-          12-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/27/CHAPTER1 函数的增长与递归式/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER1 函数的增长与递归式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-27T15:09:00+08:00" content="2018-11-27">
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="线性可分支持向量机与硬间隔最大化"><a href="#线性可分支持向量机与硬间隔最大化" class="headerlink" title="线性可分支持向量机与硬间隔最大化"></a>线性可分支持向量机与硬间隔最大化</h1><p>支持向量机的基本想法是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。</p>
+<h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><blockquote>
+<p>考虑一个二分类问题， 假设输入空间和特征空间是两个不同的空间。</p>
+</blockquote>
+<ul>
+<li><p>输入空间：欧式空间或离散集合</p>
+</li>
+<li><p>特征空间：欧式空间或希尔伯特空间</p>
+</li>
+<li><p>线性可分支持向量机、线性支持向量机：假设这两个空间中的元素一一对应，并将输入空间</p>
+<p>中的输入映射为特征空间中的特征向量</p>
+</li>
+<li><p>非线性支持向量机：利用一个从输入空间到特征空间的非线性映射将输入映射为特征向量</p>
+</li>
+</ul>
+<p>输入都由输入空间转换到特征空间，支持向量机的学习是在特征空间进行的。</p>
+<p>假设给定一个特征空间上的训练数据集：<br>$$<br>T = {(x_1, y_1), (x_2, y_2), …,(x_N, y_N)}<br>$$</p>
+<ul>
+<li>样本分为正例和负例</li>
+<li>学习的目标：找到分离超平面 $w^<em> \cdot x + b^</em> = 0 $</li>
+<li>和感知机不同（利用误分类最小的策略求分离超平面，解有无穷个），线性可分支持向量机利用间隔最大化求最优分离超平面，解是唯一的</li>
+<li>决策函数 $f(x) = sign(w^<em> \cdot x + b^</em> )​$</li>
+</ul>
+<p>其实，在二维特征空间的分类问题中，有许多直线能将两类数据正确划分，线性可分支持向量机对应着将两类数据正确划分并且间隔最大的直线。</p>
+<p><img src="/images/TIM截图20190223193958.png" alt="TIM截图20190223193958"></p>
+<p><img src="/images/TIM截图20190223194019.png" alt="TIM截图20190223194019"></p>
+<h2 id="函数间隔和几何间隔"><a href="#函数间隔和几何间隔" class="headerlink" title="函数间隔和几何间隔"></a>函数间隔和几何间隔</h2><ul>
+<li><p>函数间隔</p>
+<ul>
+<li>定义超平面($w, b​$)关于样本点($x_i, y_i​$)的函数间隔为 $\hat\gamma_i = y_i(w\cdot x_i +b)​$</li>
+<li>定义超平面($w, b$)关于训练集$T$的函数间隔为 $\hat\gamma = min_{i=1,…N} \quad \hat \gamma_i$</li>
+<li>函数间隔表示分类预测的正确性和确信度</li>
+</ul>
+</li>
+<li><p>几何间隔</p>
+<ul>
+<li><p>如下图所示，点A与超平面($w, b$)的距离由线段AB给出，记作$\gamma_i​$<br>$$<br>\gamma_i =y_i (\frac w {||w||} \cdot x_i +\frac b {||w||})<br>$$<br><img src="/images/TIM截图20190223200044.png" alt="TIM截图20190223200044"></p>
+</li>
+<li><p>定义超平面($w, b​$)关于训练集$T​$的函数间隔为 $\gamma = min_{i=1,…N} \quad \gamma_i​$</p>
+</li>
+</ul>
+</li>
+<li><p>函数间隔和几何间隔的关系<br>$$<br>样本点的几何间隔 \gamma_i = \frac{\hat\gamma_i}{||w||}<br>$$</p>
+<p>$$<br>训练集的几何间隔 \gamma = \frac{\hat\gamma}{||w||}<br>$$</p>
+<ul>
+<li>如果超平面参数w和b成比例地改变（超平面没有变），函数间隔也按此比例改变，而几何间隔不变</li>
+</ul>
+</li>
+</ul>
+<h2 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h2><ul>
+<li><p>最大间隔分离超平面<br>$$<br>max_{w, b} \quad \gamma \<br>s.t. \qquad y_i (\frac w {||w||} \cdot x_i +\frac b {||w||})\geq \gamma \quad i = 1,2,…,N根据几何间隔和函数间隔的关系<br>$$</p>
+</li>
+<li><p>根据几何间隔和函数间隔的关系<br>$$<br>max_{w, b}\quad \frac{\hat\gamma}{||w||} \<br>s.t. \qquad y_i ( w \cdot x_i + b)\geq \hat\gamma \quad i = 1,2,…,N<br>$$</p>
+</li>
+<li><p>函数间隔 $\hat\gamma$的取值不影响最优化问题的解，可以取 $\hat \gamma = 1$</p>
+</li>
+<li><p>最大化 $\frac1{||w||}$和最小化 $||w||$是等价的，为了求导方便，我们将其等价为最小化 $\frac12 ||w^2||$</p>
+</li>
+<li><p>则线性可分支持向量机的最优化问题如下，这是一个求解最优解$w^<em>, b^</em>$的凸二次规划问题<br>$$<br>max_{w, b}\quad \frac12 ||w^2|| \<br>s.t. \qquad y_i ( w \cdot x_i + b)-1\geq 0 \quad i = 1,2,…,N<br>$$</p>
+<blockquote>
+<p>补充：凸优化问题是指约束最优化问题<br>$$<br>min_w \quad f(w)\<br>s.t. \quad g_i(w) \leq 0, \quad i = 1,2,…,k\<br>\quad \ h_i(w) = 0, i=1,2,…,l<br>$$</p>
+<ul>
+<li>其中，目标函数$f(x)$和约束函数$g_i(w)$都是$R^n$上连续可微的凸函数，约束函数$h_i(w)$是$R^n$上的仿射函数。</li>
+<li>当目标函数为二次函数且约束函数是仿射函数时，凸最优化问题成为凸二次规划问题</li>
+</ul>
+</blockquote>
+</li>
+<li><p>支持向量和间隔边界</p>
+<ul>
+<li>在线性可分情况下，训练集的样本点中与分离超平面距离最近的样本点的实例称为<strong>支持向量</strong></li>
+<li><p>支持向量使得约束条件式等号成立，即$y_i(wx_x+b)-1=0$</p>
+<ul>
+<li>正例：$H_1: \quad w\cdot x+b=-1$</li>
+<li>负例：$H_2: \quad w\cdot x+b = -1$</li>
+</ul>
+</li>
+<li><p>如下图所示</p>
+<p><img src="/TIM截图20190224133308.png" alt="TIM截图20190224133308"></p>
+</li>
+<li><p>$H_1$与$H_2$平行，它们之间形成一条长带，分离超平面位于它们中央且与之平行。长带的宽度称为间隔，等于$\frac 2 {||w||}$，$H_1$和$H_2$称为间隔边界</p>
+</li>
+<li>在决定分离超平面时只有支持向量起作用，而其他实例点并不起作用</li>
+</ul>
+</li>
+</ul>
+<h2 id="线性可分支持向量机学习算法——最大间隔法"><a href="#线性可分支持向量机学习算法——最大间隔法" class="headerlink" title="线性可分支持向量机学习算法——最大间隔法"></a>线性可分支持向量机学习算法——最大间隔法</h2><ul>
+<li><p>输入：线性可分训练数据集 $T={(x_1, y_1), (x_2, y_2),…,(x_N, y_N)}$，其中 $x_i \in  R^n$，$y_i \in {-1, 1}$，$i=1,2,…,N$</p>
+</li>
+<li><p>输出：<strong>最大间隔分离超平面</strong>和<strong>分类决策函数</strong><br>(1) 构造并求解约束最优化问题：<br>$$<br>max_{w, b}\quad \frac12 ||w^2|| \<br>s.t. \qquad y_i ( w \cdot x_i + b)-1\geq 0 \quad i = 1,2,…,N<br>$$<br>(2) 得到分离超平面<br>$$<br>w^<em> \cdot x + b^</em> = 0<br>$$<br>​     分类决策函数<br>$$<br>f(x) = sign(w^<em> \cdot x +b^</em>)<br>$$</p>
+</li>
+</ul>
+<p>给出《统计学习方法》中的一个例子</p>
+<p><img src="/images/TIM截图20190224140154.png" alt="TIM截图20190224140154"></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/21/Hexo添加Aplayer播放器/" rel="next" title="Hexo添加Aplayer播放器">
+                <i class="fa fa-chevron-left"></i> Hexo添加Aplayer播放器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -578,6 +571,14 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
 
         </div>
         
@@ -598,8 +599,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -659,6 +669,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性可分支持向量机与硬间隔最大化"><span class="nav-number">1.</span> <span class="nav-text">线性可分支持向量机与硬间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数间隔和几何间隔"><span class="nav-number">1.2.</span> <span class="nav-text">函数间隔和几何间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔最大化"><span class="nav-number">1.3.</span> <span class="nav-text">间隔最大化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机学习算法——最大间隔法"><span class="nav-number">1.4.</span> <span class="nav-text">线性可分支持向量机学习算法——最大间隔法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -792,6 +818,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
