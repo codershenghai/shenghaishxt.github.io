@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Git远程仓库的使用]]></title>
     <url>%2F2019%2F02%2F27%2FGit%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[在Github中创建远程库，然后从远程库克隆到本地。 1234git clone git@github.com:shenghaishxt/ProjectName.git # 克隆git add . # 添加文件git commit -m &apos;ProjectName&apos;git push]]></content>
+    <content type="text"><![CDATA[在Github中创建远程库，然后从远程库克隆到本地。 12345git clone git@github.com:shenghaishxt/ProjectName.git # 克隆cd ProjectName/git add . # 添加文件git commit -m &apos;ProjectName&apos;git push]]></content>
       <categories>
         <category>随笔</category>
       </categories>
@@ -41,8 +41,8 @@
         <category>统计学习方法读书笔记</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
