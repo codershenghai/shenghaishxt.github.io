@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Algorithm,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。 动态规划的算法可分为以下4个步骤：  描述最优解的结构。 递归定义最优解的值。 按自底向上的方式计算最优解的值。 由计算的结果构造">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CHAPTER6 动态规划">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/40122/index.html">
+<meta property="og:site_name" content="shenghai&#39;s blog | shxt">
+<meta property="og:description" content="概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。 动态规划的算法可分为以下4个步骤：  描述最优解的结构。 递归定义最优解的值。 按自底向上的方式计算最优解的值。 由计算的结果构造">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1544592877589.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1544592877589.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1544593909399.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1544593909399.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1550314202.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1542016271345.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1550315254.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1543639539255.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1550314287.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/1543639181690.png">
+<meta property="og:updated_time" content="2019-02-28T11:45:59.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CHAPTER6 动态规划">
+<meta name="twitter:description" content="概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。 动态规划的算法可分为以下4个步骤：  描述最优解的结构。 递归定义最优解的值。 按自底向上的方式计算最优解的值。 由计算的结果构造">
+<meta name="twitter:image" content="http://www.zhangshenghai.com/images/1544592877589.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/40122/">
+
+
+
+
+
+  <title>CHAPTER6 动态规划 | shenghai's blog | shxt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenghai's blog | shxt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">good good study up up every day</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-playlist">
+          <a href="/playlist/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            歌单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/40122/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CHAPTER6 动态规划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T18:08:00+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计与分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/40122/" class="leancloud_visitors" data-flag-title="CHAPTER6 动态规划">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>分治法</strong>将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。</p>
+<p><strong>动态规划</strong>适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。</p>
+<p>动态规划的算法可分为以下4个步骤：</p>
+<ol>
+<li>描述最优解的结构。</li>
+<li>递归定义最优解的值。</li>
+<li>按自底向上的方式计算最优解的值。</li>
+<li>由计算的结果构造一个最优解。</li>
+</ol>
+<h1 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h1><p>假设有n个物品，它们的重量分别为$w_1, w_2, …, w_n$，价值分别为$v_1, v_2, …, v_n$，给一承重为W的背包，求装入的物品具有最大的价值总和。</p>
+<p>首先给出利用动态规划计算0-1背包问题的递归式：</p>
+<p><img src="/images/1544592877589.png" alt="1544592877589"></p>
+<p>在这个递归式中，$OPT(i, W)$表示前i件物品放入容量为W的背包中的最大价值。</p>
+<p>初始化时，$OPT(0, j) = 0$，意为当没有物品放入时，不管背包容量多少，其最大价值为0；$OPT(i, 0)$意为当背包容量为0时，不管从前i件物品中怎么取，最大价值都是0。</p>
+<p>接着进行动态规划，在已知$f(i-1, j)​$时，即已知在前$i-1​$件物品放入容量为j的背包时的最大价值情况下，求$f(i, j)​$。</p>
+<p>在求$f(i, j)$时，首先判断物品i的重量是否超过目前背包的重量j，如果超过，则这个物品i放不进背包，则$f(i, j) = f(i-1, j)$。如果背包可以放下物品i，则尝试把背包中的重量减去物品i的重量$w_i$，这样$f(i-1, j-w_i)$表示前i-1件物品在背包容量为$i-w_i$下的最大价值，此时如果放入物品i，那么价值就变为$f(i-1, j-w_i)+v_i$。判断$f(i-1, j-w_i)+v_i$与$f(i-1, j)$的大小，选择较大的一个作为在背包容量为i下的最大价值。以上就是对于这个递归式的算法描述。</p>
+<p>相对应的伪代码如下图所示：</p>
+<p><img src="/images/1544592877589.png" alt="1544592877589"></p>
+<p>可以将这个二维数组可视化，有如下图所示的五个物品和其对应的价值，且背包容量为11，那么如何让背包中装入的物品有最大的价值？</p>
+<p><img src="/images/1544593909399.png" alt="1544593909399"></p>
+<p>遍历过程如下所示，从上到下代表i的遍历，从左到右代表j的遍历，最后可得到最大价值为40。</p>
+<p><img src="/images/1544593909399.png" alt="1544593909399"></p>
+<p>0-1背包问题已经被证明是NP完全问题，而它却有着一个动态规划解法，该解法有着O(nW)的时间复杂度，其中n是物品的个数，W是背包限制的最大负重。但是这种动态规划的算法称为伪多项式时间算法，这种算法不能真正意义上实现多项式时间内解决问题。</p>
+<h1 id="最长公共子序列（LCS问题）"><a href="#最长公共子序列（LCS问题）" class="headerlink" title="最长公共子序列（LCS问题）"></a>最长公共子序列（LCS问题）</h1><p>以最长公共子序列为例，将动态规划的四个步骤按部就班地走一遍。</p>
+<h2 id="Step1-描述最优解的结构（分析问题）"><a href="#Step1-描述最优解的结构（分析问题）" class="headerlink" title="Step1 描述最优解的结构（分析问题）"></a>Step1 描述最优解的结构（分析问题）</h2><p>假设$X = A, B, C, B$，$Y = B, D, C, A, B$，我们可以容易地想到暴力解法，即将枚举出X中的所有子序列，然后检查每个子序列是否是Y的子序列。假设X和Y的长度分别是m和n，那么暴力解法的时间复杂度是$O(2^mn)$。</p>
+<p>我们可以观察到，LCS问题具有最优子结构，设$X=&lt;x_1,x_2,…,x_m&gt;和Y=&lt;y_1,y_2, …,y_n&gt;$为两个序列，$Z = &lt;z_1, z_2, … ,Z_k&gt;$为X和Y的任意一个LCS，则有LCS的最优子结构定理：</p>
+<ol>
+<li>如果$x_m=y_n$，那么$z_k = x_m = y_n$，而且$Z_{k-1}$是 $X_{m-1}$和$Y_{n-1}$的一个LCS。</li>
+<li>如果$x_m \neq y_n$，那么$z_k \neq x_m$意味着$Z$是 $X_{m-1}$和$Y$的一个LCS。</li>
+<li>如果$x_m \neq y_n$，那么$z_k \neq y_n$意味着$Z$是 $X$和$Y_{n-1}$的一个LCS。</li>
+</ol>
+<h2 id="Step2-递归定义最优解的值（递归解决）"><a href="#Step2-递归定义最优解的值（递归解决）" class="headerlink" title="Step2 递归定义最优解的值（递归解决）"></a>Step2 递归定义最优解的值（递归解决）</h2><p>用$C[i,j]$表示$X_i$和$Y_j$的最长公共子序列LCS的长度，则有公式：</p>
+<p><img src="/images/1550314202.png" alt="1550314202"></p>
+<h2 id="Step3-按自底向上的方式计算最优解的值（计算LCS的长度）"><a href="#Step3-按自底向上的方式计算最优解的值（计算LCS的长度）" class="headerlink" title="Step3 按自底向上的方式计算最优解的值（计算LCS的长度）"></a>Step3 按自底向上的方式计算最优解的值（计算LCS的长度）</h2><p>LCS_LENGTH以两个序列为输入，将LCS的长度保存到二维数组c中，将构造过程保存到另一个二维数组b中，伪代码如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LCS_LENGTH</span><span class="params">(X,Y)</span>:</span></span><br><span class="line">	m = length(X)</span><br><span class="line">	n = length(Y)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to m:</span><br><span class="line">		c[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n:</span><br><span class="line">		c[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment"># 计算LCS的长度</span></span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to m:</span><br><span class="line">		<span class="keyword">for</span> j = <span class="number">1</span> to n:</span><br><span class="line">            <span class="keyword">if</span> x[i] == y[j]:</span><br><span class="line">                c[i, j] = c[i<span class="number">-1</span>, j<span class="number">-1</span>] + <span class="number">1</span></span><br><span class="line">               	b[i, j] = <span class="string">'\'</span></span><br><span class="line"><span class="string">            elif c[i-1, j] &gt;= c[i, j-1]:</span></span><br><span class="line"><span class="string">                c[i, j] = c[i-1, j]</span></span><br><span class="line"><span class="string">                b[i, j] = '</span>|<span class="string">'</span></span><br><span class="line"><span class="string">            else:</span></span><br><span class="line"><span class="string">                c[i, j] = c[i, j-1]</span></span><br><span class="line"><span class="string">                b[i, j] = '</span>-<span class="string">'</span></span><br><span class="line"><span class="string">return c, b</span></span><br></pre></td></tr></table></figure>
+<h2 id="Step4-由计算的结果构造一个最优解（构建LCS）"><a href="#Step4-由计算的结果构造一个最优解（构建LCS）" class="headerlink" title="Step4 由计算的结果构造一个最优解（构建LCS）"></a>Step4 由计算的结果构造一个最优解（构建LCS）</h2><p>根据LCS_LENGTH返回的表b，可以构建一个LCS序列，输出所有值为’\’的元素，即可得到LCS，PRINT_LCS的伪代码如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PRINT_LCS</span><span class="params">(b, X, i, j)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> j==<span class="number">0</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">if</span> b[i, j] == <span class="string">'\':</span></span><br><span class="line"><span class="string">		PRINT_LCS(b, X, i-1, j-1)</span></span><br><span class="line"><span class="string">		print X[i]</span></span><br><span class="line"><span class="string">	elif b[i, j] == '</span>|<span class="string">':</span></span><br><span class="line"><span class="string">		PRINT_LCS(b, X, i-1, j)</span></span><br><span class="line"><span class="string">    elif PRINT_LCS(b, X, i, j-1)</span></span><br></pre></td></tr></table></figure>
+<p>为了加深理解，使用C++实现了以上伪代码，使用PPT上的例子，最终得出结果如下图所示：</p>
+<p><img src="/images/1542016271345.png" alt="1542016271345"></p>
+<p>全部C++代码如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> m 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> n 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> skew 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> up 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> level 2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lcs_length</span><span class="params">(<span class="keyword">char</span>*X, <span class="keyword">char</span>*Y, <span class="keyword">int</span> c[m+<span class="number">1</span>][n+<span class="number">1</span>], <span class="keyword">int</span> b[m+<span class="number">1</span>][n+<span class="number">1</span>])</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;m; i++)</span><br><span class="line">		c[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;n; j++)</span><br><span class="line">		c[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">		<span class="keyword">for</span> (j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (X[i] == Y[j])</span><br><span class="line">			&#123;</span><br><span class="line">				c[i][j] = c[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span>;</span><br><span class="line">				b[i][j] = skew;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (c[i<span class="number">-1</span>][j] &gt;= c[i][j<span class="number">-1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				c[i][j] = c[i<span class="number">-1</span>][j];</span><br><span class="line">				b[i][j] = up;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				c[i][j] = c[i][j<span class="number">-1</span>];</span><br><span class="line">				b[i][j] = level;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_lcs</span><span class="params">(<span class="keyword">int</span> b[m+<span class="number">1</span>][n+<span class="number">1</span>], <span class="keyword">char</span>* X, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (i==<span class="number">0</span> || j==<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (b[i][j] == skew)</span><br><span class="line">	&#123;</span><br><span class="line">		print_lcs(b, X, i<span class="number">-1</span>, j<span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; X[i] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(b[i][j] == level)</span><br><span class="line">		print_lcs(b, X, i, j<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">else</span> print_lcs(b, X, i<span class="number">-1</span>, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> X[m+<span class="number">1</span>] = &#123;<span class="string">' '</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'B'</span>&#125;;</span><br><span class="line">	<span class="keyword">char</span> Y[n+<span class="number">1</span>] = &#123;<span class="string">' '</span>,<span class="string">'B'</span>,<span class="string">'D'</span>,<span class="string">'C'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> c[<span class="number">5</span>][<span class="number">6</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> b[<span class="number">5</span>][<span class="number">6</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The X is ABCB"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The Y is BDCAB"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	lcs_length(X, Y, c, b);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;=m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;=n; j++)</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; c[i][j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="string">"The length of LCS is: "</span> &lt;&lt; c[m][n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"The LCS is: "</span>;</span><br><span class="line">	print_lcs(b, X, m, n);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="编辑距离（Edit-Distance）"><a href="#编辑距离（Edit-Distance）" class="headerlink" title="编辑距离（Edit Distance）"></a>编辑距离（Edit Distance）</h1><p>假设X和Y是两个字符串，我们要用最少的操作将X转换为Y，三种操作可供使用，分别是<strong>删除</strong>、<strong>插入</strong>和<strong>替换</strong>，最少操作的数目称为编辑距离。</p>
+<p>与LCS类似，也可得到编辑距离的公式：</p>
+<p><img src="/images/1550315254.png" alt="1550315254"></p>
+<p>下面给出一个例子，具体的实现与LCS类似，这里不再赘述。</p>
+<p><img src="/images/1543639539255.png" alt="1543639539255"></p>
+<h1 id="矩阵连乘问题（Chain-MatrixMultiplication）"><a href="#矩阵连乘问题（Chain-MatrixMultiplication）" class="headerlink" title="矩阵连乘问题（Chain MatrixMultiplication）"></a>矩阵连乘问题（Chain MatrixMultiplication）</h1><p>给定n个矩阵$｛A1,A2,…,An｝$，其中$Ai$与$Ai+1$是可乘的，$i=1,2 ,…,n-1$。确定计算矩阵连乘积的计算次序，使得依此次序计算矩阵连乘积需要的数乘次数最少。</p>
+<p>假如我们要得到计算从$A_i$到$A_j$的最优计算次序。首先假设这个计算次序在矩阵$A_k$和$A_{k+1}$之间断开，且$i \leq k &lt; j$，则计算量为前一部分的计算量、后一部分的计算量以及两部分相乘的计算量之和。</p>
+<p>可以递归地定义$C[i, j]​$为：</p>
+<p><img src="/images/1550314287.png" alt="1550314287"></p>
+<p>可以看到，$k$的位置只有$j-i$种可能，此算法的时间复杂度为$O(n^3)​$，给出一个这种动态规划算法的计算实例。</p>
+<p><img src="/images/1543639181690.png" alt="1543639181690"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/57540/" rel="next" title="CHAPTER5 分治法">
+                <i class="fa fa-chevron-left"></i> CHAPTER5 分治法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/64398/" rel="prev" title="CHAPTER7 NP完全性">
+                CHAPTER7 NP完全性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0-1背包问题"><span class="nav-number">2.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共子序列（LCS问题）"><span class="nav-number">3.</span> <span class="nav-text">最长公共子序列（LCS问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-描述最优解的结构（分析问题）"><span class="nav-number">3.1.</span> <span class="nav-text">Step1 描述最优解的结构（分析问题）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-递归定义最优解的值（递归解决）"><span class="nav-number">3.2.</span> <span class="nav-text">Step2 递归定义最优解的值（递归解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-按自底向上的方式计算最优解的值（计算LCS的长度）"><span class="nav-number">3.3.</span> <span class="nav-text">Step3 按自底向上的方式计算最优解的值（计算LCS的长度）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-由计算的结果构造一个最优解（构建LCS）"><span class="nav-number">3.4.</span> <span class="nav-text">Step4 由计算的结果构造一个最优解（构建LCS）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑距离（Edit-Distance）"><span class="nav-number">4.</span> <span class="nav-text">编辑距离（Edit Distance）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵连乘问题（Chain-MatrixMultiplication）"><span class="nav-number">5.</span> <span class="nav-text">矩阵连乘问题（Chain MatrixMultiplication）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+        ﻿
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        av: AV, 
+        el: '#comments' ,
+        appId: 'L3RMSXUsVAD4fyXhcwChRKQQ-gzGzoHsz',
+        appKey: '0XVENmt7LWUdxFkKF6QNd5JU',
+        placeholder: '(发表评论)',
+    });
+  </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("L3RMSXUsVAD4fyXhcwChRKQQ-gzGzoHsz", "0XVENmt7LWUdxFkKF6QNd5JU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
