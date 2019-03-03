@@ -91,7 +91,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[调整主页的宽度]]></title>
+    <title><![CDATA[调整hexo页面宽度]]></title>
     <url>%2Fposts%2F13179%2F</url>
     <content type="text"><![CDATA[博客在浏览器上的留白太多，因此想增加文章的宽度。对于Pisces Scheme，修改页面宽度的方式与其他三个主题不太一样，因此列出Pisces Scheme的修改方式。 打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可： 12$main-desktop = 1200px $content-desktop = 900px]]></content>
       <categories>
