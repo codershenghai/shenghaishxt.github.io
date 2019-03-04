@@ -359,8 +359,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/倒腾记录/" itemprop="url" rel="index">
-                    <span itemprop="name">倒腾记录</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -400,11 +400,8 @@
           
           将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。
 完成后的界面如下：
-
 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~
-安装过程
-1、安装Jupyter Notebook
-1pip 
+安装过程1、安装Jupyter Notebook1pip ins
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -667,8 +664,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/倒腾记录/" itemprop="url" rel="index">
-                    <span itemprop="name">倒腾记录</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -816,8 +813,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/倒腾记录/" itemprop="url" rel="index">
-                    <span itemprop="name">倒腾记录</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -1004,9 +1001,7 @@
       
         
           
-          使用线性规划来近似顶点覆盖问题
-ILP（整数线性规划）
-对于每一个顶点$v\in V$，有$x(v) \in {0, 1}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(
+          使用线性规划来近似顶点覆盖问题ILP（整数线性规划）对于每一个顶点$v\in V$，有$x(v) \in \{0, 1\}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1154,9 +1149,8 @@ ILP（整数线性规划）
       
         
           
-          线性规划概述
-在给定有限的资源和竞争约束情况下，很多问题都可以表达为最大化或最小化某个目标。如果可以把目标指定为某些变量的一个线性函数，而且如果可以将资源的约束指定为这些变量的等式或不等式，则得到一个线性规划问题（Linear-Programming Problem）。
-在求解线性规划时又两种有用的
+          线性规划概述在给定有限的资源和竞争约束情况下，很多问题都可以表达为最大化或最小化某个目标。如果可以把目标指定为某些变量的一个线性函数，而且如果可以将资源的约束指定为这些变量的等式或不等式，则得到一个线性规划问题（Linear-Programming Problem）。
+在求解线性规划时又两种有用的格
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1313,8 +1307,7 @@ ILP（整数线性规划）
 用启发式方法求解
 
 本节主要讨论的是解NP完全问题的近似算法。
-近似算法的性能
-若一个最优化问题的最优值为$C^{OPT
+近似算法的性能若一个最优化问题的最优值为$C^{OPT}
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1462,19 +1455,15 @@ ILP（整数线性规划）
       
         
           
-          P问题、NP问题、NPC问题的概念
-老师上课时强调过本章对于概念要特别清楚，因此首先给出这三个问题的概念：
-
+          P问题、NP问题、NPC问题的概念老师上课时强调过本章对于概念要特别清楚，因此首先给出这三个问题的概念：
 
 P问题：能够在多项式时间内解决的问题。
 
-
 NP问题：能够在多项式时间内验证一个解的正确性的问题。
-
 
 NPC问题：当一个问题满足下面两个条件的时候，那么这个问题是NPC问题。
 
-首先，它
+首先，它是NP问
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1622,10 +1611,9 @@ NPC问题：当一个问题满足下面两个条件的时候，那么这个问�
       
         
           
-          概念
-分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。
+          概念分治法将问题划分成一些独立的子问题，递归地求解各子问题，然后合并子问题的解而得到原问题的解。
 动态规划适用于子问题不是独立的情况，也就是个子问题包含公共的子子问题。动态规划对每个子子问题只求解一次，将其结果保存在一张表中，从而避免每次遇到各个子问题时重新计算答案。
-动态规划的算法可分为以下4个
+动态规划的算法可分为以下4个步
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1883,7 +1871,7 @@ NPC问题：当一个问题满足下面两个条件的时候，那么这个问�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

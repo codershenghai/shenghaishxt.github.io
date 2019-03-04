@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="目前的域名解析有两种方法，一种是直接利用域名注册商的解析，另一种就是更换DNS用第三方的解析。为了便于管理，也为了更好的速度，将域名的解析方式由namesilo默认的解析方式改为使用国内的DNSPOD进行解析。 首先在namesilo上更换域名DNS（即Change Name Servers），将原来默认的Name Servers改为 12f1g1ns1.dnspod.netf1g1ns1.dns">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T11:45:59.062Z">
+<meta property="og:updated_time" content="2019-03-04T08:05:01.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用DNSPOD进行域名解析">
 <meta name="twitter:description" content="目前的域名解析有两种方法，一种是直接利用域名注册商的解析，另一种就是更换DNS用第三方的解析。为了便于管理，也为了更好的速度，将域名的解析方式由namesilo默认的解析方式改为使用国内的DNSPOD进行解析。 首先在namesilo上更换域名DNS（即Change Name Servers），将原来默认的Name Servers改为 12f1g1ns1.dnspod.netf1g1ns1.dns">
@@ -358,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/倒腾记录/" itemprop="url" rel="index">
-                    <span itemprop="name">倒腾记录</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -397,16 +397,15 @@
       
         <p>目前的域名解析有两种方法，一种是直接利用域名注册商的解析，另一种就是更换DNS用第三方的解析。为了便于管理，也为了更好的速度，将域名的解析方式由namesilo默认的解析方式改为使用国内的DNSPOD进行解析。</p>
 <p>首先在namesilo上更换域名DNS（即Change Name Servers），将原来默认的Name Servers改为</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1g1ns1.dnspod.net</span><br><span class="line">f1g1ns1.dnspod.net</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1g1ns1.dnspod.net</span><br><span class="line">f1g1ns1.dnspod.net</span><br></pre></td></tr></table></figure>
 <p>删除默认的A记录和CNAME记录，等待DNSPOD的免费DNS更新完毕后就可以放心地关闭namesilo了。</p>
 <p>然后打开DNSPOD控制台，添加域名即可。由于本博客是用Github托管的，因此这里记录了连接到Github博客的设置，也可以连接到自己的VPS，IP改为自己的VPS地址即可。</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@          A             192.30.252.153</span><br><span class="line">@          A             192.30.252.154</span><br><span class="line">www      CNAME           shenghaishxt.github.io</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@          A             192.30.252.153</span><br><span class="line">@          A             192.30.252.154</span><br><span class="line">www      CNAME           shenghaishxt.github.io</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>A：  用来指定域名为 IPv4 的地址（如：8.8.8.8），如果需要将域名指向一个IP地址，就需要添加 A 记录。
-CNAME：  如果需要将域名指向另一个域名，再由另一个域名提供 ip 地址，就需要添加 CNAME 记录。</p>
+<p>A：  用来指定域名为 IPv4 的地址（如：8.8.8.8），如果需要将域名指向一个IP地址，就需要添加 A 记录。<br>CNAME：  如果需要将域名指向另一个域名，再由另一个域名提供 ip 地址，就需要添加 CNAME 记录。</p>
 </blockquote>
 <p>最后在本地的/Hexo/source文件夹下新建CNAME文件，注意不要带任何后缀，如果想要自己的网站是带有www的二级域名，那么就输入带有www的域名，否则的话直接添加自己购买的域名就好。我这里添加的是带有www的二级域名。</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.zhangshenghai.com</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.zhangshenghai.com</span><br></pre></td></tr></table></figure>
 <p>接下来就等待DNS的解析啦，不知道为什么我的解析好像挺慢的。十几分钟后zhangshenghai.com这个域名是可以ping通，但加了www的域名就总是ping不通。貌似是过了一个晚上，我第二天打开才可以登陆上。</p>
 
       
@@ -533,7 +532,7 @@ CNAME：  如果需要将域名指向另一个域名，再由另一个域名提�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

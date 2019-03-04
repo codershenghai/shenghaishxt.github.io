@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="流网络 $G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c">
+<meta name="description" content="流网络$G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c(">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CHAPTER2 最大流与最小割">
 <meta property="og:url" content="http://www.zhangshenghai.com/posts/16099/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="流网络 $G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c">
+<meta property="og:description" content="流网络$G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/1543641577594.png">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/1543643142886.png">
@@ -101,7 +101,7 @@
 <meta property="og:updated_time" content="2019-02-28T11:45:59.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CHAPTER2 最大流与最小割">
-<meta name="twitter:description" content="流网络 $G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c">
+<meta name="twitter:description" content="流网络$G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为源点和汇点，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个流网络，下图是一个例子。  $f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：  容量限制：对所有$u, v \in V$，要求$f(u, v) \leq c(">
 <meta name="twitter:image" content="http://www.zhangshenghai.com/images/1543641577594.png">
 
 
@@ -405,8 +405,7 @@
       
 
       
-        <h1>流网络</h1>
-<p>$G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为<strong>源点</strong>和<strong>汇点</strong>，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个<strong>流网络</strong>，下图是一个例子。</p>
+        <h1 id="流网络"><a href="#流网络" class="headerlink" title="流网络"></a>流网络</h1><p>$G=(V, E)​$是一个简单有向图，在V中指定顶点s和t，分别称为<strong>源点</strong>和<strong>汇点</strong>，有向图G中的每一条边$(u, v) \in E​$，对应有一个值$cap(u, v) \geq0​$，称为边的容量，这样的有向图G称作一个<strong>流网络</strong>，下图是一个例子。</p>
 <p><img src="/images/1543641577594.png" alt="1543641577594"></p>
 <p>$f(v, u)​$称作是从顶点u到顶点v的流，它满足以下性质：</p>
 <ul>
@@ -420,20 +419,16 @@
 <li>中间点：总流入量 = 总流出量</li>
 </ul>
 <p><strong>最大流</strong>即网络G所有的可行流中，流量最大的一个可行流。</p>
-<h1>Ford-Fulkerson方法</h1>
-<p>之所以称为Ford-Fulkerson方法而不是算法，是由于它包含具有不同运行时间的几种实现。Ford-Fulkerson方法依赖于三种重要思想：<strong>残留网络</strong>、<strong>增广路径</strong>、<strong>割</strong>。这三种思想是最大流最小割定理的精髓，该定理用流网络的割来描述最大流的值，我们将会在后面谈到。以下给出Ford-Fulkerson方法的伪代码：</p>
-<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ford-Fulkerson-Method(G, s, t):</span><br><span class="line">	initialize flow f to <span class="number">0</span></span><br><span class="line">	<span class="keyword">while</span> there exists an augmenting path p:</span><br><span class="line">		do augment flow f along p</span><br><span class="line">	<span class="keyword">return</span> f</span><br></pre></td></tr></table></figure></p>
-<h2>最大流最小割定理</h2>
-<p>首先来介绍割的概念，一个割会把图G的顶点分成两个不相交的集合，其中s在一个集合中，t在另外一个集合中。割的容量就是<strong>从A指向B</strong>的所有边的容量和，最小割问题就是要找到割的容量最小的情况。下面给出两个例子，割的容量分别为30和62。</p>
+<h1 id="Ford-Fulkerson方法"><a href="#Ford-Fulkerson方法" class="headerlink" title="Ford-Fulkerson方法"></a>Ford-Fulkerson方法</h1><p>之所以称为Ford-Fulkerson方法而不是算法，是由于它包含具有不同运行时间的几种实现。Ford-Fulkerson方法依赖于三种重要思想：<strong>残留网络</strong>、<strong>增广路径</strong>、<strong>割</strong>。这三种思想是最大流最小割定理的精髓，该定理用流网络的割来描述最大流的值，我们将会在后面谈到。以下给出Ford-Fulkerson方法的伪代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ford-Fulkerson-Method(G, s, t):</span><br><span class="line">	initialize flow f to <span class="number">0</span></span><br><span class="line">	<span class="keyword">while</span> there exists an augmenting path p:</span><br><span class="line">		do augment flow f along p</span><br><span class="line">	<span class="keyword">return</span> f</span><br></pre></td></tr></table></figure>
+<h2 id="最大流最小割定理"><a href="#最大流最小割定理" class="headerlink" title="最大流最小割定理"></a>最大流最小割定理</h2><p>首先来介绍割的概念，一个割会把图G的顶点分成两个不相交的集合，其中s在一个集合中，t在另外一个集合中。割的容量就是<strong>从A指向B</strong>的所有边的容量和，最小割问题就是要找到割的容量最小的情况。下面给出两个例子，割的容量分别为30和62。</p>
 <p><img src="/images/1543643142886.png" alt="1543643142886"></p>
 <p><img src="/images/1543643168807.png" alt="1543643168807"></p>
 <p>接着介绍<strong>残留网络</strong>和<strong>增广路径</strong>的概念，给定一个流网络$G$和一个可行流，流的<strong>残留网络</strong>$G_f$拥有与原网相同的顶点。流网络$G$中每条边将对应残留网中一条或者两条边，对于原流网络中的任意边(u, v)，流量为f(u, v)，容量为c(u, v)：</p>
 <ul>
-<li>
-<p>如果f(u, v) &gt; 0，则在残留网中包含一条容量为f(u, v)的边(v, u);</p>
+<li><p>如果f(u, v) &gt; 0，则在残留网中包含一条容量为f(u, v)的边(v, u);</p>
 </li>
-<li>
-<p>如果f(u, v) &lt; c(u, v)，则在残留网中包含一条容量为c(u, v) - f(u, v)的边(u, v)。</p>
+<li><p>如果f(u, v) &lt; c(u, v)，则在残留网中包含一条容量为c(u, v) - f(u, v)的边(u, v)。</p>
 </li>
 </ul>
 <p>下图为一个例子：</p>
@@ -445,16 +440,14 @@
 <li>残留网络$G_f$不包含增广路径。</li>
 <li>对$G$的某个割$(S, T)$，有$|f| = c(S, T)$。</li>
 </ul>
-<h2>基本的Ford-Fulkerson算法</h2>
-<p>根据，我们可以求给定有向图的最大流。下面给出《算法导论》中的一个实例：</p>
+<h2 id="基本的Ford-Fulkerson算法"><a href="#基本的Ford-Fulkerson算法" class="headerlink" title="基本的Ford-Fulkerson算法"></a>基本的Ford-Fulkerson算法</h2><p>根据，我们可以求给定有向图的最大流。下面给出《算法导论》中的一个实例：</p>
 <p><img src="/images/1543648474242.png" alt="1543648474242"></p>
 <p>上图中的左边表示开始时的残留网络，右边表示将增广路径加入残留网络后得到的新的可行流，通过三次迭代即可得到最大流，根据最大流最小割定理，我们同样可以得到最小割。</p>
 <p>再通过本课程课件上的一个例题进行练习。</p>
 <p><img src="/images/1543650269357.png" alt="1543650269357"></p>
 <p>同样通过基本的Ford-Fulkerson算法，可得到答案如下。</p>
 <p><img src="/images/1543651515848.png" alt="1543651515848"></p>
-<h2>Edmonds-Karp算法</h2>
-<p>Edmonds和Karp曾经证明了如果每步的增广路径都是最短，那么整个算法会执行$O(mn)$步，Edmonds-Karp算法是用广度优先搜索来实现对增广路径p的计算的，实现的伪代码如下图所示。</p>
+<h2 id="Edmonds-Karp算法"><a href="#Edmonds-Karp算法" class="headerlink" title="Edmonds-Karp算法"></a>Edmonds-Karp算法</h2><p>Edmonds和Karp曾经证明了如果每步的增广路径都是最短，那么整个算法会执行$O(mn)$步，Edmonds-Karp算法是用广度优先搜索来实现对增广路径p的计算的，实现的伪代码如下图所示。</p>
 <p><img src="/images/1543649596080.png" alt="1543649596080"></p>
 <p>由于在广度优先搜索时最坏情况下需要$O(m)$次操作，所以此算法的复杂度为$O(m^2n)$。之后，Dinitz改进了Edmonds-Karp算法，得到一个时间复杂度为$O(mn^2)​$的算法，下面给出一张关于最短增广路径算法研究历史的表格，这里就不再展开了。</p>
 <p><img src="/images/1543649990367.png" alt="1543649990367"></p>
@@ -592,7 +585,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -636,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">流网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Ford-Fulkerson方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">最大流最小割定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">基本的Ford-Fulkerson算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Edmonds-Karp算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#流网络"><span class="nav-number">1.</span> <span class="nav-text">流网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ford-Fulkerson方法"><span class="nav-number">2.</span> <span class="nav-text">Ford-Fulkerson方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大流最小割定理"><span class="nav-number">2.1.</span> <span class="nav-text">最大流最小割定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本的Ford-Fulkerson算法"><span class="nav-number">2.2.</span> <span class="nav-text">基本的Ford-Fulkerson算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edmonds-Karp算法"><span class="nav-number">2.3.</span> <span class="nav-text">Edmonds-Karp算法</span></a></li></ol></li></ol></div>
             
 
           </div>
