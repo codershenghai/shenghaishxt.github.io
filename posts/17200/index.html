@@ -405,20 +405,26 @@
 <p>动态规划算法通常以<strong>自底向上</strong>的方式解各子问题，而贪心算法则通常以<strong>自顶向下</strong>的方式进行，每作一次贪心选择就将所求问题简化为规模更小的子问题。</p>
 <p>下面来看一些具体的例子。</p>
 </blockquote>
-<h1 id="区间调度（Interval-Scheduling）"><a href="#区间调度（Interval-Scheduling）" class="headerlink" title="区间调度（Interval Scheduling）"></a>区间调度（Interval Scheduling）</h1><p><strong>问题描述</strong>：假如我们有多个任务，每个任务都具有各自的开始时间和结束时间，求在任务不重叠的情况下任务的最大组合数。</p>
+<h1>区间调度（Interval Scheduling）</h1>
+<p><strong>问题描述</strong>：假如我们有多个任务，每个任务都具有各自的开始时间和结束时间，求在任务不重叠的情况下任务的最大组合数。</p>
 <p>根据贪心算法，我们可以从不同的角度分析这个问题。</p>
-<h2 id="Rule1：选择开始最早的任务"><a href="#Rule1：选择开始最早的任务" class="headerlink" title="Rule1：选择开始最早的任务"></a>Rule1：选择开始最早的任务</h2><p><img src="/images/1543679483153.png" alt="1543679483153"></p>
+<h2>Rule1：选择开始最早的任务</h2>
+<p><img src="/images/1543679483153.png" alt="1543679483153"></p>
 <p>每次选择当前最先开始的任务，并依次选到最后一个。</p>
 <p>从这个例子看出，失败！</p>
-<h2 id="Rule2：选择区间最短的任务"><a href="#Rule2：选择区间最短的任务" class="headerlink" title="Rule2：选择区间最短的任务"></a>Rule2：选择区间最短的任务</h2><p><img src="/images/1543679632245.png" alt="1543679632245"></p>
+<h2>Rule2：选择区间最短的任务</h2>
+<p><img src="/images/1543679632245.png" alt="1543679632245"></p>
 <p>从最短的任务开始选择，并依次选择不重复的当前最短的任务，按照所用时间长短排序。</p>
 <p>从这个例子看出，失败！</p>
-<h2 id="Rule3：选择冲突最少的任务"><a href="#Rule3：选择冲突最少的任务" class="headerlink" title="Rule3：选择冲突最少的任务"></a>Rule3：选择冲突最少的任务</h2><p>对于每一个任务，计算与它冲突的任务个数，每次选择当前与其冲突最少的任务。</p>
+<h2>Rule3：选择冲突最少的任务</h2>
+<p>对于每一个任务，计算与它冲突的任务个数，每次选择当前与其冲突最少的任务。</p>
 <p><img src="/images/1543679890679.png" alt="1543679890679"></p>
 <p>从这个例子看出，还是失败了。</p>
-<h2 id="Rule4：选择结束最早的任务"><a href="#Rule4：选择结束最早的任务" class="headerlink" title="Rule4：选择结束最早的任务"></a>Rule4：选择结束最早的任务</h2><p>每次选择当前最早结束的任务，并依次选到最后一个。</p>
+<h2>Rule4：选择结束最早的任务</h2>
+<p>每次选择当前最早结束的任务，并依次选到最后一个。</p>
 <p>可以看出，在上面的三个例子中，本算法都是可行的。事实上，Rule4的算法是解决区间调度问题的一个可行算法。直观上来说，按这种方法选取的任务为未安排的任务留下了尽可能多的时间。也就是说，该算法的贪心选择使剩余的可安排时间段极大化，以安排尽可能多的不重叠活动。这个算法的时间复杂度是$O(nlogn)$。</p>
-<h1 id="集合覆盖（Set-Cover）"><a href="#集合覆盖（Set-Cover）" class="headerlink" title="集合覆盖（Set Cover）"></a>集合覆盖（Set Cover）</h1><p><strong>问题描述</strong>：在一个集合$B$以及$B$内元素构成的若干集合$S_1, S_2, … , S_m$中，找到数目最少的$S_i$使得$S_i$中的所有元素都包含了$B$中所有元素。为便于理解，给一个具体的例子。例如，$B$={1,2,3,4,5}，$S_1$={1,2,3}，$S_2$={2,4}，$S_3$={3,4}，$S_4$={4,5}，可以找到一个集合覆盖$S_1,  S_4$。</p>
+<h1>集合覆盖（Set Cover）</h1>
+<p><strong>问题描述</strong>：在一个集合$B$以及$B$内元素构成的若干集合$S_1, S_2, ... , S_m$中，找到数目最少的$S_i$使得$S_i$中的所有元素都包含了$B$中所有元素。为便于理解，给一个具体的例子。例如，$B$={1,2,3,4,5}，$S_1$={1,2,3}，$S_2$={2,4}，$S_3$={3,4}，$S_4$={4,5}，可以找到一个集合覆盖$S_1,  S_4$。</p>
 <p>其实集合覆盖问题是一个NP难的问题，但是我们仍然可以用贪心算法得到这个问题的近似解。</p>
 <p>假设我们要在城镇里建几所学校，需要满足两点：1、每个学校都要建在一个城镇里。2、城镇离学校的距离不能超过30英里。</p>
 <p>根据贪心算法，我们可以得到非常接近的解：</p>
@@ -428,7 +434,8 @@
 </ol>
 <p>这是一种近似算法，贪心算法的运行时间为$O(n^2)​$，可得到如下图所示的结果，图中点的位置代表城镇的位置。</p>
 <p><img src="/images/1543682867114.png" alt="1543682867114"></p>
-<h1 id="最小生成树（Minimum-Spanning-Tree）"><a href="#最小生成树（Minimum-Spanning-Tree）" class="headerlink" title="最小生成树（Minimum Spanning Tree）"></a>最小生成树（Minimum Spanning Tree）</h1><p>用贪心算法设计策略可以设计出构造最小生成树的有效算法，如Prim算法和Kruskal算法，尽管它们做贪心选择的方式不同。</p>
+<h1>最小生成树（Minimum Spanning Tree）</h1>
+<p>用贪心算法设计策略可以设计出构造最小生成树的有效算法，如Prim算法和Kruskal算法，尽管它们做贪心选择的方式不同。</p>
 <p>关于MST的这两个算法相信大家应该都十分熟悉了，这里便不再展开。</p>
 
       
@@ -608,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#区间调度（Interval-Scheduling）"><span class="nav-number">1.</span> <span class="nav-text">区间调度（Interval Scheduling）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rule1：选择开始最早的任务"><span class="nav-number">1.1.</span> <span class="nav-text">Rule1：选择开始最早的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rule2：选择区间最短的任务"><span class="nav-number">1.2.</span> <span class="nav-text">Rule2：选择区间最短的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rule3：选择冲突最少的任务"><span class="nav-number">1.3.</span> <span class="nav-text">Rule3：选择冲突最少的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rule4：选择结束最早的任务"><span class="nav-number">1.4.</span> <span class="nav-text">Rule4：选择结束最早的任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合覆盖（Set-Cover）"><span class="nav-number">2.</span> <span class="nav-text">集合覆盖（Set Cover）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小生成树（Minimum-Spanning-Tree）"><span class="nav-number">3.</span> <span class="nav-text">最小生成树（Minimum Spanning Tree）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">区间调度（Interval Scheduling）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Rule1：选择开始最早的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Rule2：选择区间最短的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Rule3：选择冲突最少的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Rule4：选择结束最早的任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">集合覆盖（Set Cover）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">最小生成树（Minimum Spanning Tree）</span></a></li></ol></div>
             
 
           </div>

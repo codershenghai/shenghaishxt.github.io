@@ -420,7 +420,8 @@
 </ul>
 <p>假设我们将原问题分解成a个子问题，每一个的大小是原问题的1/b。如果分解和合并的时间各为D(n)和C(n)，则可得到递归式：</p>
 <p><img src="/images/1550314374as.png" alt="1550314374(1)"></p>
-<h1 id="合并排序（Merge-Sort）"><a href="#合并排序（Merge-Sort）" class="headerlink" title="合并排序（Merge Sort）"></a>合并排序（Merge Sort）</h1><p>当合并排序的运行时间如下分解：</p>
+<h1>合并排序（Merge Sort）</h1>
+<p>当合并排序的运行时间如下分解：</p>
 <ul>
 <li><strong>分解</strong>：仅计算出子数组的中间位置，需要常量时间，故$D(n) = \Theta(1)$。</li>
 <li><strong>解决</strong>：递归地解两个规模为n/2的子问题，时间为$2T(n/2)$。</li>
@@ -429,7 +430,8 @@
 <p>因此，合并排序的最坏运行时间$T(n)$的递归表示是：</p>
 <p><img src="/images/15503143971.png" alt="15503143971"></p>
 <p>由之前第一章介绍的主定理，我们可以得到$T(n) = \Theta(nlgn)$，这里的$lgn$代表$log_2n$。同样，我们也可以通过递归树得到相同的答案。</p>
-<h1 id="最大子数组问题（Maximum-Subarray-Problem）"><a href="#最大子数组问题（Maximum-Subarray-Problem）" class="headerlink" title="最大子数组问题（Maximum Subarray Problem）"></a>最大子数组问题（Maximum Subarray Problem）</h1><p>对于一个具有连续连续值的数组A，寻找A的和最大的非空连续子数组，<strong>我们称这样的连续子数组为最大子数组</strong>。例如，对于下图的数组，A[1…16]的最大子数组是A[8…11]，其和为43。在实际的例子中可表示在第8天买入股票，并在第11天卖出，获得的收益为43美元。</p>
+<h1>最大子数组问题（Maximum Subarray Problem）</h1>
+<p>对于一个具有连续连续值的数组A，寻找A的和最大的非空连续子数组，<strong>我们称这样的连续子数组为最大子数组</strong>。例如，对于下图的数组，A[1...16]的最大子数组是A[8...11]，其和为43。在实际的例子中可表示在第8天买入股票，并在第11天卖出，获得的收益为43美元。</p>
 <p><img src="/images/1544079475779.png" alt="1544079475779"></p>
 <p>使用分治法可以求解最大子数组问题。首先找到数组的中间点，将数组分为左右两个数组，那么最大子数组可能存在于下列三种情况之一：</p>
 <ul>
@@ -443,15 +445,18 @@
 <p><img src="/images/1544080142084.png" alt="1544080142084"></p>
 <p>对FIND-MAXIMUM-SUBARRAY算法的运行时间进行分析：</p>
 <p>首先计算出子数组的中间位置，需要常量时间$\Theta(1)$，然后递归地解两个规模为n/2的子问题，时间为$2T(n/2)$，调用FIND-MAX-CROSSING-SUBARRAY花费了$\Theta(n)$时间，则$T(n) = \Theta(1) + 2T(n/2) + \Theta(n) $，用主方法或递归树求解此递归式可得$T(n) = \Theta(nlgn)$。</p>
-<h1 id="斐波那契数列（Fibonacci-Number）"><a href="#斐波那契数列（Fibonacci-Number）" class="headerlink" title="斐波那契数列（Fibonacci Number）"></a>斐波那契数列（Fibonacci Number）</h1><p>对于斐波那契数，我们有$F_0=0, F_1=1, F_n=F_{n-1}+F_{n-2}$。利用分治策略，我们可以将斐波那契数列转换为矩阵乘幂的问题，如下图所示：</p>
+<h1>斐波那契数列（Fibonacci Number）</h1>
+<p>对于斐波那契数，我们有$F_0=0, F_1=1, F_n=F_{n-1}+F_{n-2}$。利用分治策略，我们可以将斐波那契数列转换为矩阵乘幂的问题，如下图所示：</p>
 <p><img src="/images/1544080873200.png" alt="1544080873200"></p>
 <p>使用分治法，我们将矩阵递归地分解成两个相同的矩阵，再将这两个矩阵相乘即可。</p>
 <p><img src="/images/1544081045038.png" alt="1544081045038"></p>
-<p>故$T(n) = T(n/2)+O(1) = T(n)/4+2O(1) = … = T(n/2^{logn})+O(logn)×O(1)$。</p>
-<h1 id="整数乘法（Integer-Multiplication）"><a href="#整数乘法（Integer-Multiplication）" class="headerlink" title="整数乘法（Integer Multiplication）"></a>整数乘法（Integer Multiplication）</h1><p>假设x, y分别为两个n-bit的整数，如果要将它们相乘，模拟使用手动乘法得到的时间复杂度是$\Theta(n^2)$，考虑分治法。</p>
+<p>故$T(n) = T(n/2)+O(1) = T(n)/4+2O(1) = ... = T(n/2^{logn})+O(logn)×O(1)$。</p>
+<h1>整数乘法（Integer Multiplication）</h1>
+<p>假设x, y分别为两个n-bit的整数，如果要将它们相乘，模拟使用手动乘法得到的时间复杂度是$\Theta(n^2)$，考虑分治法。</p>
 <p>令$x = (10^ma+b), y=(10^mc+d)$，如$x=1234567890, m=5, a=12345, b=67890$。那么$x×y = (10^ma+b)(10^mc+d)= 10^{2m}ac+10^m(bc+ad)+bd$，这里的时间复杂度$T(n) = 4T(n/2)+O(n)$，使用主方法可得$T(n) = O(n^2)$。</p>
 <p>Anatolii, Karatsuba在1962年提出了一个只需要三次子乘法就可以完成运算的算法，其时间复杂度的递归表示为$T(n) = 3T(n/2)+O(n)$，使用主方法可得$T(n) = O(n^{lg3})$。</p>
-<h1 id="矩阵乘法（Matrix-multiplication）"><a href="#矩阵乘法（Matrix-multiplication）" class="headerlink" title="矩阵乘法（Matrix multiplication）"></a>矩阵乘法（Matrix multiplication）</h1><p>给定一个n维矩阵X和Y，计算Z=XY。我们可以使用分治法求解这个问题。</p>
+<h1>矩阵乘法（Matrix multiplication）</h1>
+<p>给定一个n维矩阵X和Y，计算Z=XY。我们可以使用分治法求解这个问题。</p>
 <ul>
 <li><strong>分解</strong>：将X和Y分解为n/2维的矩阵。</li>
 <li><strong>解决</strong>：使用8次矩阵乘法递归地将这些n/2维的矩阵相乘。</li>
@@ -465,7 +470,8 @@
 <p>然后进行计算：</p>
 <p><img src="/images/1544083404788.png" alt="1544083404788"></p>
 <p>此算法的时间复杂度为$T(n) = 7T(n/2)+\Theta(n^2)=O(n{log_27})=O(n^{2.81})$。</p>
-<h1 id="凸包问题（The-Convex-Hull-Problem）"><a href="#凸包问题（The-Convex-Hull-Problem）" class="headerlink" title="凸包问题（The Convex Hull Problem）"></a>凸包问题（The Convex Hull Problem）</h1><p>假设平面上有一系列点，过某些点作一个多边形，使这个多边形能把所有点都“包”起来，当这个多边形是凸多边形的时候，我们就叫它<strong>凸包</strong>，凸包问题就是求构成凸包的点，如下图所示。</p>
+<h1>凸包问题（The Convex Hull Problem）</h1>
+<p>假设平面上有一系列点，过某些点作一个多边形，使这个多边形能把所有点都“包”起来，当这个多边形是凸多边形的时候，我们就叫它<strong>凸包</strong>，凸包问题就是求构成凸包的点，如下图所示。</p>
 <p><img src="/images/1544083714346.png" alt="1544083714346"></p>
 <p>使用蛮力法是最容易想到的，思路是由两点确定一条直线，如果剩余的点都在这条直线的同一侧，那么认为这两个点是构成凸包的点。蛮力法的时间复杂度为$O(n^3)$。</p>
 <p>下面我们介绍解决凸包问题的分治法，下面为具体步骤和图例：</p>
@@ -477,10 +483,12 @@
 <li>对下包也做类似的操作。</li>
 </ol>
 <p>分治法的时间复杂度为$T(n) = 2T(n/2) + O(n) = O(nlogn)$。</p>
-<h1 id="三格骨牌问题（Tromino-Tiling）"><a href="#三格骨牌问题（Tromino-Tiling）" class="headerlink" title="三格骨牌问题（Tromino Tiling）"></a>三格骨牌问题（Tromino Tiling）</h1><p>对于三格骨牌问题，同样可以用分治法求解，解决这个问题的思想是每次都将平板分成四块同等大小的子平板。</p>
+<h1>三格骨牌问题（Tromino Tiling）</h1>
+<p>对于三格骨牌问题，同样可以用分治法求解，解决这个问题的思想是每次都将平板分成四块同等大小的子平板。</p>
 <p>例如，在插入三格骨牌时，将平板分成四块，由于洞位于左上方的子平板，因此将三个骨牌放置为如图所示的位置，以确保四块子平板的大小相等。递归地进行这个过程即可得出结果。</p>
 <p><img src="/images/1544084698606.png" alt="1544084698606"></p>
-<h1 id="最邻近点问题（Finding-the-Closest-Pair-of-Points）"><a href="#最邻近点问题（Finding-the-Closest-Pair-of-Points）" class="headerlink" title="最邻近点问题（Finding the Closest Pair of Points）"></a>最邻近点问题（Finding the Closest Pair of Points）</h1><p>顾名思义，最邻近点问题即在平面点集中找出距离最近的两个点。使用时间复杂度为$O(n^2)$的蛮力法可以解决这个问题。</p>
+<h1>最邻近点问题（Finding the Closest Pair of Points）</h1>
+<p>顾名思义，最邻近点问题即在平面点集中找出距离最近的两个点。使用时间复杂度为$O(n^2)$的蛮力法可以解决这个问题。</p>
 <p>下面我们介绍解决这个问题的分治法，首先将点集划分为两个部分，然后递归地寻找最近的点，若找到最近的两个点之间的距离为$\delta$，则寻找是否存在分别属于两个部分的点之间的距离小于$\delta$，算法的时间复杂度为$T(n) = O(n)+2T(n/2)+O(n)=O(nlgn)$。</p>
 
       
@@ -660,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#合并排序（Merge-Sort）"><span class="nav-number">1.</span> <span class="nav-text">合并排序（Merge Sort）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最大子数组问题（Maximum-Subarray-Problem）"><span class="nav-number">2.</span> <span class="nav-text">最大子数组问题（Maximum Subarray Problem）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#斐波那契数列（Fibonacci-Number）"><span class="nav-number">3.</span> <span class="nav-text">斐波那契数列（Fibonacci Number）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整数乘法（Integer-Multiplication）"><span class="nav-number">4.</span> <span class="nav-text">整数乘法（Integer Multiplication）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵乘法（Matrix-multiplication）"><span class="nav-number">5.</span> <span class="nav-text">矩阵乘法（Matrix multiplication）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#凸包问题（The-Convex-Hull-Problem）"><span class="nav-number">6.</span> <span class="nav-text">凸包问题（The Convex Hull Problem）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三格骨牌问题（Tromino-Tiling）"><span class="nav-number">7.</span> <span class="nav-text">三格骨牌问题（Tromino Tiling）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最邻近点问题（Finding-the-Closest-Pair-of-Points）"><span class="nav-number">8.</span> <span class="nav-text">最邻近点问题（Finding the Closest Pair of Points）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">合并排序（Merge Sort）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">最大子数组问题（Maximum Subarray Problem）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">斐波那契数列（Fibonacci Number）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">整数乘法（Integer Multiplication）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">矩阵乘法（Matrix multiplication）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">凸包问题（The Convex Hull Problem）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">三格骨牌问题（Tromino Tiling）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">最邻近点问题（Finding the Closest Pair of Points）</span></a></li></ol></div>
             
 
           </div>

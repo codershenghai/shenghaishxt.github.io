@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量：$$x_i = (x_i^{(1)},x_i^{(2)},…, x_i^{(n)})^T$$$x^{(i)}$与$x_i$不同，后">
+<meta name="description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习 对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习 每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量： $$ x_i = (x_i^{(1)},x_i^{(2)},..., x_i^{(n)})^T $$ $x^{(i)}$与$">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学习方法概论">
 <meta property="og:url" content="http://www.zhangshenghai.com/posts/13076/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量：$$x_i = (x_i^{(1)},x_i^{(2)},…, x_i^{(n)})^T$$$x^{(i)}$与$x_i$不同，后">
+<meta property="og:description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习 对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习 每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量： $$ x_i = (x_i^{(1)},x_i^{(2)},..., x_i^{(n)})^T $$ $x^{(i)}$与$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190225201634.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190301152527.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM%E6%88%AA%E5%9B%BE20190225201634.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM%E6%88%AA%E5%9B%BE20190301152527.png">
 <meta property="og:updated_time" content="2019-03-01T11:19:32.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学习方法概论">
-<meta name="twitter:description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量：$$x_i = (x_i^{(1)},x_i^{(2)},…, x_i^{(n)})^T$$$x^{(i)}$与$x_i$不同，后">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190225201634.png">
+<meta name="twitter:description" content="本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。 统计学习 对象：数据 目的：对数据进行预测和分析 方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习） 监督学习 每个具体的输入是一个实例，通常由特征向量表示。 输入实例x的特征向量： $$ x_i = (x_i^{(1)},x_i^{(2)},..., x_i^{(n)})^T $$ $x^{(i)}$与$">
+<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM%E6%88%AA%E5%9B%BE20190225201634.png">
 
 
 
@@ -399,11 +399,24 @@
 
       
         <p>本系列是《统计学习方法》这本书的读书笔记，本博客会陆续更新笔记内容。</p>
-<h1 id="统计学习"><a href="#统计学习" class="headerlink" title="统计学习"></a>统计学习</h1><p>对象：数据</p>
+<h1>统计学习</h1>
+<p>对象：数据</p>
 <p>目的：对数据进行预测和分析</p>
 <p>方法：监督学习、非监督学习、半监督学习、强化学习（本书主要研究监督学习）</p>
-<h1 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h1><p>每个具体的输入是一个实例，通常由特征向量表示。</p>
-<p>输入实例x的特征向量：<br>$$<br>x_i = (x_i^{(1)},x_i^{(2)},…, x_i^{(n)})^T<br>$$<br>$x^{(i)}$与$x_i$不同，后者表示多个输入变量中的第$i​$个：<br>$$<br>x_i = (x_i^{(1)},x_i^{(2)}, …,x_i^{(n)} )^T<br>$$<br>训练集通常表示为：<br>$$<br>T = {(x_1, y_1),(x_2, y_2) ,…,(x_N, y_N)}<br>$$</p>
+<h1>监督学习</h1>
+<p>每个具体的输入是一个实例，通常由特征向量表示。</p>
+<p>输入实例x的特征向量：
+$$
+x_i = (x_i^{(1)},x_i^{(2)},..., x_i^{(n)})^T
+$$
+$x^{(i)}$与$x_i$不同，后者表示多个输入变量中的第$i​$个：
+$$
+x_i = (x_i^{(1)},x_i^{(2)}, ...,x_i^{(n)} )^T
+$$
+训练集通常表示为：
+$$
+T = {(x_1, y_1),(x_2, y_2) ,...,(x_N, y_N)}
+$$</p>
 <ul>
 <li>回归问题：输入变量与输出变量均为连续变量的预测问题</li>
 <li>分类问题：输出变量为有限个离散变量的预测问题</li>
@@ -412,54 +425,141 @@
 <p>输入与输出的随机变量X和Y具有联合概率分布的假设是监督学习关于数据的基本假设。</p>
 <p>模型属于由输入空间到输出空间的映射的集合，这个集合就是假设空间。</p>
 <p>监督学习分为学习和预测两个过程，可用下图来描述：</p>
-<p><img src="/images/TIM截图20190225201634.png" alt="TIM截图20190225201634"></p>
+<p><img src="/images/TIM%E6%88%AA%E5%9B%BE20190225201634.png" alt="TIM截图20190225201634"></p>
 <p>监督学习可以概括如下：从给定有限的训练数据出发，假设数据是独立同分布的，而且假设模型属于某个假设空间，应用某一评价准则，从假设空间中选取一个最优的模型，使它对已给训练数据及未知测试数据在给定评价标准意义下有最准确的预测。</p>
-<h1 id="统计学习三要素"><a href="#统计学习三要素" class="headerlink" title="统计学习三要素"></a>统计学习三要素</h1><p>统计学习方法 = 模型 + 策略 + 算法。</p>
-<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>假设空间中的模型一般有无穷多个，假设空间用$\digamma$表示。</p>
-<p>假设空间可以定义为决策函数的集合：$\digamma = {f| Y = f(X)}​$ ，$\digamma​$通常是由一个参数向量决定的函数族：$\digamma = {f| Y = f_{\theta}(X), \theta \in R^n}​$ </p>
-<p>假设空间也可以定义为条件概率的结合：$\digamma = {P| P(Y|X)}$，$\digamma$通常是由一个参数向量决定的条件概率分布族：$\digamma = {P| P_{\theta}(Y|X), \theta \in R^n}​$ </p>
-<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><h3 id="损失函数和风险函数"><a href="#损失函数和风险函数" class="headerlink" title="损失函数和风险函数"></a>损失函数和风险函数</h3><p>有了模型的假设空间，统计学习接着考虑的就是按什么样的准则学习。</p>
+<h1>统计学习三要素</h1>
+<p>统计学习方法 = 模型 + 策略 + 算法。</p>
+<h2>模型</h2>
+<p>假设空间中的模型一般有无穷多个，假设空间用$\digamma$表示。</p>
+<p>假设空间可以定义为决策函数的集合：$\digamma = {f| Y = f(X)}​$ ，$\digamma​$通常是由一个参数向量决定的函数族：$\digamma = {f| Y = f_{\theta}(X), \theta \in R^n}​$</p>
+<p>假设空间也可以定义为条件概率的结合：$\digamma = {P| P(Y|X)}$，$\digamma$通常是由一个参数向量决定的条件概率分布族：$\digamma = {P| P_{\theta}(Y|X), \theta \in R^n}​$</p>
+<h2>策略</h2>
+<h3>损失函数和风险函数</h3>
+<p>有了模型的假设空间，统计学习接着考虑的就是按什么样的准则学习。</p>
 <ul>
 <li>损失函数：度量模型一次预测的好坏，如0-1损失函数、平方损失函数、绝对损失函数、对数损失函数。</li>
 <li>风险函数：度量平均意义下模型预测的好坏。</li>
 </ul>
-<p>损失函数的期望（风险函数）：<br>$$<br>R_{exp}(f) = E_p[L(Y, f(X))] = \int L(y, f(x))P(x, y)dxdy<br>$$<br>用P(X, Y)可以直接求出P(Y | X)，但我们不知道。</p>
-<p>模型$f(X)$关于训练数据集的平均损失称为经验风险或经验损失：<br>$$<br>R_{emp}(f) = \frac1N \sum_{i=1}^N L(y_i, f(x_i))<br>$$<br>根据大数理论，当样本N趋于无穷时，$R_{emp}(f)$趋于$R_{exp}(f)$，一个很自然的想法是用$R_{emp}(f)$来估计$R_{exp}(f)$。但现实中训练样本有限，要对经验风险进行矫正，这就关系到监督学习的两个基本策略：经验风险最小化和结构风险最小化。</p>
-<h3 id="经验风险最小化和结构风险最小化"><a href="#经验风险最小化和结构风险最小化" class="headerlink" title="经验风险最小化和结构风险最小化"></a>经验风险最小化和结构风险最小化</h3><p>按照经验风险最小化求最优模型就是求解最优化问题：<br>$$<br>min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i))<br>$$<br> 当样本容量很小时，经验风险最小化的效果未必很好，会产生过拟合（over-fitting），结构风险最小化由此提出。</p>
-<p>结构风险的定义是：<br>$$<br>R_{srm}(f)= \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)<br>$$<br>按照结构风险最小化求最优模型就是求解最优化问题：<br>$$<br>min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)<br>$$<br>这时，监督学习的问题就编程了经验风险或结构风险函数的最优化问题。</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>将统计学习问题归结为最优化问题之后，统计学习的算法成为求解最优化问题的算法。</p>
-<h1 id="模型评估与模型选择"><a href="#模型评估与模型选择" class="headerlink" title="模型评估与模型选择"></a>模型评估与模型选择</h1><h2 id="训练误差与测试误差"><a href="#训练误差与测试误差" class="headerlink" title="训练误差与测试误差"></a>训练误差与测试误差</h2><p>训练误差是模型$Y = \hat f (X)​$关于训练集的平均损失：<br>$$<br>R_{emp}(\hat f) = \frac1N \sum_{i=1}^N L(y_i, \hat f(x_i))<br>$$<br>测试误差是模型$Y = \hat f (X)$关于测试集的平均损失：<br>$$<br>e_{test} = \frac1 {N’} \sum_{i=1}^{N’} L(y_i, \hat f(x_i))<br>$$<br>测试误差反应了学习方法对未知的测试数据集的预测能力。</p>
-<h2 id="过拟合与模型选择"><a href="#过拟合与模型选择" class="headerlink" title="过拟合与模型选择"></a>过拟合与模型选择</h2><p>下图是训练误差和测试误差与模型复杂度的关系。当模型的复杂度增大时，训练误差会逐渐减小；而测试误差会先减小，达到最小值后又增大。</p>
-<p><img src="/images/TIM截图20190301152527.png" alt="TIM截图20190301152527"></p>
-<h1 id="正则化与交叉验证"><a href="#正则化与交叉验证" class="headerlink" title="正则化与交叉验证"></a>正则化与交叉验证</h1><h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>正则化项一般是模型复杂度的单调递增函数，模型越复杂，正则化值就越大。</p>
-<p>正则化一般具有如下形式：<br>$$<br>min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)<br>$$<br>其中，第1项是经验风险，第2项是正则化项，$\lambda \geq 0$为调整两者之间关系的系数。</p>
-<p>回归问题中：<br>$$<br>L(w) = \frac1N \sum_{i=1}^N(f(x_i;w)-y_i)^2 + \frac {\lambda}2 ||w||^2<br>$$</p>
-<p>$$<br>L(w) = \frac1N \sum_{i=1}^N(f(x_i;w)-y_i)^2 + {\lambda} ||w||_1<br>$$</p>
-<h2 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h2><p>如果给定的样本数据充足，进行模型选择的一种简单方法是随机地将数据集分为三部分，分别为训练集、验证集和测试集。训练集用来训练模型，验证集用于模型的选择，而测试集用于最终对学习方法的评估。</p>
+<p>损失函数的期望（风险函数）：
+$$
+R_{exp}(f) = E_p[L(Y, f(X))] = \int L(y, f(x))P(x, y)dxdy
+$$
+用P(X, Y)可以直接求出P(Y | X)，但我们不知道。</p>
+<p>模型$f(X)$关于训练数据集的平均损失称为经验风险或经验损失：
+$$
+R_{emp}(f) = \frac1N \sum_{i=1}^N L(y_i, f(x_i))
+$$
+根据大数理论，当样本N趋于无穷时，$R_{emp}(f)$趋于$R_{exp}(f)$，一个很自然的想法是用$R_{emp}(f)$来估计$R_{exp}(f)$。但现实中训练样本有限，要对经验风险进行矫正，这就关系到监督学习的两个基本策略：经验风险最小化和结构风险最小化。</p>
+<h3>经验风险最小化和结构风险最小化</h3>
+<p>按照经验风险最小化求最优模型就是求解最优化问题：
+$$
+min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i))
+$$
+当样本容量很小时，经验风险最小化的效果未必很好，会产生过拟合（over-fitting），结构风险最小化由此提出。</p>
+<p>结构风险的定义是：
+$$
+R_{srm}(f)= \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)
+$$
+按照结构风险最小化求最优模型就是求解最优化问题：
+$$
+min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)
+$$
+这时，监督学习的问题就编程了经验风险或结构风险函数的最优化问题。</p>
+<h2>算法</h2>
+<p>将统计学习问题归结为最优化问题之后，统计学习的算法成为求解最优化问题的算法。</p>
+<h1>模型评估与模型选择</h1>
+<h2>训练误差与测试误差</h2>
+<p>训练误差是模型$Y = \hat f (X)​$关于训练集的平均损失：
+$$
+R_{emp}(\hat f) = \frac1N \sum_{i=1}^N L(y_i, \hat f(x_i))
+$$
+测试误差是模型$Y = \hat f (X)$关于测试集的平均损失：
+$$
+e_{test} = \frac1 {N'} \sum_{i=1}^{N'} L(y_i, \hat f(x_i))
+$$
+测试误差反应了学习方法对未知的测试数据集的预测能力。</p>
+<h2>过拟合与模型选择</h2>
+<p>下图是训练误差和测试误差与模型复杂度的关系。当模型的复杂度增大时，训练误差会逐渐减小；而测试误差会先减小，达到最小值后又增大。</p>
+<p><img src="/images/TIM%E6%88%AA%E5%9B%BE20190301152527.png" alt="TIM截图20190301152527"></p>
+<h1>正则化与交叉验证</h1>
+<h2>正则化</h2>
+<p>正则化项一般是模型复杂度的单调递增函数，模型越复杂，正则化值就越大。</p>
+<p>正则化一般具有如下形式：
+$$
+min_{f \in \digamma} \frac1N \sum_{i=1}^N L(y_i, f(x_i)) + \lambda J(f)
+$$
+其中，第1项是经验风险，第2项是正则化项，$\lambda \geq 0$为调整两者之间关系的系数。</p>
+<p>回归问题中：
+$$
+L(w) = \frac1N \sum_{i=1}^N(f(x_i;w)-y_i)^2 + \frac {\lambda}2 ||w||^2
+$$</p>
+<p>$$
+L(w) = \frac1N \sum_{i=1}^N(f(x_i;w)-y_i)^2 + {\lambda} ||w||_1
+$$</p>
+<h2>交叉验证</h2>
+<p>如果给定的样本数据充足，进行模型选择的一种简单方法是随机地将数据集分为三部分，分别为训练集、验证集和测试集。训练集用来训练模型，验证集用于模型的选择，而测试集用于最终对学习方法的评估。</p>
 <p>但在数据不充足的情况下，为选择好的模型，可以使用交叉验证。交叉验证的基本想法是重复地使用数据，把给定的数据进行切分，将切分的数据集组合为训练集与测试集，在此基础上反复地进行训练、测试以及模型选择。</p>
-<h3 id="简单交叉验证"><a href="#简单交叉验证" class="headerlink" title="简单交叉验证"></a>简单交叉验证</h3><p>将数据分为训练集和测试集，然后用训练集在各种条件下训练模型从而得到不同模型，在测试集桑拿评价各个模型的测试误差，选出测试误差最小的模型。</p>
-<h3 id="S折交叉验证"><a href="#S折交叉验证" class="headerlink" title="S折交叉验证"></a>S折交叉验证</h3><p>应用最多的是S折交叉验证。首先随机地将已给数据切分为S个互不相交的大小相同的子集，然后利用S-1个子集的数据训练模型，利用余下的子集测试模型，将这一过程对可能的S种选择重复进行，最后选出S次评测中平均测试误差最小的模型。</p>
-<h3 id="留一交叉验证"><a href="#留一交叉验证" class="headerlink" title="留一交叉验证"></a>留一交叉验证</h3><p>S折交叉验证的特殊情形是S = N，称为留一交叉验证，往往在数据缺乏的情况下使用。这里的N是给定数据集的容量。</p>
-<h1 id="泛化能力"><a href="#泛化能力" class="headerlink" title="泛化能力"></a>泛化能力</h1><p>泛化误差<br>$$<br>R_{exp}(\hat f) = E_p[L(Y, \hat f(X))] = \int L(y, \hat f(x))P(x, y)dxdy<br>$$<br>可以通过比较泛化误差上界来比较学习方法的泛化能力。</p>
+<h3>简单交叉验证</h3>
+<p>将数据分为训练集和测试集，然后用训练集在各种条件下训练模型从而得到不同模型，在测试集桑拿评价各个模型的测试误差，选出测试误差最小的模型。</p>
+<h3>S折交叉验证</h3>
+<p>应用最多的是S折交叉验证。首先随机地将已给数据切分为S个互不相交的大小相同的子集，然后利用S-1个子集的数据训练模型，利用余下的子集测试模型，将这一过程对可能的S种选择重复进行，最后选出S次评测中平均测试误差最小的模型。</p>
+<h3>留一交叉验证</h3>
+<p>S折交叉验证的特殊情形是S = N，称为留一交叉验证，往往在数据缺乏的情况下使用。这里的N是给定数据集的容量。</p>
+<h1>泛化能力</h1>
+<p>泛化误差
+$$
+R_{exp}(\hat f) = E_p[L(Y, \hat f(X))] = \int L(y, \hat f(x))P(x, y)dxdy
+$$
+可以通过比较泛化误差上界来比较学习方法的泛化能力。</p>
 <p>泛化误差上界的性质：样本容量增加，泛化误差趋于0；假设空间容量越大，泛化误差越大。</p>
-<p>定理（泛化误差上界）：对二分类问题，当假设空间是有限个函数的集合时$\digamma = {f_1, f_2, …, f_d}$，对任意一个函数$f \in \digamma$，至少以概率$1-\delta$，以下不等式成立：<br>$$<br>R(f) \leq \hat R(f) + \varepsilon (d, N, \delta)<br>$$</p>
-<p>$$<br>\varepsilon(d, N, \delta) = \sqrt {\frac 1{2N}(\log d+\log\frac1{\delta})}<br>$$</p>
-<h1 id="生成模型与判别模型"><a href="#生成模型与判别模型" class="headerlink" title="生成模型与判别模型"></a>生成模型与判别模型</h1><p>监督学习方法可以分为生成方法和判别方法，所学到的模型分别称为生成模型和判别模型。</p>
-<p>生成方法由数据学习联合概率分布P(X, Y)，然后求出条件概率分布P(Y | X)作为预测的模型，即生成模型：<br>$$<br>P(Y|X) = \frac {P(X, Y)}{P(X)}<br>$$<br>典型的生成模型由：朴素贝叶斯法和隐马尔可夫模型。</p>
+<p>定理（泛化误差上界）：对二分类问题，当假设空间是有限个函数的集合时$\digamma = {f_1, f_2, ..., f_d}$，对任意一个函数$f \in \digamma$，至少以概率$1-\delta$，以下不等式成立：
+$$
+R(f) \leq \hat R(f) + \varepsilon (d, N, \delta)
+$$</p>
+<p>$$
+\varepsilon(d, N, \delta) = \sqrt {\frac 1{2N}(\log d+\log\frac1{\delta})}
+$$</p>
+<h1>生成模型与判别模型</h1>
+<p>监督学习方法可以分为生成方法和判别方法，所学到的模型分别称为生成模型和判别模型。</p>
+<p>生成方法由数据学习联合概率分布P(X, Y)，然后求出条件概率分布P(Y | X)作为预测的模型，即生成模型：
+$$
+P(Y|X) = \frac {P(X, Y)}{P(X)}
+$$
+典型的生成模型由：朴素贝叶斯法和隐马尔可夫模型。</p>
 <p>判别方法由数据直接学习决策函数f(X)或者条件概率分布P(Y | X)作为预测的模型，即判别模型。典型的判别模型包括：k近邻法、感知机、决策树、Logistic回归模型、最大熵模型、支持向量机、提升方法和条件随机场等。</p>
 <p>各自的优缺点：</p>
 <ul>
 <li>生成方法：可还原出联合概率分布P(X,Y),而判别方法不能。生成方法的收敛速度更快，当样本容量增加的时候，学到的模型可以更快地收敛于真实模型；当存在隐变量时，仍可以使用生成方法，而判别方法则不能用。</li>
 <li>判别方法：直接学习到条件概率或决策函数，直接进行预测，往往学习的准确率更高；由于直接学习Y=f(X)或P(Y|X),可对数据进行各种程度上的抽象、定义特征并使用特征，因此可以简化学习过程。</li>
 </ul>
-<h1 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h1><p>二分类问题常用的评价指标是精确率(precision)和召回率(recall)。</p>
-<p>精确率定义为<br>$$<br>P = \frac {TP}{TP+FP}<br>$$<br>召回率定义为<br>$$<br>R = \frac {TP}{TP+FN}<br>$$<br>其中：<br>TP (true positive) 将正类预测为正类<br>FN (false negative) 将正类预测为负类<br>FP (false positive) 将负类预测为正类<br>TN (true negative) 将负类预测为负类</p>
-<p>$F_1$是精确率和召回率的调和均值，即<br>$$<br>\frac 2{F_1} = \frac 1P+ \frac1R<br>$$</p>
-<p>$$<br>F_1 = \frac {2TP}{2TP+FP+FN}<br>$$</p>
-<h1 id="标注问题"><a href="#标注问题" class="headerlink" title="标注问题"></a>标注问题</h1><p>评价标注模型的指标与评价分类模型的指标一样，可以认为标记问题是分类问题的一个推广。</p>
+<h1>分类问题</h1>
+<p>二分类问题常用的评价指标是精确率(precision)和召回率(recall)。</p>
+<p>精确率定义为
+$$
+P = \frac {TP}{TP+FP}
+$$
+召回率定义为
+$$
+R = \frac {TP}{TP+FN}
+$$
+其中：
+TP (true positive) 将正类预测为正类
+FN (false negative) 将正类预测为负类
+FP (false positive) 将负类预测为正类
+TN (true negative) 将负类预测为负类</p>
+<p>$F_1$是精确率和召回率的调和均值，即
+$$
+\frac 2{F_1} = \frac 1P+ \frac1R
+$$</p>
+<p>$$
+F_1 = \frac {2TP}{2TP+FP+FN}
+$$</p>
+<h1>标注问题</h1>
+<p>评价标注模型的指标与评价分类模型的指标一样，可以认为标记问题是分类问题的一个推广。</p>
 <p>标注问题的输入是一个观测序列，输出的是一个标记序列或状态序列。也就是说，分类问题的输出是一个值，而标注问题输出是一个向量，向量的每个值属于一种标记类型。</p>
 <p>标注常用的统计学习方法有：隐马尔可夫模型、条件随机场。</p>
-<h1 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h1><p>回归模型是表示输入变量到输出变量之间映射的函数，回归问题的学习等价于函数拟合。</p>
+<h1>回归问题</h1>
+<p>回归模型是表示输入变量到输出变量之间映射的函数，回归问题的学习等价于函数拟合。</p>
 <p>最常用的损失函数是平方损失函数，在此情况下，回归问题可以由著名的最小二乘法求解。</p>
 
       
@@ -639,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#统计学习"><span class="nav-number">1.</span> <span class="nav-text">统计学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监督学习"><span class="nav-number">2.</span> <span class="nav-text">监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#统计学习三要素"><span class="nav-number">3.</span> <span class="nav-text">统计学习三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">3.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-number">3.2.</span> <span class="nav-text">策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数和风险函数"><span class="nav-number">3.2.1.</span> <span class="nav-text">损失函数和风险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经验风险最小化和结构风险最小化"><span class="nav-number">3.2.2.</span> <span class="nav-text">经验风险最小化和结构风险最小化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">3.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型评估与模型选择"><span class="nav-number">4.</span> <span class="nav-text">模型评估与模型选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#训练误差与测试误差"><span class="nav-number">4.1.</span> <span class="nav-text">训练误差与测试误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合与模型选择"><span class="nav-number">4.2.</span> <span class="nav-text">过拟合与模型选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则化与交叉验证"><span class="nav-number">5.</span> <span class="nav-text">正则化与交叉验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">5.1.</span> <span class="nav-text">正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉验证"><span class="nav-number">5.2.</span> <span class="nav-text">交叉验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单交叉验证"><span class="nav-number">5.2.1.</span> <span class="nav-text">简单交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S折交叉验证"><span class="nav-number">5.2.2.</span> <span class="nav-text">S折交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#留一交叉验证"><span class="nav-number">5.2.3.</span> <span class="nav-text">留一交叉验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛化能力"><span class="nav-number">6.</span> <span class="nav-text">泛化能力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成模型与判别模型"><span class="nav-number">7.</span> <span class="nav-text">生成模型与判别模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类问题"><span class="nav-number">8.</span> <span class="nav-text">分类问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标注问题"><span class="nav-number">9.</span> <span class="nav-text">标注问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回归问题"><span class="nav-number">10.</span> <span class="nav-text">回归问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">统计学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">监督学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">统计学习三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">损失函数和风险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">经验风险最小化和结构风险最小化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">模型评估与模型选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">训练误差与测试误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">过拟合与模型选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">正则化与交叉验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">交叉验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.1.</span> <span class="nav-text">简单交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.2.</span> <span class="nav-text">S折交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.3.</span> <span class="nav-text">留一交叉验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">泛化能力</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">生成模型与判别模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">分类问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">标注问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">回归问题</span></a></li></ol></div>
             
 
           </div>

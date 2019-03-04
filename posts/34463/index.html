@@ -397,13 +397,14 @@
       
         <p>实验室的服务器目前只有一个jupyter端口，而现在有多用户使用jupyter在服务器操作的需求，大家不方便用一个账户，于是就创建了多个账户。</p>
 <p>原理其实很简单，使用不同的配置文件运行jupyter即可，下面是启动jupyter的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --config &lt;config_file_path&gt;</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --config &lt;config_file_path&gt;</span><br></pre></td></tr></table></figure></p>
 <p>然后使用ipython配置密码，这里配置的是哈希之后的密码，进入ipython输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from notebook.auth import passwd</span><br><span class="line">passwd()</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from notebook.auth import passwd</span><br><span class="line">passwd()</span><br></pre></td></tr></table></figure></p>
 <p>复制生成的哈希密码，然后编辑配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure></p>
 <p>添加：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.password = &apos;sha1:...&apos;       # 刚才复制的哈希密码</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.password = &apos;sha1:...&apos;       # 刚才复制的哈希密码</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -443,8 +444,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/17800/" rel="prev" title="线性可分支持向量机与硬间隔最大化(2)">
-                线性可分支持向量机与硬间隔最大化(2) <i class="fa fa-chevron-right"></i>
+              <a href="/posts/2405/" rel="prev" title="Hexo中渲染MathJax数学公式的问题">
+                Hexo中渲染MathJax数学公式的问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
