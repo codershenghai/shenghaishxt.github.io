@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191150.png">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191428.png">
-<meta property="og:updated_time" content="2019-03-04T11:24:33.812Z">
+<meta property="og:updated_time" content="2019-03-05T02:00:59.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性可分支持向量机与软间隔最大化">
 <meta name="twitter:description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
@@ -446,7 +446,7 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
 \begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
 \\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
 \\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>于是，可以通过求解此对偶问题而得到原始问题的解，进而确定分离超平面和决策函数。</p>
-<h2 id="线性可分支持向量机学习算法"><a href="#线性可分支持向量机学习算法" class="headerlink" title="线性可分支持向量机学习算法"></a>线性可分支持向量机学习算法</h2><h3 id="输入：线性可分训练数据集"><a href="#输入：线性可分训练数据集" class="headerlink" title="输入：线性可分训练数据集"></a>输入：线性可分训练数据集</h3><p>线性可分训练数据集 $T={(x_1, y_1), (x_2, y_2),…,(x_N, y_N)}$，其中 $x_i \in  R^n$，$y_i \in \{-1, 1\}$，$i=1,2,…,N$。</p>
+<h2 id="线性可分支持向量机学习算法"><a href="#线性可分支持向量机学习算法" class="headerlink" title="线性可分支持向量机学习算法"></a>线性可分支持向量机学习算法</h2><h3 id="输入：训练数据集"><a href="#输入：训练数据集" class="headerlink" title="输入：训练数据集"></a>输入：训练数据集</h3><p>线性可分训练数据集 $T={(x_1, y_1), (x_2, y_2),…,(x_N, y_N)}$，其中 $x_i \in  R^n$，$y_i \in \{-1, 1\}$，$i=1,2,…,N$。</p>
 <h3 id="输出：分离超平面和分类决策函数"><a href="#输出：分离超平面和分类决策函数" class="headerlink" title="输出：分离超平面和分类决策函数"></a>输出：分离超平面和分类决策函数</h3><ol>
 <li><p>选择惩罚参数$C \geq 0$，构早并求解凸二次规划问题</p>
 <script type="math/tex; mode=display">
@@ -617,7 +617,7 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +672,7 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">1.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习的对偶算法"><span class="nav-number">2.</span> <span class="nav-text">学习的对偶算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建拉格朗日函数"><span class="nav-number">2.1.</span> <span class="nav-text">构建拉格朗日函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极小"><span class="nav-number">2.2.</span> <span class="nav-text">求极小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极大"><span class="nav-number">2.3.</span> <span class="nav-text">求极大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机学习算法"><span class="nav-number">2.4.</span> <span class="nav-text">线性可分支持向量机学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入：线性可分训练数据集"><span class="nav-number">2.4.1.</span> <span class="nav-text">输入：线性可分训练数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出：分离超平面和分类决策函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">输出：分离超平面和分类决策函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量"><span class="nav-number">3.</span> <span class="nav-text">支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合页损失函数"><span class="nav-number">4.</span> <span class="nav-text">合页损失函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">1.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习的对偶算法"><span class="nav-number">2.</span> <span class="nav-text">学习的对偶算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建拉格朗日函数"><span class="nav-number">2.1.</span> <span class="nav-text">构建拉格朗日函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极小"><span class="nav-number">2.2.</span> <span class="nav-text">求极小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极大"><span class="nav-number">2.3.</span> <span class="nav-text">求极大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机学习算法"><span class="nav-number">2.4.</span> <span class="nav-text">线性可分支持向量机学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入：训练数据集"><span class="nav-number">2.4.1.</span> <span class="nav-text">输入：训练数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出：分离超平面和分类决策函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">输出：分离超平面和分类决策函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量"><span class="nav-number">3.</span> <span class="nav-text">支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合页损失函数"><span class="nav-number">4.</span> <span class="nav-text">合页损失函数</span></a></li></ol></div>
             
 
           </div>
