@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[在Linux的Jupyter Notebook中安装R内核]]></title>
+    <url>%2Fposts%2F61698%2F</url>
+    <content type="text"><![CDATA[普通电脑已经无法满足日益增长的计算需求了，于是在服务器上安装了R，还没有在Jupyter上写过Python之外的语言，这次来试试在Jupyter上写R。 网上很多方法是直接安装devtools包的，利用其中的的 install_github() 函数用于从Github上安装R内核。但如果直接install.packages的话，反正我是死活装不上这个包，提示各种错误。这里分享我的安装方法，给大家提供一个参考吧。 安装devtools前的准备直接在终端执行如下命令： 123456sudo apt-get install gfortransudo apt-get install build-essential sudo apt-get install libxt-dev sudo apt-get install libcurl4-openssl-devsudo apt-get install libxml++2.6-devsudo apt-get install libssl-dev 安装devtools添加dependencies = T同时安装必要的依赖： 12install.packages(&quot;devtools&quot;, dependencies = T)library(devtools) # 如果没有任何提示就代表成功了 安装R kernel并注册从Github安装R kernel： 1devtools::install_github(&apos;IRkernel/IRkernel&apos;) 在R中注册激活R kernel： 1IRkernel::installspec() 然后打开Jupyter，看到可以新建R notebook了：]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>R语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[多机使用SSH key连接至Github Page]]></title>
     <url>%2Fposts%2F35104%2F</url>
     <content type="text"><![CDATA[设置Github在本地机器中安装好Git和Hexo之后，在终端或是Git Bash中执行如下代码： 12git config --global user.name &quot;YOUR NAME&quot; # Github注册账户名git config --global user.email &quot;YOUR EMAIL ADDRESS&quot; # Github注册邮箱 验证Github输入以下命令，生成SSH key： 1ssh-keygen -t rsa -b 4096 -C &quot;YOUR EMAIL ADDRESS&quot; # Github注册邮箱 将 SSH key 添加到 ssh-agent： 123eval &quot;$(ssh-agent -s)&quot; # 开启 ssh-agentssh-add ~/.ssh/id_rsa # 添加SSH key到 ssh-agentclip &lt; ~/.ssh/id_rsa.pub # 将SSH key复制出来 登录Github，依次点击自己的头像，Settings，SSH and GPG keys， Add SSH key， 在 Title 这里输入 Key 的label，我的是Linux-PC，将SSH key添加到Github账户。 然后测试SSH连接，在终端或Git Bash中执行： 1ssh -T git@github.com 如果返回的是You’ve successfully authenticated, but GitHub does not provide shell access，那么就表示已经成功了。]]></content>
@@ -8,8 +20,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Linux</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
