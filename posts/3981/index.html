@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="序列最小最优化算法(sequential minimal optimization, SMO)算法：1998年由Platt提出。支持向量机的学习问题可以形式化为求解凸二次规划问题，这样的凸二次规划问题具有全局最优解，并且有许多最优化算法可以用于这一问题的求解。但是当训练样本容量很大时，这些算法往往变得非常低效，以致无法使用。所以，如何高效地实现支持向量机学习就成为一个重要的问题。 SMO算法是一种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T15:44:01.304Z">
+<meta property="og:updated_time" content="2019-03-10T13:46:57.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列最小最优算法(SMO算法)">
 <meta name="twitter:description" content="序列最小最优化算法(sequential minimal optimization, SMO)算法：1998年由Platt提出。支持向量机的学习问题可以形式化为求解凸二次规划问题，这样的凸二次规划问题具有全局最优解，并且有许多最优化算法可以用于这一问题的求解。但是当训练样本容量很大时，这些算法往往变得非常低效，以致无法使用。所以，如何高效地实现支持向量机学习就成为一个重要的问题。 SMO算法是一种">
@@ -407,7 +407,44 @@
 <li>求解两个变量二次规划的解析方法</li>
 <li>选择变量的启发式方法</li>
 </ul>
-<h1 id="两个变量二次规划的求解方法"><a href="#两个变量二次规划的求解方法" class="headerlink" title="两个变量二次规划的求解方法"></a>两个变量二次规划的求解方法</h1>
+<p>序列最小最优化（sequential minimal optimization，SMO）算法要解如下凸二次规划的对偶问题：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} K \left( x_{i}, x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
+\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
+\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>子问题有两个变量，一个是违反KKT条件最严重的那个，另一个由约束条件自动确定。子问题的两个变量只有一个是自由变量，如果$\alpha_2$确定，那么$\alpha_1$也随之确定，所以子问题中同时更新两个变量。</p>
+<h1 id="SMO算法"><a href="#SMO算法" class="headerlink" title="SMO算法"></a>SMO算法</h1><p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，其中$x_{i} \in \mathcal{X} = R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N$，精度$\varepsilon$；  </p>
+<p>输出：近似解$\hat \alpha​$ </p>
+<ol>
+<li><p>取初始值$\alpha^{0} = 0​$，令$k = 0​$；</p>
+</li>
+<li><p>选取优化变量$\alpha_{1}^{\left( k \right)},\alpha_{2}^{\left( k \right)}​$，求解</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ &  \min_{\alpha_{1}, \alpha_{2}} W \left( \alpha_{1}, \alpha_{2} \right) = \dfrac{1}{2} K_{11} \alpha_{1}^{2} + \dfrac{1}{2} K_{22} \alpha_{2}^{2} + y_{1} y_{2} K_{12} \alpha_{1} \alpha_{2} 
+\\ & \quad\quad\quad\quad\quad\quad - \left( \alpha_{1} + \alpha_{2} \right) + y_{1} \alpha_{1} \sum_{i=3}^{N} y_{i} \alpha_{i} K_{i1} + y_{2} \alpha_{2} \sum_{i=3}^{N} y_{i} \alpha_i K_{i2}
+\\ & s.t. \quad \alpha_{1} + \alpha_{2} = -\sum_{i=3}^{N} \alpha_{i} y_{i} = \varsigma
+\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2  \end{align*}</script></li>
+</ol>
+<ol>
+<li><p>求得最优解$\alpha_{1}^{\left( k＋1 \right)},\alpha_{2}^{\left( k+1 \right)}$，更新$\alpha$为$\alpha^{\left( k+1 \right)}$；</p>
+</li>
+<li><p>若在精度$\varepsilon​$范围内满足停机条件</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
+\\ & 0 \leq \alpha_{i} \leq C, i = 1, 2, \cdots, N
+\\ & \end{align*}</script><script type="math/tex; mode=display">
+\begin{align*} y_{i} \cdot g \left( x_{i} \right) = \left\{
+\begin{aligned} 
+\ &  \geq 1, \left\{ x_{i} | \alpha_{i} = 0 \right\}
+\\ & = 1, \left\{ x_{i} | 0 < \alpha_{i} < C \right\}
+\\ & \leq 1, \left\{ x_{i} | \alpha_{i} = C \right\}
+\end{aligned}
+\right.\end{align*}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+g(x_i) = \sum_{j=1}^N \alpha_jy_jK(x_j,x_i) + b</script><p>则转(4)；否则令$k = k + 1$，转(2)；</p>
+<p>4.取$\hat \alpha = \alpha^{\left( k + 1 \right)}​$。</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -587,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#两个变量二次规划的求解方法"><span class="nav-number">1.</span> <span class="nav-text">两个变量二次规划的求解方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SMO算法"><span class="nav-number">1.</span> <span class="nav-text">SMO算法</span></a></li></ol></div>
             
 
           </div>
