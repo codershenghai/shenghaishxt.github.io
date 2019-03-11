@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Linux,V2Ray,">
+  <meta name="keywords" content="机器学习,提升算法,集成学习,AdaBoost,">
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。我们可以将其理解为类似于Shadowsocks的代理软件，但V2Ray的功能更强大，而且更不容易被墙检测到。V2Ray在win和mac下都有GUI客户端可使用，但在Linux下没有，只能通过修改配置来使用，由于客户端配置比较复杂，本文提供一种偷懒版配置">
-<meta name="keywords" content="Linux,V2Ray">
+<meta name="description" content="提升算法的基本思路提升算法是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。 有两个问题：  在每一轮如何改变训练数据的权值或概率分布 如何将弱分类器组合成一个强分类器  对于第一个问题，AdaBoost的做法是提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。对于第二个问题，AdaBoost采取加权多数表决的方">
+<meta name="keywords" content="机器学习,提升算法,集成学习,AdaBoost">
 <meta property="og:type" content="article">
-<meta property="og:title" content="V2Ray的Linux客户端配置">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/26401/index.html">
+<meta property="og:title" content="提升算法 AdaBoost 算法">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/48763/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。我们可以将其理解为类似于Shadowsocks的代理软件，但V2Ray的功能更强大，而且更不容易被墙检测到。V2Ray在win和mac下都有GUI客户端可使用，但在Linux下没有，只能通过修改配置来使用，由于客户端配置比较复杂，本文提供一种偷懒版配置">
+<meta property="og:description" content="提升算法的基本思路提升算法是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。 有两个问题：  在每一轮如何改变训练数据的权值或概率分布 如何将弱分类器组合成一个强分类器  对于第一个问题，AdaBoost的做法是提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。对于第二个问题，AdaBoost采取加权多数表决的方">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/深度截图_选择区域_20190307094053.png">
-<meta property="og:updated_time" content="2019-03-09T06:19:38.345Z">
+<meta property="og:updated_time" content="2019-03-11T06:54:27.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="V2Ray的Linux客户端配置">
-<meta name="twitter:description" content="V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。我们可以将其理解为类似于Shadowsocks的代理软件，但V2Ray的功能更强大，而且更不容易被墙检测到。V2Ray在win和mac下都有GUI客户端可使用，但在Linux下没有，只能通过修改配置来使用，由于客户端配置比较复杂，本文提供一种偷懒版配置">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/深度截图_选择区域_20190307094053.png">
+<meta name="twitter:title" content="提升算法 AdaBoost 算法">
+<meta name="twitter:description" content="提升算法的基本思路提升算法是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。 有两个问题：  在每一轮如何改变训练数据的权值或概率分布 如何将弱分类器组合成一个强分类器  对于第一个问题，AdaBoost的做法是提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。对于第二个问题，AdaBoost采取加权多数表决的方">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/26401/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/48763/">
 
 
 
 
 
-  <title>V2Ray的Linux客户端配置 | shenghai's blog | shxt</title>
+  <title>提升算法 AdaBoost 算法 | shenghai's blog | shxt</title>
   
 
 
@@ -308,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/26401/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/48763/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -325,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">V2Ray的Linux客户端配置</h1>
+          <h1 class="post-title" itemprop="name headline">提升算法 AdaBoost 算法</h1>
         
 
         <div class="post-meta">
@@ -337,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-09T14:13:14+08:00">
-                2019-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T13:37:43+08:00">
+                2019-03-11
               </time>
             
 
@@ -360,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/《统计学习方法》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《统计学习方法》读书笔记</span>
                   </a>
                 </span>
 
@@ -397,17 +395,61 @@
       
 
       
-        <p>V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。我们可以将其理解为类似于Shadowsocks的代理软件，但V2Ray的功能更强大，而且更不容易被墙检测到。V2Ray在win和mac下都有GUI客户端可使用，但在Linux下没有，只能通过修改配置来使用，由于客户端配置比较复杂，本文提供一种偷懒版配置方法，即在win或mac下将配置好的config文件复制一份到Linux下使用。</p>
-<h1 id="安装V2Ray"><a href="#安装V2Ray" class="headerlink" title="安装V2Ray"></a>安装V2Ray</h1><p>V2Ray官方提供了一个自动化安装的脚本，直接使用这个脚本安装即可，在终端中运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://install.direct/go.sh  # 下载脚本</span><br><span class="line">sudo bash go.sh  # 执行脚本</span><br><span class="line">sudo systemctl start v2ray  # 启动V2Ray，测试是否安装成功</span><br><span class="line">sudo systemctl stop v2ray  # 停止V2Ray</span><br></pre></td></tr></table></figure>
-<h1 id="配置V2Ray"><a href="#配置V2Ray" class="headerlink" title="配置V2Ray"></a>配置V2Ray</h1><p>在win或mac中找到已配置好的config.json，复制到/etc/v2ray/config.json后执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart v2ray  # 重启V2Ray</span><br></pre></td></tr></table></figure>
-<p>现在有两种方法启动V2Ray的代理，先介绍第一种，在系统层面上启动代理，这种算是全局代理了。进入本地计算机设置中的网络——系统代理，我这里监听的端口是2333，协议是socks，如下图：</p>
-<p><img src="/images/深度截图_选择区域_20190307094053.png" alt="深度截图_选择区域_20190307094053"></p>
-<p>另一种方法是在Chrome或Firefox中安装SwitchyOmega来管理，使用SwitchyOmega网上已经很多了，这里就不再讲了。等全部设置完毕后，可以试试能不能上油管，享受自由的互联网吧！</p>
-<blockquote>
-<p>如果想访问国内网站不走代理的话，建议在Chrome下配合SwitchyOmega来使用，用自动切换模式自由度更高，而且能够设置规则列表，实时更新被墙的网址。</p>
-</blockquote>
+        <h1 id="提升算法的基本思路"><a href="#提升算法的基本思路" class="headerlink" title="提升算法的基本思路"></a>提升算法的基本思路</h1><p>提升算法是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。</p>
+<p>有两个问题：</p>
+<ul>
+<li>在每一轮如何改变训练数据的权值或概率分布</li>
+<li>如何将弱分类器组合成一个强分类器</li>
+</ul>
+<p>对于第一个问题，AdaBoost的做法是提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。<br>对于第二个问题，AdaBoost采取加权多数表决的方法。即加大分类误差率小的弱分类器的权值，减小分类误差率大的弱分类器的权值。</p>
+<h1 id="AdaBoost-算法"><a href="#AdaBoost-算法" class="headerlink" title="AdaBoost 算法"></a>AdaBoost 算法</h1><p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，其中$x_{i} \in \mathcal{X} \subseteq R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N$；弱学习算法。</p>
+<p>输出：最终分类器$G(x)$。</p>
+<ol>
+<li><p>初始化训练数据的权值分布</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & D_{1}=\left(w_{11},w_{12},\cdots,w_{1N}\right), \quad w_{1i} = \dfrac{1}{N}, \quad i=1,2,\cdots,N\end{align*}</script></li>
+<li><p>对$m=1,2,\cdots,M​$</p>
+<p>（a）使用具有权值分布$D_m$的训练数据集学习，得到基本分类器</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & G_{m}\left(x\right): \mathcal{X} \to \left\{ -1, +1\right\} \end{align*}（b）</script><p>（b）计算$G_m(x)$在训练数据集上的分类误差率</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& e_{m} = P\left(G_{m}\left(x_{i}\right) \neq y_{i}\right)
+\\ & = \sum_{i=1}^{N} w_{mi} I \left(G_{m}\left(x_{i}\right) \neq y_{i} \right) \end{align*}</script><p>（c）计算$G_m(x)​$的系数</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & \alpha_{m} = \dfrac{1}{2} \log \dfrac{1-e_{m}}{e_{m}} \end{align*}</script><p>（d）更新训练数据集的权值分布</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ &  D_{m+1}=\left(w_{m+1,1},\cdots,w_{m+1,i},\cdots,w_{m+1,N}\right)
+\\ & w_{m+1,i} = \dfrac{w_{mi}}{Z_{m}} \exp \left(- \alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), 
+\\ & \quad \quad = \left\{
+\begin{aligned} 
+\ &  \dfrac{w_{mi}}{Z_{m}} \exp \left(- \alpha_{m} \right), G_{m}\left(x_{i}\right) = y_{i}
+\\ & \dfrac{w_{mi}}{Z_{m}} \exp \left( \alpha_{m} \right), G_{m}\left(x_{i}\right) \neq y_{i}
+\end{aligned}
+\right. \quad i=1,2,\cdots,N \end{align*}</script><p>​    其中，$Z_m​$是规范化因子</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & Z_{m}＝ \sum_{i=1}^{N} w_{mi} \exp \left(- \alpha_{m} y_{i}, G_{m}\left(x_{i}\right)\right)\end{align*}</script></li>
+<li><p>构建基本分类器的线性组合</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & f \left( x \right) = \sum_{m=1}^{M} \alpha_{m} G_{m} \left( x \right) \end{align*}</script><p>得到最终分类器</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & G\left(x\right) = sign\left(f\left(x\right)\right)=sign\left(\sum_{m=1}^{M} \alpha_{m} G_{m} \left( x \right)\right) \end{align*}</script></li>
+</ol>
+<h1 id="AdaBoost-算法的解释"><a href="#AdaBoost-算法的解释" class="headerlink" title="AdaBoost 算法的解释"></a>AdaBoost 算法的解释</h1><p>AdaBoost 算法可以认为是模型为加法模型、损失函数为指数函数、学习算法为前向分布算法时的二类分类学习方法。</p>
+<h2 id="前向分布算法"><a href="#前向分布算法" class="headerlink" title="前向分布算法"></a>前向分布算法</h2><p>前向分布算法：<br>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，损失函数$L\left(y,f\left(x\right)\right)$；基函数集$\left\{b\left(x;\gamma\right)\right\}$<br>输出：加法模型$f\left(x\right)​$  </p>
+<ol>
+<li><p>初始化$f_{0}\left(x\right)=0​$     </p>
+</li>
+<li><p>对$m=1,2,\cdots,M$  </p>
+<p>（a） 极小化损失函数</p>
+<script type="math/tex; mode=display">
+\begin{align}  \ & \left(\beta_{m},\gamma_{m}\right) = \arg \min{\beta,\gamma} \sum{i=1}^{N} L \left( y{i},f{m-1} \left(x{i}\right) + \beta b\left(x{i};\gamma \right)\right) \end{align}</script><p> 得到参数$\beta_{m},\gamma_{m}$ </p>
+<p>（b）更新</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& f_{m} \left(x\right) = f_{m-1} \left(x\right) + \beta_{m} b\left(x;\gamma_{m}\right) \end{align*}</script></li>
+</ol>
+<p>  （c）得到加法模型</p>
+<script type="math/tex; mode=display">
+  \begin{align*}  \\ & f \left( x \right) = f_{M} \left( x \right) = \sum_{m=1}^{M} \beta_{m} b \left( x; \gamma_{m} \right) \end{align*}</script><h2 id="前向分布算法与-AdaBoost"><a href="#前向分布算法与-AdaBoost" class="headerlink" title="前向分布算法与 AdaBoost"></a>前向分布算法与 AdaBoost</h2><p>AdaBoost 算法是前向分布加法算法的特例。这时，模型是由基本分类器组成的加法模型，损失函数是指数函数。</p>
 
       
     </div>
@@ -425,9 +467,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/V2Ray/" rel="tag"><i class="fa fa-tag"></i> V2Ray</a>
+            <a href="/tags/提升算法/" rel="tag"><i class="fa fa-tag"></i> 提升算法</a>
+          
+            <a href="/tags/集成学习/" rel="tag"><i class="fa fa-tag"></i> 集成学习</a>
+          
+            <a href="/tags/AdaBoost/" rel="tag"><i class="fa fa-tag"></i> AdaBoost</a>
           
         </div>
       
@@ -440,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/3981/" rel="next" title="序列最小最优算法(SMO算法)">
-                <i class="fa fa-chevron-left"></i> 序列最小最优算法(SMO算法)
+              <a href="/posts/61698/" rel="next" title="在Linux的Jupyter Notebook中安装R内核">
+                <i class="fa fa-chevron-left"></i> 在Linux的Jupyter Notebook中安装R内核
               </a>
             
           </div>
@@ -449,10 +495,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/35104/" rel="prev" title="多机使用SSH key连接至Github Page">
-                多机使用SSH key连接至Github Page <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -588,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装V2Ray"><span class="nav-number">1.</span> <span class="nav-text">安装V2Ray</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置V2Ray"><span class="nav-number">2.</span> <span class="nav-text">配置V2Ray</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#提升算法的基本思路"><span class="nav-number">1.</span> <span class="nav-text">提升算法的基本思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AdaBoost-算法"><span class="nav-number">2.</span> <span class="nav-text">AdaBoost 算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AdaBoost-算法的解释"><span class="nav-number">3.</span> <span class="nav-text">AdaBoost 算法的解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前向分布算法"><span class="nav-number">3.1.</span> <span class="nav-text">前向分布算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前向分布算法与-AdaBoost"><span class="nav-number">3.2.</span> <span class="nav-text">前向分布算法与 AdaBoost</span></a></li></ol></li></ol></div>
             
 
           </div>

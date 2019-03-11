@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="序列最小最优化算法(sequential minimal optimization, SMO)算法：1998年由Platt提出。支持向量机的学习问题可以形式化为求解凸二次规划问题，这样的凸二次规划问题具有全局最优解，并且有许多最优化算法可以用于这一问题的求解。但是当训练样本容量很大时，这些算法往往变得非常低效，以致无法使用。所以，如何高效地实现支持向量机学习就成为一个重要的问题。 SMO算法是一种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-10T13:46:57.777Z">
+<meta property="og:updated_time" content="2019-03-10T13:53:19.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列最小最优算法(SMO算法)">
 <meta name="twitter:description" content="序列最小最优化算法(sequential minimal optimization, SMO)算法：1998年由Platt提出。支持向量机的学习问题可以形式化为求解凸二次规划问题，这样的凸二次规划问题具有全局最优解，并且有许多最优化算法可以用于这一问题的求解。但是当训练样本容量很大时，这些算法往往变得非常低效，以致无法使用。所以，如何高效地实现支持向量机学习就成为一个重要的问题。 SMO算法是一种">
@@ -423,8 +423,6 @@
 \\ & \quad\quad\quad\quad\quad\quad - \left( \alpha_{1} + \alpha_{2} \right) + y_{1} \alpha_{1} \sum_{i=3}^{N} y_{i} \alpha_{i} K_{i1} + y_{2} \alpha_{2} \sum_{i=3}^{N} y_{i} \alpha_i K_{i2}
 \\ & s.t. \quad \alpha_{1} + \alpha_{2} = -\sum_{i=3}^{N} \alpha_{i} y_{i} = \varsigma
 \\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2  \end{align*}</script></li>
-</ol>
-<ol>
 <li><p>求得最优解$\alpha_{1}^{\left( k＋1 \right)},\alpha_{2}^{\left( k+1 \right)}$，更新$\alpha$为$\alpha^{\left( k+1 \right)}$；</p>
 </li>
 <li><p>若在精度$\varepsilon​$范围内满足停机条件</p>
@@ -569,7 +567,7 @@ g(x_i) = \sum_{j=1}^N \alpha_jy_jK(x_j,x_i) + b</script><p>则转(4)；否则令
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +589,7 @@ g(x_i) = \sum_{j=1}^N \alpha_jy_jK(x_j,x_i) + b</script><p>则转(4)；否则令
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
