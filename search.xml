@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[安装Docker和Nvidia-Docker]]></title>
+    <url>%2Fposts%2F35246%2F</url>
+    <content type="text"><![CDATA[安装DockerDocker官方为了简化流程，提供了一套便捷的安装脚本，在Ubuntu上可以使用脚本自动安装Docker CE： 12curl -fsSL get.docker.com -o get-docker.shsudo sh get-docker.sh --mirror Aliyun 启动Docker CE： 12sudo systemctl enable dockersudo systemctl start docker 建立Docker用户组： 12sudo groupadd dockersudo usermod -aG docker $USER 测试Docker是否安装正确： 1docker run hello-world 安装Nvidia-Docker123456789101112131415# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containersdocker volume ls -q -f driver=nvidia-docker | xargs -r -I&#123;&#125; -n1 docker ps -q -a -f volume=&#123;&#125; | xargs -r docker rm -fsudo yum remove nvidia-docker# Add the package repositoriesdistribution=$(. /etc/os-release;echo $ID$VERSION_ID)curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | \ sudo tee /etc/yum.repos.d/nvidia-docker.repo# Install nvidia-docker2 and reload the Docker daemon configurationsudo yum install -y nvidia-docker2sudo pkill -SIGHUP dockerd# Test nvidia-smi with the latest official CUDA imagedocker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[提升算法 AdaBoost 算法]]></title>
     <url>%2Fposts%2F48763%2F</url>
     <content type="text"><![CDATA[提升算法的基本思路提升算法是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。 有两个问题： 在每一轮如何改变训练数据的权值或概率分布 如何将弱分类器组合成一个强分类器 对于第一个问题，AdaBoost的做法是提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。对于第二个问题，AdaBoost采取加权多数表决的方法。即加大分类误差率小的弱分类器的权值，减小分类误差率大的弱分类器的权值。 AdaBoost 算法输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，其中$x_{i} \in \mathcal{X} \subseteq R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N$；弱学习算法。 输出：最终分类器$G(x)$。 初始化训练数据的权值分布 \begin{align*} \\ & D_{1}=\left(w_{11},w_{12},\cdots,w_{1N}\right), \quad w_{1i} = \dfrac{1}{N}, \quad i=1,2,\cdots,N\end{align*} 对$m=1,2,\cdots,M​$ （a）使用具有权值分布$D_m$的训练数据集学习，得到基本分类器 \begin{align*} \\ & G_{m}\left(x\right): \mathcal{X} \to \left\{ -1, +1\right\} \end{align*}（b）（b）计算$G_m(x)$在训练数据集上的分类误差率 \begin{align*} \\& e_{m} = P\left(G_{m}\left(x_{i}\right) \neq y_{i}\right) \\ & = \sum_{i=1}^{N} w_{mi} I \left(G_{m}\left(x_{i}\right) \neq y_{i} \right) \end{align*}（c）计算$G_m(x)​$的系数 \begin{align*} \\ & \alpha_{m} = \dfrac{1}{2} \log \dfrac{1-e_{m}}{e_{m}} \end{align*}（d）更新训练数据集的权值分布 \begin{align*} \\ & D_{m+1}=\left(w_{m+1,1},\cdots,w_{m+1,i},\cdots,w_{m+1,N}\right) \\ & w_{m+1,i} = \dfrac{w_{mi}}{Z_{m}} \exp \left(- \alpha_{m} y_{i} G_{m}\left(x_{i}\right)\right), \\ & \quad \quad = \left\{ \begin{aligned} \ & \dfrac{w_{mi}}{Z_{m}} \exp \left(- \alpha_{m} \right), G_{m}\left(x_{i}\right) = y_{i} \\ & \dfrac{w_{mi}}{Z_{m}} \exp \left( \alpha_{m} \right), G_{m}\left(x_{i}\right) \neq y_{i} \end{aligned} \right. \quad i=1,2,\cdots,N \end{align*}​ 其中，$Z_m​$是规范化因子 \begin{align*} \\ & Z_{m}＝ \sum_{i=1}^{N} w_{mi} \exp \left(- \alpha_{m} y_{i}, G_{m}\left(x_{i}\right)\right)\end{align*} 构建基本分类器的线性组合 \begin{align*} \\ & f \left( x \right) = \sum_{m=1}^{M} \alpha_{m} G_{m} \left( x \right) \end{align*}得到最终分类器 \begin{align*} \\ & G\left(x\right) = sign\left(f\left(x\right)\right)=sign\left(\sum_{m=1}^{M} \alpha_{m} G_{m} \left( x \right)\right) \end{align*} AdaBoost 算法的解释AdaBoost 算法可以认为是模型为加法模型、损失函数为指数函数、学习算法为前向分布算法时的二类分类学习方法。 前向分布算法前向分布算法：输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，损失函数$L\left(y,f\left(x\right)\right)$；基函数集$\left\{b\left(x;\gamma\right)\right\}$输出：加法模型$f\left(x\right)​$ 初始化$f_{0}\left(x\right)=0​$ 对$m=1,2,\cdots,M$ （a） 极小化损失函数 \begin{align} \ & \left(\beta_{m},\gamma_{m}\right) = \arg \min{\beta,\gamma} \sum_{i=1}^{N} L \left( y_{i},f_{m-1} \left(x_{i}\right) + \beta b\left(x_{i};\gamma \right)\right) \end{align} 得到参数$\beta_{m},\gamma_{m}$ （b）更新 \begin{align*} \\& f_{m} \left(x\right) = f_{m-1} \left(x\right) + \beta_{m} b\left(x;\gamma_{m}\right) \end{align*} （c）得到加法模型 \begin{align*} \\ & f \left( x \right) = f_{M} \left( x \right) = \sum_{m=1}^{M} \beta_{m} b \left( x; \gamma_{m} \right) \end{align*}前向分布算法与 AdaBoostAdaBoost 算法是前向分布加法算法的特例。这时，模型是由基本分类器组成的加法模型，损失函数是指数函数。]]></content>
@@ -8,9 +20,9 @@
         <category>《统计学习方法》读书笔记</category>
       </categories>
       <tags>
+        <tag>机器学习</tag>
         <tag>提升算法</tag>
         <tag>集成学习</tag>
-        <tag>机器学习</tag>
         <tag>AdaBoost</tag>
       </tags>
   </entry>
@@ -58,8 +70,8 @@
         <category>《统计学习方法》读书笔记</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -70,8 +82,8 @@
         <category>《统计学习方法》读书笔记</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -126,8 +138,8 @@
         <category>《统计学习方法》读书笔记</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -171,8 +183,8 @@
         <category>《统计学习方法》读书笔记</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -200,7 +212,7 @@
   <entry>
     <title><![CDATA[Linux命令使用全纪录]]></title>
     <url>%2Fposts%2F37930%2F</url>
-    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1aptitude install build-essential 查找： 1find -name &apos;google*&apos; 解压tar.xz压缩包： 1tar -xvf nameofpackage.tar.xz]]></content>
+    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1aptitude install build-essential 查找： 1find -name &apos;google*&apos; 解压tar.xz压缩包： 1tar -xvf nameofpackage.tar.xz 杀进程： 1killall -9 R 查看IP： 1hostname -I]]></content>
       <categories>
         <category>Linux命令使用全纪录</category>
       </categories>
