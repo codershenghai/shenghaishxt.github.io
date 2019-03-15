@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="机器学习,提升树,GBDT,">
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="good good study up up every day">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shenghai&#39;s blog | shxt">
-<meta property="og:url" content="http://www.zhangshenghai.com/archives/2018/index.html">
+<meta name="description" content="提升树模型提升方法实际采用加法模型（即基函数的线性组合）与前向分布算法。以决策树为基函数的提升方法称为提升树。提升树可以表示为决策树的加法模型：  f_M(x) = \sum_{m=1}^MT(x;\Theta_m)其中，$T(x;\Theta_m)$表示决策树，$\Theta_m$为决策树的参数，$M$为树的个数。 提升树算法提升树算法采用前向分布算法，首先确定初始提升树$f_0(x) = 0$">
+<meta name="keywords" content="机器学习,提升树,GBDT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提升树">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/34928/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="good good study up up every day">
+<meta property="og:description" content="提升树模型提升方法实际采用加法模型（即基函数的线性组合）与前向分布算法。以决策树为基函数的提升方法称为提升树。提升树可以表示为决策树的加法模型：  f_M(x) = \sum_{m=1}^MT(x;\Theta_m)其中，$T(x;\Theta_m)$表示决策树，$\Theta_m$为决策树的参数，$M$为树的个数。 提升树算法提升树算法采用前向分布算法，首先确定初始提升树$f_0(x) = 0$">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-15T09:08:07.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
-<meta name="twitter:description" content="good good study up up every day">
+<meta name="twitter:title" content="提升树">
+<meta name="twitter:description" content="提升树模型提升方法实际采用加法模型（即基函数的线性组合）与前向分布算法。以决策树为基函数的提升方法称为提升树。提升树可以表示为决策树的加法模型：  f_M(x) = \sum_{m=1}^MT(x;\Theta_m)其中，$T(x;\Theta_m)$表示决策树，$\Theta_m$为决策树的参数，$M$为树的个数。 提升树算法提升树算法采用前向分布算法，首先确定初始提升树$f_0(x) = 0$">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/archives/2018/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/34928/">
 
 
 
 
 
-  <title>归档 | shenghai's blog | shxt</title>
+  <title>提升树 | shenghai's blog | shxt</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,386 +292,215 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 37 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/34928/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">提升树</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T16:28:50+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/20007/" itemprop="url">
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">CHAPTER10 线性规划在近似算法中的应用</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《统计学习方法》读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">《统计学习方法》读书笔记</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-12T15:02:00+08:00" content="2018-12-12">
-          12-12
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+          
 
+          
+          
 
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/55620/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER9 线性规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-11T17:58:00+08:00" content="2018-12-11">
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/63466/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER8 近似算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-10T08:19:00+08:00" content="2018-12-10">
-          12-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="提升树模型"><a href="#提升树模型" class="headerlink" title="提升树模型"></a>提升树模型</h1><p>提升方法实际采用加法模型（即基函数的线性组合）与前向分布算法。以决策树为基函数的提升方法称为提升树。提升树可以表示为决策树的加法模型：</p>
+<script type="math/tex; mode=display">
+f_M(x) = \sum_{m=1}^MT(x;\Theta_m)</script><p>其中，$T(x;\Theta_m)$表示决策树，$\Theta_m$为决策树的参数，$M$为树的个数。</p>
+<h1 id="提升树算法"><a href="#提升树算法" class="headerlink" title="提升树算法"></a>提升树算法</h1><p>提升树算法采用前向分布算法，首先确定初始提升树$f_0(x) = 0$，第m步的模型是：</p>
+<script type="math/tex; mode=display">
+f_m(x) = f_{m-1}(x) +T(x;\Theta_m)</script><p>其中，$f_{m-1}(x)$为当前模型，通过经验风险极小化确定下一棵决策树的参数$\Theta_m$：</p>
+<script type="math/tex; mode=display">
+\hat \Theta_m = arg \quad  min_{\Theta_m} \sum_{i=1}^N L(y_i, f_{m-1}(x_i)+T(x_i;\Theta_m))</script><p>当采用平方损失函数时，</p>
+<script type="math/tex; mode=display">
+L(y,f(x)) = (y-f(x))^2</script><p>其损失为</p>
+<script type="math/tex; mode=display">
+L(y_i, f_{m-1}(x_i)+T(x_i;\Theta_m) = [r-T(x;\Theta_m)]^2</script><p>这里$r$是残差，$r = y-f_{m-1}(x)$。</p>
+<p>对于提升树算法，通常使用平方误差损失函数解决回归问题，而使用指数损失函数解决分类问题，以及使用一般损失函数解决决策问题。对于二类分类问题，提升树算法只需将 AdaBoost 算法中的基本分类器限制为二类分类器即可。可以说这时的提升树算法是 AdaBoost 算法的特殊情况。本节主要叙述回归问题的提升树。</p>
+<h2 id="回归问题的提升树算法"><a href="#回归问题的提升树算法" class="headerlink" title="回归问题的提升树算法"></a>回归问题的提升树算法</h2><p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\},x_{i} \in \mathcal{X} \subseteq R^{n}, y_{i} \in \mathcal{Y} \subseteq R, i = 1, 2, \cdots, N$  </p>
+<p>输出：回归提升树$f_{M}\left(x\right)$  </p>
+<ol>
+<li><p>初始化$f_{0}\left(x\right)=0$     </p>
+</li>
+<li><p>对$m=1,2,\cdots,M​$<br>2.1 计算残差</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & r_{mi}=y_{i}-f_{m-1}\left(x_{i}\right),\quad i=1,2,\cdots,N \end{align*}</script><p>2.2 拟合残差$r_{mi}$学习一个回归树，得到$T\left(x;\varTheta_{m}\right)$<br>2.3 更新$f_{m}=f_{m-1}\left(x\right)+T\left(x;\varTheta_{m}\right)$</p>
+</li>
+<li><p>得到回归提升树</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ &  f_{M} \left( x \right) = \sum_{m=1}^{M} T \left(x;\varTheta_{m}\right) \end{align*}</script></li>
+</ol>
+<h1 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h1><p>提升树利用加法模型与前向分布算法实现学习的优化过程，当损失函数是平方损失和指数损失函数时，每一步的优化是很简单的。但对于一般损失函数而言，往往每一步优化并不那么容易，于是梯度提升 (gradient boosting) 算法被提出。</p>
+<h2 id="梯度提升算法"><a href="#梯度提升算法" class="headerlink" title="梯度提升算法"></a>梯度提升算法</h2><p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\},x_{i} \in \mathcal{X} \subseteq R^{n}, y_{i} \in \mathcal{Y} \subseteq R, i = 1, 2, \cdots, N$，损失函数$L\left(y,f\left(x\right)\right)$  </p>
+<p>输出：回归树$\hat f\left(x\right)​$  </p>
+<ol>
+<li><p>初始化</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & f_{0}\left(x\right) = \arg \min_{c} \sum_{i=1}^{N} L \left(y_{i},c\right) \end{align*}</script></li>
+<li><p>对$m=1,2,\cdots,M$<br>2.1 对$i=1,2,\cdots,N$，计算</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ & r_{mi}=- \left[ \dfrac {\partial L \left(y_{i},f\left(x_{i}\right) \right)}{\partial f \left(x_{i} \right)}\right]_{f\left(x\right)=f_{m-1}\left(x\right)} \end{align*}</script><p>2.2 对$r_{mi}$拟合回归树，得到第$m$棵树的叶结点区域$R_{mj}，j=1,2,\cdots,J$<br>2.3 对$j=1,2,\cdots,J$，计算</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ &  c_{mj}=\arg \min_{c} \sum_{x_{i} \in R_{mj}} L \left( y_{i},f_{m-1} \left(x_{i}\right)+c \right) \end{align*}</script><p>2.4 更新$f_{m}\left(x\right)= f_{m-1}\left(x\right) + \sum_{j=1}^{J} c_{mj} I \left(x \in R_{mj} \right)$</p>
+</li>
+<li><p>得到回归树</p>
+<script type="math/tex; mode=display">
+\begin{align*}  \\ &  \hat f \left( x \right) = f_{M} \left( x \right) = \sum_{m=1}^{M} \sum_{j=1}^{J} c_{mj} I \left( x \in R_{mj} \right) \end{align*}</script></li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/64398/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER7 NP完全性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-09T21:34:00+08:00" content="2018-12-09">
-          12-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/40122/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER6 动态规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T18:08:00+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/57540/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER5 分治法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-05T19:12:00+08:00" content="2018-12-05">
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/17200/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER4 贪心算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-03T09:18:00+08:00" content="2018-12-03">
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/63093/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER3 最大匹配问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-02T16:45:00+08:00" content="2018-12-02">
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/16099/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER2 最大流与最小割</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-01T16:06:00+08:00" content="2018-12-01">
-          12-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/36105/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER1 函数的增长与递归式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-27T15:09:00+08:00" content="2018-11-27">
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/提升树/" rel="tag"><i class="fa fa-tag"></i> 提升树</a>
+          
+            <a href="/tags/GBDT/" rel="tag"><i class="fa fa-tag"></i> GBDT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/59649/" rel="next" title="解决Chrome账户无法同步">
+                <i class="fa fa-chevron-left"></i> 解决Chrome账户无法同步
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -677,6 +508,14 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
 
         </div>
         
@@ -697,8 +536,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -758,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树模型"><span class="nav-number">1.</span> <span class="nav-text">提升树模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提升树算法"><span class="nav-number">2.</span> <span class="nav-text">提升树算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回归问题的提升树算法"><span class="nav-number">2.1.</span> <span class="nav-text">回归问题的提升树算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#梯度提升"><span class="nav-number">3.</span> <span class="nav-text">梯度提升</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度提升算法"><span class="nav-number">3.1.</span> <span class="nav-text">梯度提升算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -891,6 +755,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
