@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Linux,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-">
-<meta name="keywords" content="Linux">
+<meta name="description" content="title: CHAPTER1 图像分类categories:  斯坦福大学cs231n笔记tags: 深度学习 cs231ntypora-root-url: ..    本节介绍图像分类问题和数据驱动方法，内容列表如下：  图像分类、数据驱动方法和流程 Nearest Neighbor分类器 验证集、交叉验证集和超参数调参 Nearest Neighbor的优劣 小结 小结：应用kNN实践">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建Jupyter Notebook远程云服务器">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/37756/index.html">
+<meta property="og:title" content="shenghai&#39;s blog | shxt">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/0/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-">
+<meta property="og:description" content="title: CHAPTER1 图像分类categories:  斯坦福大学cs231n笔记tags: 深度学习 cs231ntypora-root-url: ..    本节介绍图像分类问题和数据驱动方法，内容列表如下：  图像分类、数据驱动方法和流程 Nearest Neighbor分类器 验证集、交叉验证集和超参数调参 Nearest Neighbor的优劣 小结 小结：应用kNN实践">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190220105425.png">
-<meta property="og:updated_time" content="2019-03-04T08:04:34.397Z">
+<meta property="og:image" content="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg">
+<meta property="og:image" content="http://pic2.zhimg.com/80/1ee9457872f773d671dd5b225647ef45_hd.jpg">
+<meta property="og:updated_time" content="2019-03-18T15:02:34.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建Jupyter Notebook远程云服务器">
-<meta name="twitter:description" content="将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190220105425.png">
+<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
+<meta name="twitter:description" content="title: CHAPTER1 图像分类categories:  斯坦福大学cs231n笔记tags: 深度学习 cs231ntypora-root-url: ..    本节介绍图像分类问题和数据驱动方法，内容列表如下：  图像分类、数据驱动方法和流程 Nearest Neighbor分类器 验证集、交叉验证集和超参数调参 Nearest Neighbor的优劣 小结 小结：应用kNN实践">
+<meta name="twitter:image" content="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/37756/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/0/">
 
 
 
 
 
-  <title>搭建Jupyter Notebook远程云服务器 | shenghai's blog | shxt</title>
+  <title> | shenghai's blog | shxt</title>
   
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/37756/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">搭建Jupyter Notebook远程云服务器</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T10:43:55+08:00">
-                2019-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T22:59:36+08:00">
+                2019-03-18
               </time>
             
 
@@ -347,28 +347,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -397,18 +375,98 @@
       
 
       
-        <p>将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。</p>
-<p>完成后的界面如下：<br><img src="/images/TIM截图20190220105425.png" alt="TIM截图20190220105425"></p>
-<p>还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~</p>
-<h1 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h1><h2 id="1、安装Jupyter-Notebook"><a href="#1、安装Jupyter-Notebook" class="headerlink" title="1、安装Jupyter Notebook"></a>1、安装Jupyter Notebook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter</span><br></pre></td></tr></table></figure>
-<h2 id="2、生成配置文件"><a href="#2、生成配置文件" class="headerlink" title="2、生成配置文件"></a>2、生成配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-<h2 id="3、设置密码"><a href="#3、设置密码" class="headerlink" title="3、设置密码"></a>3、设置密码</h2><p>打开Python终端，输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [1]: from IPython.lib import passwd</span><br><span class="line">In [2]: passwd()</span><br><span class="line">Enter password: </span><br><span class="line">Verify password:</span><br></pre></td></tr></table></figure>
-<h2 id="4、设置配置文件"><a href="#4、设置配置文件" class="headerlink" title="4、设置配置文件"></a>4、设置配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/zsh/jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
-<p>在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.ip = &apos;0.0.0.0&apos;  # 所有IP都可以访问</span><br><span class="line">c.NotebookApp.port = 8888  # 默认的端口是8888</span><br><span class="line">c.NotebookApp.open_browser = False  # 禁止在服务器上打开jupyter</span><br><span class="line">c.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos;  # 设置Jupyter的根目录</span><br><span class="line">c.NotebookApp.allow_root = True  # 以root权限启动jupyter</span><br></pre></td></tr></table></figure>
-<h2 id="5、启动Jupyter-Notebook"><a href="#5、启动Jupyter-Notebook" class="headerlink" title="5、启动Jupyter Notebook"></a>5、启动Jupyter Notebook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
-<p>这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。</p>
+        <hr>
+<p>title: CHAPTER1 图像分类<br>categories:</p>
+<ul>
+<li>斯坦福大学cs231n笔记<br>tags:</li>
+<li>深度学习</li>
+<li>cs231n<br>typora-root-url: ..</li>
+</ul>
+<hr>
+<blockquote>
+<p>本节介绍图像分类问题和数据驱动方法，内容列表如下：</p>
+<ul>
+<li>图像分类、数据驱动方法和流程</li>
+<li>Nearest Neighbor分类器</li>
+<li>验证集、交叉验证集和超参数调参</li>
+<li>Nearest Neighbor的优劣</li>
+<li>小结</li>
+<li>小结：应用kNN实践</li>
+</ul>
+</blockquote>
+<h1 id="一、图像分类"><a href="#一、图像分类" class="headerlink" title="一、图像分类"></a>一、图像分类</h1><p><strong>目标</strong>：输入一个元素为像素值的数组，然后给它分配一个分类标签。</p>
+<p><strong>例子</strong>：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。</p>
+<p><img src="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg" alt="image"></p>
+<p><strong>困难和挑战</strong>：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以下列举了一些在图像识别方面的困难。</p>
+<ul>
+<li>视角变化(Viewpoint variation)</li>
+<li>大小变化(Scale variation)</li>
+<li>形变(Deformation)</li>
+<li>遮挡(Occlusion)</li>
+<li>光照条件(Illumination conditions)</li>
+<li>背景干扰(Background clutter)</li>
+<li>类内差异(Intra-class variation)</li>
+</ul>
+<p><img src="http://pic2.zhimg.com/80/1ee9457872f773d671dd5b225647ef45_hd.jpg" alt="image"></p>
+<p><strong>数据驱动方法</strong>：给计算机很多数据，然后实现学习算法，让计算机学习到每个类的外形。</p>
+<p><strong>图像分类流程</strong>：完整流程如下：</p>
+<blockquote>
+<ul>
+<li><strong>输入</strong>：输入是包含N个图像的集合，这个集合称为训练集。</li>
+<li><strong>学习</strong>: 该步骤叫做训练分类器或者学习一个模型。</li>
+<li><strong>评价</strong>：让分类器来预测它未曾见过的分类标签，并以此来评价分类器的质量。</li>
+</ul>
+</blockquote>
+<h1 id="二、Nearest-Neighbor分类器"><a href="#二、Nearest-Neighbor分类器" class="headerlink" title="二、Nearest Neighbor分类器"></a>二、Nearest Neighbor分类器</h1><p>虽然此分类器和卷积神经网络没有任何关系，实际中也极少使用，但实现它可以让读者对于解决图像分类问题的方法有个基本的认识。</p>
+<p><strong>L1和L2比较</strong>：在面对两个向量之间的差异时，L2比L1更加不能容忍这些差异。也就是说，相对于一个巨大的差异，L2距离更加倾向于接收多个中等程度的差异。</p>
+<p>更高的k值可以让分类的效果更平滑。</p>
+<h1 id="三、用于超参数调优的验证集"><a href="#三、用于超参数调优的验证集" class="headerlink" title="三、用于超参数调优的验证集"></a>三、用于超参数调优的验证集</h1><p>注意：<strong>绝不能使用测试集来进行调优</strong></p>
+<blockquote>
+<ul>
+<li>测试数据集只使用一次，即在训练完成后评价最终的模型时使用</li>
+<li>把训练集分为训练集和验证集。使用验证集来对所有超参数调优，最后只在测试集上跑一次并报告结果。</li>
+</ul>
+</blockquote>
+<p><strong>交叉验证</strong>。当训练集数量较小的时候，使用交叉验证。如将训练集平均分为5份，其中4份用来训练，1份用来验证，每份轮流作为验证集。取5次验证结果的平均值作为算法验证结果。一般分为3、5和10份。</p>
+<h1 id="四、Nearest-Neighbor的优劣"><a href="#四、Nearest-Neighbor的优劣" class="headerlink" title="四、Nearest Neighbor的优劣"></a>四、Nearest Neighbor的优劣</h1><p><strong>优点</strong>：</p>
+<blockquote>
+<ul>
+<li>易于理解，实现简单。</li>
+<li>算法训练不需要花时间，因为其训练过程只是将训练集数据存储起来。</li>
+</ul>
+</blockquote>
+<p><strong>缺点</strong>：</p>
+<blockquote>
+<ul>
+<li>分类器需要存储所有的训练数据，这在存储空间上是低效的。</li>
+<li>对一个测试图像进行分类需要和所有训练图像进行比较，算法计算资源耗费高。</li>
+<li>在实际的图像分类工作中很少使用，因为高维度向量之间的距离通常是反直觉的。</li>
+<li>基于距离的图像分类是基于背景的，而不是基于图片的语义主体。</li>
+</ul>
+</blockquote>
+<h1 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h1><ul>
+<li>介绍了图像分类问题。</li>
+<li>介绍了一个简单的分类器：最近邻分类器(Nearest Neighbor Classifier)，分类器中存在不同的超参数（如k值或距离类型）。</li>
+<li>选取超参数的正确方法：将原始训练集分为训练集和验证集，在验证集上尝试不同的超参数，最后保留表现最好的超参数。</li>
+<li>如果训练数据量不够，使用交叉验证。</li>
+<li>一旦在验证集上找到最优的超参数，就让算法以该参数在测试集上跑且只跑一次，根据结果评价算法。</li>
+<li>kNN分类器能够在CIFAR-10上得到近40%的准确率，尽管kNN算法简单易实现，但是需要存储所有训练数据，并且在测试的时候过于耗费计算资源。</li>
+<li>仅仅使用L1和L2范数来进行像素比较是不够的，这样做的话，图像更多是按照背景和颜色被分类，而不是语义主体本身。</li>
+</ul>
+<h1 id="六、小结：实际应用kNN"><a href="#六、小结：实际应用kNN" class="headerlink" title="六、小结：实际应用kNN"></a>六、小结：实际应用kNN</h1><ul>
+<li><p>预处理你的数据：对数据中的特征进行归一化，使其具有零平均值和单位方差。</p>
+</li>
+<li><p>如果是高维数据，考虑使用降维，如PCA或随机投影。</p>
+</li>
+<li><p>如果需要预测的超参数较多，那么就应该使用更大的验证集来有效地估计。如果担心验证集不够，那么就使用交叉验证。在计算资源足够的情况下，交叉验证更加安全。</p>
+</li>
+<li><p>在验证集上调优的时候，尝试使用更多的k值，以及尝试L1和L2两种范数计算方式。</p>
+</li>
+<li><p>如果分类器跑得太慢，可以尝试使用Approximate Nearest Neighbor库来加速。</p>
+</li>
+<li><p>对验证集上得到的最优超参数做记录，直接使用测试集来测试最优模型。</p>
+</li>
+</ul>
 
       
     </div>
@@ -424,12 +482,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
-          
-        </div>
-      
 
       
       
@@ -439,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/37930/" rel="next" title="Linux命令使用纪录">
-                <i class="fa fa-chevron-left"></i> Linux命令使用纪录
+              <a href="/posts/34928/" rel="next" title="提升树">
+                <i class="fa fa-chevron-left"></i> 提升树
               </a>
             
           </div>
@@ -448,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/30334/" rel="prev" title="Hexo添加Aplayer播放器">
-                Hexo添加Aplayer播放器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装过程"><span class="nav-number">1.</span> <span class="nav-text">安装过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装Jupyter-Notebook"><span class="nav-number">1.1.</span> <span class="nav-text">1、安装Jupyter Notebook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、生成配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">2、生成配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、设置密码"><span class="nav-number">1.3.</span> <span class="nav-text">3、设置密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、设置配置文件"><span class="nav-number">1.4.</span> <span class="nav-text">4、设置配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、启动Jupyter-Notebook"><span class="nav-number">1.5.</span> <span class="nav-text">5、启动Jupyter Notebook</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、图像分类"><span class="nav-number">1.</span> <span class="nav-text">一、图像分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Nearest-Neighbor分类器"><span class="nav-number">2.</span> <span class="nav-text">二、Nearest Neighbor分类器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、用于超参数调优的验证集"><span class="nav-number">3.</span> <span class="nav-text">三、用于超参数调优的验证集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Nearest-Neighbor的优劣"><span class="nav-number">4.</span> <span class="nav-text">四、Nearest Neighbor的优劣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、小结"><span class="nav-number">5.</span> <span class="nav-text">五、小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、小结：实际应用kNN"><span class="nav-number">6.</span> <span class="nav-text">六、小结：实际应用kNN</span></a></li></ol></div>
             
 
           </div>
