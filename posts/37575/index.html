@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning,Computer Vision,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="卷积神经网络依然是一个可导的评分函数：输入是原始的图像像素，输出是不同类别的评分。在最后一层（通常是全连接层），网络依旧有一个损失函数（比如SVM或Softmax）。在介绍CNN之前，先提出三个观点，正是这三个观点使得CNN能够真正起作用，它们分别对应着CNN中的三种思想。  局部性。对于一张图片而言，需要检测图片中的特征来决定图片的类别，通常情况下这些特征都不是由整张图片决定的，而是由一些局部的">
+<meta name="keywords" content="Machine Learning,Computer Vision">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CHAPTER5 卷积神经网络">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/37575/index.html">
+<meta property="og:site_name" content="shenghai&#39;s blog | shxt">
+<meta property="og:description" content="卷积神经网络依然是一个可导的评分函数：输入是原始的图像像素，输出是不同类别的评分。在最后一层（通常是全连接层），网络依旧有一个损失函数（比如SVM或Softmax）。在介绍CNN之前，先提出三个观点，正是这三个观点使得CNN能够真正起作用，它们分别对应着CNN中的三种思想。  局部性。对于一张图片而言，需要检测图片中的特征来决定图片的类别，通常情况下这些特征都不是由整张图片决定的，而是由一些局部的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic2.zhimg.com/80/2ef08bb4cf60805d726b2d6db39dd985_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/d9259be829b1cdb3d98a399ebc56defa_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/ba9dcfa847a71cb695c2653230ea9147_hd.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/641c8846abcb02d35938660cf96cef1b_hd.jpg">
+<meta property="og:updated_time" content="2019-03-24T06:17:49.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CHAPTER5 卷积神经网络">
+<meta name="twitter:description" content="卷积神经网络依然是一个可导的评分函数：输入是原始的图像像素，输出是不同类别的评分。在最后一层（通常是全连接层），网络依旧有一个损失函数（比如SVM或Softmax）。在介绍CNN之前，先提出三个观点，正是这三个观点使得CNN能够真正起作用，它们分别对应着CNN中的三种思想。  局部性。对于一张图片而言，需要检测图片中的特征来决定图片的类别，通常情况下这些特征都不是由整张图片决定的，而是由一些局部的">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/2ef08bb4cf60805d726b2d6db39dd985_hd.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/37575/">
+
+
+
+
+
+  <title>CHAPTER5 卷积神经网络 | shenghai's blog | shxt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenghai's blog | shxt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">good good study up up every day</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-playlist">
+          <a href="/playlist/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            歌单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/37575/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CHAPTER5 卷积神经网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T08:00:00+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs231n/" itemprop="url" rel="index">
+                    <span itemprop="name">cs231n</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>卷积神经网络依然是一个可导的评分函数：输入是原始的图像像素，输出是不同类别的评分。在最后一层（通常是全连接层），网络依旧有一个损失函数（比如SVM或Softmax）。在介绍CNN之前，先提出三个观点，正是这三个观点使得CNN能够真正起作用，它们分别对应着CNN中的三种思想。</p>
+<ul>
+<li><strong>局部性</strong>。对于一张图片而言，需要检测图片中的特征来决定图片的类别，通常情况下这些特征都不是由整张图片决定的，而是由一些局部的区域决定的。</li>
+<li><strong>相同性</strong>。对于不同的图片，如果它们具有出现在不同位置的相同的特征，也同样可以使用相同的检测模式去检测。</li>
+<li><strong>不变性</strong>。对于一张大图片，如果我们进行下采样，图片的性质基本保持不变。</li>
+</ul>
+<h1 id="结构概述"><a href="#结构概述" class="headerlink" title="结构概述"></a>结构概述</h1><p>普通神经网络对于大尺寸图像效果不是很好。比如在MNIST数据集中，图像的大小是28×28=784，由于这是一张小的灰度图，所以看起来不是很大。若图像尺寸为200×200×3，会让卷积层中每个神经元包含200×200×3=120000个权重值，这种全连接方式效率低下。</p>
+<p>卷积神经网络的各层中的神经元是<strong>3维</strong>排列的，层中的神经元只与前一层中的一小块区域连接，而不是采取全连接方式。对于用来分类CIFAR-10的卷积网络来说，最后的输出层的维度是1×1×10，因为CNN的最后部分会将全尺寸的图像压缩为包含分类评分的一个在深度方向排列的向量，下图是例子：</p>
+<p><img src="https://pic2.zhimg.com/80/2ef08bb4cf60805d726b2d6db39dd985_hd.jpg" alt></p>
+<p>左边是一个3层的神经网络，右边是一个卷积神经网络。</p>
+<p>CNN中的每个层使用一个可以微分的函数将激活数据从一个层传递到另一个层，主要由三种类型的层构成：<strong>卷积层</strong>，<strong>池化层</strong>和<strong>全连接层</strong>（全连接层和普通神经网络中的一样）。</p>
+<p>一个用于CIFAR-10图像分类的CNN的结构可以是【<strong>输入层 - 卷积层 - ReLU层 - 池化层 - 全连接层</strong>】：</p>
+<ul>
+<li>假设输入层的输入图像原始像素为[32×32×3]。</li>
+<li>卷积层中，每个神经元都与输入层的一个局部相连，每个神经元都计算这个局部与自己权重的内积。如果使用12个滤波器，得到的维度是[32×32×12]。</li>
+<li>ReLU层逐个元素进行激活函数操作，比如使用$max(0, x)$作为激活函数，该层对数据的尺寸没有改变，还是[32×32×12]。</li>
+<li>池化层在空间维度（宽度和高度）上进行降采样(downsampling)操作，数据尺寸变为[16×16×12]。</li>
+<li>全连接层将会计算分类评分，数据尺寸变为[1×1×10]，10个数字对应CIFAR-10中10个类别的分类评分值。全连接层和普通神经网络一样，每个神经元都与前一层中所有的神经元相连接。</li>
+</ul>
+<p>由此看来，CNN一层一层地将图像从原始像素变换为最终的分类评分值。其中有的层含有参数，而有的层没有。具体地说，卷积层和全连接层不仅会用到激活函数，还会用到一些参数，这些参数会随着梯度下降被训练。ReLU层和池化层则是进行一个固定不变的函数操作。</p>
+<p><img src="https://pic3.zhimg.com/80/d9259be829b1cdb3d98a399ebc56defa_hd.jpg" alt></p>
+<p>这个例子中的结构是一个小型的VGG网络。</p>
+<h1 id="用来构建卷积神经网络的各种层"><a href="#用来构建卷积神经网络的各种层" class="headerlink" title="用来构建卷积神经网络的各种层"></a>用来构建卷积神经网络的各种层</h1><h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><h3 id="概述和直观介绍"><a href="#概述和直观介绍" class="headerlink" title="概述和直观介绍"></a>概述和直观介绍</h3><p>卷积层是CNN的核心层，网络中的大部分计算量从中产生。卷积层的参数是由一些可学习的滤波器集合构成的，每个滤波器在空间上（宽度和高度）都比较小，但是<strong>深度和输入数据的深度保持一致</strong>。当滤波器沿着输入数据的宽度和高度滑过后，会生成一个2维的激活图(activation map)，激活图上的每个空间位置表示了原图片对于该滤波器的反应。直观地说，在滤波器学习到某些视觉特征后，网络就会让其激活。</p>
+<p>在每个卷积层上，我们会有一整个集合的滤波器，比如20个，这样就会生成20个不同的二维激活图，将这些激活图在深度方向上层叠起来就形成了卷积层的输出。</p>
+<p>Krizhevsky构架赢得了2012年的ImageNet挑战，其输入图像的尺寸是[227×227×3]。在第一个卷积层，神经元使用的感受野尺寸F=11，步长S=4，零填充P=0。因为$(227-11)/4+1=55$，卷积层的深度K=96，则卷积层的输出数据体尺寸是[55×55×96]。在这55×55×96个神经元中，每个神经元都和输入数据体中一个[11×11×3]的区域连接，但是权重不同。</p>
+<h3 id="局部连接"><a href="#局部连接" class="headerlink" title="局部连接"></a>局部连接</h3><p>在处理图像这样的高维度输入时，想要让每个神经元与前一层中所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接，该连接的空间大小叫做神经元的<strong>感受野(receptive field)</strong>，它的尺寸是一个超参数（滤波器的宽和高），在深度方向上，该连接的大小总是和输入数据的深度保持一致。</p>
+<p>感受野的推导是一个递归的过程：</p>
+<script type="math/tex; mode=display">
+RF_n = RF_{n-1} + (K_n-1)×S_n</script><p>其中$K_n$是第n层卷积核的大小，$S$是第n层的滑动步长。</p>
+<p><img src="https://pic4.zhimg.com/80/ba9dcfa847a71cb695c2653230ea9147_hd.jpg" alt></p>
+<p><strong>左边</strong>：红色的是输入数据体，蓝色的部分是第一个卷积层中的神经元。卷积层中的每个神经元都只是与输入数据体的一个局部在空间上相连。深度列上的每个神经元都是与输入数据体中同一个感受野连接，但是权重不同。举例说明，比如输入数据的尺寸为32×32×3，如果感受野（滤波器尺寸）是5×5，卷积层中每个神经元与输入数据之间就有5×5×3=75个连接。这里再次强调感受野深度的大小必须是3，和输入数据保持一致。</p>
+<p><strong>右边</strong>：神经元还是计算权重和输入的内积，然后进行激活函数运算，只是它们的连接被限制在一个局部空间。</p>
+<h3 id="空间排列"><a href="#空间排列" class="headerlink" title="空间排列"></a>空间排列</h3><p>首先，卷积层的输出深度是一个超参数<strong>K</strong>，它与使用的滤波器数量一致，每种滤波器都在输入数据中寻找一种特征。比如说输入一张原始图片，卷积层输出的深度是20，这说明有20个滤波器对数据进行处理，每种滤波器寻找一种特征进行激活。</p>
+<p>其次，在滑动滤波器的时候，必须指定步长<strong>S</strong>，表示滤波器每次移动<strong>S</strong>个像素点。</p>
+<p>最后，可以将输入数据在边界上用0进行填充，边界填充的数量<strong>P</strong>也作为一个超参数，可以用来控制输出数据尺寸的大小。</p>
+<p>通过对卷积过程的计算，我们可以总结出一个通用公式：</p>
+<script type="math/tex; mode=display">
+W_{output} = \frac{W_{input} - W_{filter} + 2P}S + 1</script><script type="math/tex; mode=display">
+H_{output} = \frac{H_{input} - H_{filter} + 2P}S + 1</script><p>其中$W$和$H$分别表示图像的宽度和高度。</p>
+<h3 id="零填充的使用"><a href="#零填充的使用" class="headerlink" title="零填充的使用"></a>零填充的使用</h3><p>输出数据体可以通过上面的公式来计算，假设输入数组的空间形状是正方形，那么输出数据体的空间尺寸为$(W-F+2P)/F+1$。一般来说，当步长S=1时，零填充的值是$P=(F-1)/2$，这样就能保证输入和输出数据体有相同的空间尺寸。</p>
+<h3 id="步长的限制"><a href="#步长的限制" class="headerlink" title="步长的限制"></a>步长的限制</h3><p>通过上面的公式我们知道步长的选择是有所限制的，举例来说，当输入尺寸$W=10$的时候，如果不使用零填充，即$P=0$，滤波器尺寸$F=3$，这样步长$S=2$就行不通，因为$(10-3+0)/2+1=4.5$，结果不是一个整数，说明神经元不能整齐对称地滑过输入数据体。</p>
+<h3 id="参数共享"><a href="#参数共享" class="headerlink" title="参数共享"></a>参数共享</h3><p>在卷积层中使用参数共享是为了控制参数的数量，这样之所以行得通，是因为之前介绍的<strong>相同性</strong>。比如说一个卷积层的输出是20×20×32，那么神经元的个数就是20×20×32=12800如果感受野的大小是3×3，而输入数据体的深度是10，那么每个神经元就有3×3×10=900个参数，这样卷积层总共就有12800×900=11520000个参数，单单一层卷积就有这么多参数，这样运算速度显然是特别慢的。</p>
+<p>根据之前介绍的，一个滤波器检测出一个空间位置(x1, y1)处的特征，那么也能够检测出(x2, y2)位置的特征，所以就可以用相同的滤波器来检测相同的特征，基于这个假设，我们就能够有效减少参数个数。比如上面这个例子，一共有32个滤波器，这使得输出体的厚度是32，每个滤波器的参数为3×3×10=900，总共的参数就有32×900=28800个，极大减少了参数的个数。</p>
+<p>将深度维度上的一个单独的2维切片看作是深度切片(depth slice)，由参数共享我们知道<strong>输出体数据在深度切片上所有的权重都使用同一个权重向量</strong>。如一个数据体尺寸为[55×55×96]的就有96个深度切片，每个尺寸为[55×55]。在每个深度切片上的神经元都使用同样的权重和偏差。在这样的参数共享下，一个权重集对应一个深度切片。在每个深度切片中55×55个权重使用的都是同样的参数。</p>
+<p>如果在一个深度切片中的所有权重都使用同一个权重向量，那么卷积层的前向传播中，每个深度切片都可以看作是计算神经元权重对输入数据体的卷积（这就是“卷积层”名字的由来），这也是为什么总是将这些权重集合称为<strong>滤波器(filter)</strong>，或<strong>卷积核(kernel)</strong>。</p>
+<p>需要注意的是，参数共享之所以有效，是因为一个特征在不同位置的表现是相同的。比如一个滤波器检测到了水平边界这个特征，如果这个特征具有平移不变性，那么在其他位置也能检测出来。但是有时候参数共享可能没意义，特别是当卷积神经网络的输入图像是一些明确的中心结构的时候。一个具体的例子就是人脸识别，人脸一般位于图片的中心，我们希望不同的特征能够在不同的位置被学习到，比如眼睛特征或者头发特征，正是由于这些特征在不同的地方，才能够对人脸进行识别。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>最后总结一下卷积层的一些性质。</p>
+<ul>
+<li><p>输入数据体的尺寸是$W_1 ×H_1×D_1$</p>
+</li>
+<li><p>4个超参数：</p>
+<ul>
+<li>滤波器数量$K$</li>
+<li>滤波器空间尺寸$F$</li>
+<li>滑动步长$S$</li>
+<li>零填充的数量$P$</li>
+</ul>
+</li>
+<li><p>输出数据体的尺寸为$W_2×H_2×D_2$，其中：</p>
+<script type="math/tex; mode=display">
+W_2 = \frac{W_1 - F + 2P}S + 1</script><script type="math/tex; mode=display">
+H_2 = \frac{H_1 - F + 2P}S + 1</script><script type="math/tex; mode=display">
+D_2 = K</script></li>
+<li><p>由于参数共享，每个滤波器包含的权重数目为$F×F×D_1$，卷积层一共有$F×F×D_1×K$个权重和$K$个偏置。</p>
+</li>
+<li><p>在输出数据体中，第$d$个深度切片（空间尺寸是$W_2×H_2$），用第$d$个滤波器和输入数据进行有效卷积运算的结果，再加上第$d$个偏置。</p>
+</li>
+</ul>
+<h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>我们通常会在卷积层之间周期性插入一个池化层，其作用是<strong>逐渐降低数据体的空间尺寸</strong>，这样就可以：</p>
+<ul>
+<li>减少网络中参数的数量</li>
+<li>减少计算资源耗费</li>
+<li>有效控制过拟合</li>
+</ul>
+<p>池化层和卷积层一样也有一个空间窗口，通常采用的是取这些窗口中的最大值作为输出结果，然后不断滑动窗口，对输入数据体每一个深度切片单独处理，如下图所示。</p>
+<p><img src="https://pic4.zhimg.com/80/641c8846abcb02d35938660cf96cef1b_hd.jpg" alt></p>
+<p><strong>左边</strong>：池化层能够有效降低数据体空间的大小</p>
+<p><strong>右边</strong>：形象地说明了窗口大小是2，滑动步长是2的最大值池化是如何计算的</p>
+<p>池化层之所以有效，是因为之前介绍的图片特征具有<strong>不变性</strong>，也就是通过下采样不会丢失图片拥有的特征。由于这种特性存在，我们可以将图片缩小再进行卷积，这样能够大大降低卷积运算的时间。</p>
+<p>最常用的池化层形式是尺寸为2×2的窗口，滑动步长为2，对图像进行下采样，将其中75%的激活信息都丢掉，选择其中最大的保留下来，这其实是因为我们希望能够更加激活里面的数值大的特征，去除<br>一些噪声信息。</p>
+<p><strong>池化层有一些和卷积层类似的性质</strong>：</p>
+<ul>
+<li>输入数据体的尺寸是$W_1 ×H_1×D_1$</li>
+<li><p>2个超参数：</p>
+<ul>
+<li>池化窗口空间尺寸$F$</li>
+<li>滑动步长$S$</li>
+</ul>
+</li>
+<li><p>输出数据体的尺寸为$W_2×H_2×D_2$，其中：</p>
+<script type="math/tex; mode=display">
+W_2 = \frac{W_1 - F}S + 1</script><script type="math/tex; mode=display">
+H_2 = \frac{H_1 - F}S + 1</script><script type="math/tex; mode=display">
+D_2 = D_1</script></li>
+<li><p>池化层很少引入零填充</p>
+</li>
+</ul>
+<p>一般来说，应该谨慎使用比较大的池化窗口，以免对网络有破坏性。除了最大值池化之外，还有一些其他的池化函数，比如平均池化，或者L2范数池化。在实际中证明，在卷积层之间引入最大池化的效果是最好的，而平均池化一般放在卷积神经网络的最后一层。</p>
+<p>有发现认为，在训练一个良好的生成模型时，弃用池化层也是很重要的，比如VAEs和GANs。现在看起来，未来的卷积网络结构中，可能会很少甚至不实用池化层。</p>
+<h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>全连接层和之前介绍的一般的神经网络的结构是一样的，每个神经元与前一层所有的神经元连接，而卷积神经网络只和输入数据中的一个局部区域连接，并且输出的神经元每个深度切片共享参数。</p>
+<p>在这个过程中为了防止过拟合会引入Dropout。最近的研究表明，在进入全连接层之前，使用全局平均池化能够有效地降低过拟合。</p>
+<h1 id="卷积神经网络的结构"><a href="#卷积神经网络的结构" class="headerlink" title="卷积神经网络的结构"></a>卷积神经网络的结构</h1><h2 id="层的排列规律"><a href="#层的排列规律" class="headerlink" title="层的排列规律"></a>层的排列规律</h2><p>卷积神经网络最常见的形式就是将一些卷积层和ReLU层放在一起，其后紧跟池化层，然后重复如此直到图像在空间中被缩小到一个足够小的尺寸，在某个地方过渡成全连接层也较为常见。最后的全连接层得到输出。换句话说，最常见的卷积神经网络结构如下：</p>
+<p><strong>INPUT -&gt; [[CONV -&gt; RELU]*N -&gt; POOL?]<em>M -&gt; [FC -&gt; RELU]</em>K -&gt; FC</strong></p>
+<p>其中<strong>*</strong>指的是重复次数，<strong>POOL?</strong>指的是一个可选的池化层。其中<strong>N&gt;=0</strong>，通常<strong>N&lt;=3</strong>，<strong>M&gt;=0</strong>，<strong>K&gt;=0</strong>，通常<strong>K&lt;3</strong>。</p>
+<p>一般而言，<strong>几个小滤波器卷积层的组合要比一个大滤波器卷积层要好</strong>。比如层层堆叠了3个3×3的卷积层，中间含有非线性激活层。在这种排列下面，第一个卷积层中每个神经元对输入数据的感受野是3×3，由于第二层卷积层对第一层卷积层的感受野也是3×3，这样第二层对于输入数据的感受野就是3+(3-1)×1=5，即5×5。同样，第三层卷积层对第二层卷积层的感受野是3×3，这样第三层对于第一层输入数据的感受野就是5+(3-1)×1=7，即7×7。</p>
+<p>如果不使用3个3×3的感受野，而是直接单独使用一个7×7大小的卷积层，那么所有神经元的感受野也是7×7。总体说来，使用小滤波器的卷积组合的<strong>优点</strong>有：</p>
+<ul>
+<li>多个卷积层与非线性激活层交替的结构，比单一卷积层的结构更能提取出深层的特征</li>
+<li>假设输入、输出数据体的深度都是$C$，那么单独的7×7卷积层会有$7×7×C×C=49C^2$的参数个数，而使用3个3×3的卷积层的组合，仅仅含有$3×(3×3×C×C)=27C^2$的参数。</li>
+</ul>
+<p>唯一不足的是反向传播更新参数时，中间的卷积层可能会占用更多的内存。</p>
+<h2 id="层的尺寸设置规律"><a href="#层的尺寸设置规律" class="headerlink" title="层的尺寸设置规律"></a>层的尺寸设置规律</h2><p>对于卷积神经网络的尺寸设计，没有严格的数学证明，这是根据经验制定出来的规则：</p>
+<ol>
+<li><strong>输入层</strong>：一般而言，输入层的大小应该能够被2整除很多次，常用的数字有32, 64, 96和224。</li>
+<li><strong>卷积层</strong>：应该使用尽可能小的滤波器，比如3×3或者5×5，滑动步长取1。如果必须使用更大的滤波器尺寸，比如7×7，通常用在第一个面对原始图像的卷积层上。</li>
+<li><strong>池化层</strong>：负责对输入的数据空间维度进行下采样，常用的设置是用2×2的感受野做最大值池化，滑动步长取2。另外一个不常用的设置是使用3×3的感受野，步长设置为2。一般而言，池化层的感受野很少超过3，因为这样会使得池化过程过于激烈，造成信息的丢失。</li>
+<li><strong>零填充</strong>：零填充的使用可以让卷积层的输入和输出在空间上的维度保持一致。</li>
+</ol>
+<h1 id="案例学习"><a href="#案例学习" class="headerlink" title="案例学习"></a>案例学习</h1><p>下面是卷积神经网络领域比较有名的几种结构：</p>
+<ul>
+<li><strong>LeNet</strong>：第一个成功的卷积神经网络应用，是Yann LeCun在上世纪90年代实现的，它最著名的应用是识别数字和邮政编码。</li>
+<li><strong>AlexNet</strong>：AlexNet卷积神经网络在计算机视觉领域中受到欢迎，它由Alex Krizhevsky，Ilya Sutskever和Geoff Hinton实现。AlexNet在2012年的ImageNet ILSVRC 竞赛中夺冠，性能远远超出第二名（16%的top5错误率，第二名是26%的top5错误率）。这个网络的结构和LeNet非常类似，但是更深更大，并且使用了层叠的卷积层来获取特征（之前通常是只用一个卷积层并且在其后马上跟着一个汇聚层）。</li>
+<li><strong>ZFNet</strong>：Matthew Zeiler和Rob Fergus发明的网络在ILSVRC 2013比赛中夺冠，它被称为ZFNet（Zeiler &amp; Fergus Net的简称）。它通过修改结构中的超参数来实现对AlexNet的改良，具体说来就是增加了中间卷积层的尺寸，让第一层的步长和滤波器尺寸更小。</li>
+<li><strong>GoogLeNet</strong>：ILSVRC 2014的胜利者是谷歌的Szeged等实现的卷积神经网络。它主要的贡献就是实现了一个奠基模块，它能够显著地减少网络中参数的数量（AlexNet中有60M，该网络中只有4M）。还有，这个论文中没有使用卷积神经网络顶部使用全连接层，而是使用了一个平均池化，把大量不是很重要的参数都去除掉了。</li>
+<li><strong>VGGNet</strong>：ILSVRC 2014的第二名是Karen Simonyan和 Andrew Zisserman实现的卷积神经网络，现在称其为VGGNet。它主要的贡献是展示出网络的深度是算法优良性能的关键部分。他们最好的网络包含了16个卷积/全连接层。网络的结构非常一致，从头到尾全部使用的是3x3的卷积和2x2的汇聚。他们的预训练模型是可以在网络上获得并在Caffe中使用的。VGGNet不好的一点是它耗费更多计算资源，并且使用了更多的参数，导致更多的内存占用（140M）。其中绝大多数的参数都是来自于第一个全连接层。后来发现这些全连接层即使被去除，对于性能也没有什么影响，这样就显著降低了参数数量。</li>
+<li><strong>ResNet</strong>：残差网络（Residual Network）是ILSVRC2015的胜利者，由何恺明等实现。它使用了特殊的跳跃链接，大量使用了批量归一化（batch normalization），这个结构同样在最后没有使用全连接层。ResNet当前最好的卷积神经网络模型（2016年五月）。</li>
+</ul>
+<blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/21930884" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21930884</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+            <a href="/tags/Computer-Vision/" rel="tag"><i class="fa fa-tag"></i> Computer Vision</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/39784/" rel="next" title="CHAPTER4 反向传播">
+                <i class="fa fa-chevron-left"></i> CHAPTER4 反向传播
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/20573/" rel="prev" title="CHAPTER6 神经网络1">
+                CHAPTER6 神经网络1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#结构概述"><span class="nav-number">1.</span> <span class="nav-text">结构概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用来构建卷积神经网络的各种层"><span class="nav-number">2.</span> <span class="nav-text">用来构建卷积神经网络的各种层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层"><span class="nav-number">2.1.</span> <span class="nav-text">卷积层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述和直观介绍"><span class="nav-number">2.1.1.</span> <span class="nav-text">概述和直观介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部连接"><span class="nav-number">2.1.2.</span> <span class="nav-text">局部连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间排列"><span class="nav-number">2.1.3.</span> <span class="nav-text">空间排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#零填充的使用"><span class="nav-number">2.1.4.</span> <span class="nav-text">零填充的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步长的限制"><span class="nav-number">2.1.5.</span> <span class="nav-text">步长的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数共享"><span class="nav-number">2.1.6.</span> <span class="nav-text">参数共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.1.7.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层"><span class="nav-number">2.2.</span> <span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全连接层"><span class="nav-number">2.3.</span> <span class="nav-text">全连接层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络的结构"><span class="nav-number">3.</span> <span class="nav-text">卷积神经网络的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#层的排列规律"><span class="nav-number">3.1.</span> <span class="nav-text">层的排列规律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层的尺寸设置规律"><span class="nav-number">3.2.</span> <span class="nav-text">层的尺寸设置规律</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例学习"><span class="nav-number">4.</span> <span class="nav-text">案例学习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+        ﻿
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="/js/src/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        av: AV, 
+        el: '#comments' ,
+        appId: 'L3RMSXUsVAD4fyXhcwChRKQQ-gzGzoHsz',
+        appKey: '0XVENmt7LWUdxFkKF6QNd5JU',
+        placeholder: '(发表评论)',
+    });
+  </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

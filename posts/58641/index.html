@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg">
 <meta property="og:image" content="http://pic2.zhimg.com/80/1ee9457872f773d671dd5b225647ef45_hd.jpg">
-<meta property="og:updated_time" content="2019-03-22T09:57:55.091Z">
+<meta property="og:updated_time" content="2019-03-24T06:02:32.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CHAPTER1 图像分类">
 <meta name="twitter:description" content="本节介绍图像分类问题和数据驱动方法。 图像分类目标：输入一个元素为像素值的数组，然后给它分配一个分类标签。 例子：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。  困难和挑战：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以">
@@ -462,19 +462,16 @@
 <li>仅仅使用L1和L2范数来进行像素比较是不够的，这样做的话，图像更多是按照背景和颜色被分类，而不是语义主体本身。</li>
 </ul>
 <h1 id="六、小结：实际应用kNN"><a href="#六、小结：实际应用kNN" class="headerlink" title="六、小结：实际应用kNN"></a>六、小结：实际应用kNN</h1><ul>
-<li><p>预处理你的数据：对数据中的特征进行归一化，使其具有零平均值和单位方差。</p>
-</li>
-<li><p>如果是高维数据，考虑使用降维，如PCA或随机投影。</p>
-</li>
-<li><p>如果需要预测的超参数较多，那么就应该使用更大的验证集来有效地估计。如果担心验证集不够，那么就使用交叉验证。在计算资源足够的情况下，交叉验证更加安全。</p>
-</li>
-<li><p>在验证集上调优的时候，尝试使用更多的k值，以及尝试L1和L2两种范数计算方式。</p>
-</li>
-<li><p>如果分类器跑得太慢，可以尝试使用Approximate Nearest Neighbor库来加速。</p>
-</li>
-<li><p>对验证集上得到的最优超参数做记录，直接使用测试集来测试最优模型。</p>
-</li>
+<li>预处理你的数据：对数据中的特征进行归一化，使其具有零平均值和单位方差。</li>
+<li>如果是高维数据，考虑使用降维，如PCA或随机投影。</li>
+<li>如果需要预测的超参数较多，那么就应该使用更大的验证集来有效地估计。如果担心验证集不够，那么就使用交叉验证。在计算资源足够的情况下，交叉验证更加安全。</li>
+<li>在验证集上调优的时候，尝试使用更多的k值，以及尝试L1和L2两种范数计算方式。</li>
+<li>如果分类器跑得太慢，可以尝试使用Approximate Nearest Neighbor库来加速。</li>
+<li>对验证集上得到的最优超参数做记录，直接使用测试集来测试最优模型。</li>
 </ul>
+<blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/21930884" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21930884</a></p>
+</blockquote>
 
       
     </div>
@@ -596,7 +593,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

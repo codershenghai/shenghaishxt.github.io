@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="朴素贝叶斯的学习与分类训练数据集  \begin{align*} \\&amp; T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\} \end{align*}由$P \left( X, Y \right)​$独立同分布产生。其中，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-22T09:55:03.130Z">
+<meta property="og:updated_time" content="2019-03-22T11:55:35.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯法">
 <meta name="twitter:description" content="朴素贝叶斯的学习与分类训练数据集  \begin{align*} \\&amp; T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\} \end{align*}由$P \left( X, Y \right)​$独立同分布产生。其中，">
@@ -412,13 +412,14 @@
 <script type="math/tex; mode=display">
 \begin{align*} \\& y = f \left( x \right) = \arg \max_{c_{k}} \dfrac{ P \left( Y = c_{k} \right)\prod_{j=1}^{n} P \left( X^{\left( j \right)} = x^{\left( j \right)} | Y = c_{k} \right)}{\sum_{Y} P \left( Y = c_{k} \right)\prod_{j=1}^{n} P \left( X^{\left( j \right)} = x^{\left( j \right)} | Y = c_{k} \right)}
 \\ & \quad\quad\quad = \arg \max_{c_{k}} P \left( Y = c_{k} \right)\prod_{j=1}^{n} P \left( X^{\left( j \right)} = x^{\left( j \right)} | Y = c_{k} \right)\end{align*}</script><h1 id="朴素贝叶斯算法的参数估计"><a href="#朴素贝叶斯算法的参数估计" class="headerlink" title="朴素贝叶斯算法的参数估计"></a>朴素贝叶斯算法的参数估计</h1><h2 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h2><ol>
-<li>先验概率$P \left( Y = c_{k} \right)$的极大似然估计是<script type="math/tex; mode=display">
+<li><p>先验概率$P \left( Y = c_{k} \right)$的极大似然估计是</p>
+<script type="math/tex; mode=display">
 \begin{align*} \\& P \left( Y = c_{k} \right) = \dfrac{\sum_{i=1}^{N} I \left( y_{i} = c_{k} \right)}{N} \quad  k = 1, 2, \cdots, K\end{align*}</script></li>
-</ol>
-<ol>
-<li>设第$j$个特征$x^{\left( j \right)}$可能取值的集合为$\left\{ a_{j1}, a_{j2}, \cdots, a_{j S_{j}} \right\}$，条件概率$P \left( X^{\left( j \right)} = a_{jl} | Y = c_{k} \right)$的极大似然估计是<script type="math/tex; mode=display">
+<li><p>设第$j$个特征$x^{\left( j \right)}$可能取值的集合为$\left\{ a_{j1}, a_{j2}, \cdots, a_{j S_{j}} \right\}$，条件概率$P \left( X^{\left( j \right)} = a_{jl} | Y = c_{k} \right)$的极大似然估计是</p>
+<script type="math/tex; mode=display">
 \begin{align*} \\& P \left( X^{\left( j \right)} = a_{jl} | Y = c_{k} \right) ＝ \dfrac{\sum_{i=1}^{N} I \left(x_{i}^{\left( j \right)}=a_{jl}, y_{i} = c_{k} \right)}{\sum_{i=1}^{N} I \left( y_{i} = c_{k} \right)}
-\\ & j = 1, 2, \cdots, n;\quad l = 1, 2, \cdots, S_{j};\quad k = 1, 2, \cdots, K\end{align*}</script>其中，$x_{i}^{\left( j \right)}$是第$i$个样本的第$j$个特征；$a_{jl}$是第$j$个特征可能取的第$l$个值；$I$是指示函数。</li>
+\\ & j = 1, 2, \cdots, n;\quad l = 1, 2, \cdots, S_{j};\quad k = 1, 2, \cdots, K\end{align*}</script><p>其中，$x_{i}^{\left( j \right)}$是第$i$个样本的第$j$个特征；$a_{jl}$是第$j$个特征可能取的第$l$个值；$I$是指示函数。</p>
+</li>
 </ol>
 <h2 id="朴素贝叶斯算法"><a href="#朴素贝叶斯算法" class="headerlink" title="朴素贝叶斯算法"></a>朴素贝叶斯算法</h2><p>输入：线性可分训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}​$，其中$x_{i}＝ \left( x_{i}^{\left(1\right)},x_{i}^{\left(2\right)},\cdots, x_{i}^{\left(n\right)} \right)^{T}​$，$x_{i}^{\left( j \right)}​$是第$i​$个样本的第$j​$个特征，$x_{i}^{\left( j \right)} \in \left\{ a_{j1}, a_{j2}, \cdots, a_{j S_{j}} \right\}​$，$a_{jl}​$是第$j​$个特征可能取的第$l​$个值，$j = 1, 2, \cdots, n; l = 1, 2, \cdots, S_{j},y_{i} \in  \left\{ c_{1}, c_{2}, \cdots, c_{K} \right\}​$；实例$x​$； </p>
 <p>输出：实例$x$的分类</p>
@@ -431,9 +432,8 @@
 <li><p>对于给定的实例$x=\left( x^{\left( 1 \right)}, x^{\left( 2 \right)}, \cdots, x^{\left( n \right)}\right)^{T}$，计算</p>
 <script type="math/tex; mode=display">
 \begin{align*}  \\ & P \left( Y = c_{k} \right)\prod_{j=1}^{n} P \left( X^{\left( j \right)} = x^{\left( j \right)} | Y = c_{k} \right) \quad  k=1,2,\cdots,K\end{align*}</script></li>
-</ol>
-<ol>
-<li>确定实例$x$的类<script type="math/tex; mode=display">
+<li><p>确定实例$x$的类</p>
+<script type="math/tex; mode=display">
 \begin{align*} \\& y = f \left( x \right) = \arg \max_{c_{k}} P \left( Y = c_{k} \right)\prod_{j=1}^{n} P \left( X^{\left( j \right)} = x^{\left( j \right)} | Y = c_{k} \right)  \end{align*}</script></li>
 </ol>
 <h2 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h2><p>用极大似然估计可能会出现所要估计的概率值为0的情况，这时会影响到后验概率的计算结果，解决这一问题的方法是采用贝叶斯估计。</p>
@@ -567,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
