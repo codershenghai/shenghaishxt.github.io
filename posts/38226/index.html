@@ -94,9 +94,9 @@
 <meta property="og:image" content="https://pic3.zhimg.com/80/96573094f9d7f4b3b188069726840a2e_hd.png">
 <meta property="og:image" content="https://pic1.zhimg.com/80/412afb713ddcff0ba9165ab026563304_hd.png">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/opt2.gif">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/opt2.gif">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/opt1.gif">
 <meta property="og:image" content="https://pic4.zhimg.com/80/d25cf561835c7b96ae6d1c91868bcbff_hd.png">
-<meta property="og:updated_time" content="2019-03-24T07:41:32.423Z">
+<meta property="og:updated_time" content="2019-03-24T07:47:57.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CHAPTER8 神经网络3">
 <meta name="twitter:description" content="神经网络共有三个部分，在前两个部分中，我们讨论了神经网络的静态部分：如何创建网络的连接、数据和损失函数。本节将致力于讲解神经网络的动态部分，即神经网络学习和搜索最优超参数的过程。 梯度检查使用中心化公式：  \frac{df(x)}{dx} = \frac{f(x+h)-f(x-h)}{2h}使用相对误差来比较：如何比较数值梯度$f’_n$和$f’_a$？使用相对误差是更加合适的：  \frac{">
@@ -490,7 +490,7 @@ x \leftarrow x - [H f(x)]^{-1} \nabla f(x)</script><p>这里的$Hf(x)$是Hessian
 <p>这个方法和RMSProp很像，只是把原始梯度向量dx替换成了平滑版的梯度m。论文中推荐的参数值eps=1e-8，beta1=0.9，beta2=0.999。</p>
 <p>在实践中，推荐Adam作为默认的算法，它一般比RMSProp的效果好一些。但是也可以试试SGD+Nesterov动量。</p>
 <p><img src="/images/opt2.gif" alt="opt2"></p>
-<p><img src="/images/opt2.gif" alt="opt2"></p>
+<p><img src="/images/opt1.gif" alt="opt2"></p>
 <p>第一张动画是一个损失函数的等高线图，基于动量的方法出现了走偏了的情况。</p>
 <p>第二张动画展示了一个马鞍状的最优化地形，其中对于不同维度它的曲率不同（在一个维度下降，而在另一个维度上升）。SGD、Momentum、NAG很难突破对称性，一直卡在顶部。而逐参数适应性学习率算法可以看到马鞍另一个维度上具有很低的梯度。</p>
 <h2 id="经验之谈"><a href="#经验之谈" class="headerlink" title="经验之谈"></a>经验之谈</h2><ul>
