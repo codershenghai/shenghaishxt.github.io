@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,">
+  <meta name="keywords" content="Machine Learning,感知机,">
 
 
 
@@ -81,21 +81,18 @@
 
 
 
-<meta name="description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。感知机是神经网络与支持向量机的基础。 感知机模型假设输入空间$\mathcal{X} \subseteq R^{n}$，输出空间$\mathcal{Y} = \left\{+1, -1 \right\}$。输入$x \in \mathcal{X}$表示实例的特征向量，对应于输入空间的点；输出$y \i">
+<meta name="keywords" content="Machine Learning,感知机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CHAPTER8 近似算法">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/63466/index.html">
+<meta property="og:title" content="感知机">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/48428/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：">
+<meta property="og:description" content="感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。感知机是神经网络与支持向量机的基础。 感知机模型假设输入空间$\mathcal{X} \subseteq R^{n}$，输出空间$\mathcal{Y} = \left\{+1, -1 \right\}$。输入$x \in \mathcal{X}$表示实例的特征向量，对应于输入空间的点；输出$y \i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/as.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/asd.png">
-<meta property="og:updated_time" content="2019-02-28T11:45:59.060Z">
+<meta property="og:updated_time" content="2019-03-26T03:05:42.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHAPTER8 近似算法">
-<meta name="twitter:description" content="目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：  只对问题的特殊实例求解 用动态规划法或分支限界法求解 用概率算法求解 只求近似解 用启发式方法求解  本节主要讨论的是解NP完全问题的近似算法。 近似算法的性能若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将近似算法的性能比定义为：">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/as.png">
+<meta name="twitter:title" content="感知机">
+<meta name="twitter:description" content="感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。感知机是神经网络与支持向量机的基础。 感知机模型假设输入空间$\mathcal{X} \subseteq R^{n}$，输出空间$\mathcal{Y} = \left\{+1, -1 \right\}$。输入$x \in \mathcal{X}$表示实例的特征向量，对应于输入空间的点；输出$y \i">
 
 
 
@@ -125,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/63466/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/48428/">
 
 
 
 
 
-  <title>CHAPTER8 近似算法 | shenghai's blog | shxt</title>
+  <title>感知机 | shenghai's blog | shxt</title>
   
 
 
@@ -309,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/63466/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/48428/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -326,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CHAPTER8 近似算法</h1>
+          <h1 class="post-title" itemprop="name headline">感知机</h1>
         
 
         <div class="post-meta">
@@ -338,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T08:19:00+08:00">
-                2018-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T10:06:22+08:00">
+                2019-03-26
               </time>
             
 
@@ -361,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
-                    <span itemprop="name">算法设计与分析</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -398,39 +395,66 @@
       
 
       
-        <p>目前，所有的NP完全问题都没有能够在多项式时间内求解的算法，我们通常可以采用以下几种解题策略：</p>
-<ul>
-<li>只对问题的特殊实例求解</li>
-<li>用动态规划法或分支限界法求解</li>
-<li>用概率算法求解</li>
-<li>只求近似解</li>
-<li>用启发式方法求解</li>
-</ul>
-<p>本节主要讨论的是解NP完全问题的近似算法。</p>
-<h1 id="近似算法的性能"><a href="#近似算法的性能" class="headerlink" title="近似算法的性能"></a>近似算法的性能</h1><p>若一个最优化问题的最优值为$C^{OPT}$，求解该问题的一个近似算法的一个近似最优解相应的目标函数值为$C$，则将<strong>近似算法的性能比</strong>定义为：</p>
+        <p>感知机（perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。感知机是神经网络与支持向量机的基础。</p>
+<h1 id="感知机模型"><a href="#感知机模型" class="headerlink" title="感知机模型"></a>感知机模型</h1><p>假设输入空间$\mathcal{X} \subseteq R^{n}$，输出空间$\mathcal{Y} = \left\{+1, -1 \right\}$。输入$x \in \mathcal{X}$表示实例的特征向量，对应于输入空间的点；输出$y \in \mathcal{Y}$表示实例的类别。由输入空间到输出空间的函数：</p>
 <script type="math/tex; mode=display">
-\eta = max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}})</script><p>通常情况下，该性能比是问题输入规模$n$的一个函数$\rho(n)$，即</p>
+\begin{align*} \\& f \left( x \right) = sign \left( w \cdot x + b \right)  \end{align*}</script><p>称为感知机。其中，$w$和$b$为感知机模型参数，$w \in R^{n}$叫做权值或权值向量，$b \in R$叫偏置，$w \cdot x$表示$w$和$x$的内积。$sign$是符号函数，即 </p>
 <script type="math/tex; mode=display">
-max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)</script><h1 id="顶点覆盖问题的近似算法"><a href="#顶点覆盖问题的近似算法" class="headerlink" title="顶点覆盖问题的近似算法"></a>顶点覆盖问题的近似算法</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>无向图$G=(V,E)$的顶点覆盖是它的顶点集$V$的一个子集$V’⊆V$，使得若$(u,v)$是$G$的一条边，则$v∈V’$或$u∈V’$。顶点覆盖V’的大小是它所包含的顶点个数$|V’|$。 下面给出一个近似比为2的算法的伪代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">VertexSet <span class="title">approxVextexCover</span><span class="params">(Graph g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cset = <span class="literal">NULL</span>;</span><br><span class="line">    e = g.e;</span><br><span class="line">    <span class="keyword">while</span> (e != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        从e中任取一条边(u, v);</span><br><span class="line">        将顶点u,v加入cset;</span><br><span class="line">        从e中删去与u和v相关联的边;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="算法运行过程"><a href="#算法运行过程" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是《算法导论》中顶点覆盖问题近似算法的图例，说明了算法的运行过程和结果。</p>
-<p><img src="/images/as.png" alt="as"></p>
-<p>图(e)表示近似算法产生的近似最优顶点覆盖cset，它由顶点b,c,d,e,f,g所组成。图(f)是图G的一个最小顶点覆盖，它只含有3个顶点：b,d和e。</p>
-<h1 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h1><p>假定算法选取的边集为A，则返回的顶点个数为2A。即$|C| = 2|A|$。图G的任一顶点覆盖都至少包含A中各条边中的一个顶点，即$|C^{OPT}| \geq |A|$。</p>
-<p>则</p>
+\begin{align*} sign \left( x \right) = \left\{
+\begin{aligned} 
+\ &  +1, x \geq 0
+\\ & -1, x<0
+\end{aligned}
+\right.\end{align*}</script><p>感知机是一种线性分类模型，属于判别模型。感知机模型的假设空间是定义在特征空间中的所有线性分类模型或线性分类器，即函数集合$\left\{ f | f \left( x \right) = w \cdot x + b \right\}$。</p>
+<p>感知机有如下的几何解释：线性方程</p>
 <script type="math/tex; mode=display">
-\rho =  \frac{|C|}{|C^{OPT}|} \leq 2</script><h1 id="旅行商问题的近似算法"><a href="#旅行商问题的近似算法" class="headerlink" title="旅行商问题的近似算法"></a>旅行商问题的近似算法</h1><h1 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h1><p>给定一个完全无向图$G=(V,E)$，其每一边$(u,v)∈E$有一非负整数费用$c(u,v)$。要找出$G$的最小费用哈密顿回路。</p>
-<p>费用函数c往往具有三角不等式性质，即对任意的3个顶点$u,v,w∈V$，有：$c(u,w)≤c(u,v)+c(v,w)$。</p>
-<p>在费用函数不一定满足三角不等式的一般情况下，不存在具有常数性能比的解TSP问题的多项式时间近似算法，除非$P=NP$。换句话说，若$P≠NP$，则对任意常数$ρ&gt;1$，不存在性能比为ρ的解决旅行售货员问题的多项式时间近似算法。</p>
-<p>下面给出一个解决满足三角不等式的旅行商问题的近似算法伪代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">APPROX-TSP-TOUR(G, c)</span><br><span class="line">    任意选择V中的一个顶点r，作为树根节点</span><br><span class="line">    调用Prim算法得到图G的最小生成树T</span><br><span class="line">    先序遍历T，得到顶点序列L</span><br><span class="line">    删除L中的重复顶点形成哈密顿环C</span><br><span class="line">    输出C</span><br></pre></td></tr></table></figure>
-<h1 id="算法运行过程-1"><a href="#算法运行过程-1" class="headerlink" title="算法运行过程"></a>算法运行过程</h1><p>下图是APPROX-TSP-TOUR的操作过程，(a)示出了给定点的集合，(b)示出了一个最小生成树T，它是由MST-PRIM计算出来的，根为a节点，(c)是对T进行先序遍历时的顶点序列，(d)是近似算法得到的路线。</p>
-<p><img src="/images/asd.png" alt="asd"></p>
-<h1 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h1><p>假设$H ^ {opt}​$是一个最优游程，如图e所示。由于我们通过删除一个游程路线中的任一边而得到一棵生成树，故最小生成树$T​$的权值是最优游程代价的一个下界，即$c(T) \leq  c(H^{opt})​$。</p>
-<p>假设图c中的遍历的代价为$c(W)$，该遍历经过了$T$的每条边两次，则有$c(W) = 2c(T)$，两式联立有$c(W) \leq 2c(H^{opt})$。由于$H$是从完全遍历$W$中删除了某些顶点得到的，故有$c(H) \leq c(W)$，则$c(H) \leq2c(H^{opt})$。</p>
-<p>则</p>
+\begin{align*} \\& w \cdot x + b ＝ 0  \end{align*}</script><p>对应于特征空间$R^{n}$中的一个超平面$S$，其中$w$是超平面的法向量，$b$是超平面的截距。超平面$S$将特征空间划分为两部分，位于其中的点被分为正、负两类，超平面$S$称为分离超平面。</p>
+<h1 id="感知机的学习策略"><a href="#感知机的学习策略" class="headerlink" title="感知机的学习策略"></a>感知机的学习策略</h1><p>输入空间$R^{n}$中的任一点$x_{0}$到超平面$S$的距离：</p>
 <script type="math/tex; mode=display">
-\frac{C(H)}{C({H^{opt}})} \leq 2</script>
+\begin{align*} \\& \dfrac{1}{\| w \|} \left| w \cdot x_{0} + b \right| \end{align*}</script><p>对于误分类数据$\left( x_{i}, y_{i} \right)$，当$w \cdot x + b &gt; 0$时，$y_{i}=-1$，当$w \cdot x + b &lt; 0$时，$y_{i}=+1$，即$y_i$与$w\cdot x_i +b$异号，有</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& -y_{i} \left( w \cdot x_{i} + b \right) > 0  \end{align*}</script><p>误分类点$x_{i}$到分离超平面的距离为</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& -\dfrac{1}{\| w \|} y_{i}\left( w \cdot x_{i} + b \right) \end{align*}</script><p>假设超平面$S$的误分类点集合为$M$，则所有误分类点到超平面$S$的总距离为</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& -\dfrac{1}{\| w \|} \sum_{x_{i} \in M} y_{i} \left( w \cdot x_{i} + b \right) \end{align*}</script><p>给定训练数据集</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\} \end{align*}</script><p>其中，$x_{i} \in \mathcal{X} = R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N$。感知机$sign \left( w \cdot x + b \right)$的损失函数定义为</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& L \left( w, b \right) =  -\sum_{x_{i} \in M} y_{i} \left( w \cdot x_{i} + b \right) \end{align*}</script><p>其中，$M$为误分类点的集合。显然，损失函数$L(w, b)$是非负的。如果没有误分类点，损失函数值是0。而且，误分类点越少，误分类点离超平面越近，损失函数值就越小。感知机学习的策略是在假设空间中选取使上述损失函数式最小的模型参数$w, b$，即感知机模型。</p>
+<h1 id="感知机学习算法"><a href="#感知机学习算法" class="headerlink" title="感知机学习算法"></a>感知机学习算法</h1><h2 id="感知机算法（原始形式）"><a href="#感知机算法（原始形式）" class="headerlink" title="感知机算法（原始形式）"></a>感知机算法（原始形式）</h2><p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，其中$x_{i} \in \mathcal{X} = R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N $；学习率$\eta \left( 0 &lt; \eta \leq 1 \right)$。           </p>
+<p>输出：$w,b$；感知机模型$f \left( x \right) = sign \left( w \cdot x + b \right)$</p>
+<ol>
+<li>选取初值$w_{0},b_{0}$ </li>
+<li>在训练集中选取数据$\left( x_{i}, y_{i} \right)$  </li>
+<li>如果$y_{i} \left( w \cdot x_{i} + b \right) \leq 0​$  </li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align*} \\& w \leftarrow w + \eta y_{i} x_{i} 
+\\ & b \leftarrow b + \eta y_{i} \end{align*}</script><ol>
+<li>转至2，直至训练集中没有误分类点</li>
+</ol>
+<h2 id="感知机算法（对偶形式）"><a href="#感知机算法（对偶形式）" class="headerlink" title="感知机算法（对偶形式）"></a>感知机算法（对偶形式）</h2><p>设$w,b$修改n次，则$w,b$关于$\left( x_{i}, y_{i} \right)$的增量分别是$\alpha_{i} y_{i} x_{i}$和$\alpha_{i} y_{i}$，其中$\alpha_{i} = n_{i} \eta$。$w,b$可表示为</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& w = \sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} 
+\\ & b = \sum_{i=1}^{N} \alpha_{i} y_{i} \end{align*}</script><p>其中，$\alpha_{i} \geq 0, i=1,2, \cdots, N$</p>
+<p>输入：训练数据集$T = \left\{ \left( x_{1}, y_{1} \right), \left( x_{2}, y_{2} \right), \cdots, \left( x_{N}, y_{N} \right) \right\}$，其中$x_{i} \in \mathcal{X} = R^{n}, y_{i} \in \mathcal{Y} = \left\{ +1, -1 \right\}, i = 1, 2, \cdots, N $；学习率$\eta \left( 0 &lt; \eta \leq 1 \right)$。               </p>
+<p>输出：$\alpha,b$；感知机模型$f \left( x \right) = sign \left( \sum_{j=1}^{N} \alpha_{j} y_{j} x_{j} \cdot x + b \right)$  ，其中$\alpha = \left( \alpha_{1}, \alpha_{2}, \cdots, \alpha_{N} \right)^{T}$</p>
+<ol>
+<li>$\alpha \leftarrow 0, b \leftarrow 0$ </li>
+<li>在训练集中选取数据$\left( x_{i}, y_{i} \right)$  </li>
+<li>如果$y_{i} \left( \sum_{j=1}^{N} \alpha_{j} y_{j} x_{j} \cdot x_{i} + b \right) \leq 0$</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{align*} \\& \alpha_{i} \leftarrow \alpha_{i} + \eta
+\\ & b \leftarrow b + \eta y_{i} \end{align*}</script><ol>
+<li>转至2，直至训练集中没有误分类点</li>
+</ol>
+<blockquote>
+<p>注：对偶形式中训练实例仅以内积形式出现，可预先计算$Gram$矩阵存储实例间内积</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\& G = \left[ x_{i} \cdot x_{j} \right]_{N \times N} \end{align*}</script></blockquote>
+
       
     </div>
     
@@ -447,7 +471,9 @@ max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)</script><h1 id="顶点�
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+            <a href="/tags/感知机/" rel="tag"><i class="fa fa-tag"></i> 感知机</a>
           
         </div>
       
@@ -460,8 +486,8 @@ max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)</script><h1 id="顶点�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/64398/" rel="next" title="CHAPTER7 NP完全性">
-                <i class="fa fa-chevron-left"></i> CHAPTER7 NP完全性
+              <a href="/posts/63793/" rel="next" title="K-Nearest Neighbors Algorithm">
+                <i class="fa fa-chevron-left"></i> K-Nearest Neighbors Algorithm
               </a>
             
           </div>
@@ -469,10 +495,6 @@ max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)</script><h1 id="顶点�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/55620/" rel="prev" title="CHAPTER9 线性规划">
-                CHAPTER9 线性规划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -608,7 +630,7 @@ max({\frac{C}{C^{OPT}}, \frac{C^{OPT}}{C}}) \leq \rho(n)</script><h1 id="顶点�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#近似算法的性能"><span class="nav-number">1.</span> <span class="nav-text">近似算法的性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顶点覆盖问题的近似算法"><span class="nav-number">2.</span> <span class="nav-text">顶点覆盖问题的近似算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">2.1.</span> <span class="nav-text">问题描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法运行过程"><span class="nav-number">3.</span> <span class="nav-text">算法运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能分析"><span class="nav-number">4.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旅行商问题的近似算法"><span class="nav-number">5.</span> <span class="nav-text">旅行商问题的近似算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述-1"><span class="nav-number">6.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法运行过程-1"><span class="nav-number">7.</span> <span class="nav-text">算法运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能分析-1"><span class="nav-number">8.</span> <span class="nav-text">性能分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机模型"><span class="nav-number">1.</span> <span class="nav-text">感知机模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机的学习策略"><span class="nav-number">2.</span> <span class="nav-text">感知机的学习策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机学习算法"><span class="nav-number">3.</span> <span class="nav-text">感知机学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机算法（原始形式）"><span class="nav-number">3.1.</span> <span class="nav-text">感知机算法（原始形式）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感知机算法（对偶形式）"><span class="nav-number">3.2.</span> <span class="nav-text">感知机算法（对偶形式）</span></a></li></ol></li></ol></div>
             
 
           </div>
