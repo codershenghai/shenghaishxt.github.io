@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,">
+  <meta name="keywords" content="Machine Learning,决策树,">
 
 
 
@@ -81,28 +81,18 @@
 
 
 
-<meta name="description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N=\{ 0, 1, 2, …\}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0,">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。 CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。 CART算法主要由以下两步组成：  决策树生成：基于训练数据集生成决策树，生成的决">
+<meta name="keywords" content="Machine Learning,决策树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CHAPTER1 函数的增长与递归式">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/36105/index.html">
+<meta property="og:title" content="CART算法">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/31705/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N=\{ 0, 1, 2, …\}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0,">
+<meta property="og:description" content="分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。 CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。 CART算法主要由以下两步组成：  决策树生成：基于训练数据集生成决策树，生成的决">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544505383438.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544505763866.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544506062143.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544506461279.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544506877918.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544507209464.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544512143984.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544509457275.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1544511737093.png">
-<meta property="og:updated_time" content="2019-02-28T12:01:51.299Z">
+<meta property="og:updated_time" content="2019-03-29T01:47:08.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHAPTER1 函数的增长与递归式">
-<meta name="twitter:description" content="渐进记号用来表示算法的渐进运行时间的记号是用定义域为自然数集$N=\{ 0, 1, 2, …\}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。 $\Theta$记号（紧渐进界）对于$\Theta​$记号有如下的定义：   $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0,">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/1544505383438.png">
+<meta name="twitter:title" content="CART算法">
+<meta name="twitter:description" content="分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。 CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。 CART算法主要由以下两步组成：  决策树生成：基于训练数据集生成决策树，生成的决">
 
 
 
@@ -132,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/36105/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/31705/">
 
 
 
 
 
-  <title>CHAPTER1 函数的增长与递归式 | shenghai's blog | shxt</title>
+  <title>CART算法 | shenghai's blog | shxt</title>
   
 
 
@@ -316,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/36105/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/31705/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -333,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CHAPTER1 函数的增长与递归式</h1>
+          <h1 class="post-title" itemprop="name headline">CART算法</h1>
         
 
         <div class="post-meta">
@@ -345,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T15:09:00+08:00">
-                2018-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T18:37:50+08:00">
+                2019-03-28
               </time>
             
 
@@ -368,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
-                    <span itemprop="name">算法设计与分析</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -405,47 +395,93 @@
       
 
       
-        <h1 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h1><p>用来表示算法的渐进运行时间的记号是用定义域为自然数集$N=\{ 0, 1, 2, …\}$的函数来定义的，这些记号便于用来表示最坏情况运行时间$T(n)$，因为$T(n)​$一般仅定义于整数的输入规模上。</p>
-<h2 id="Theta-记号（紧渐进界）"><a href="#Theta-记号（紧渐进界）" class="headerlink" title="$\Theta$记号（紧渐进界）"></a>$\Theta$记号（紧渐进界）</h2><p>对于$\Theta​$记号有如下的定义：</p>
-<p><img src="/images/1544505383438.png" alt="1544505383438"></p>
-<p> $\Theta$记号限制一个函数在常数因子内，如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c_1, c_2$使得在$n_0$右边$f(n)$的值永远在$c_1g(n)$与$c_2g(n)$之间，那么可以写成$f(n) = \Theta(g(n))​$。</p>
-<h2 id="O记号（渐进上界）"><a href="#O记号（渐进上界）" class="headerlink" title="O记号（渐进上界）"></a>O记号（渐进上界）</h2><p>对于$O$记号有如下的定义：</p>
-<p><img src="/images/1544505763866.png" alt="1544505763866"></p>
-<p>$O$记号给出一个函数在常数因子内的上限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或小于$cg(n)$，那么可以写成$f(n) = O(g(n))$。</p>
-<h2 id="Ω记号（渐进下界）"><a href="#Ω记号（渐进下界）" class="headerlink" title="Ω记号（渐进下界）"></a>Ω记号（渐进下界）</h2><p>对于$Ω​$记号有如下的定义：</p>
-<p><img src="/images/1544506062143.png" alt="1544506062143"></p>
-<p>$Ω$记号给出一个函数在常数因子内的下限。如图所示，$n_0$是最小的可能值。如果存在正常数$n_0, c$使得在$n_0$右边$f(n)$的值永远等于或大于$cg(n)$，那么可以写成$f(n) = Ω(g(n))$。</p>
-<h2 id="o记号（渐进非紧上界）"><a href="#o记号（渐进非紧上界）" class="headerlink" title="o记号（渐进非紧上界）"></a>o记号（渐进非紧上界）</h2><p>$O$记号所提供的渐进上界可能是紧的，但也有可能不是。例如，$2n^2=O(n^2)$是一个紧的上界，但$2n=O(n^2)$却不是一个紧的上界。于是，我们使用$o$记号来表示一个紧的上界。</p>
-<p>对于$o​$记号有如下的定义：</p>
-<p><img src="/images/1544506461279.png" alt="1544506461279"></p>
-<p>例如，$2n=o(n^2)$，但$2n^2 \neq o(n^2)$。</p>
-<p>$O$记号与$o$记号的定义是类似的，主要区别在于对于$f(n)=O(g(n))$，界$0 \leq f(n) \leq cg(n)$对某个常数$c&gt;0$成立即可，而对于$f(n)=o(g(n))$，界$0 \leq f(n) \leq cg(n)$对所有常数$c&gt;0$成立。</p>
-<h2 id="ω-记号（渐进非紧下界）"><a href="#ω-记号（渐进非紧下界）" class="headerlink" title="$ω$记号（渐进非紧下界）"></a>$ω$记号（渐进非紧下界）</h2><p>$ω$记号与$Ω$记号的关系就与前面小o和大o之间的关系是类似的，我们用$ω$记号表示一个紧的下界。</p>
-<p>对于$ω$记号有如下的定义：</p>
-<p><img src="/images/1544506877918.png" alt="1544506877918"></p>
-<p>例如，$n^2/2=ω(n)$，但$n^2/2\neqω(n^2)$。</p>
-<h2 id="函数间的比较"><a href="#函数间的比较" class="headerlink" title="函数间的比较"></a>函数间的比较</h2><p>实数的许多关系属性可以用于渐进比较，以上的记号之间具有传递性和对称性，下面假设$f(n)$和$g(n)$是渐进正值函数。</p>
-<p><img src="/images/1544507209464.png" alt="1544507209464"></p>
-<h1 id="解递归式的三种方法"><a href="#解递归式的三种方法" class="headerlink" title="解递归式的三种方法"></a>解递归式的三种方法</h1><p>求解递归式，即找出解的渐进“$\Theta$”或“$O$”界的方法主要有三种：</p>
-<ul>
-<li><strong>代换法</strong>：先猜某个界存在，然后用数学归纳法证明该猜测的正确性。</li>
-<li><strong>递归树方法</strong>：将递归式转换成树形结构，树中的节点代表在不同递归层次付出的代价。</li>
-<li><strong>主方法</strong>：给出递归形式$T(n) = aT(n/b)+f(n)$的界，其中$a \geq 1, b&gt;1$，$f(n)$是给定的函数。这种方法要记忆三种情况，就可以确定很多简单递归式的界了。</li>
-</ul>
-<h2 id="代换法"><a href="#代换法" class="headerlink" title="代换法"></a>代换法</h2><p>用代换法解递归式需要两个步骤：</p>
+        <p>分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。</p>
+<p>CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。</p>
+<p>CART算法主要由以下两步组成：</p>
 <ol>
-<li>猜测解的形式。</li>
-<li>用数学归纳法找出使解真正有效地常数。</li>
+<li>决策树生成：基于训练数据集生成决策树，生成的决策树要尽量大。</li>
+<li>决策树剪枝：用验证数据集对已生成的树进行剪枝并选择最优子树，这时用损失函数最小作为剪枝的标准。</li>
 </ol>
-<h2 id="递归树方法"><a href="#递归树方法" class="headerlink" title="递归树方法"></a>递归树方法</h2><p>虽然代换法给递归式的解的正确性提供了一种简单的证明方法，但是有的时候很难得到一个好的猜测。此时，画出一个递归树是一种得到好猜测的直接方法。</p>
-<p>设$T(n) = 3T(n/4)+n^2​$，则使用递归树求解该递归式的过程如下图所示：</p>
-<p><img src="/images/1544512143984.png" alt="1544512143984"></p>
-<h2 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h2><p>设$a \geq 1, b&gt;1$，$f(n) $为一函数，$T(n)$由递归式</p>
+<h1 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a>CART生成</h1><p>决策树的生成就是递归地构建二叉决策树的过程，对回归树用<strong>平方误差最小化</strong>准则，对分类树用<strong>基尼系数最小化</strong>准则，进行特征选择，生成二叉树。 </p>
+<h2 id="回归树的生成"><a href="#回归树的生成" class="headerlink" title="回归树的生成"></a>回归树的生成</h2><p>假设$X$与$Y$分别为输入和输出变量，并且$Y$是连续变量，给定训练数据集</p>
 <script type="math/tex; mode=display">
-T(n) = aT(n/b)+f(n)</script><p>对非负整数定义，那么$T(n)$有如下的渐进界：</p>
-<p><img src="/images/1544509457275.png" alt="1544509457275"></p>
-<p>求解和式时有一个比较常用的公式，假设$f(k)$是单调递增的函数，那么有如下的性质：</p>
-<p><img src="/images/1544511737093.png" alt="1544511737093"></p>
+\begin{align*} \\ & D = \left\{  \left(x_{1},y_{1}\right), \left(x_{2},y_{2}\right),\cdots,\left(x_{N},y_{N}\right) \right\}   \end{align*}</script><p>可选择第$j$个变量$x_{j}$及其取值$s$作为切分变量和切分点，并定义两个区域</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & R_{1} \left( j,s \right) = \left\{ x | x_{j} \leq s \right\}, \quad R_{2} \left( j,s \right) = \left\{ x | x_{j} > s \right\}   \end{align*}</script><p>然后寻找最优切分变量$x_{j}$及最优切分点$s$，具体地，求解</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & j,s = \arg \min_{j,s} \left[ \min_{c_{1}} \sum_{x_{i} \in R_{1} \left(j,s\right)} \left( y_{i} - c_{1} \right)^{2} + \min_{c_{2}} \sum_{x_{i} \in R_{2} \left(j,s\right)} \left( y_{i} - c_{2} \right)^{2}\right]   \end{align*}</script><p>其中，$c_{m}$是区域$R_{m}$上的回归决策树输出，是区域$R_{m}$上所有输入实例$x_{i}$对应的输出$y_{i}$的均值</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & c_{m} = ave \left( y_{i} | x_{i} \in R_{m} \right), \quad m=1,2   \end{align*}</script><p>对每个区域$R_{1}$和$R_{2}$重复上述过程，将输入空间划分为$M$个区域$R_{1},R_{2},\cdots,R_{M}$，在每个区域上的输出为$c_{m},m=1,2,\cdots,M$，最小二乘回归树可表示为</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & f \left( x \right) = \sum_{m=1}^{M} c_{m} I \left( x \in R_{m} \right)   \end{align*}</script><h3 id="最小二乘回归树生成算法"><a href="#最小二乘回归树生成算法" class="headerlink" title="最小二乘回归树生成算法"></a>最小二乘回归树生成算法</h3><p>输入：训练数据集$D$<br>输出：回归树$f \left( x \right)$</p>
+<ol>
+<li><p>选择最优切分变量$x_{j}$与切分点$s$</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & j,s = \arg \min_{j,s} \left[ \min_{c_{1}} \sum_{x_{i} \in R_{1} \left(j,s\right)} \left( y_{i} - c_{1} \right)^{2} + \min_{c_{2}} \sum_{x_{i} \in R_{2} \left(j,s\right)} \left( y_{i} - c_{2} \right)^{2}\right]   \end{align*}</script></li>
+<li><p>用最优切分变量$x_{j}$与切分点$s$划分区域并决定相应的输出值</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & R_{1} \left( j,s \right) = \left\{ x | x_{j} \leq s \right\}, \quad R_{2} \left( j,s \right) = \left\{ x | x_{j} > s \right\}   
+\\ & c_{m} = \dfrac{1}{N} \sum_{x_{i} \in R_{m} \left( j,s \right)} y_{i}, \quad m=1,2\end{align*}</script></li>
+<li><p>继续对两个子区域调用步骤1.和2.，直到满足停止条件</p>
+</li>
+<li><p>将输入空间划分为$M$个区域$R_{1},R_{2},\cdots,R_{M}​$，生成决策树</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & f \left( x \right) = \sum_{m=1}^{M} \hat c_{m} I \left( x \in R_{m} \right)   \end{align*}</script></li>
+</ol>
+<h2 id="分类树的生成"><a href="#分类树的生成" class="headerlink" title="分类树的生成"></a>分类树的生成</h2><p>分类树用基尼指数选择最优特征，同时决定该特征的最优二值切分点。</p>
+<p>分类问题中，假设有$K$个类，样本点属于第$k$类的概率为$p_{k}$，则概率分布的基尼指数定义为：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & Gini \left( p \right) = \sum_{k=1}^{2} p_{k} \left( 1 - p_{k} \right) = 2p\left(1-p\right) \end{align*}</script><p>对于二类分类问题，若样本点属于第1类的概率为$p$，则概率分布的基尼指数为：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & Gini \left( p \right) = \sum_{k=1}^{2} p_{k} \left( 1 - p_{k} \right) = 2p\left(1-p\right) \end{align*}</script><p>对于给定样本集和$D$，其基尼指数为：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & Gini \left( D \right) = 1 - \sum_{k=1}^{K} \left( \dfrac{\left| C_{k} \right|}{\left| D \right|} \right)^{2}\end{align*}</script><p>其中，$C_{k}$是$D$中属于第$k$类的样本自己，$K$是类别个数。</p>
+<p>如果样本集合$D$根据特征$A$是否取某一可能值$a$被分割成$D_{1}$和$D_{2}$两个部分，即</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & D_{1} = \left\{ \left(x,y\right) | A\left(x\right)=a \right\}, \quad D_{2} = D - D_{1} \end{align*}</script><p>则在特征$A$的条件下，集合$D$的基尼指数为：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & Gini \left( D, A \right) = \dfrac{\left| D_{1} \right|}{\left| D \right|} Gini \left( D_{1} \right) + \dfrac{\left| D_{2} \right|}{\left| D \right|} Gini \left( D_{2} \right)\end{align*}</script><p>基尼指数$Gini \left( D \right)$表示集合$D$的不确定性，基尼指数$Gini \left( D,A \right)$表示经$A=a$分割后集合$D$的不确定性。基尼指数值越大，样本集合的不确定性也越大，这一点与熵类似。</p>
+<h3 id="CART生成算法"><a href="#CART生成算法" class="headerlink" title="CART生成算法"></a>CART生成算法</h3><p>输入：训练数据集$D$，特征$A$，阈值$\varepsilon​$<br>输出：CART决策树</p>
+<ol>
+<li>设结点的训练数据集为$D$，对每一个特征$A$，对其可能取的每个值$a$，根据样本点对$A=a$的测试为“是”或“否”将$D$分割成$D_{1}$和$D_{2}$两部分，并计算$Gini\left(D,A\right)$。</li>
+<li>在所有可能的特征$A$以及其所有可能的切分点$a$中，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依此从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去。</li>
+<li>对两个子结点递归地调用1.和2.，直至满足停止条件。</li>
+<li>生成CART决策树$T$。</li>
+</ol>
+<p>算法停止计算的条件是结点中的样本个数小于预定阈值，或样本集的基尼指数小于预定阈值（样本基本属于同一类），或者没有更多特征。</p>
+<h1 id="CART剪枝"><a href="#CART剪枝" class="headerlink" title="CART剪枝"></a>CART剪枝</h1><p>CART剪枝算法从“完全生长”的决策树低端剪去一些子树，使决策树边小，从而能够对未知数据有更准确的预测。</p>
+<h2 id="剪枝，形成一个子树序列-T-0-T-1-…-T-n"><a href="#剪枝，形成一个子树序列-T-0-T-1-…-T-n" class="headerlink" title="剪枝，形成一个子树序列 $T_0, T_1,  … , T_n$"></a>剪枝，形成一个子树序列 $T_0, T_1,  … , T_n$</h2><p>对整体树$T_{0}$任意内部结点$t$，以$t$为单结点树的损失函数是：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & C_{\alpha} \left( t \right) = C \left( t \right) + \alpha \end{align*}</script><p>以$t$为根结点的子树$T_{t}$的损失函数是：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & C_{\alpha} \left( T_{t} \right) = C \left( T_{t} \right) + \alpha \left| T_{t} \right| \end{align*}</script><p>当$\alpha = 0$及$\alpha$充分小时，有不等式：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & C_{\alpha} \left( T_{t} \right) <  C_{\alpha} \left( t \right) \end{align*}</script><p>当$\alpha$增大时，在某一$\alpha$有：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & \quad\quad C_{\alpha} \left( T_{t} \right)  ＝  C_{\alpha} \left( t \right) 
+\\ & C \left( T_{t} \right) + \alpha \left| T_{t} \right| ＝ C \left( t \right) + \alpha
+\\ & \quad\quad \alpha = \dfrac{C\left( t \right) - C \left(T_{t}\right)} { \left| T_{t} \right| -1 }\end{align*}</script><p>即$T_{t}$与$t$有相同的损失函数值，而$t$的结点少，因此对$T_{t}$进行剪枝。</p>
+<h2 id="在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​"><a href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​" class="headerlink" title="在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$"></a>在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$</h2><p>具体地，利用独立的验证数据集，测试子树序列 $T_0, T_1,  … , T_n$ 中各棵子树的平方误差或基尼指数。平方误差或基尼指数最小的决策树被认为是最优的决策树。在子树序列中，每棵子树 $T_0, T_1,  … , T_n$ 都对应一个参数$\alpha_1, \alpha_2, … , \alpha_n$。所以，当最优子树$T_k$确定时，对应的$\alpha_k$也确定了，即得到最优决策树$T_{\alpha}$。</p>
+<h2 id="CART剪枝算法"><a href="#CART剪枝算法" class="headerlink" title="CART剪枝算法"></a>CART剪枝算法</h2><p>输入：CART决策树$T_{0}$<br>输出：最优决策树$T_{\alpha}​$</p>
+<ol>
+<li><p>设$k=0, T=T_{0}$</p>
+</li>
+<li><p>设$\alpha=+\infty$</p>
+</li>
+<li><p>自下而上地对各内部结点$t$计算$ C\left(T_{t}\right),\left| T_{t} \right|$，以及</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\ & g\left(t\right) =  \dfrac{C\left( t \right) - C \left(T_{t}\right)} { \left| T_{t} \right| -1 }
+\\ & \alpha = \min \left( \alpha, g\left( t \right) \right) \end{align*}</script><p>其中，$T_{t}​$表示以$t​$为根结点的子树，$ C\left(T_{t}\right)​$是对训练数据的预测误差，$\left| T_{t} \right|​$是$T_{t}​$的叶结点个数。</p>
+</li>
+<li><p>自下而上地访问内部结点$t​$，如果有$g\left(t\right)=\alpha​$，则进行剪枝，并对叶结点$t​$以多数表决法决定其类别，得到树$T​$</p>
+</li>
+<li><p>设$k=k+1, \alpha_{k}=\alpha, T_{k}=T$</p>
+</li>
+<li><p>如果$T​$不是由根结点单独构成的树，则回到步骤4.</p>
+</li>
+<li><p>采用交叉验证法在子树序列$T_{0},T_{1},\cdots,T_{n}​$中选取最优子树$T_{\alpha}​$</p>
+</li>
+</ol>
 
       
     </div>
@@ -463,7 +499,9 @@ T(n) = aT(n/b)+f(n)</script><p>对非负整数定义，那么$T(n)$有如下的�
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+            <a href="/tags/决策树/" rel="tag"><i class="fa fa-tag"></i> 决策树</a>
           
         </div>
       
@@ -476,8 +514,8 @@ T(n) = aT(n/b)+f(n)</script><p>对非负整数定义，那么$T(n)$有如下的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/38226/" rel="next" title="CHAPTER8 神经网络3">
-                <i class="fa fa-chevron-left"></i> CHAPTER8 神经网络3
+              <a href="/posts/48428/" rel="next" title="感知机">
+                <i class="fa fa-chevron-left"></i> 感知机
               </a>
             
           </div>
@@ -485,10 +523,6 @@ T(n) = aT(n/b)+f(n)</script><p>对非负整数定义，那么$T(n)$有如下的�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/16099/" rel="prev" title="CHAPTER2 最大流与最小割">
-                CHAPTER2 最大流与最小割 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -624,7 +658,7 @@ T(n) = aT(n/b)+f(n)</script><p>对非负整数定义，那么$T(n)$有如下的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#渐进记号"><span class="nav-number">1.</span> <span class="nav-text">渐进记号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Theta-记号（紧渐进界）"><span class="nav-number">1.1.</span> <span class="nav-text">$\Theta$记号（紧渐进界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#O记号（渐进上界）"><span class="nav-number">1.2.</span> <span class="nav-text">O记号（渐进上界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ω记号（渐进下界）"><span class="nav-number">1.3.</span> <span class="nav-text">Ω记号（渐进下界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#o记号（渐进非紧上界）"><span class="nav-number">1.4.</span> <span class="nav-text">o记号（渐进非紧上界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ω-记号（渐进非紧下界）"><span class="nav-number">1.5.</span> <span class="nav-text">$ω$记号（渐进非紧下界）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数间的比较"><span class="nav-number">1.6.</span> <span class="nav-text">函数间的比较</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解递归式的三种方法"><span class="nav-number">2.</span> <span class="nav-text">解递归式的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代换法"><span class="nav-number">2.1.</span> <span class="nav-text">代换法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归树方法"><span class="nav-number">2.2.</span> <span class="nav-text">递归树方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主方法"><span class="nav-number">2.3.</span> <span class="nav-text">主方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CART生成"><span class="nav-number">1.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树的生成"><span class="nav-number">1.1.</span> <span class="nav-text">回归树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">1.1.1.</span> <span class="nav-text">最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类树的生成"><span class="nav-number">1.2.</span> <span class="nav-text">分类树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART生成算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">CART生成算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CART剪枝"><span class="nav-number">2.</span> <span class="nav-text">CART剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝，形成一个子树序列-T-0-T-1-…-T-n"><span class="nav-number">2.1.</span> <span class="nav-text">剪枝，形成一个子树序列 $T_0, T_1,  … , T_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​"><span class="nav-number">2.2.</span> <span class="nav-text">在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART剪枝算法"><span class="nav-number">2.3.</span> <span class="nav-text">CART剪枝算法</span></a></li></ol></li></ol></div>
             
 
           </div>
