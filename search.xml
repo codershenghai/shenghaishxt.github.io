@@ -180,8 +180,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Linux</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -348,7 +348,7 @@
   <entry>
     <title><![CDATA[Linux命令使用纪录]]></title>
     <url>%2Fposts%2F37930%2F</url>
-    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1aptitude install build-essential 查找： 1find -name &apos;google*&apos; 解压tar.xz压缩包： 1tar -xvf nameofpackage.tar.xz 杀进程： 1killall -9 R 查看IP： 1hostname -I 查看版本： 123cat /usr/local/cuda/version.txt # 查看CUDA版本cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2 # 查看CUDNN版本cat /etc/issue # 查看Ubuntu版本 切换用户： 12sudo su root # 切换root用户su user # 切换普通用户，也可以使用 sudo -i 压缩文件夹： 1zip -r filename.zip filename]]></content>
+    <content type="text"><![CDATA[ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1aptitude install build-essential 查找： 1find -name &apos;google*&apos; 解压tar.xz压缩包： 1tar -xvf nameofpackage.tar.xz 解压tar.gz压缩包： 1tar -zxvf nameofpackage.tar.gz 杀进程： 1killall -9 R 查看IP： 1hostname -I 查看版本： 123cat /usr/local/cuda/version.txt # 查看CUDA版本cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2 # 查看CUDNN版本cat /etc/issue # 查看Ubuntu版本 切换用户： 12sudo su root # 切换root用户su user # 切换普通用户，也可以使用 sudo -i 压缩文件夹： 1zip -r filename.zip filename 打开Jupyter Notebook： 1jupyter notebook --config /home/zsh/.jupyter/config_zsh.py]]></content>
       <categories>
         <category>Linux命令使用纪录</category>
       </categories>
