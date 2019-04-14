@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[在Clion上配置OpenCV C++库]]></title>
+    <url>%2Fposts%2F37464%2F</url>
+    <content type="text"><![CDATA[昨天粗略查了一下OpenCV C++库在Win下的配置，得知目前有两种使用OpenCV库的方法，一种是使用官方已经编译好的文件，但这是在IDE是VS2015或VS2017的情况下。我使用的是Jetbrains家族的Clion，只能自己进行编译，实在感到有点麻烦，因为如果自己进行编译的话，由于各种各样的原因，可能会有许多报错，而且网上的教程坑又特别多，所以这里记录一个极简版的配置过程，省去编译的过程。 我的环境：Win10，MingGW-W64 6.0，Clion 2019.1。 下载OpenCV源码和编译后的文件下载编译后的文件一开始我是自己编译的，使用的是CMake-64 3.6.0和MingGW-W64 6.0，编译了好久，报各种错误，最后还是放弃了。本着能不折腾就尽量不折腾的原则，还是下载开源社区中别人编译好的源码吧。这里给出一个作者的项目，OpenCV库版本是3.4.1，当然Github上应该还有其他类似的项目，可以下载其他版本，道理都是相通的。这个是网址：https://github.com/zxxf18/OpenCV341-MinGW-Build-x64 。如果想折腾的话可以自己试着编译一下，作者也给出了几个常见的错误，可以对照着排除。打开这个页面，点击右上角绿色的小图标，Clone or download，然后点击Download ZIP就可以下载了。 下载OpenCV源码下载OpenCV源码，选择3.4.1版本的Sources，给出OpenCV的官网：https://opencv.org/releases.html 。 配置环境首先建立一个oepncv文件夹，在里面建立两个文件夹，一个是mingw-build，用于放置编译后的文件，另一个是sources，放置刚才下载的源码。我这里的目录是 C:\opencv\mingw-build 和 C:\opencv\sources 。可以参考，不一定要在C盘，只要环境变量配置对，系统能够找到OpenCV，随便任何的一个位置都是可以的。 添加环境变量首先在系统变量中添加一个变量，变量名为OpenCV_DIR，变量值为 C:\opencv\mingw-build 然后在系统变量的Path中添加 C:\opencv\mingw-build\bin 让Clion调用OpenCV最后一步是让IDE能够正常调用OpenCV库，给出我的CMakeLists.txt： 12345678910111213cmake_minimum_required(VERSION 3.13)project(DIP)set(CMAKE_CXX_STANDARD 14)add_executable(DIP main.cpp)set(OpenCV_DIR C:\\opencv\\mingw-build)find_package(OpenCV REQUIRED)target_link_libraries(DIP $&#123;OpenCV_LIBS&#125;) 然后看看cpp文件中的 #include 会不会报错吧！若正常显示，那么就代表正式配置成功了。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[修改Linux默认python版本]]></title>
     <url>%2Fposts%2F28999%2F</url>
     <content type="text"><![CDATA[查看Python版本首先列出系统中所有Python版本： 1ls /usr/bin/python* 查看默认的Python版本： 1python --version 基于软链接的系统级修改先删除默认的Python软链接： 1sudo rm /usr/bin/python 然后创建一个新的软链接指向需要的Python版本： 1sudo ln -s /usr/bin/python3.5 /usr/bin/python]]></content>
