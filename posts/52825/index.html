@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Linux,">
+  <meta name="keywords" content="Machine Learning,弱监督学习,">
 
 
 
@@ -81,18 +81,22 @@
 
 
 
-<meta name="description" content="ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1">
-<meta name="keywords" content="Linux">
+<meta name="description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
+<meta name="keywords" content="Machine Learning,弱监督学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux命令使用纪录">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/37930/index.html">
+<meta property="og:title" content="Learning Deep Features for Discriminative Localization 笔记">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/52825/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1">
+<meta property="og:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-10T05:02:50.071Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-828b953b94096cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-3324bf850553c964.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp">
+<meta property="og:updated_time" content="2019-04-19T02:05:47.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux命令使用纪录">
-<meta name="twitter:description" content="ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1">
+<meta name="twitter:title" content="Learning Deep Features for Discriminative Localization 笔记">
+<meta name="twitter:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/37930/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/52825/">
 
 
 
 
 
-  <title>Linux命令使用纪录 | shenghai's blog | shxt</title>
+  <title>Learning Deep Features for Discriminative Localization 笔记 | shenghai's blog | shxt</title>
   
 
 
@@ -306,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/37930/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/52825/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -323,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux命令使用纪录</h1>
+          <h1 class="post-title" itemprop="name headline">Learning Deep Features for Discriminative Localization 笔记</h1>
         
 
         <div class="post-meta">
@@ -335,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-20T09:08:33+08:00">
-                2019-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T10:06:10+08:00">
+                2019-04-19
               </time>
             
 
@@ -358,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux命令使用纪录/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux命令使用纪录</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -395,36 +399,24 @@
       
 
       
-        <p>ssh登陆的命令行方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh amax@10.10.1.110</span><br></pre></td></tr></table></figure>
-<p>显示所有文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
-<p>复制文件夹下的所有内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r dir1 dir2</span><br></pre></td></tr></table></figure>
-<p>删除文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf dir</span><br></pre></td></tr></table></figure>
-<p>临时更改pip源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-<p>安装g++：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aptitude install build-essential</span><br></pre></td></tr></table></figure>
-<p>查找：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name &apos;google*&apos;</span><br></pre></td></tr></table></figure>
-<p>解压tar.xz压缩包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf nameofpackage.tar.xz</span><br></pre></td></tr></table></figure>
-<p>解压tar.gz压缩包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nameofpackage.tar.gz</span><br></pre></td></tr></table></figure>
-<p>杀进程：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall -9 R</span><br></pre></td></tr></table></figure>
-<p>查看IP：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -I</span><br></pre></td></tr></table></figure>
-<p>查看版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/local/cuda/version.txt  # 查看CUDA版本</span><br><span class="line">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2  # 查看CUDNN版本</span><br><span class="line">cat /etc/issue  # 查看Ubuntu版本</span><br></pre></td></tr></table></figure>
-<p>切换用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo su root  # 切换root用户</span><br><span class="line">su user  # 切换普通用户，也可以使用 sudo -i</span><br></pre></td></tr></table></figure>
-<p>压缩文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip  -r filename.zip  filename</span><br></pre></td></tr></table></figure>
-<p>打开Jupyter Notebook：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --config /home/zsh/.jupyter/config_zsh.py</span><br></pre></td></tr></table></figure>
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。</p>
+<p>因此，NIN使用<strong>全局平均池化</strong>来做正则化，避免训练过程中的过拟合。<strong>全局平均池化</strong>还有另一个优点，只需要稍微调整就可以使网络保持很好的定位能力。如下图所示，在物体分类上训练的CNN能够成功地定位与人类交互的物体而非人物本身。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/" alt></p>
+<p>尽管我们的方法显得很简单，但在ILSVRC弱监督物体定位比赛中，我们最好的网络在测试集中与全监督的AlexNet十分接近。</p>
+<h1 id="近期研究"><a href="#近期研究" class="headerlink" title="近期研究"></a>近期研究</h1><h2 id="弱监督物体定位"><a href="#弱监督物体定位" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h2><p>与我们的方法最相近的是一个基于全局最大池化的方法，这个方法的定位局限于物体边缘的点，而不是确定物体的全部范围。尽管max和average很相似，但是平均池化更鼓励网络识别完整的物体区域。原理是相比于最大池化，平均池化网络识别整个物体的辨别性区域的损失更小。</p>
+<p>全局平均池化不是我们提出来的新技术，我们的创新点在于用它来精确定位区别性区域。</p>
+<h2 id="可视化卷积神经网络"><a href="#可视化卷积神经网络" class="headerlink" title="可视化卷积神经网络"></a>可视化卷积神经网络</h2><p>最近有研究发现CNNs在训练识别场景时会学习物体侦测，并证明了统一网络既能进行场景识别，又能进行物体定位。这些研究都只分析了卷积层，忽略了全连接层，因此是不全面的。</p>
+<p>还有研究发现通过转化不同层的深度特征，可以分析CNN的可视化解码。虽然这些方法可以转化全连接层，但是只展示了深层特征中什么信息被保留，没有凸显出这些信息的重要性。不同于这些方法，我们的方法能凸显出图片的辨别性区域。总的来说，我们的方法是对CNN深入灵魂的呈现。</p>
+<h1 id="类激活映射"><a href="#类激活映射" class="headerlink" title="类激活映射"></a>类激活映射</h1><p>下图是用CNN的全局平均池化来生成class activation maps (CAM)的过程。某一确切分类的CAM代表了CNN用于做分类时所看到的区别性区域的位置。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4964755-828b953b94096cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+<p>下面是ILSVRC中四个分类的CAM图。这些图将图片中用于分类的区别性区域高亮标记。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4964755-3324bf850553c964.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp" alt="img"></p>
+<p>我们使用了与NIN和GoogleNet相似的网络结构——网络的大部分都是卷积层，只在输出层（用于分类的softmax）前使用了全局平均池化层，并将它们作为得出分类的全连接层的特征。通过这种简单的连接结构，我们可以把图片中的重要区域用<strong>输出层权重映射回卷积层特征</strong>的方式标记出来，我们称这种技术为类激活映射(CAM)。</p>
+<p>看回第一张图，全局平均池化层输出最后一个卷积层的每个单元的特征图的平均值，这些值的加权总和用于生成最后的输出。也就是说，我们计算最后一个卷积层特征图的加权总和来生成CAM。</p>
+<h1 id="弱监督物体定位-1"><a href="#弱监督物体定位-1" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h1><p>这一部分，我们在ILSVRC2014数据集上评估了CAM的定位能力。我们先描述了实验的设置和用到的CNN网络，然后验证了我们的技术不会在学习定位时对网络产生不利影响，并详细给出了弱监督对象定位的结果。</p>
+<p>我们使用AlexNet、VGGnet和GoogleNet这些流行的CNN网络评估CAM的影响。我们通常把这些网络的全连接层全部移除，替换为GAP，然后接一个softmax全连接层。</p>
+<p>我们发现当GAP前的最后一个卷积层有较高空间分辨率时，网络的定位能力可以得到改善，我们称为图分辨率。因此，我们移除了一些网络的卷积层。具体地，对AlexNet，我们移除conv5之后的卷积层（pool5到prob），得到图分辨率（mapping resolution）为13x13。对VGGnet，移除了conv5-3后的所有卷积层（pool5到prob），得到14x14的图分辨率。对GoogLeNet，移除了inception4e后的卷积层（pool4到prob），得到14x14的图分辨率。对上述的每个网络，我们都添加一个3x3，步长为1，padding为1, 1024个单元的卷积层，然后接一个GAP层和一个softmax层。最后对每个网络在ILSVRC的1.3M张要分成1000类的训练图片进行精调（fine-tuned），分别产生我们最终的AlexNet-GAP，VGGnet-GAP和GoogLeNet-GAP。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文针对使用GAP的CNN网络提出了名为CAM的技术，它能够让经过训练的CNN学会物体定位。而且，CAM定位技术能够推广到其他视觉识别任务中，这是最大的利好。</p>
 
       
     </div>
@@ -442,7 +434,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+          
+            <a href="/tags/弱监督学习/" rel="tag"><i class="fa fa-tag"></i> 弱监督学习</a>
           
         </div>
       
@@ -455,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/13179/" rel="next" title="调整hexo页面宽度">
-                <i class="fa fa-chevron-left"></i> 调整hexo页面宽度
+              <a href="/posts/48467/" rel="next" title="最近邻插值和双线性插值的算法实现">
+                <i class="fa fa-chevron-left"></i> 最近邻插值和双线性插值的算法实现
               </a>
             
           </div>
@@ -464,10 +458,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/37756/" rel="prev" title="搭建Jupyter Notebook远程云服务器">
-                搭建Jupyter Notebook远程云服务器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -584,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#近期研究"><span class="nav-number">2.</span> <span class="nav-text">近期研究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弱监督物体定位"><span class="nav-number">2.1.</span> <span class="nav-text">弱监督物体定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化卷积神经网络"><span class="nav-number">2.2.</span> <span class="nav-text">可视化卷积神经网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类激活映射"><span class="nav-number">3.</span> <span class="nav-text">类激活映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弱监督物体定位-1"><span class="nav-number">4.</span> <span class="nav-text">弱监督物体定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
