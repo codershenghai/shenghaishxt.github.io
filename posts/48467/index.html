@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Computer Vision,Deep Learning,">
+  <meta name="keywords" content="C++,图像处理,">
 
 
 
@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="本节介绍图像分类问题和数据驱动方法。 图像分类目标：输入一个元素为像素值的数组，然后给它分配一个分类标签。 例子：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。  困难和挑战：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以">
-<meta name="keywords" content="Computer Vision,Deep Learning">
+<meta name="description" content="有时，在进行图像处理时，将源图像的一个像素对应到目标图像上时，对应目标图像上的像素坐标是小数，那么这个时候就需要进行插值了，本文给出了两种图像旋转时常用的插值算法的实现。 灰度最近邻插值首先来看看最近邻插值，这最简单的插值算法，不需要计算，只需把与待求坐标的相邻四个像素中最近的坐标的像素值赋值给待求像素。  双线性插值双线性内插法是利用待求象素四个邻象素的灰度在两个方向上作线性内插。  实现代码下">
+<meta name="keywords" content="C++,图像处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CHAPTER1 图像分类">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/58641/index.html">
+<meta property="og:title" content="最近邻插值和双线性插值的算法实现">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/48467/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="本节介绍图像分类问题和数据驱动方法。 图像分类目标：输入一个元素为像素值的数组，然后给它分配一个分类标签。 例子：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。  困难和挑战：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以">
+<meta property="og:description" content="有时，在进行图像处理时，将源图像的一个像素对应到目标图像上时，对应目标图像上的像素坐标是小数，那么这个时候就需要进行插值了，本文给出了两种图像旋转时常用的插值算法的实现。 灰度最近邻插值首先来看看最近邻插值，这最简单的插值算法，不需要计算，只需把与待求坐标的相邻四个像素中最近的坐标的像素值赋值给待求像素。  双线性插值双线性内插法是利用待求象素四个邻象素的灰度在两个方向上作线性内插。  实现代码下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg">
-<meta property="og:image" content="http://pic2.zhimg.com/80/1ee9457872f773d671dd5b225647ef45_hd.jpg">
-<meta property="og:updated_time" content="2019-03-26T03:33:06.483Z">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190419091950.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190419092146.png">
+<meta property="og:updated_time" content="2019-04-19T01:39:07.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHAPTER1 图像分类">
-<meta name="twitter:description" content="本节介绍图像分类问题和数据驱动方法。 图像分类目标：输入一个元素为像素值的数组，然后给它分配一个分类标签。 例子：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。  困难和挑战：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以">
-<meta name="twitter:image" content="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg">
+<meta name="twitter:title" content="最近邻插值和双线性插值的算法实现">
+<meta name="twitter:description" content="有时，在进行图像处理时，将源图像的一个像素对应到目标图像上时，对应目标图像上的像素坐标是小数，那么这个时候就需要进行插值了，本文给出了两种图像旋转时常用的插值算法的实现。 灰度最近邻插值首先来看看最近邻插值，这最简单的插值算法，不需要计算，只需把与待求坐标的相邻四个像素中最近的坐标的像素值赋值给待求像素。  双线性插值双线性内插法是利用待求象素四个邻象素的灰度在两个方向上作线性内插。  实现代码下">
+<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190419091950.png">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/58641/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/48467/">
 
 
 
 
 
-  <title>CHAPTER1 图像分类 | shenghai's blog | shxt</title>
+  <title>最近邻插值和双线性插值的算法实现 | shenghai's blog | shxt</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/58641/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/48467/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CHAPTER1 图像分类</h1>
+          <h1 class="post-title" itemprop="name headline">最近邻插值和双线性插值的算法实现</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-03T08:00:00+08:00">
-                2018-11-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T19:18:43+08:00">
+                2019-04-18
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/cs231n/" itemprop="url" rel="index">
-                    <span itemprop="name">cs231n</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -398,80 +398,13 @@
       
 
       
-        <p>本节介绍图像分类问题和数据驱动方法。</p>
-<h1 id="图像分类"><a href="#图像分类" class="headerlink" title="图像分类"></a>图像分类</h1><p><strong>目标</strong>：输入一个元素为像素值的数组，然后给它分配一个分类标签。</p>
-<p><strong>例子</strong>：以下图为例，图像是由数字组成的巨大的3维数组，图片大小是248*400，该图像就包括了248×400×3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。</p>
-<p><img src="http://pic3.zhimg.com/80/baab9e4b97aceb77ec70abeda6be022d_hd.jpg" alt="image"></p>
-<p><strong>困难和挑战</strong>：识别一幅猫的图片对人来说很简单，但从计算机视觉的角度来看就值得深思了。以下列举了一些在图像识别方面的困难。</p>
-<ul>
-<li>视角变化(Viewpoint variation)</li>
-<li>大小变化(Scale variation)</li>
-<li>形变(Deformation)</li>
-<li>遮挡(Occlusion)</li>
-<li>光照条件(Illumination conditions)</li>
-<li>背景干扰(Background clutter)</li>
-<li>类内差异(Intra-class variation)</li>
-</ul>
-<p><img src="http://pic2.zhimg.com/80/1ee9457872f773d671dd5b225647ef45_hd.jpg" alt="image"></p>
-<p><strong>数据驱动方法</strong>：给计算机很多数据，然后实现学习算法，让计算机学习到每个类的外形。</p>
-<p><strong>图像分类流程</strong>：完整流程如下：</p>
-<ul>
-<li><p><strong>输入</strong>：输入是包含N个图像的集合，这个集合称为训练集。</p>
-</li>
-<li><p><strong>学习</strong>: 该步骤叫做训练分类器或者学习一个模型。</p>
-</li>
-<li><p><strong>评价</strong>：让分类器来预测它未曾见过的分类标签，并以此来评价分类器的质量。</p>
-</li>
-</ul>
-<h1 id="Nearest-Neighbor分类器"><a href="#Nearest-Neighbor分类器" class="headerlink" title="Nearest Neighbor分类器"></a>Nearest Neighbor分类器</h1><p>虽然此分类器和卷积神经网络没有任何关系，实际中也极少使用，但实现它可以让读者对于解决图像分类问题的方法有个基本的认识。</p>
-<p><strong>L1和L2比较</strong>：在面对两个向量之间的差异时，L2比L1更加不能容忍这些差异。也就是说，相对于一个巨大的差异，L2距离更加倾向于接收多个中等程度的差异。</p>
-<p>更高的k值可以让分类的效果更平滑。</p>
-<h1 id="用于超参数调优的验证集"><a href="#用于超参数调优的验证集" class="headerlink" title="用于超参数调优的验证集"></a>用于超参数调优的验证集</h1><p>注意：<strong>绝不能使用测试集来进行调优</strong></p>
-<ul>
-<li><p>测试数据集只使用一次，即在训练完成后评价最终的模型时使用</p>
-</li>
-<li><p>把训练集分为训练集和验证集。使用验证集来对所有超参数调优，最后只在测试集上跑一次并报告结果。</p>
-</li>
-</ul>
-<p><strong>交叉验证</strong>。当训练集数量较小的时候，使用交叉验证。如将训练集平均分为5份，其中4份用来训练，1份用来验证，每份轮流作为验证集。取5次验证结果的平均值作为算法验证结果。一般分为3、5和10份。</p>
-<h1 id="Nearest-Neighbor的优劣"><a href="#Nearest-Neighbor的优劣" class="headerlink" title="Nearest Neighbor的优劣"></a>Nearest Neighbor的优劣</h1><p><strong>优点</strong>：</p>
-<ul>
-<li><p>易于理解，实现简单。</p>
-</li>
-<li><p>算法训练不需要花时间，因为其训练过程只是将训练集数据存储起来。</p>
-</li>
-</ul>
-<p><strong>缺点</strong>：</p>
-<ul>
-<li><p>分类器需要存储所有的训练数据，这在存储空间上是低效的。</p>
-</li>
-<li><p>对一个测试图像进行分类需要和所有训练图像进行比较，算法计算资源耗费高。</p>
-</li>
-<li><p>在实际的图像分类工作中很少使用，因为高维度向量之间的距离通常是反直觉的。</p>
-</li>
-<li><p>基于距离的图像分类是基于背景的，而不是基于图片的语义主体。</p>
-</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
-<li>介绍了图像分类问题。</li>
-<li>介绍了一个简单的分类器：最近邻分类器(Nearest Neighbor Classifier)，分类器中存在不同的超参数（如k值或距离类型）。</li>
-<li>选取超参数的正确方法：将原始训练集分为训练集和验证集，在验证集上尝试不同的超参数，最后保留表现最好的超参数。</li>
-<li>如果训练数据量不够，使用交叉验证。</li>
-<li>一旦在验证集上找到最优的超参数，就让算法以该参数在测试集上跑且只跑一次，根据结果评价算法。</li>
-<li>kNN分类器能够在CIFAR-10上得到近40%的准确率，尽管kNN算法简单易实现，但是需要存储所有训练数据，并且在测试的时候过于耗费计算资源。</li>
-<li>仅仅使用L1和L2范数来进行像素比较是不够的，这样做的话，图像更多是按照背景和颜色被分类，而不是语义主体本身。</li>
-</ul>
-<h1 id="六、小结：实际应用kNN"><a href="#六、小结：实际应用kNN" class="headerlink" title="六、小结：实际应用kNN"></a>六、小结：实际应用kNN</h1><ul>
-<li>预处理你的数据：对数据中的特征进行归一化，使其具有零平均值和单位方差。</li>
-<li>如果是高维数据，考虑使用降维，如PCA或随机投影。</li>
-<li>如果需要预测的超参数较多，那么就应该使用更大的验证集来有效地估计。如果担心验证集不够，那么就使用交叉验证。在计算资源足够的情况下，交叉验证更加安全。</li>
-<li>在验证集上调优的时候，尝试使用更多的k值，以及尝试L1和L2两种范数计算方式。</li>
-<li>如果分类器跑得太慢，可以尝试使用Approximate Nearest Neighbor库来加速。</li>
-<li>对验证集上得到的最优超参数做记录，直接使用测试集来测试最优模型。</li>
-</ul>
-<blockquote>
-<p>参考：<a href="https://zhuanlan.zhihu.com/p/21930884" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21930884</a></p>
-</blockquote>
+        <p>有时，在进行图像处理时，将源图像的一个像素对应到目标图像上时，对应目标图像上的像素坐标是小数，那么这个时候就需要进行插值了，本文给出了两种图像旋转时常用的插值算法的实现。</p>
+<h1 id="灰度最近邻插值"><a href="#灰度最近邻插值" class="headerlink" title="灰度最近邻插值"></a>灰度最近邻插值</h1><p>首先来看看最近邻插值，这最简单的插值算法，不需要计算，只需把与待求坐标的相邻四个像素中最近的坐标的像素值赋值给待求像素。</p>
+<p><img src="/images/TIM截图20190419091950.png" alt="TIM截图20190419091950"></p>
+<h1 id="双线性插值"><a href="#双线性插值" class="headerlink" title="双线性插值"></a>双线性插值</h1><p>双线性内插法是利用待求象素四个邻象素的灰度在两个方向上作线性内插。</p>
+<p><img src="/images/TIM截图20190419092146.png" alt="TIM截图20190419092146"></p>
+<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><p>下面贴出我基于OpenCV的一个简单代码实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Interpolation</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Mat <span class="title">nearest</span><span class="params">(cv::Mat img, <span class="keyword">float</span> angle)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = (<span class="keyword">int</span>)(sqrtf(<span class="built_in">pow</span>(img.rows, <span class="number">2</span>) + <span class="built_in">pow</span>(img.cols, <span class="number">2</span>)) + <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line">        Mat retMat = Mat::zeros(len, len, CV_8UC1);</span><br><span class="line">        <span class="keyword">float</span> anglePI = angle * CV_PI / <span class="number">180</span>;</span><br><span class="line">        <span class="keyword">int</span> xSm, ySm;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; retMat.rows; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; retMat.cols; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                xSm = (<span class="keyword">int</span>)((i-retMat.rows/<span class="number">2</span>)*<span class="built_in">cos</span>(anglePI) - (j-retMat.cols/<span class="number">2</span>)*<span class="built_in">sin</span>(anglePI) + <span class="number">0.5</span>);</span><br><span class="line">                ySm = (<span class="keyword">int</span>)((i-retMat.rows/<span class="number">2</span>)*<span class="built_in">sin</span>(anglePI) + (j-retMat.cols/<span class="number">2</span>)*<span class="built_in">cos</span>(anglePI) + <span class="number">0.5</span>);</span><br><span class="line">                xSm += img.rows / <span class="number">2</span>;</span><br><span class="line">                ySm += img.cols / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(xSm &gt;= img.rows || ySm &gt;= img.cols || xSm &lt;= <span class="number">0</span> || ySm &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    retMat.at&lt;uchar &gt;(i, j) = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    retMat.at&lt;uchar &gt;(i, j) = img.at&lt;uchar &gt;(xSm, ySm);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> retMat;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Mat <span class="title">bilinear</span><span class="params">(cv::Mat img, <span class="keyword">float</span> angle)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = (<span class="keyword">int</span>)(sqrtf(<span class="built_in">pow</span>(img.rows, <span class="number">2</span>) + <span class="built_in">pow</span>(img.cols, <span class="number">2</span>)) + <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line">        Mat retMat = Mat::zeros(len, len, CV_8UC1);</span><br><span class="line">        <span class="keyword">float</span> anglePI = angle * CV_PI / <span class="number">180</span>;</span><br><span class="line">        <span class="keyword">float</span> alpha, beta;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; retMat.rows; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; retMat.cols; j++)</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">float</span> resu = (i-retMat.rows/<span class="number">2</span>)*<span class="built_in">cos</span>(anglePI) - (j-retMat.cols/<span class="number">2</span>)*<span class="built_in">sin</span>(anglePI) + img.rows / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">float</span> resv = (i-retMat.rows/<span class="number">2</span>)*<span class="built_in">sin</span>(anglePI) + (j-retMat.cols/<span class="number">2</span>)*<span class="built_in">cos</span>(anglePI) + img.cols / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">int</span> u = (<span class="keyword">int</span>) resu;</span><br><span class="line">                <span class="keyword">int</span> v = (<span class="keyword">int</span>) resv;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (resu &gt;= u) alpha = resu - u;</span><br><span class="line">                <span class="keyword">else</span> alpha = u - resu;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (resv &gt;= v) beta = resv - v;</span><br><span class="line">                <span class="keyword">else</span> beta = v - resv;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// cout &lt;&lt; alpha &lt;&lt; ' ' &lt;&lt; beta &lt;&lt; endl;</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(u &gt;= img.rows || v &gt;= img.cols || u &lt;= <span class="number">0</span> || v &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    retMat.at&lt;uchar &gt;(i, j) = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">int</span> res = (<span class="number">1</span> - alpha) * (<span class="number">1</span> - beta) * img.at&lt;uchar &gt;(u, v) +</span><br><span class="line">                            alpha * (<span class="number">1</span>-beta) * img.at&lt;uchar &gt;(u+<span class="number">1</span>, v) +</span><br><span class="line">                            (<span class="number">1</span> - alpha) * beta * img.at&lt;uchar &gt;(u, v+<span class="number">1</span>) +</span><br><span class="line">                            alpha * beta * img.at&lt;uchar &gt;(u+<span class="number">1</span>, v+<span class="number">1</span>);</span><br><span class="line">                    retMat.at&lt;uchar &gt;(i, j) = res;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> retMat;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -489,9 +422,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Computer-Vision/" rel="tag"><i class="fa fa-tag"></i> Computer Vision</a>
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           
-            <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+            <a href="/tags/图像处理/" rel="tag"><i class="fa fa-tag"></i> 图像处理</a>
           
         </div>
       
@@ -504,15 +437,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/37464/" rel="next" title="在Clion上配置OpenCV C++库">
+                <i class="fa fa-chevron-left"></i> 在Clion上配置OpenCV C++库
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/16361/" rel="prev" title="CHAPTER2 线性分类">
-                CHAPTER2 线性分类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图像分类"><span class="nav-number">1.</span> <span class="nav-text">图像分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nearest-Neighbor分类器"><span class="nav-number">2.</span> <span class="nav-text">Nearest Neighbor分类器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于超参数调优的验证集"><span class="nav-number">3.</span> <span class="nav-text">用于超参数调优的验证集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nearest-Neighbor的优劣"><span class="nav-number">4.</span> <span class="nav-text">Nearest Neighbor的优劣</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、小结：实际应用kNN"><span class="nav-number">6.</span> <span class="nav-text">六、小结：实际应用kNN</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#灰度最近邻插值"><span class="nav-number">1.</span> <span class="nav-text">灰度最近邻插值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双线性插值"><span class="nav-number">2.</span> <span class="nav-text">双线性插值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现代码"><span class="nav-number">3.</span> <span class="nav-text">实现代码</span></a></li></ol></div>
             
 
           </div>
