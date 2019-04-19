@@ -89,14 +89,14 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-828b953b94096cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4964755-3324bf850553c964.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp">
-<meta property="og:updated_time" content="2019-04-19T02:05:47.729Z">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-e5b6c2e9dc734978.png">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-828b953b94096cff.webp">
+<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-3324bf850553c964.webp">
+<meta property="og:updated_time" content="2019-04-19T02:10:09.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Deep Features for Discriminative Localization 笔记">
 <meta name="twitter:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/">
+<meta name="twitter:image" content="http://www.zhangshenghai.com/images/4964755-e5b6c2e9dc734978.png">
 
 
 
@@ -401,16 +401,16 @@
       
         <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。</p>
 <p>因此，NIN使用<strong>全局平均池化</strong>来做正则化，避免训练过程中的过拟合。<strong>全局平均池化</strong>还有另一个优点，只需要稍微调整就可以使网络保持很好的定位能力。如下图所示，在物体分类上训练的CNN能够成功地定位与人类交互的物体而非人物本身。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4964755-e5b6c2e9dc734978.png?imageMogr2/auto-orient/" alt></p>
+<p><img src="/images/4964755-e5b6c2e9dc734978.png" alt="4964755-e5b6c2e9dc734978"></p>
 <p>尽管我们的方法显得很简单，但在ILSVRC弱监督物体定位比赛中，我们最好的网络在测试集中与全监督的AlexNet十分接近。</p>
 <h1 id="近期研究"><a href="#近期研究" class="headerlink" title="近期研究"></a>近期研究</h1><h2 id="弱监督物体定位"><a href="#弱监督物体定位" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h2><p>与我们的方法最相近的是一个基于全局最大池化的方法，这个方法的定位局限于物体边缘的点，而不是确定物体的全部范围。尽管max和average很相似，但是平均池化更鼓励网络识别完整的物体区域。原理是相比于最大池化，平均池化网络识别整个物体的辨别性区域的损失更小。</p>
 <p>全局平均池化不是我们提出来的新技术，我们的创新点在于用它来精确定位区别性区域。</p>
 <h2 id="可视化卷积神经网络"><a href="#可视化卷积神经网络" class="headerlink" title="可视化卷积神经网络"></a>可视化卷积神经网络</h2><p>最近有研究发现CNNs在训练识别场景时会学习物体侦测，并证明了统一网络既能进行场景识别，又能进行物体定位。这些研究都只分析了卷积层，忽略了全连接层，因此是不全面的。</p>
 <p>还有研究发现通过转化不同层的深度特征，可以分析CNN的可视化解码。虽然这些方法可以转化全连接层，但是只展示了深层特征中什么信息被保留，没有凸显出这些信息的重要性。不同于这些方法，我们的方法能凸显出图片的辨别性区域。总的来说，我们的方法是对CNN深入灵魂的呈现。</p>
 <h1 id="类激活映射"><a href="#类激活映射" class="headerlink" title="类激活映射"></a>类激活映射</h1><p>下图是用CNN的全局平均池化来生成class activation maps (CAM)的过程。某一确切分类的CAM代表了CNN用于做分类时所看到的区别性区域的位置。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4964755-828b953b94096cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+<p><img src="/images/4964755-828b953b94096cff.webp" alt="4964755-828b953b94096cff"></p>
 <p>下面是ILSVRC中四个分类的CAM图。这些图将图片中用于分类的区别性区域高亮标记。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4964755-3324bf850553c964.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/888/format/webp" alt="img"></p>
+<p><img src="/images/4964755-3324bf850553c964.webp" alt="4964755-3324bf850553c964"></p>
 <p>我们使用了与NIN和GoogleNet相似的网络结构——网络的大部分都是卷积层，只在输出层（用于分类的softmax）前使用了全局平均池化层，并将它们作为得出分类的全连接层的特征。通过这种简单的连接结构，我们可以把图片中的重要区域用<strong>输出层权重映射回卷积层特征</strong>的方式标记出来，我们称这种技术为类激活映射(CAM)。</p>
 <p>看回第一张图，全局平均池化层输出最后一个卷积层的每个单元的特征图的平均值，这些值的加权总和用于生成最后的输出。也就是说，我们计算最后一个卷积层特征图的加权总和来生成CAM。</p>
 <h1 id="弱监督物体定位-1"><a href="#弱监督物体定位-1" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h1><p>这一部分，我们在ILSVRC2014数据集上评估了CAM的定位能力。我们先描述了实验的设置和用到的CNN网络，然后验证了我们的技术不会在学习定位时对网络产生不利影响，并详细给出了弱监督对象定位的结果。</p>
