@@ -90,7 +90,7 @@
 <meta property="og:description" content="将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190220105425.png">
-<meta property="og:updated_time" content="2019-03-04T08:04:34.397Z">
+<meta property="og:updated_time" content="2019-04-20T08:28:59.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Jupyter Notebook远程云服务器">
 <meta name="twitter:description" content="将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-">
@@ -404,9 +404,10 @@
 <h2 id="2、生成配置文件"><a href="#2、生成配置文件" class="headerlink" title="2、生成配置文件"></a>2、生成配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
 <h2 id="3、设置密码"><a href="#3、设置密码" class="headerlink" title="3、设置密码"></a>3、设置密码</h2><p>打开Python终端，输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [1]: from IPython.lib import passwd</span><br><span class="line">In [2]: passwd()</span><br><span class="line">Enter password: </span><br><span class="line">Verify password:</span><br></pre></td></tr></table></figure>
-<h2 id="4、设置配置文件"><a href="#4、设置配置文件" class="headerlink" title="4、设置配置文件"></a>4、设置配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/zsh/jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
+<p>复制得到的密码。</p>
+<h2 id="4、设置配置文件"><a href="#4、设置配置文件" class="headerlink" title="4、设置配置文件"></a>4、设置配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /home/zsh/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
 <p>在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.ip = &apos;0.0.0.0&apos;  # 所有IP都可以访问</span><br><span class="line">c.NotebookApp.port = 8888  # 默认的端口是8888</span><br><span class="line">c.NotebookApp.open_browser = False  # 禁止在服务器上打开jupyter</span><br><span class="line">c.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos;  # 设置Jupyter的根目录</span><br><span class="line">c.NotebookApp.allow_root = True  # 以root权限启动jupyter</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.ip = &apos;0.0.0.0&apos;  # 所有IP都可以访问</span><br><span class="line">c.NotebookApp.port = 8888  # 默认的端口是8888</span><br><span class="line">c.NotebookApp.open_browser = False  # 禁止在服务器上打开jupyter</span><br><span class="line">c.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos;  # 设置Jupyter的根目录</span><br><span class="line">c.NotebookApp.allow_root = True  # 以root权限启动jupyter </span><br><span class="line">c.NotebookApp.password = &quot;粘贴在第三步中得到的密码&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="5、启动Jupyter-Notebook"><a href="#5、启动Jupyter-Notebook" class="headerlink" title="5、启动Jupyter Notebook"></a>5、启动Jupyter Notebook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
 <p>这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。</p>
 
@@ -532,7 +533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

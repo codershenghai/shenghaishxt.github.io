@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker容器的SSH服务配置]]></title>
+    <url>%2Fposts%2F1597%2F</url>
+    <content type="text"><![CDATA[新建Docker容器举个例子，将镜像名字改为你自己的就可以： 1sudo nvidia-docker run -p 5592:5592 -p 5593:5593 -p 10022:22 --name ocr -it deeplearning:v1 bash 配置Docker的SSH服务检查容器内是否安装openssh-server和openssh-client12apt-get install openssh-serverapt-get install openssh-client 修改SSH配置文件1234567vim /etc/ssh/sshd_config# 修改以下选项# PermitRootLogin prohibit-password # 默认打开 禁止root用户使用密码登陆，需要将其注释RSAAuthentication yes #启用 RSA 认证PubkeyAuthentication yes #启用公钥私钥配对认证方式PermitRootLogin yes #允许root用户使用ssh登录 启动SSHD服务1/etc/init.d/ssh restart 在宿主机内测试是否能够通过SSH连接上容器执行以下命令，然后输入密码，若能进入容器内即配置成功 1ssh root@127.0.0.1 -p 10022 提交修改后的容器到镜像可将修改后的容器保存为镜像，以免后续重复操作，在宿主机内执行： 1docker commit ocr_0421 deeplearning:v1]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Learning Deep Features for Discriminative Localization 笔记]]></title>
     <url>%2Fposts%2F52825%2F</url>
     <content type="text"><![CDATA[引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平均池化还有另一个优点，只需要稍微调整就可以使网络保持很好的定位能力。如下图所示，在物体分类上训练的CNN能够成功地定位与人类交互的物体而非人物本身。 尽管我们的方法显得很简单，但在ILSVRC弱监督物体定位比赛中，我们最好的网络在测试集中与全监督的AlexNet十分接近。 近期研究弱监督物体定位与我们的方法最相近的是一个基于全局最大池化的方法，这个方法的定位局限于物体边缘的点，而不是确定物体的全部范围。尽管max和average很相似，但是平均池化更鼓励网络识别完整的物体区域。原理是相比于最大池化，平均池化网络识别整个物体的辨别性区域的损失更小。 全局平均池化不是我们提出来的新技术，我们的创新点在于用它来精确定位区别性区域。 可视化卷积神经网络最近有研究发现CNNs在训练识别场景时会学习物体侦测，并证明了统一网络既能进行场景识别，又能进行物体定位。这些研究都只分析了卷积层，忽略了全连接层，因此是不全面的。 还有研究发现通过转化不同层的深度特征，可以分析CNN的可视化解码。虽然这些方法可以转化全连接层，但是只展示了深层特征中什么信息被保留，没有凸显出这些信息的重要性。不同于这些方法，我们的方法能凸显出图片的辨别性区域。总的来说，我们的方法是对CNN深入灵魂的呈现。 类激活映射下图是用CNN的全局平均池化来生成class activation maps (CAM)的过程。某一确切分类的CAM代表了CNN用于做分类时所看到的区别性区域的位置。 下面是ILSVRC中四个分类的CAM图。这些图将图片中用于分类的区别性区域高亮标记。 我们使用了与NIN和GoogleNet相似的网络结构——网络的大部分都是卷积层，只在输出层（用于分类的softmax）前使用了全局平均池化层，并将它们作为得出分类的全连接层的特征。通过这种简单的连接结构，我们可以把图片中的重要区域用输出层权重映射回卷积层特征的方式标记出来，我们称这种技术为类激活映射(CAM)。 看回第一张图，全局平均池化层输出最后一个卷积层的每个单元的特征图的平均值，这些值的加权总和用于生成最后的输出。也就是说，我们计算最后一个卷积层特征图的加权总和来生成CAM。 弱监督物体定位这一部分，我们在ILSVRC2014数据集上评估了CAM的定位能力。我们先描述了实验的设置和用到的CNN网络，然后验证了我们的技术不会在学习定位时对网络产生不利影响，并详细给出了弱监督对象定位的结果。 我们使用AlexNet、VGGnet和GoogleNet这些流行的CNN网络评估CAM的影响。我们通常把这些网络的全连接层全部移除，替换为GAP，然后接一个softmax全连接层。 我们发现当GAP前的最后一个卷积层有较高空间分辨率时，网络的定位能力可以得到改善，我们称为图分辨率。因此，我们移除了一些网络的卷积层。具体地，对AlexNet，我们移除conv5之后的卷积层（pool5到prob），得到图分辨率（mapping resolution）为13x13。对VGGnet，移除了conv5-3后的所有卷积层（pool5到prob），得到14x14的图分辨率。对GoogLeNet，移除了inception4e后的卷积层（pool4到prob），得到14x14的图分辨率。对上述的每个网络，我们都添加一个3x3，步长为1，padding为1, 1024个单元的卷积层，然后接一个GAP层和一个softmax层。最后对每个网络在ILSVRC的1.3M张要分成1000类的训练图片进行精调（fine-tuned），分别产生我们最终的AlexNet-GAP，VGGnet-GAP和GoogLeNet-GAP。 总结本文针对使用GAP的CNN网络提出了名为CAM的技术，它能够让经过训练的CNN学会物体定位。而且，CAM定位技术能够推广到其他视觉识别任务中，这是最大的利好。]]></content>
@@ -148,7 +160,7 @@
   <entry>
     <title><![CDATA[Docker命令使用记录]]></title>
     <url>%2Fposts%2F41898%2F</url>
-    <content type="text"><![CDATA[容器启动Docker容器： 注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签 1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前系统中容器的列表： 12docker ps -a # 查看包括所有容器docker ps # 查看正在运行的容器 删除容器： 1docker rm CONTAINER ID 重新启动已经停止的容器： 12sudo docker start CONTAINER ID # 也可以使用 docker restartsudo docker attach CONTAINER ID # 附着到容器的会话上 重启Docker： 1systemctl restart docker 镜像列出镜像： 1sudo docker images]]></content>
+    <content type="text"><![CDATA[容器启动Docker容器： 注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签 1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前系统中容器的列表： 12docker ps -a # 查看包括所有容器docker ps # 查看正在运行的容器 删除容器： 1docker rm CONTAINER ID 重新启动已经停止的容器： 12sudo docker start CONTAINER ID # 也可以使用 docker restartsudo docker attach CONTAINER ID # 附着到容器的会话上 重启Docker： 1systemctl restart docker 新建容器： 1docker run --name OCR -it deeplearning:v1 bash 镜像列出镜像： 1sudo docker images]]></content>
       <categories>
         <category>Docker命令使用纪录</category>
       </categories>
@@ -383,7 +395,7 @@
   <entry>
     <title><![CDATA[搭建Jupyter Notebook远程云服务器]]></title>
     <url>%2Fposts%2F37756%2F</url>
-    <content type="text"><![CDATA[将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-config 3、设置密码打开Python终端，输入 1234In [1]: from IPython.lib import passwdIn [2]: passwd()Enter password: Verify password: 4、设置配置文件1vim /home/zsh/jupyter/jupyter_notebook_config.py 在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改） 12345c.NotebookApp.ip = &apos;0.0.0.0&apos; # 所有IP都可以访问c.NotebookApp.port = 8888 # 默认的端口是8888c.NotebookApp.open_browser = False # 禁止在服务器上打开jupyterc.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos; # 设置Jupyter的根目录c.NotebookApp.allow_root = True # 以root权限启动jupyter 5、启动Jupyter Notebook1jupyter notebook 这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。]]></content>
+    <content type="text"><![CDATA[将Jupyter部署到课题组的深度学习服务器上，主要的考虑是可以避免在不同电脑上使用jupyter时数据不一致的问题，而且能够完美利用服务器的性能。 完成后的界面如下： 还是可以的，等之后有时间再把本地电脑上的那些插件都装上就完美啦~ 安装过程1、安装Jupyter Notebook1pip install jupyter 2、生成配置文件1jupyter notebook --generate-config 3、设置密码打开Python终端，输入 1234In [1]: from IPython.lib import passwdIn [2]: passwd()Enter password: Verify password: 复制得到的密码。 4、设置配置文件1vim /home/zsh/.jupyter/jupyter_notebook_config.py 在末尾增加配置信息（直接修改配置文件也可以，但这样看着更简洁，且便于之后的修改） 123456c.NotebookApp.ip = &apos;0.0.0.0&apos; # 所有IP都可以访问c.NotebookApp.port = 8888 # 默认的端口是8888c.NotebookApp.open_browser = False # 禁止在服务器上打开jupyterc.NotebookApp.notebook_dir = &apos;/home/zsh/jupyter&apos; # 设置Jupyter的根目录c.NotebookApp.allow_root = True # 以root权限启动jupyter c.NotebookApp.password = &quot;粘贴在第三步中得到的密码&quot; 5、启动Jupyter Notebook1jupyter notebook 这样就搭建成功啦，可以在本地的浏览器上输入 服务器的ip地址:8888，这样就可以远程打开jupyter了。]]></content>
       <categories>
         <category>随笔</category>
       </categories>
