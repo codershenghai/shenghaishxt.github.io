@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[使用PicGo和Github搭建个人图床]]></title>
     <url>%2Fposts%2F32287%2F</url>
-    <content type="text"><![CDATA[一直在寻找好用而且稳定的图床，最近微博图床也挂了，那些个人的私有免费图床感觉是真的不太敢用，感觉指不定哪一天作者就退网了，风险太大。今天发现PicGo这个好用的工具，搭配Github仓库可以实现一个属于你自己的个人图床，再也不用担心图片丢失的问题啦~ 新建Github公有仓库首先登陆Github建立一个专门来存放图片的公有仓库，注意必须是公有仓库，否则图片url是无法共享出去的，如下图所示 下载安装PicGoPicGo的下载地址：https://github.com/Molunerfinn/PicGo/releases 安装之后打开的界面如下图所示 点开图床设置里的GitHub图床，设置好仓库名，分支名和Token，下面是我的设置，怎么获取Token网上都可以查得到，就不再讲了 PicGo使用PicGo的使用是非常方便的，可以从剪贴板里上传，也可以从路径上传或者是直接拖拽，就可以直接获取到链接了，而且链接格式也支持好多种，常用的一般是Markdown和URL。]]></content>
+    <content type="text"><![CDATA[一直在寻找好用而且稳定的图床，最近微博图床也挂了，那些个人的私有免费图床不太敢用，感觉指不定哪一天作者就退网了，风险太大。今天发现PicGo这个好用的工具，搭配Github仓库可以实现一个属于你自己的个人图床，再也不用担心图片丢失的问题啦~ 新建Github公有仓库首先登陆Github建立一个专门来存放图片的公有仓库，注意必须是公有仓库，否则图片url是无法共享出去的，如下图所示 下载安装PicGoPicGo的下载地址：https://github.com/Molunerfinn/PicGo/releases 安装之后打开的界面如下图所示 点开图床设置里的GitHub图床，设置好仓库名，分支名和Token，下面是我的设置，怎么获取Token网上都可以查得到，就不再讲了 PicGo使用PicGo的使用是非常方便的，可以从剪贴板里上传，也可以从路径上传或者是直接拖拽，就可以直接获取到链接了，而且链接格式也支持好多种，常用的一般是Markdown和URL。]]></content>
       <categories>
         <category>随笔</category>
       </categories>
