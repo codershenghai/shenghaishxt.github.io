@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="感谢开源！！让我们用上了这么好的插件！  创建歌单页面由于我想在单独的页面加入歌单，所以额外创了个页面，也可以直接在文章中插入，原理都是一样的。  新建页面，命名为playlist： 1hexo new page playlist  这时候在 /Hexo/source 文件夹下会生成一个playlist文件夹，打开里面的index.md，修改如下： 123title: 歌单date: 2019-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190221170126.png">
-<meta property="og:updated_time" content="2019-03-04T08:09:34.688Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/TIM%E6%88%AA%E5%9B%BE20190221170126.png">
+<meta property="og:updated_time" content="2019-05-06T02:21:26.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo添加Aplayer播放器">
 <meta name="twitter:description" content="感谢开源！！让我们用上了这么好的插件！  创建歌单页面由于我想在单独的页面加入歌单，所以额外创了个页面，也可以直接在文章中插入，原理都是一样的。  新建页面，命名为playlist： 1hexo new page playlist  这时候在 /Hexo/source 文件夹下会生成一个playlist文件夹，打开里面的index.md，修改如下： 123title: 歌单date: 2019-">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190221170126.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/TIM%E6%88%AA%E5%9B%BE20190221170126.png">
 
 
 
@@ -193,6 +193,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -209,16 +219,6 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
           </a>
         </li>
       
@@ -421,11 +421,11 @@
 <li><p>最新版的 hexo-tag-aplayer 已经支持了MetingJS的使用，可以直接解析网络平台的歌曲（简直是神器），首先要在站点配置文件中开启meting模式，添加以下代码在配置文件的最后：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aplayer:</span><br><span class="line">  meting: true</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在markdown文件中使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;6726552355&quot; &quot;tencent&quot; &quot;playlist&quot; &quot;theme:#FF4081&quot; &quot;mode:circulation&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<li><p>复制歌单的链接，然后复制歌单的id，例如 <a href="https://music.163.com/playlist?id=523845661&amp;userid=46562117" target="_blank" rel="noopener">https://music.163.com/playlist?id=523845661&amp;userid=46562117</a> ，这个歌单的id就是523845661，公司名可以是tencent、netease或是其他公司，下面给出一个例子，打开 /Hexo/source/playlist/index.md文件，输入：</p>
 </li>
 </ol>
-<p>效果还是很不错的：<br><img src="/images/TIM截图20190221170126.png" alt="TIM截图20190221170126"></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;523845661&quot; &quot;netease&quot; &quot;playlist&quot; &quot;theme:#FF4081&quot; &quot;mode:circulation&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果还是很不错的：<br><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/TIM%E6%88%AA%E5%9B%BE20190221170126.png" alt></p>
 
       
     </div>
