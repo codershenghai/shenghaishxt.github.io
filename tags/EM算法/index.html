@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,SVM,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,21 +79,16 @@
 
 
 
-<meta name="description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
-<meta name="keywords" content="Machine Learning,SVM">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线性可分支持向量机与软间隔最大化">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/35913/index.html">
+<meta name="description" content="good good study up up every day">
+<meta property="og:type" content="website">
+<meta property="og:title" content="shenghai&#39;s blog | shxt">
+<meta property="og:url" content="http://www.zhangshenghai.com/tags/EM算法/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
+<meta property="og:description" content="good good study up up every day">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191150.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191428.png">
-<meta property="og:updated_time" content="2019-03-20T02:06:32.335Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性可分支持向量机与软间隔最大化">
-<meta name="twitter:description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191150.png">
+<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
+<meta name="twitter:description" content="good good study up up every day">
 
 
 
@@ -123,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/35913/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/tags/EM算法/">
 
 
 
 
 
-  <title>线性可分支持向量机与软间隔最大化 | shenghai's blog | shxt</title>
+  <title>标签: EM算法 | shenghai's blog | shxt</title>
   
 
 
@@ -148,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right ">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,268 +288,52 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>EM算法<small>标签</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/35913/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shenghai">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="shenghai's blog | shxt">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/posts/1422/" itemprop="url">
+              
+                <span itemprop="name">极大似然估计和EM算法初步</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">线性可分支持向量机与软间隔最大化</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T19:17:42+08:00">
-                2019-03-01
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-05-15T16:45:22+08:00" content="2019-05-15">
+          05-15
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。</p>
-<p>通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：</p>
-<script type="math/tex; mode=display">
-y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对每个松弛变量 $\xi_i​$ 都支付一个代价 $\xi_i​$，目标函数就由原来的 $\frac12 ||w||^2​$变成</p>
-<script type="math/tex; mode=display">
-\dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i}</script><p>其中$C&gt;0​$为惩罚参数。</p>
-<p>目标函数有两层含义:</p>
-<ul>
-<li>使 $\frac12 ||w||^2$尽量小即间隔尽量大</li>
-<li>使误分类点的个数尽量小</li>
-</ul>
-<p>这样就将线性不可分的支持向量机的学习问题变成如下凸二次规划问题：</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & \min_{w,b,\xi} \quad \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i}
-\\ & s.t. \quad y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}
-\\ & \xi_{i} \geq 0, \quad i=1,2, \cdots, N \end{align*}</script><p>学习得到分离超平面为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& w^{*} \cdot x + b^{*} = 0 \end{align*}</script><p>以及相应的分类决策函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& f \left( x \right) = sign \left( w^{*} \cdot x + b^{*} \right)  \end{align*}</script><p>称为线性支持向量机。</p>
-<h1 id="学习的对偶算法"><a href="#学习的对偶算法" class="headerlink" title="学习的对偶算法"></a>学习的对偶算法</h1><h2 id="构建拉格朗日函数"><a href="#构建拉格朗日函数" class="headerlink" title="构建拉格朗日函数"></a>构建拉格朗日函数</h2><p>引入拉格朗日乘子$\alpha_{i} \geq 0, \mu_{i} \geq 0, i = 1, 2, \cdots, N$构建拉格朗日函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ & L \left( w, b, \xi, \alpha, \mu \right) =  \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i} + \sum_{i=1}^{N} \alpha_{i} \left[- y_{i} \left( w \cdot x_{i} + b \right) + 1 - \xi_{i}  \right] + \sum_{i=1}^{N} \mu_{i} \left( -\xi_{i} \right)
-\\ & = \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i} - \sum_{i=1}^{N} \alpha_{i} \left[ y_{i} \left( w \cdot x_{i} + b \right) -1 + \xi_{i} \right] - \sum_{i=1}^{N} \mu_{i} \xi_{i}  \end{align*}</script><p>其中，$\alpha = \left( \alpha_{1}, \alpha_{2}, \cdots, \alpha_{N} \right)^{T}$以及$\mu = \left( \mu_{1}, \mu_{2}, \cdots, \mu_{N} \right)^{T}$为拉格朗日乘子向量。</p>
-<h2 id="求极小"><a href="#求极小" class="headerlink" title="求极小"></a>求极小</h2><p>对偶问题是拉格朗日函数的极大极小问题，首先求$\min_{w,b}L \left( w, b, \xi, \alpha, \mu \right)$：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \nabla_{w} L \left( w, b, \xi, \alpha, \mu \right) = w - \sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} = 0 
-\\ &  \nabla_{b} L \left( w, b, \xi, \alpha, \mu \right) = -\sum_{i=1}^{N} \alpha_{i} y_{i} = 0 
-\\ & \nabla_{\xi_{i}} L \left( w, b, \xi, \alpha, \mu \right) = C - \alpha_{i} - \mu_{i} = 0 \end{align*}</script><p>得</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &   w ＝ \sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}  
-\\ &  \sum_{i=1}^{N} \alpha_{i} y_{i} = 0 
-\\ & C - \alpha_{i} - \mu_{i} = 0\end{align*}</script><p>代入拉格朗日函数，得</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ & L \left( w, b, \xi, \alpha, \mu \right) =  \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right) + C \sum_{i=1}^{N} \xi_{i} - \sum_{i=1}^{N} \alpha_{i}  y_{i} \left[ \left( \sum_{j=1}^{N} \alpha_{j} y_{j} x_{j} \right) \cdot x_{i} + b \right] 
-\\ & \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad + \sum_{i=1}^{N} \alpha_{i} - \sum_{i=1}^{N} \alpha_{i} \xi_{i} - \sum_{i}^{N} \mu_{i} \xi_{i}
-\\ & = - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right) - \sum_{i=1}^{N} \alpha_{i} y_{i} b + \sum_{i=1}^{N} \alpha_{i} + \sum_{i=1}^{N} \xi_{i} \left( C - \alpha_{i} - \mu_{i}  \right)
-\\ & = - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  + \sum_{i=1}^{N} \alpha_{i} \end{align*}</script><h2 id="求极大"><a href="#求极大" class="headerlink" title="求极大"></a>求极大</h2><p>求$\max_{\alpha} \min_{w,b, \xi}L \left( w, b, \xi, \alpha, \mu \right)$：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \max_{\alpha} - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  + \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & C - \alpha_{i} - \mu_{i} = 0
-\\ & \alpha_{i} \geq 0
-\\ & \mu_{i} \geq 0, \quad i=1,2, \cdots, N  \end{align*}</script><p>等价于</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>于是，可以通过求解此对偶问题而得到原始问题的解，进而确定分离超平面和决策函数。</p>
-<h2 id="线性可分支持向量机学习算法"><a href="#线性可分支持向量机学习算法" class="headerlink" title="线性可分支持向量机学习算法"></a>线性可分支持向量机学习算法</h2><h3 id="输入：训练数据集"><a href="#输入：训练数据集" class="headerlink" title="输入：训练数据集"></a>输入：训练数据集</h3><p>线性可分训练数据集 $T={(x_1, y_1), (x_2, y_2),…,(x_N, y_N)}$，其中 $x_i \in  R^n$，$y_i \in \{-1, 1\}$，$i=1,2,…,N$。</p>
-<h3 id="输出：分离超平面和分类决策函数"><a href="#输出：分离超平面和分类决策函数" class="headerlink" title="输出：分离超平面和分类决策函数"></a>输出：分离超平面和分类决策函数</h3><ol>
-<li><p>选择惩罚参数$C \geq 0$，构早并求解凸二次规划问题</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>求得最优解 $\alpha^{\star} = \left( \alpha_{1}^{\star}, \alpha_{1}^{\star}, \cdots, \alpha_{N}^{\star} \right)$</p>
-</li>
-<li><p>计算</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & w^{*} = \sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i} \end{align*}</script><p>并选择$\alpha^{\star}$的一个分量$0 &lt; \alpha_{j}^{\star} &lt; C​$，计算</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & b^{*} = y_{j} - \sum_{i=1}^{N} \alpha_{i}^{*} y_{i} \left( x_{i} \cdot x_{j} \right) \end{align*}</script></li>
-<li><p>求得分离超平面</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & w^{*} \cdot x + b^{*} = 0 \end{align*}</script><p>以及分类决策函数</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& f \left( x \right) = sign \left( w^{*} \cdot x + b^{*} \right)  \end{align*}</script></li>
-</ol>
-<h1 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h1><p>实例$x_i$的几何间隔为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& \gamma_{i} = \dfrac{y_{i} \left( w \cdot x_{i} + b \right)}{ \| w \|} = \dfrac{| 1 - \xi_{i} |}{\| w \|} \end{align*}</script><p>则实例$x_i$到间隔边界的距离为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& \left| \gamma_{i} - \dfrac{1}{\| w \|} \right| = \left| \dfrac{| 1 - \xi_{i} |}{\| w \|} - \dfrac{1}{\| w \|}  \right| 
-\\ & = \dfrac{\xi_{i}}{\| w \|}\end{align*}</script><p>对于每一个 $\xi_i \geq 0​$，有：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \xi_{i} \geq 0 \Leftrightarrow \left\{
-\begin{aligned} 
-\ &  \xi_{i}=0,\quad x_{i}在间隔边界上;
-\\ & 0 < \xi_{i} < 1, \quad x_{i}在间隔边界与分离超平面之间;
-\\ & \xi_{i}=1, \quad x_{i}在分离超平面上;
-\\ & \xi_{i}>1, \quad x_{i}在分离超平面误分类一侧;
-\end{aligned}
-\right.\end{align*}</script><p><img src="/images/TIM截图20190304191150.png" alt="TIM截图20190304191150"></p>
-<h1 id="合页损失函数"><a href="#合页损失函数" class="headerlink" title="合页损失函数"></a>合页损失函数</h1><p>线性支持向量机学习还有另外一种解释，就是最小化以下目标函数：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^N \left[ 1 - y \left(w \cdot x + b \right) \right]_{+} + \lambda||w||^2</script><p>线性支持向量机（软间隔）的合页损失函数为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& L \left( y \left( w \cdot x + b \right) \right) = \left[ 1 - y \left(w \cdot x + b \right) \right]_{+} \end{align*}</script><p>其中，“+”为取正函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \left[ z \right]_{+} = \left\{
-\begin{aligned} 
-\ &  z,\quad z > 0
-\\ & 0, \quad z \leq 0
-\end{aligned}
-\right.\end{align*}</script><p><img src="/images/TIM截图20190304191428.png" alt="TIM截图20190304191428"></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
-          
-            <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i> SVM</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/posts/757/" rel="next" title="Git远程仓库的使用">
-                <i class="fa fa-chevron-left"></i> Git远程仓库的使用
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/42676/" rel="prev" title="使用Python模拟鼠标(键盘)操作">
-                使用Python模拟鼠标(键盘)操作 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -562,14 +341,6 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
 
         </div>
         
@@ -590,17 +361,8 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -660,22 +422,6 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">1.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习的对偶算法"><span class="nav-number">2.</span> <span class="nav-text">学习的对偶算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建拉格朗日函数"><span class="nav-number">2.1.</span> <span class="nav-text">构建拉格朗日函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极小"><span class="nav-number">2.2.</span> <span class="nav-text">求极小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极大"><span class="nav-number">2.3.</span> <span class="nav-text">求极大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机学习算法"><span class="nav-number">2.4.</span> <span class="nav-text">线性可分支持向量机学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入：训练数据集"><span class="nav-number">2.4.1.</span> <span class="nav-text">输入：训练数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出：分离超平面和分类决策函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">输出：分离超平面和分类决策函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量"><span class="nav-number">3.</span> <span class="nav-text">支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合页损失函数"><span class="nav-number">4.</span> <span class="nav-text">合页损失函数</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -802,10 +548,6 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

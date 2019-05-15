@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,SVM,">
+  <meta name="keywords" content="Machine Learning,极大似然,EM算法,">
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
-<meta name="keywords" content="Machine Learning,SVM">
+<meta name="description" content="极大似然估计是在知道结果的情况下，寻求使该结果出现可能性极大的条件，以此作为估计值。在维基百科中，极大似然估计的定义是这样的：  给定一个概率分布$D$，已知其概率密度函数（连续分布）或概率质量函数（离散分布）为$f_D$，以及一个分布参数$\theta$，我们可以从这个分布中抽出一个具有n个值的采样$X_1, X_2, …, X_n$，计算出其似然函数：  L(\theta|x_1, ...,">
+<meta name="keywords" content="Machine Learning,极大似然,EM算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性可分支持向量机与软间隔最大化">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/35913/index.html">
+<meta property="og:title" content="极大似然估计和EM算法初步">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/1422/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
+<meta property="og:description" content="极大似然估计是在知道结果的情况下，寻求使该结果出现可能性极大的条件，以此作为估计值。在维基百科中，极大似然估计的定义是这样的：  给定一个概率分布$D$，已知其概率密度函数（连续分布）或概率质量函数（离散分布）为$f_D$，以及一个分布参数$\theta$，我们可以从这个分布中抽出一个具有n个值的采样$X_1, X_2, …, X_n$，计算出其似然函数：  L(\theta|x_1, ...,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191150.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191428.png">
-<meta property="og:updated_time" content="2019-03-20T02:06:32.335Z">
+<meta property="og:updated_time" content="2019-05-15T15:33:15.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性可分支持向量机与软间隔最大化">
-<meta name="twitter:description" content="线性支持向量机线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。 通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：  y_{i} \left( w \cdot x_{i} + b \">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/TIM截图20190304191150.png">
+<meta name="twitter:title" content="极大似然估计和EM算法初步">
+<meta name="twitter:description" content="极大似然估计是在知道结果的情况下，寻求使该结果出现可能性极大的条件，以此作为估计值。在维基百科中，极大似然估计的定义是这样的：  给定一个概率分布$D$，已知其概率密度函数（连续分布）或概率质量函数（离散分布）为$f_D$，以及一个分布参数$\theta$，我们可以从这个分布中抽出一个具有n个值的采样$X_1, X_2, …, X_n$，计算出其似然函数：  L(\theta|x_1, ...,">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/35913/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/1422/">
 
 
 
 
 
-  <title>线性可分支持向量机与软间隔最大化 | shenghai's blog | shxt</title>
+  <title>极大似然估计和EM算法初步 | shenghai's blog | shxt</title>
   
 
 
@@ -307,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/35913/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/1422/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -324,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线性可分支持向量机与软间隔最大化</h1>
+          <h1 class="post-title" itemprop="name headline">极大似然估计和EM算法初步</h1>
         
 
         <div class="post-meta">
@@ -336,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T19:17:42+08:00">
-                2019-03-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-15T16:45:22+08:00">
+                2019-05-15
               </time>
             
 
@@ -396,100 +393,57 @@
       
 
       
-        <h1 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h1><p>线性支持向量机包含线性可分支持向量机和线性不可分支持向量机。</p>
-<p>通常情况下，训练数据中有一些特异点，线性不可分意味着这些特异点$(x_i, y_i)​$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，对每个样本点引进一个松弛变量 $\xi_i \geq 0​$，使得函数间隔加上松弛变量大于等于1，约束条件变为：</p>
+        <p>极大似然估计是在知道结果的情况下，寻求使该结果出现可能性极大的条件，以此作为估计值。在维基百科中，极大似然估计的定义是这样的：</p>
+<blockquote>
+<p>给定一个概率分布$D$，已知其<a href="https://zh.wikipedia.org/wiki/概率密度函数" target="_blank" rel="noopener">概率密度函数</a>（连续分布）或<a href="https://zh.wikipedia.org/wiki/概率质量函数" target="_blank" rel="noopener">概率质量函数</a>（离散分布）为$f_D$，以及一个分布参数$\theta$，我们可以从这个分布中抽出一个具有n个值的采样$X_1, X_2, …, X_n$，计算出其<a href="https://zh.wikipedia.org/wiki/似然函数" target="_blank" rel="noopener">似然函数</a>：</p>
 <script type="math/tex; mode=display">
-y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对每个松弛变量 $\xi_i​$ 都支付一个代价 $\xi_i​$，目标函数就由原来的 $\frac12 ||w||^2​$变成</p>
+L(\theta|x_1, ..., x_n) = f_{\theta}(x_1, ..., x_n)</script><p>若$D$是离散分布，$f_{\theta}$即是在参数为$\theta$时观测到这一采样的概率。若其是连续分布，$f_{\theta}$则为$X_1, X_2, …, X_n$联合分布的概率密度函数在观测值处的取值。一旦我们获得$X_1, X_2, …, X_n$，我们就能求得一个关于$\theta$的估计。最大似然估计会寻找关于$\theta$的最可能的值。从数学上说，我们可以在$\theta$的所有可能取值中寻找一个值使得似然函数取到最大值。这个使可能性最大的$\hat \theta$值即称为$\theta$的极大似然估计。由定义，极大似然估计是样本的函数。</p>
+</blockquote>
+<h1 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>首先从一个例子入手，假设我们需要调查某个地区的人群身高分布，那么先假设这个地区人群身高服从正态分布$N(\mu, \sigma ^2)$。注意，极大似然估计的前提是要假设数据总体的分布，<strong>不知道数据分布是无法使用极大似然估计的</strong>。假设的正态分布的均值和方差未知，这个问题中极大似然估计的目的就是要估计这两个参数。</p>
+<p>根据概率统计的思想，可以依据样本估算总体，假设我们随机抽到了1000个人，根据这1000个人的身高来估计均值$\mu$和方差$\sigma^2$。</p>
+<p>将其翻译成数学语言：为了统计该地区的人群身高分布，我们独立地按照概率密度$p(x|\theta)$抽取了1000个样本组成样本集$X = x_1, …, x_N$，我们想通过样本集$X$来估计总体的未知参数$\theta$。这里概率密度$p(x|\theta)$服从高斯分布$N(\mu, \sigma ^ 2)$，其中的未知参数是$\theta = [\mu, sigma]^T$。</p>
+<p>那么怎样估算$\theta$呢？</p>
+<h2 id="估算参数"><a href="#估算参数" class="headerlink" title="估算参数"></a>估算参数</h2><p>这里每个样本都是独立地从$p(x|\theta)$中抽取的，也就是说这1000个人之间是相互独立的。若抽到$i$的概率是$p(x_i|\theta)$，抽到$j$的概率是$p(x_j|\theta)$，那么同时抽到它们的概率就是$p(x_i|\theta)×p(x_j|\theta)$。同理，同时抽到这1000个人的概率就是他们各自概率的乘积，即为他们的联合概率，这个联合概率就等于这个问题的似然函数：</p>
 <script type="math/tex; mode=display">
-\dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i}</script><p>其中$C&gt;0​$为惩罚参数。</p>
-<p>目标函数有两层含义:</p>
+L(\theta) = L(x_1, x_2, ..., x_n;\theta) = \Pi ^n_{i=1} p(x_i|\theta), \quad \theta \in \Theta</script><p>对 L 取对数，将其变成连加的，称为对数似然函数，如下式：</p>
+<script type="math/tex; mode=display">
+H(\theta) = ln L(\theta) = ln \Pi ^n_{i=1} p(x_i|\theta) = \sum^n_{i=1} ln p(x_i|\theta)</script><blockquote>
+<p>为什么要取对数？</p>
 <ul>
-<li>使 $\frac12 ||w||^2$尽量小即间隔尽量大</li>
-<li>使误分类点的个数尽量小</li>
+<li>取对数之后累积变为累和，求导更加方便</li>
+<li>概率累积会出现数值非常小的情况，比如1e-30，由于计算机的精度是有限的，无法识别这一类数据，取对数之后，更易于计算机的识别(1e-30以10为底取对数后便得到-30)。</li>
 </ul>
-<p>这样就将线性不可分的支持向量机的学习问题变成如下凸二次规划问题：</p>
+</blockquote>
+<p>对似然函数求所有参数的偏导数，然后让这些偏导数为0，假设有n个参数，就可以得到n个方程组成的方程组，方程组的解就是似然函数的极值点了，在似然函数极大的情况下得到的参数值$\theta$即为我们所求的值：</p>
 <script type="math/tex; mode=display">
-\begin{align*}  \\ & \min_{w,b,\xi} \quad \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i}
-\\ & s.t. \quad y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}
-\\ & \xi_{i} \geq 0, \quad i=1,2, \cdots, N \end{align*}</script><p>学习得到分离超平面为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& w^{*} \cdot x + b^{*} = 0 \end{align*}</script><p>以及相应的分类决策函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& f \left( x \right) = sign \left( w^{*} \cdot x + b^{*} \right)  \end{align*}</script><p>称为线性支持向量机。</p>
-<h1 id="学习的对偶算法"><a href="#学习的对偶算法" class="headerlink" title="学习的对偶算法"></a>学习的对偶算法</h1><h2 id="构建拉格朗日函数"><a href="#构建拉格朗日函数" class="headerlink" title="构建拉格朗日函数"></a>构建拉格朗日函数</h2><p>引入拉格朗日乘子$\alpha_{i} \geq 0, \mu_{i} \geq 0, i = 1, 2, \cdots, N$构建拉格朗日函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ & L \left( w, b, \xi, \alpha, \mu \right) =  \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i} + \sum_{i=1}^{N} \alpha_{i} \left[- y_{i} \left( w \cdot x_{i} + b \right) + 1 - \xi_{i}  \right] + \sum_{i=1}^{N} \mu_{i} \left( -\xi_{i} \right)
-\\ & = \dfrac{1}{2} \| w \|^{2} + C \sum_{i=1}^{N} \xi_{i} - \sum_{i=1}^{N} \alpha_{i} \left[ y_{i} \left( w \cdot x_{i} + b \right) -1 + \xi_{i} \right] - \sum_{i=1}^{N} \mu_{i} \xi_{i}  \end{align*}</script><p>其中，$\alpha = \left( \alpha_{1}, \alpha_{2}, \cdots, \alpha_{N} \right)^{T}$以及$\mu = \left( \mu_{1}, \mu_{2}, \cdots, \mu_{N} \right)^{T}$为拉格朗日乘子向量。</p>
-<h2 id="求极小"><a href="#求极小" class="headerlink" title="求极小"></a>求极小</h2><p>对偶问题是拉格朗日函数的极大极小问题，首先求$\min_{w,b}L \left( w, b, \xi, \alpha, \mu \right)$：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \nabla_{w} L \left( w, b, \xi, \alpha, \mu \right) = w - \sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} = 0 
-\\ &  \nabla_{b} L \left( w, b, \xi, \alpha, \mu \right) = -\sum_{i=1}^{N} \alpha_{i} y_{i} = 0 
-\\ & \nabla_{\xi_{i}} L \left( w, b, \xi, \alpha, \mu \right) = C - \alpha_{i} - \mu_{i} = 0 \end{align*}</script><p>得</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &   w ＝ \sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}  
-\\ &  \sum_{i=1}^{N} \alpha_{i} y_{i} = 0 
-\\ & C - \alpha_{i} - \mu_{i} = 0\end{align*}</script><p>代入拉格朗日函数，得</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ & L \left( w, b, \xi, \alpha, \mu \right) =  \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right) + C \sum_{i=1}^{N} \xi_{i} - \sum_{i=1}^{N} \alpha_{i}  y_{i} \left[ \left( \sum_{j=1}^{N} \alpha_{j} y_{j} x_{j} \right) \cdot x_{i} + b \right] 
-\\ & \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad + \sum_{i=1}^{N} \alpha_{i} - \sum_{i=1}^{N} \alpha_{i} \xi_{i} - \sum_{i}^{N} \mu_{i} \xi_{i}
-\\ & = - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right) - \sum_{i=1}^{N} \alpha_{i} y_{i} b + \sum_{i=1}^{N} \alpha_{i} + \sum_{i=1}^{N} \xi_{i} \left( C - \alpha_{i} - \mu_{i}  \right)
-\\ & = - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  + \sum_{i=1}^{N} \alpha_{i} \end{align*}</script><h2 id="求极大"><a href="#求极大" class="headerlink" title="求极大"></a>求极大</h2><p>求$\max_{\alpha} \min_{w,b, \xi}L \left( w, b, \xi, \alpha, \mu \right)$：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \max_{\alpha} - \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  + \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & C - \alpha_{i} - \mu_{i} = 0
-\\ & \alpha_{i} \geq 0
-\\ & \mu_{i} \geq 0, \quad i=1,2, \cdots, N  \end{align*}</script><p>等价于</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>于是，可以通过求解此对偶问题而得到原始问题的解，进而确定分离超平面和决策函数。</p>
-<h2 id="线性可分支持向量机学习算法"><a href="#线性可分支持向量机学习算法" class="headerlink" title="线性可分支持向量机学习算法"></a>线性可分支持向量机学习算法</h2><h3 id="输入：训练数据集"><a href="#输入：训练数据集" class="headerlink" title="输入：训练数据集"></a>输入：训练数据集</h3><p>线性可分训练数据集 $T={(x_1, y_1), (x_2, y_2),…,(x_N, y_N)}$，其中 $x_i \in  R^n$，$y_i \in \{-1, 1\}$，$i=1,2,…,N$。</p>
-<h3 id="输出：分离超平面和分类决策函数"><a href="#输出：分离超平面和分类决策函数" class="headerlink" title="输出：分离超平面和分类决策函数"></a>输出：分离超平面和分类决策函数</h3><ol>
-<li><p>选择惩罚参数$C \geq 0$，构早并求解凸二次规划问题</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\ &  \min_{\alpha} \dfrac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} \left( x_{i} \cdot x_{j} \right)  - \sum_{i=1}^{N} \alpha_{i}  
-\\ & s.t. \sum_{i=1}^{N} \alpha_{i} y_{i} = 0
-\\ & 0 \leq \alpha_{i} \leq C , \quad i=1,2, \cdots, N  \end{align*}</script><p>求得最优解 $\alpha^{\star} = \left( \alpha_{1}^{\star}, \alpha_{1}^{\star}, \cdots, \alpha_{N}^{\star} \right)$</p>
-</li>
-<li><p>计算</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & w^{*} = \sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i} \end{align*}</script><p>并选择$\alpha^{\star}$的一个分量$0 &lt; \alpha_{j}^{\star} &lt; C​$，计算</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & b^{*} = y_{j} - \sum_{i=1}^{N} \alpha_{i}^{*} y_{i} \left( x_{i} \cdot x_{j} \right) \end{align*}</script></li>
-<li><p>求得分离超平面</p>
-<script type="math/tex; mode=display">
-\begin{align*}  \\ & w^{*} \cdot x + b^{*} = 0 \end{align*}</script><p>以及分类决策函数</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& f \left( x \right) = sign \left( w^{*} \cdot x + b^{*} \right)  \end{align*}</script></li>
+\hat \theta = argmax \ L(\theta)</script><p>极大似然估计是建立在这样的思想上：已知某个参数能使这个样本出现的概率极大，我们当然不会再去选择其他小概率的样本，所以干脆就把这个参数作为估计的真实值。</p>
+<h2 id="极大似然估计的步骤"><a href="#极大似然估计的步骤" class="headerlink" title="极大似然估计的步骤"></a>极大似然估计的步骤</h2><ol>
+<li>写出似然函数；</li>
+<li>对似然函数取对数，并整理；</li>
+<li>求导数，令导数为 0，得到似然方程；</li>
+<li>解似然方程，得到的参数。</li>
 </ol>
-<h1 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h1><p>实例$x_i$的几何间隔为：</p>
+<h1 id="EM算法初步"><a href="#EM算法初步" class="headerlink" title="EM算法初步"></a>EM算法初步</h1><p>和极大似然估计一样，EM算法的前提也是要假设数据总体的分布，<strong>不知道数据分布是无法使用EM算法的</strong>。</p>
+<p>概率模型有时既含有观测变量，又含有隐变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计方法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。</p>
+<p>$Q$函数：完全数据的对数似然函数$\log P \left( Y , Z | \theta \right)$关于在给定观测数据$Y$和当前参数$\theta_{\left( i \right)}$下对未观测数据$Z$的条件概率分布$P \left( Z | Y, \theta_{\left( i \right)} \right)$的期望  </p>
 <script type="math/tex; mode=display">
-\begin{align*} \\& \gamma_{i} = \dfrac{y_{i} \left( w \cdot x_{i} + b \right)}{ \| w \|} = \dfrac{| 1 - \xi_{i} |}{\| w \|} \end{align*}</script><p>则实例$x_i$到间隔边界的距离为：</p>
+\begin{align*} & Q \left( \theta, \theta_{\left( i \right)} \right) = E_{Z} \left[ \log P \left( Y, Z | \theta \right)  | Y , \theta_{\left( i \right)}  \right] \end{align*}</script><p>含有隐变量$Z$的概率模型，目标是极大化观测变量$Y$关于参数$\theta$的对数似然函数，即 </p>
 <script type="math/tex; mode=display">
-\begin{align*} \\& \left| \gamma_{i} - \dfrac{1}{\| w \|} \right| = \left| \dfrac{| 1 - \xi_{i} |}{\| w \|} - \dfrac{1}{\| w \|}  \right| 
-\\ & = \dfrac{\xi_{i}}{\| w \|}\end{align*}</script><p>对于每一个 $\xi_i \geq 0​$，有：</p>
+\begin{align*} & \max L \left( \theta \right) = \log P \left( Y | \theta \right) \\ & = \log \sum_{Z} P \left( Y,Z | \theta \right) \\ & = \log \left( \sum_{Z} P \left( Y|Z,\theta \right) P \left( Z| \theta \right) \right)\end{align*}</script><h2 id="EM算法的步骤"><a href="#EM算法的步骤" class="headerlink" title="EM算法的步骤"></a>EM算法的步骤</h2><p>输入：观测随机变量数据$Y$，隐随机变量数据$Z$，联合分布$P\left(Y,Z|\theta\right) $，条件分布$P\left(Y｜Z，\theta\right) $；<br>输出：模型参数$\theta$  </p>
+<ol>
+<li><p>初值$\theta^{\left(0\right)}$   </p>
+</li>
+<li><p>$E$步：</p>
 <script type="math/tex; mode=display">
-\begin{align*} \xi_{i} \geq 0 \Leftrightarrow \left\{
-\begin{aligned} 
-\ &  \xi_{i}=0,\quad x_{i}在间隔边界上;
-\\ & 0 < \xi_{i} < 1, \quad x_{i}在间隔边界与分离超平面之间;
-\\ & \xi_{i}=1, \quad x_{i}在分离超平面上;
-\\ & \xi_{i}>1, \quad x_{i}在分离超平面误分类一侧;
-\end{aligned}
-\right.\end{align*}</script><p><img src="/images/TIM截图20190304191150.png" alt="TIM截图20190304191150"></p>
-<h1 id="合页损失函数"><a href="#合页损失函数" class="headerlink" title="合页损失函数"></a>合页损失函数</h1><p>线性支持向量机学习还有另外一种解释，就是最小化以下目标函数：</p>
+\begin{align*} & Q\left(\theta,\theta^\left(i\right)\right)=E_{Z}\left[\log P\left(Y,Z|\theta\right)|Y,\theta^{\left(i\right)}\right] \\ & = \sum_{Z} \log P\left(Y,Z|\theta \right) \cdot P\left(Z|Y, \theta^\left(i\right)\right)\end{align*}</script></li>
+</ol>
+<ol>
+<li><p>$M$步：</p>
 <script type="math/tex; mode=display">
-\sum_{i=1}^N \left[ 1 - y \left(w \cdot x + b \right) \right]_{+} + \lambda||w||^2</script><p>线性支持向量机（软间隔）的合页损失函数为：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\& L \left( y \left( w \cdot x + b \right) \right) = \left[ 1 - y \left(w \cdot x + b \right) \right]_{+} \end{align*}</script><p>其中，“+”为取正函数：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \left[ z \right]_{+} = \left\{
-\begin{aligned} 
-\ &  z,\quad z > 0
-\\ & 0, \quad z \leq 0
-\end{aligned}
-\right.\end{align*}</script><p><img src="/images/TIM截图20190304191428.png" alt="TIM截图20190304191428"></p>
+\begin{align*} & \theta^{\left( i+1 \right)} = \arg \max Q\left(\theta, \theta^\left( i \right) \right)\end{align*}</script></li>
+<li><p>重复2. 3.，直到收敛。</p>
+</li>
+</ol>
 
       
     </div>
@@ -509,7 +463,9 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
           
             <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
           
-            <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i> SVM</a>
+            <a href="/tags/极大似然/" rel="tag"><i class="fa fa-tag"></i> 极大似然</a>
+          
+            <a href="/tags/EM算法/" rel="tag"><i class="fa fa-tag"></i> EM算法</a>
           
         </div>
       
@@ -522,8 +478,8 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/757/" rel="next" title="Git远程仓库的使用">
-                <i class="fa fa-chevron-left"></i> Git远程仓库的使用
+              <a href="/posts/41373/" rel="next" title="超越批处理的世界——流式计算（2）">
+                <i class="fa fa-chevron-left"></i> 超越批处理的世界——流式计算（2）
               </a>
             
           </div>
@@ -531,10 +487,6 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/42676/" rel="prev" title="使用Python模拟鼠标(键盘)操作">
-                使用Python模拟鼠标(键盘)操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +622,7 @@ y_{i} \left( w \cdot x_{i} + b \right) \geq 1 - \xi_{i}</script><p>同时，对�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">1.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习的对偶算法"><span class="nav-number">2.</span> <span class="nav-text">学习的对偶算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建拉格朗日函数"><span class="nav-number">2.1.</span> <span class="nav-text">构建拉格朗日函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极小"><span class="nav-number">2.2.</span> <span class="nav-text">求极小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求极大"><span class="nav-number">2.3.</span> <span class="nav-text">求极大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机学习算法"><span class="nav-number">2.4.</span> <span class="nav-text">线性可分支持向量机学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入：训练数据集"><span class="nav-number">2.4.1.</span> <span class="nav-text">输入：训练数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出：分离超平面和分类决策函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">输出：分离超平面和分类决策函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量"><span class="nav-number">3.</span> <span class="nav-text">支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#合页损失函数"><span class="nav-number">4.</span> <span class="nav-text">合页损失函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#极大似然估计"><span class="nav-number">1.</span> <span class="nav-text">极大似然估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#估算参数"><span class="nav-number">1.2.</span> <span class="nav-text">估算参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极大似然估计的步骤"><span class="nav-number">1.3.</span> <span class="nav-text">极大似然估计的步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM算法初步"><span class="nav-number">2.</span> <span class="nav-text">EM算法初步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EM算法的步骤"><span class="nav-number">2.1.</span> <span class="nav-text">EM算法的步骤</span></a></li></ol></li></ol></div>
             
 
           </div>
