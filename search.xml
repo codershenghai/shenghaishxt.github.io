@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[解决Windows版本Teamviewer将用户判定为商业行为的方法（修改ID）]]></title>
     <url>%2Fposts%2F33217%2F</url>
-    <content type="text"><![CDATA[上星期Teamviewer把我判定为了商业用户，猜测可能是实验室电脑的局域网中有大量的计算机设备吧。没有办法，第一时间邮件联系了TV官方，说明我这台计算机是学校实验室里的，然而……至今仍没有回复。期间尝试了其他软件，像是向日葵、Anydesk，都实在是太卡了。 分享一个修改Teamviewer ID的方法，改ID之后可以正常连接。 首先下载TVTools AlterID 2.0，https://pan.baidu.com/s/1MPK80kzaQc-F6v8RiGr8ow，提取码：khgt 打开软件修改ID，选择Teamviewer的安装目录，然后依次点击Free、Start就可以了。 重启Teamviewer之后，就可以看到ID被成功修改了。]]></content>
+    <content type="text"><![CDATA[上星期Teamviewer把我判定为了商业用户，猜测可能是实验室电脑的局域网中有大量的计算机设备吧。没有办法，第一时间邮件联系了TV官方，说明我这台计算机是学校实验室里的，然而……至今仍没有回复。期间尝试了其他软件，像是向日葵、Anydesk，都实在是太卡了。 分享一个修改Teamviewer ID的方法，改ID之后可以正常连接。 首先下载TVTools AlterID 2.0，https://pan.baidu.com/s/1yRfmffdHuu9kvOpbfGOJ0w，提取码：dvfq 打开软件修改ID，选择Teamviewer的安装目录，然后依次点击Free、Start就可以了。 重启Teamviewer之后，就可以看到ID被成功修改了。]]></content>
       <categories>
         <category>随笔</category>
       </categories>
