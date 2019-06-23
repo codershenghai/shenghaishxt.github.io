@@ -82,7 +82,7 @@
 <meta name="description" content="这篇文章分为两个部分，第一部分是叙述TF-IDF的计算过程，第二部分是基于sklearn利用TF-IDF建立多种机器学习模型进行文本分类。其中文本分类使用的数据集来自搜狗实验室提供的新闻数据，使用的是其中完整版648MB的数据。 TF-IDF的计算过程TF-IDF(Term Frequency - Inverse Document Frequency)即词频-逆向文本频率，是一种用于信息检索和文本">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用TF-IDF进行文本分类">
+<meta property="og:title" content="利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类">
 <meta property="og:url" content="http://www.zhangshenghai.com/posts/28687/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="这篇文章分为两个部分，第一部分是叙述TF-IDF的计算过程，第二部分是基于sklearn利用TF-IDF建立多种机器学习模型进行文本分类。其中文本分类使用的数据集来自搜狗实验室提供的新闻数据，使用的是其中完整版648MB的数据。 TF-IDF的计算过程TF-IDF(Term Frequency - Inverse Document Frequency)即词频-逆向文本频率，是一种用于信息检索和文本">
@@ -91,9 +91,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190622232623.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190622233716.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190622234242.png">
-<meta property="og:updated_time" content="2019-06-23T02:54:02.951Z">
+<meta property="og:updated_time" content="2019-06-23T02:58:40.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用TF-IDF进行文本分类">
+<meta name="twitter:title" content="利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类">
 <meta name="twitter:description" content="这篇文章分为两个部分，第一部分是叙述TF-IDF的计算过程，第二部分是基于sklearn利用TF-IDF建立多种机器学习模型进行文本分类。其中文本分类使用的数据集来自搜狗实验室提供的新闻数据，使用的是其中完整版648MB的数据。 TF-IDF的计算过程TF-IDF(Term Frequency - Inverse Document Frequency)即词频-逆向文本频率，是一种用于信息检索和文本">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190623103700.png">
 
@@ -131,7 +131,7 @@
 
 
 
-  <title>利用TF-IDF进行文本分类 | shenghai's blog | shxt</title>
+  <title>利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类 | shenghai's blog | shxt</title>
   
 
 
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用TF-IDF进行文本分类</h1>
+          <h1 class="post-title" itemprop="name headline">利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类</h1>
         
 
         <div class="post-meta">
@@ -446,14 +446,7 @@ idf_i = lg \frac{|D|}{|j:t_i \in d_j|+1}</script><p>其中，$|D|$是语料库�
 <h3 id="K-近邻模型"><a href="#K-近邻模型" class="headerlink" title="K-近邻模型"></a>K-近邻模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""K-近邻模型"""</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">15</span>):</span><br><span class="line">    knn_model = KNeighborsClassifier(n_neighbors=x)</span><br><span class="line">    knn_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">    preds = knn_model.predict(X_test)</span><br><span class="line"></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, pred <span class="keyword">in</span> enumerate(preds):</span><br><span class="line">        <span class="keyword">if</span> pred == y_test[i]:</span><br><span class="line">            num += <span class="number">1</span></span><br><span class="line">    print(<span class="string">"precision_score:"</span> + str(float(num) / len(preds)))</span><br></pre></td></tr></table></figure>
 <p>在K-近邻模型中，经测试，当k取值为8时，模型在测试集上的表现最好，precision_score:0.734。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>尽管在这个样本集上，逻辑回归模型的表现最好，各个模型的表现差距也不是很明显。但机器学习方法五花八门，具体用什么方法还是得取决于具体的问题。这里的数据量有限，只是将每类的新闻抽取两千条，整个数据集也才两万条新闻，当数据量上升，模型的训练时间也是必须要考虑的问题，参数优化也是必不可少的。而且仅用precision_score作为单一的评价标准还是太简陋了，之后有时间的话再加入LSTM、CNN等深度学习模型以及更多的机器学习评价标准进行进一步的模型评估吧。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zh.wikipedia.org/wiki/Tf-idf" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Tf-idf</a></p>
-<p><a href="https://blog.csdn.net/Shuang_Mo/article/details/81916214" target="_blank" rel="noopener">https://blog.csdn.net/Shuang_Mo/article/details/81916214</a></p>
-<p><a href="https://blog.csdn.net/Techmonster/article/details/74905668" target="_blank" rel="noopener">https://blog.csdn.net/Techmonster/article/details/74905668</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/26729228" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26729228</a></p>
-<p><a href="https://www.libinx.com/2018/text-classification-classic-ml-by-sklearn/" target="_blank" rel="noopener">https://www.libinx.com/2018/text-classification-classic-ml-by-sklearn/</a></p>
-<p><a href="https://blog.csdn.net/pnnngchg/article/details/86601168" target="_blank" rel="noopener">https://blog.csdn.net/pnnngchg/article/details/86601168</a></p>
-<p><a href="https://blog.csdn.net/sadfassd/article/details/80568321" target="_blank" rel="noopener">https://blog.csdn.net/sadfassd/article/details/80568321</a></p>
-<p><a href="https://www.libinx.com/2018/text-classification-cnn-by-tensorflow/" target="_blank" rel="noopener">https://www.libinx.com/2018/text-classification-cnn-by-tensorflow/</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zh.wikipedia.org/wiki/Tf-idf" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/Tf-idf</a><br><a href="https://blog.csdn.net/Shuang_Mo/article/details/81916214" target="_blank" rel="noopener">https://blog.csdn.net/Shuang_Mo/article/details/81916214</a><br><a href="https://blog.csdn.net/Techmonster/article/details/74905668" target="_blank" rel="noopener">https://blog.csdn.net/Techmonster/article/details/74905668</a><br><a href="https://zhuanlan.zhihu.com/p/26729228" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26729228</a><br><a href="https://www.libinx.com/2018/text-classification-classic-ml-by-sklearn/" target="_blank" rel="noopener">https://www.libinx.com/2018/text-classification-classic-ml-by-sklearn/</a><br><a href="https://blog.csdn.net/pnnngchg/article/details/86601168" target="_blank" rel="noopener">https://blog.csdn.net/pnnngchg/article/details/86601168</a><br><a href="https://blog.csdn.net/sadfassd/article/details/80568321" target="_blank" rel="noopener">https://blog.csdn.net/sadfassd/article/details/80568321</a><br><a href="https://www.libinx.com/2018/text-classification-cnn-by-tensorflow/" target="_blank" rel="noopener">https://www.libinx.com/2018/text-classification-cnn-by-tensorflow/</a></p>
 
       
     </div>
