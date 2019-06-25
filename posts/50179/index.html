@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,弱监督学习,">
+  <meta name="keywords" content="Docker,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
-<meta name="keywords" content="Machine Learning,弱监督学习">
+<meta name="description" content="导致容器内无法联网的原因可能有好多种，我的解决方法是在创建容器时加上参数 —net host，令容器创建时共享主机的network namespace，即容器可以访问主机上所有的网络信息，这样容器内的网络配置就会和主机一模一样。 1docker run --name DeepLearning --net host -it deeplearning:v1 bash">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learning Deep Features for Discriminative Localization 笔记">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/52825/index.html">
+<meta property="og:title" content="解决Docker容器内无法联网">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/50179/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
+<meta property="og:description" content="导致容器内无法联网的原因可能有好多种，我的解决方法是在创建容器时加上参数 —net host，令容器创建时共享主机的network namespace，即容器可以访问主机上所有的网络信息，这样容器内的网络配置就会和主机一模一样。 1docker run --name DeepLearning --net host -it deeplearning:v1 bash">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-e5b6c2e9dc734978.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-828b953b94096cff.webp">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/4964755-3324bf850553c964.webp">
-<meta property="og:updated_time" content="2019-04-19T02:10:09.233Z">
+<meta property="og:updated_time" content="2019-06-25T07:45:42.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Learning Deep Features for Discriminative Localization 笔记">
-<meta name="twitter:description" content="引言最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。 因此，NIN使用全局平均池化来做正则化，避免训练过程中的过拟合。全局平">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/4964755-e5b6c2e9dc734978.png">
+<meta name="twitter:title" content="解决Docker容器内无法联网">
+<meta name="twitter:description" content="导致容器内无法联网的原因可能有好多种，我的解决方法是在创建容器时加上参数 —net host，令容器创建时共享主机的network namespace，即容器可以访问主机上所有的网络信息，这样容器内的网络配置就会和主机一模一样。 1docker run --name DeepLearning --net host -it deeplearning:v1 bash">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/52825/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/50179/">
 
 
 
 
 
-  <title>Learning Deep Features for Discriminative Localization 笔记 | shenghai's blog | shxt</title>
+  <title>解决Docker容器内无法联网 | shenghai's blog | shxt</title>
   
 
 
@@ -308,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/52825/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/50179/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -325,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Learning Deep Features for Discriminative Localization 笔记</h1>
+          <h1 class="post-title" itemprop="name headline">解决Docker容器内无法联网</h1>
         
 
         <div class="post-meta">
@@ -337,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T10:06:10+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T15:01:14+08:00">
+                2019-06-25
               </time>
             
 
@@ -360,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -397,24 +393,8 @@
       
 
       
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>最近有研究已经表明，尽管没有对物体的位置进行监督，但CNN各个层的卷积单元实际上是物体检测器。虽然卷积层定位物体的能力很出色，但是当最后一层使用全连接层进行分类时，这种能力会丧失。最近一些流行的神经网络，比如Network in Nextwork (NIN) 和GoogleNet，已经提出通过避免使用全连接层来保持高性能。</p>
-<p>因此，NIN使用<strong>全局平均池化</strong>来做正则化，避免训练过程中的过拟合。<strong>全局平均池化</strong>还有另一个优点，只需要稍微调整就可以使网络保持很好的定位能力。如下图所示，在物体分类上训练的CNN能够成功地定位与人类交互的物体而非人物本身。</p>
-<p><img src="/images/4964755-e5b6c2e9dc734978.png" alt="4964755-e5b6c2e9dc734978"></p>
-<p>尽管我们的方法显得很简单，但在ILSVRC弱监督物体定位比赛中，我们最好的网络在测试集中与全监督的AlexNet十分接近。</p>
-<h1 id="近期研究"><a href="#近期研究" class="headerlink" title="近期研究"></a>近期研究</h1><h2 id="弱监督物体定位"><a href="#弱监督物体定位" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h2><p>与我们的方法最相近的是一个基于全局最大池化的方法，这个方法的定位局限于物体边缘的点，而不是确定物体的全部范围。尽管max和average很相似，但是平均池化更鼓励网络识别完整的物体区域。原理是相比于最大池化，平均池化网络识别整个物体的辨别性区域的损失更小。</p>
-<p>全局平均池化不是我们提出来的新技术，我们的创新点在于用它来精确定位区别性区域。</p>
-<h2 id="可视化卷积神经网络"><a href="#可视化卷积神经网络" class="headerlink" title="可视化卷积神经网络"></a>可视化卷积神经网络</h2><p>最近有研究发现CNNs在训练识别场景时会学习物体侦测，并证明了统一网络既能进行场景识别，又能进行物体定位。这些研究都只分析了卷积层，忽略了全连接层，因此是不全面的。</p>
-<p>还有研究发现通过转化不同层的深度特征，可以分析CNN的可视化解码。虽然这些方法可以转化全连接层，但是只展示了深层特征中什么信息被保留，没有凸显出这些信息的重要性。不同于这些方法，我们的方法能凸显出图片的辨别性区域。总的来说，我们的方法是对CNN深入灵魂的呈现。</p>
-<h1 id="类激活映射"><a href="#类激活映射" class="headerlink" title="类激活映射"></a>类激活映射</h1><p>下图是用CNN的全局平均池化来生成class activation maps (CAM)的过程。某一确切分类的CAM代表了CNN用于做分类时所看到的区别性区域的位置。</p>
-<p><img src="/images/4964755-828b953b94096cff.webp" alt="4964755-828b953b94096cff"></p>
-<p>下面是ILSVRC中四个分类的CAM图。这些图将图片中用于分类的区别性区域高亮标记。</p>
-<p><img src="/images/4964755-3324bf850553c964.webp" alt="4964755-3324bf850553c964"></p>
-<p>我们使用了与NIN和GoogleNet相似的网络结构——网络的大部分都是卷积层，只在输出层（用于分类的softmax）前使用了全局平均池化层，并将它们作为得出分类的全连接层的特征。通过这种简单的连接结构，我们可以把图片中的重要区域用<strong>输出层权重映射回卷积层特征</strong>的方式标记出来，我们称这种技术为类激活映射(CAM)。</p>
-<p>看回第一张图，全局平均池化层输出最后一个卷积层的每个单元的特征图的平均值，这些值的加权总和用于生成最后的输出。也就是说，我们计算最后一个卷积层特征图的加权总和来生成CAM。</p>
-<h1 id="弱监督物体定位-1"><a href="#弱监督物体定位-1" class="headerlink" title="弱监督物体定位"></a>弱监督物体定位</h1><p>这一部分，我们在ILSVRC2014数据集上评估了CAM的定位能力。我们先描述了实验的设置和用到的CNN网络，然后验证了我们的技术不会在学习定位时对网络产生不利影响，并详细给出了弱监督对象定位的结果。</p>
-<p>我们使用AlexNet、VGGnet和GoogleNet这些流行的CNN网络评估CAM的影响。我们通常把这些网络的全连接层全部移除，替换为GAP，然后接一个softmax全连接层。</p>
-<p>我们发现当GAP前的最后一个卷积层有较高空间分辨率时，网络的定位能力可以得到改善，我们称为图分辨率。因此，我们移除了一些网络的卷积层。具体地，对AlexNet，我们移除conv5之后的卷积层（pool5到prob），得到图分辨率（mapping resolution）为13x13。对VGGnet，移除了conv5-3后的所有卷积层（pool5到prob），得到14x14的图分辨率。对GoogLeNet，移除了inception4e后的卷积层（pool4到prob），得到14x14的图分辨率。对上述的每个网络，我们都添加一个3x3，步长为1，padding为1, 1024个单元的卷积层，然后接一个GAP层和一个softmax层。最后对每个网络在ILSVRC的1.3M张要分成1000类的训练图片进行精调（fine-tuned），分别产生我们最终的AlexNet-GAP，VGGnet-GAP和GoogLeNet-GAP。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文针对使用GAP的CNN网络提出了名为CAM的技术，它能够让经过训练的CNN学会物体定位。而且，CAM定位技术能够推广到其他视觉识别任务中，这是最大的利好。</p>
+        <p>导致容器内无法联网的原因可能有好多种，我的解决方法是在创建容器时加上参数 —net host，令容器创建时共享主机的network namespace，即容器可以访问主机上所有的网络信息，这样容器内的网络配置就会和主机一模一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name DeepLearning --net host -it deeplearning:v1 bash</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -432,9 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
-          
-            <a href="/tags/弱监督学习/" rel="tag"><i class="fa fa-tag"></i> 弱监督学习</a>
+            <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
           
         </div>
       
@@ -447,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/48467/" rel="next" title="最近邻插值和双线性插值的算法实现">
-                <i class="fa fa-chevron-left"></i> 最近邻插值和双线性插值的算法实现
+              <a href="/posts/28687/" rel="next" title="利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类">
+                <i class="fa fa-chevron-left"></i> 利用TF-IDF的机器学习方法对搜狗新闻数据进行文本分类
               </a>
             
           </div>
@@ -456,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/1597/" rel="prev" title="Docker容器的SSH服务配置">
-                Docker容器的SSH服务配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,17 +489,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -585,22 +550,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#近期研究"><span class="nav-number">2.</span> <span class="nav-text">近期研究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弱监督物体定位"><span class="nav-number">2.1.</span> <span class="nav-text">弱监督物体定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化卷积神经网络"><span class="nav-number">2.2.</span> <span class="nav-text">可视化卷积神经网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类激活映射"><span class="nav-number">3.</span> <span class="nav-text">类激活映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弱监督物体定位-1"><span class="nav-number">4.</span> <span class="nav-text">弱监督物体定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

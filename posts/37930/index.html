@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T09:10:47.590Z">
+<meta property="og:updated_time" content="2019-06-25T06:56:37.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux命令使用纪录">
 <meta name="twitter:description" content="ssh登陆的命令行方法： 1ssh amax@10.10.1.110 显示所有文件： 1ls -a 复制文件夹下的所有内容： 1cp -r dir1 dir2 删除文件夹： 1rm -rf dir 临时更改pip源 1sudo python -m pip install pyradiomics -i https://pypi.tuna.tsinghua.edu.cn/simple 安装g++： 1">
@@ -425,6 +425,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --config /home/zsh/.jupyter/config_zsh.py</span><br></pre></td></tr></table></figure>
 <p>查看文件或文件夹大小：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh 文件名或文件夹名</span><br></pre></td></tr></table></figure>
+<p>查看某个用户的进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -lu 用户名</span><br></pre></td></tr></table></figure>
+<p>查看GPU使用情况，一秒钟刷新一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 gpustat</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -539,7 +543,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
