@@ -502,8 +502,9 @@
           
 
   
-    <div class="comments" id="comments">
-    </div>
+ 	<div id="gitalk-container">
+ 	</div>
+
   
 
 
@@ -785,6 +786,21 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'c1833f69a48b1563ffb0',
+          clientSecret: '29e92e36615a969a9b6dd2897fdf2161384184ff',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['github帐号'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
   
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script src="/js/src/Valine.min.js"></script>
@@ -803,6 +819,22 @@
         placeholder: '(发表评论)',
     });
   </script>
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'c1833f69a48b1563ffb0',
+          clientSecret: '29e92e36615a969a9b6dd2897fdf2161384184ff',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['github帐号'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
