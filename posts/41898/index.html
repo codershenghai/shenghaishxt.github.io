@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="容器启动Docker容器：  注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签  1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-20T10:19:53.232Z">
+<meta property="og:updated_time" content="2019-07-01T16:26:48.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker命令使用记录">
 <meta name="twitter:description" content="容器启动Docker容器：  注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签  1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前">
@@ -410,6 +410,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name OCR -it deeplearning:v1 bash</span><br></pre></td></tr></table></figure>
 <h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><p>列出镜像：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker images</span><br></pre></td></tr></table></figure>
+<p>修改镜像名称为规范的镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag 原名 docker push 注册用户名/镜像名</span><br></pre></td></tr></table></figure>
+<p>推送镜像到docker hub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push 注册用户名/镜像名</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -536,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

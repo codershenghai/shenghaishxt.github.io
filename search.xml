@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Windows输出文件夹目录树]]></title>
+    <url>%2Fposts%2F59250%2F</url>
+    <content type="text"><![CDATA[首先打开cmd，cd到要输出目录树的文件夹，然后输入： 12tree &gt; info.txt # 不显示文件，只显示目录tree /f &gt; info.txt # 显示文件 即可得到如下图所示的目录树：]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[解决Docker容器内无法联网]]></title>
     <url>%2Fposts%2F50179%2F</url>
     <content type="text"><![CDATA[导致容器内无法联网的原因可能有好多种，我的解决方法是在创建容器时加上参数 —net host，令容器创建时共享主机的network namespace，即容器可以访问主机上所有的网络信息，这样容器内的网络配置就会和主机一模一样。 1docker run --name DeepLearning --net host -it deeplearning:v1 bash]]></content>
@@ -250,7 +261,7 @@
   <entry>
     <title><![CDATA[Docker命令使用记录]]></title>
     <url>%2Fposts%2F41898%2F</url>
-    <content type="text"><![CDATA[容器启动Docker容器： 注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签 1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前系统中容器的列表： 12docker ps -a # 查看包括所有容器docker ps # 查看正在运行的容器 删除容器： 1docker rm CONTAINER ID 重新启动已经停止的容器： 12sudo docker start CONTAINER ID # 也可以使用 docker restartsudo docker attach CONTAINER ID # 附着到容器的会话上 重启Docker： 1systemctl restart docker 新建容器： 1docker run --name OCR -it deeplearning:v1 bash 镜像列出镜像： 1sudo docker images]]></content>
+    <content type="text"><![CDATA[容器启动Docker容器： 注：# tensorcomprehensions是用户名，tc-cuda9.0-cudnn7.1-ubuntu16.04-devel是仓库名，latest是标签 1sudo nvidia-docker run -ti tensorcomprehensions/tc-cuda9.0-cudnn7.1-ubuntu16.04-devel:latest bash 查看当前系统中容器的列表： 12docker ps -a # 查看包括所有容器docker ps # 查看正在运行的容器 删除容器： 1docker rm CONTAINER ID 重新启动已经停止的容器： 12sudo docker start CONTAINER ID # 也可以使用 docker restartsudo docker attach CONTAINER ID # 附着到容器的会话上 重启Docker： 1systemctl restart docker 新建容器： 1docker run --name OCR -it deeplearning:v1 bash 镜像列出镜像： 1sudo docker images 修改镜像名称为规范的镜像 1docker tag 原名 docker push 注册用户名/镜像名 推送镜像到docker hub 1docker push 注册用户名/镜像名]]></content>
       <categories>
         <category>Docker命令使用纪录</category>
       </categories>
