@@ -549,6 +549,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Windows下更换pip源为清华源]]></title>
+    <url>%2Fposts%2F46417%2F</url>
+    <content type="text"><![CDATA[本文转载自 https://blog.csdn.net/artprog/article/details/75632723 ，感谢原创作者，文章版权归原作者所有。 打开appdata文件夹，在资源管理器的地址栏输入%appdata%后回车： 新建一个pip文件夹，在pip文件夹里面新建一个配置文件pip.ini： 在配置文件中输入如下内容后保存即可： 1234[global]timeout = 6000index-url = https://pypi.tuna.tsinghua.edu.cn/simpletrusted-host = pypi.tuna.tsinghua.edu.cn 再次使用pip，即会使用新源。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>镜像源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CHAPTER10 线性规划在近似算法中的应用]]></title>
     <url>%2Fposts%2F20007%2F</url>
     <content type="text"><![CDATA[使用线性规划来近似顶点覆盖问题ILP（整数线性规划）对于每一个顶点$v\in V$，有$x(v) \in \{0, 1\}$，$x(v)=1$意为v在顶点覆盖中，$x(v)=0$意为v不再顶点覆盖中。那么，对于顶点覆盖问题的任意边$(u, v)$，u和v至少有一个必须在顶点覆盖中，即$x(u)+x(v)\geq1$。这样就引出了以下用于寻找最小顶点覆盖的0-1整数规划 。 min \sum_{v\in V} x(v)\\ s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \\ \quad x(v)\in \{0, 1\} \quad \forall v \in Vrelax to LP（线性规划松弛）假设去掉了$x(v) \in \{0, 1\}​$这一限制，并代之以$0\leq x(v) \leq 1​$，就可以得到以下的线性规划，称为线性规划松弛。 min \sum_{v\in V} x(v)\\ s.t.\qquad x(u)+x(v) \geq 1 \quad \forall (u,v)\in E \\ \quad 0\leq x(v) \leq 1 \quad \forall v \in VRounding（使用Rounding的方法来构造近似算法）对于每一个顶点v，都会求得一个$x(v)$的值$x^*(v)$，对$x(v)$做以下的rounding： 若$x^*(v)\geq 1/2$，则将该顶点加入到点覆盖集合中（$x(v)= 1$），否则舍去顶点v（$x(v) = 0​$），直至图中的所有顶点处理完毕。 由以上算法可看出： 故此算法是一个近似度为2的近似算法。]]></content>
