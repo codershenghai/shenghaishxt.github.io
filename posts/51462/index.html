@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,">
+  <meta name="keywords" content="Machine Learning,">
 
 
 
@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="查看Python版本首先列出系统中所有Python版本： 1ls /usr/bin/python* 查看默认的Python版本： 1python --version 基于软链接的系统级修改先删除默认的Python软链接： 1sudo rm /usr/bin/python 然后创建一个新的软链接指向需要的Python版本： 1sudo ln -s /usr/bin/python3.5 /usr/bi">
-<meta name="keywords" content="Linux">
+<meta name="description" content="数据背景本实验使用的数据集来自 UCI machine learning 数据集生命科学类中的Localization Data for Person Activity Data Set，以下为数据集的官方网址：http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pct">
+<meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修改Linux默认python版本">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/28999/index.html">
+<meta property="og:title" content="使用sklearn进行UCI machine learning数据集的机器学习实战">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/51462/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="查看Python版本首先列出系统中所有Python版本： 1ls /usr/bin/python* 查看默认的Python版本： 1python --version 基于软链接的系统级修改先删除默认的Python软链接： 1sudo rm /usr/bin/python 然后创建一个新的软链接指向需要的Python版本： 1sudo ln -s /usr/bin/python3.5 /usr/bi">
+<meta property="og:description" content="数据背景本实验使用的数据集来自 UCI machine learning 数据集生命科学类中的Localization Data for Person Activity Data Set，以下为数据集的官方网址：http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pct">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-10T06:52:47.061Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/TIM%E6%88%AA%E5%9B%BE20190721231018.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104405.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104514.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104807.png">
+<meta property="og:updated_time" content="2019-07-22T03:46:45.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修改Linux默认python版本">
-<meta name="twitter:description" content="查看Python版本首先列出系统中所有Python版本： 1ls /usr/bin/python* 查看默认的Python版本： 1python --version 基于软链接的系统级修改先删除默认的Python软链接： 1sudo rm /usr/bin/python 然后创建一个新的软链接指向需要的Python版本： 1sudo ln -s /usr/bin/python3.5 /usr/bi">
+<meta name="twitter:title" content="使用sklearn进行UCI machine learning数据集的机器学习实战">
+<meta name="twitter:description" content="数据背景本实验使用的数据集来自 UCI machine learning 数据集生命科学类中的Localization Data for Person Activity Data Set，以下为数据集的官方网址：http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pct">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/1.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/28999/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/51462/">
 
 
 
 
 
-  <title>修改Linux默认python版本 | shenghai's blog | shxt</title>
+  <title>使用sklearn进行UCI machine learning数据集的机器学习实战 | shenghai's blog | shxt</title>
   
 
 
@@ -304,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/28999/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/51462/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -321,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">修改Linux默认python版本</h1>
+          <h1 class="post-title" itemprop="name headline">使用sklearn进行UCI machine learning数据集的机器学习实战</h1>
         
 
         <div class="post-meta">
@@ -333,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T14:36:07+08:00">
-                2019-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-22T11:34:04+08:00">
+                2019-07-22
               </time>
             
 
@@ -356,8 +362,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/sklearn/" itemprop="url" rel="index">
+                    <span itemprop="name">sklearn</span>
                   </a>
                 </span>
 
@@ -393,14 +410,35 @@
       
 
       
-        <h1 id="查看Python版本"><a href="#查看Python版本" class="headerlink" title="查看Python版本"></a>查看Python版本</h1><p>首先列出系统中所有Python版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /usr/bin/python*</span><br></pre></td></tr></table></figure>
-<p>查看默认的Python版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure>
-<h1 id="基于软链接的系统级修改"><a href="#基于软链接的系统级修改" class="headerlink" title="基于软链接的系统级修改"></a>基于软链接的系统级修改</h1><p>先删除默认的Python软链接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/bin/python</span><br></pre></td></tr></table></figure>
-<p>然后创建一个新的软链接指向需要的Python版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/bin/python3.5 /usr/bin/python</span><br></pre></td></tr></table></figure>
+        <h1 id="数据背景"><a href="#数据背景" class="headerlink" title="数据背景"></a>数据背景</h1><p>本实验使用的数据集来自 UCI machine learning 数据集生命科学类中的Localization Data for Person Activity Data Set，以下为数据集的官方网址：<a href="http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pctim_aiomsg</a></p>
+<p>此数据集共有164860个样本以及8个特征，样本数×特征数 &gt; 50万，包含了五个人的左右脚踝、腰部和胸部在不同时间点的位置坐标等属性，根据这些属性，将受试者分为行走、躺下、站立等11种不同的行为状态。</p>
+<h1 id="数据概况"><a href="#数据概况" class="headerlink" title="数据概况"></a>数据概况</h1><p>以下是数据集的基本属性介绍：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SequenceName：&#123;A01,A02,A03,A04,A05,B01,B02,B03,B04,B05,C01,C02,C03,C04,C05,D01,D02,D03,D04,D05,E01,E02,E03,E04,E05&#125; (Nominal) </span><br><span class="line">- A, B, C, D, E = <span class="number">5</span> people </span><br><span class="line"></span><br><span class="line">TagIdentificator：代表人体的不同部位，分为ANKLE_LEFT、ANKLE_RIGHT、CHEST、BELT</span><br><span class="line">Timestamp：时间戳</span><br><span class="line">date FORMAT：符合 dd.MM.yyyy HH:mm:ss:SSS 形式的日期数据</span><br><span class="line">x：x坐标</span><br><span class="line">y：y坐标</span><br><span class="line">z：z坐标</span><br><span class="line">activity：共有以下<span class="number">11</span>种行为状态：&#123;walking, falling, lying down, lying, sitting down, sitting, standing up <span class="keyword">from</span> lying, on all fours, sitting on the ground, standing up <span class="keyword">from</span> sitting, standing up <span class="keyword">from</span> sitting on the ground&#125;</span><br></pre></td></tr></table></figure>
+<p>首先读入数据，并观察数据集的前五行数据，以及数据集的基本信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">path = <span class="string">"./ConfLongDemo_JSI.txt"</span></span><br><span class="line">df = pd.read_table(path, sep=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line">df.head()</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/1.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/TIM%E6%88%AA%E5%9B%BE20190721231018.png" alt></p>
+<p>观察到 Timestamp 和 date FORMAT 都为时间数据，存在强相关的冗余，因此可将 date FORMAT 属性去除，只对Timestamp进行分析。</p>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><p>挑选出类别型特征（SequenceName, TagIdentificator），将其转换为哑变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对类别型特征进行哑变量的制作</span></span><br><span class="line">cat_features = [<span class="string">'SequenceName'</span>, <span class="string">'TagIdentificator'</span>]</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cat_features:</span><br><span class="line">    df[col] = df[col].astype(<span class="string">'object'</span>)</span><br><span class="line">X_cat = df[cat_features]</span><br><span class="line">X_cat = pd.get_dummies(X_cat)</span><br><span class="line">print(X_cat.head())</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104405.png" alt></p>
+<p>挑选出数值型特征（Timestamp，x，y，z），进行数据的标准化和归一化。标准化（Z-Score）的公式为：(X-mean)/std  计算时对每个属性/每列分别进行，使用sklearn.preprocessing.scale()函数，可以直接将给定数据进行标准化。标准化的目的在于避免原始特征值差异过大，导致训练得到的参数权重不归一，无法比较各特征的重要性。在数据标准化之后进行数据的归一化，查看结果的前五行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对数值型特征进行数据标准化和归一化</span></span><br><span class="line">scale_X = StandardScaler()</span><br><span class="line">num_features = [<span class="string">'Timestamp'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>]</span><br><span class="line">X_num = scale_X.fit_transform(df[num_features])</span><br><span class="line">X_num = normalize(X_num, norm=<span class="string">'l2'</span>)</span><br><span class="line">X_num = pd.DataFrame(data=X_num, columns=num_features, index=df.index)</span><br><span class="line">print(X_num.head())</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104514.png" alt></p>
+<p>在分别对数值型数据已经类别型数据进行数据预处理后，将它们合并组成X和y，并确定结果的维度：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 合并数据</span></span><br><span class="line">X = pd.concat([X_cat, X_num], axis=<span class="number">1</span>, ignore_index=<span class="keyword">False</span>)</span><br><span class="line">y =  df[<span class="string">'activity'</span>]</span><br><span class="line">print(X.head())</span><br><span class="line">print(X.shape)</span><br><span class="line">print(y.shape)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/shenghaishxt/BlogPicture/master/20190722104807.png" alt></p>
+<p>将数据预处理部分封装为函数，以下是数据预处理的函数代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据预处理</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocessing</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 对类别型特征进行哑变量的制作</span></span><br><span class="line">    cat_features = [<span class="string">'SequenceName'</span>, <span class="string">'TagIdentificator'</span>]</span><br><span class="line">    <span class="keyword">for</span> col <span class="keyword">in</span> cat_features:</span><br><span class="line">        df[col] = df[col].astype(<span class="string">'object'</span>)</span><br><span class="line">    X_cat = df[cat_features]</span><br><span class="line">    X_cat = pd.get_dummies(X_cat)</span><br><span class="line">    print(X_cat.head())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 对数值型特征进行数据标准化和归一化</span></span><br><span class="line">    scale_X = StandardScaler()</span><br><span class="line">    num_features = [<span class="string">'Timestamp'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>]</span><br><span class="line">    X_num = scale_X.fit_transform(df[num_features])</span><br><span class="line">    X_num = normalize(X_num, norm=<span class="string">'l2'</span>)</span><br><span class="line">    X_num = pd.DataFrame(data=X_num, columns=num_features, index=df.index)</span><br><span class="line">    print(X_num.head())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 合并数据</span></span><br><span class="line">    X = pd.concat([X_cat, X_num], axis=<span class="number">1</span>, ignore_index=<span class="keyword">False</span>)</span><br><span class="line">    y = df[<span class="string">'activity'</span>]</span><br><span class="line">    print(X.head())</span><br><span class="line">    print(X.shape)</span><br><span class="line">    print(y.shape)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> X, y</span><br></pre></td></tr></table></figure>
+<h1 id="算法训练与评估"><a href="#算法训练与评估" class="headerlink" title="算法训练与评估"></a>算法训练与评估</h1><p>在训练数据前，首先制作训练数据集和测试数据集，使用sklearn的train_test_split()函数，划分训练集：测试集 = 8：2并随机打乱，然后查看训练集和测试集的维度：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">0</span>, test_size=<span class="number">0.20</span>, shuffle=<span class="keyword">True</span>)</span><br><span class="line">print(X_train.shape, y_train.shape)</span><br><span class="line">print(X_test.shape, y_test.shape)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(131888, 33) (131888,)</span><br><span class="line">(32972, 33) (32972,)</span><br></pre></td></tr></table></figure>
+<p>共使用9种算法进行训练，从而选取出最适合的算法，分别是K近邻算法、决策树算法、先验为高斯分布的朴素贝叶斯算法、支持向量机算法、KNN Bagging算法、Tree Bagging算法、随机森林算法、adaboost算法、GBDT算法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clfs = &#123;<span class="string">'K_neighbor'</span>: neighbors.KNeighborsClassifier(),</span><br><span class="line">        <span class="string">'decision_tree'</span>: tree.DecisionTreeClassifier(),</span><br><span class="line">        <span class="string">'naive_gaussian'</span>: naive_bayes.GaussianNB(),</span><br><span class="line">        <span class="string">'svm'</span>: svm.SVC(),</span><br><span class="line">        <span class="string">'bagging_knn'</span>: BaggingClassifier(neighbors.KNeighborsClassifier(), max_samples=<span class="number">0.5</span>,max_features=<span class="number">0.5</span>),</span><br><span class="line">        <span class="string">'bagging_tree'</span>: BaggingClassifier(tree.DecisionTreeClassifier(), max_samples=<span class="number">0.5</span>,max_features=<span class="number">0.5</span>),</span><br><span class="line">        <span class="string">'random_forest'</span>: RandomForestClassifier(n_estimators=<span class="number">50</span>),</span><br><span class="line">        <span class="string">'adaboost'</span>: AdaBoostClassifier(n_estimators=<span class="number">50</span>),</span><br><span class="line">        <span class="string">'gradient_boost'</span>: GradientBoostingClassifier(n_estimators=<span class="number">50</span>, learning_rate=<span class="number">1.0</span>,max_depth=<span class="number">1</span>, random_state=<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> clf_key <span class="keyword">in</span> clfs.keys():</span><br><span class="line">    print(<span class="string">'\nthe classifier is:'</span>, clf_key)</span><br><span class="line">    clf = clfs[clf_key]</span><br><span class="line"></span><br><span class="line">    begin = time.clock()</span><br><span class="line">    clf.fit(X_train, y_train.ravel())</span><br><span class="line">    elapsed = time.clock() - begin</span><br><span class="line"></span><br><span class="line">    score = clf.score(X_test, y_test.ravel())</span><br><span class="line">    print(<span class="string">'the score is:'</span>, score)</span><br><span class="line">    print(<span class="string">'the elapsed is:'</span>, elapsed)</span><br></pre></td></tr></table></figure>
+<h1 id="结果与讨论"><a href="#结果与讨论" class="headerlink" title="结果与讨论"></a>结果与讨论</h1><p>对于每一个模型也同时计算了模型的准确度以及算法的时间消耗，具体每个模型的结果如下图所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">the classifier <span class="keyword">is</span>: bagging_knn</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.6743600630838287</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">16.453809</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: svm</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.5400642969792552</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">1674.055688</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: naive_gaussian</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.15222006551012982</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">0.30271300000003976</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: gradient_boost</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.03709207812689555</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">45.588802000000214</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: random_forest</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.7794492296493994</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">12.297873000000209</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: adaboost</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.35078248210602936</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">19.544486999999663</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: decision_tree</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.7021412107242508</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">1.9036650000002737</span></span><br><span class="line"></span><br><span class="line">the classifier <span class="keyword">is</span>: K_neighbor</span><br><span class="line">the score <span class="keyword">is</span>: <span class="number">0.7600994783452627</span></span><br><span class="line">the elapsed <span class="keyword">is</span>: <span class="number">1.0251819999998588</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，机器学习模型的复杂度并不直接与准确度成正比。在独立测试集中，最简单的KNN模型能达到0.789的准确度，而adaboost、gradient_boost等集成方法却连0.4的准确度都达不到。在这9种算法中，准确度最高的是三个算法是决策树、Bagging Tree 和随机森林，都达到了0.85以上，看来树模型很适合这个数据集。因此，模型直接没有优劣之分，只有适不适合的说法，具体用什么方法还是得取决于具体的问题。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.zhangshenghai.com/posts/28687/">https://www.zhangshenghai.com/posts/28687/</a><br><a href="https://blog.csdn.net/xiao_lxl/article/details/95978015" target="_blank" rel="noopener">https://blog.csdn.net/xiao_lxl/article/details/95978015</a><br><a href="https://blog.csdn.net/MYCSDN6666/article/details/80849158" target="_blank" rel="noopener">https://blog.csdn.net/MYCSDN6666/article/details/80849158</a><br><a href="https://blog.csdn.net/Dream_angel_Z/article/details/49406573" target="_blank" rel="noopener">https://blog.csdn.net/Dream_angel_Z/article/details/49406573</a><br><a href="http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">http://archive.ics.uci.edu/ml/datasets/Localization+Data+for+Person+Activity?tdsourcetag=s_pctim_aiomsg</a></p>
 
       
     </div>
@@ -418,7 +456,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
           
         </div>
       
@@ -431,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/31705/" rel="next" title="CART算法">
-                <i class="fa fa-chevron-left"></i> CART算法
+              <a href="/posts/2276/" rel="next" title="解决kaggle验证码格式问题">
+                <i class="fa fa-chevron-left"></i> 解决kaggle验证码格式问题
               </a>
             
           </div>
@@ -440,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/37464/" rel="prev" title="在Clion上配置OpenCV C++库">
-                在Clion上配置OpenCV C++库 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -580,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看Python版本"><span class="nav-number">1.</span> <span class="nav-text">查看Python版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于软链接的系统级修改"><span class="nav-number">2.</span> <span class="nav-text">基于软链接的系统级修改</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据背景"><span class="nav-number">1.</span> <span class="nav-text">数据背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据概况"><span class="nav-number">2.</span> <span class="nav-text">数据概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理"><span class="nav-number">3.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法训练与评估"><span class="nav-number">4.</span> <span class="nav-text">算法训练与评估</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果与讨论"><span class="nav-number">5.</span> <span class="nav-text">结果与讨论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
