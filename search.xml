@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git命令使用纪录]]></title>
+    <url>%2Fposts%2F3860%2F</url>
+    <content type="text"><![CDATA[123456789101112# 首先将远程库与本地库关联：git remote add LeetCode git@github.com:shenghaishxt/LeetCode.git# 本地添加修改的文件git add somethinggit add .# 本地提交修改git commit -m &quot;add something&quot;# push到远程仓库git push -u LettCode master]]></content>
+      <categories>
+        <category>命令使用纪录</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[DataLoader num_workers与torch.set_num_threads的区别]]></title>
     <url>%2Fposts%2F2204%2F</url>
     <content type="text"><![CDATA[num_workers设置DataLoader在实现数据预处理的并行化的进程数，并没有设置线程。 set_num_threads()设置Pytorch进行CPU多线程并行计算时所占用的线程数。 参考https://discuss.pytorch.org/t/dataloader-num-workers-vs-torch-set-num-threads/47045/3]]></content>
@@ -385,8 +396,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Linux</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
