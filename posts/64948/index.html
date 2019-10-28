@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在安装R语言的一些包时，常常会出现package’’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bioc">
+<meta name="description" content="在安装R语言的一些包时，常常会出现package ‘’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bio">
 <meta name="keywords" content="R语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决R语言安装包时出现package&#39;&#39; is not available(for R version 3.6.1)的问题">
+<meta property="og:title" content="解决R语言安装包时出现package &#39;&#39; is not available(for R version 3.6.1)的问题">
 <meta property="og:url" content="http://www.zhangshenghai.com/posts/64948/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="在安装R语言的一些包时，常常会出现package’’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bioc">
+<meta property="og:description" content="在安装R语言的一些包时，常常会出现package ‘’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-16T02:10:24.991Z">
+<meta property="og:updated_time" content="2019-10-16T15:31:25.021Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决R语言安装包时出现package&#39;&#39; is not available(for R version 3.6.1)的问题">
-<meta name="twitter:description" content="在安装R语言的一些包时，常常会出现package’’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bioc">
+<meta name="twitter:title" content="解决R语言安装包时出现package &#39;&#39; is not available(for R version 3.6.1)的问题">
+<meta name="twitter:description" content="在安装R语言的一些包时，常常会出现package ‘’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  https://blog.csdn.net/yepeng2007fei/article/details/78112557 Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用Bio">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>解决R语言安装包时出现package'' is not available(for R version 3.6.1)的问题 | shenghai's blog | shxt</title>
+  <title>解决R语言安装包时出现package '' is not available(for R version 3.6.1)的问题 | shenghai's blog | shxt</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">解决R语言安装包时出现package'' is not available(for R version 3.6.1)的问题</h1>
+          <h1 class="post-title" itemprop="name headline">解决R语言安装包时出现package '' is not available(for R version 3.6.1)的问题</h1>
         
 
         <div class="post-meta">
@@ -393,7 +393,7 @@
       
 
       
-        <p>在安装R语言的一些包时，常常会出现package’’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  <a href="https://blog.csdn.net/yepeng2007fei/article/details/78112557" target="_blank" rel="noopener">https://blog.csdn.net/yepeng2007fei/article/details/78112557</a></p>
+        <p>在安装R语言的一些包时，常常会出现package ‘’ is not available的错误，这里主要针对R 3.6.1的版本。对于R 3.5及其以下的版本，可以参考  <a href="https://blog.csdn.net/yepeng2007fei/article/details/78112557" target="_blank" rel="noopener">https://blog.csdn.net/yepeng2007fei/article/details/78112557</a></p>
 <p>Bioconductor的当前版本是版本3.9；它可以与R版本3.6.0配合使用。通过以下命令，使用BiocManager进行R包的安装。BiocManager::install()中填写包的名称，例如BiocManager::install(“survcomp”)。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!requireNamespace(<span class="string">"BiocManager"</span>, quietly = <span class="literal">TRUE</span>))</span><br><span class="line">    install.packages(<span class="string">"BiocManager"</span>)</span><br><span class="line">BiocManager::install()</span><br></pre></td></tr></table></figure>
 
