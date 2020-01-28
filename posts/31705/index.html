@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。 CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。 CART算法主要由以下两步组成：  决策树生成：基于训练数据集生成决策树，生成的决">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T01:51:21.907Z">
+<meta property="og:updated_time" content="2019-11-07T07:36:42.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CART算法">
 <meta name="twitter:description" content="分类与回归树（classification and regression tree, CART）模型是应用广泛的决策树学习方法，同样由特征选择、树的生成和剪枝组成，既可以用于分类也可以用于回归。 CART假设决策树是二叉树，内部结点特征的取值为“是”和“否”，左分支是取值为“是”的分支，右分支是取值为“否”的分支。 CART算法主要由以下两步组成：  决策树生成：基于训练数据集生成决策树，生成的决">
@@ -422,7 +422,7 @@
 \\ & c_{m} = \dfrac{1}{N} \sum_{x_{i} \in R_{m} \left( j,s \right)} y_{i}, \quad m=1,2\end{align*}</script></li>
 <li><p>继续对两个子区域调用步骤1.和2.，直到满足停止条件</p>
 </li>
-<li><p>将输入空间划分为$M$个区域$R_{1},R_{2},\cdots,R_{M}​$，生成决策树</p>
+<li><p>将输入空间划分为$M$个区域$R_{1},R_{2},\cdots,R_{M}$，生成决策树</p>
 <script type="math/tex; mode=display">
 \begin{align*} \\ & f \left( x \right) = \sum_{m=1}^{M} \hat c_{m} I \left( x \in R_{m} \right)   \end{align*}</script></li>
 </ol>
@@ -439,7 +439,7 @@
 \begin{align*} \\ & D_{1} = \left\{ \left(x,y\right) | A\left(x\right)=a \right\}, \quad D_{2} = D - D_{1} \end{align*}</script><p>则在特征$A$的条件下，集合$D$的基尼指数为：</p>
 <script type="math/tex; mode=display">
 \begin{align*} \\ & Gini \left( D, A \right) = \dfrac{\left| D_{1} \right|}{\left| D \right|} Gini \left( D_{1} \right) + \dfrac{\left| D_{2} \right|}{\left| D \right|} Gini \left( D_{2} \right)\end{align*}</script><p>基尼指数$Gini \left( D \right)$表示集合$D$的不确定性，基尼指数$Gini \left( D,A \right)$表示经$A=a$分割后集合$D$的不确定性。基尼指数值越大，样本集合的不确定性也越大，这一点与熵类似。</p>
-<h3 id="CART生成算法"><a href="#CART生成算法" class="headerlink" title="CART生成算法"></a>CART生成算法</h3><p>输入：训练数据集$D$，特征$A$，阈值$\varepsilon​$<br>输出：CART决策树</p>
+<h3 id="CART生成算法"><a href="#CART生成算法" class="headerlink" title="CART生成算法"></a>CART生成算法</h3><p>输入：训练数据集$D$，特征$A$，阈值$\varepsilon$<br>输出：CART决策树</p>
 <ol>
 <li>设结点的训练数据集为$D$，对每一个特征$A$，对其可能取的每个值$a$，根据样本点对$A=a$的测试为“是”或“否”将$D$分割成$D_{1}$和$D_{2}$两部分，并计算$Gini\left(D,A\right)$。</li>
 <li>在所有可能的特征$A$以及其所有可能的切分点$a$中，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依此从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去。</li>
@@ -459,8 +459,8 @@
 \begin{align*} \\ & \quad\quad C_{\alpha} \left( T_{t} \right)  ＝  C_{\alpha} \left( t \right) 
 \\ & C \left( T_{t} \right) + \alpha \left| T_{t} \right| ＝ C \left( t \right) + \alpha
 \\ & \quad\quad \alpha = \dfrac{C\left( t \right) - C \left(T_{t}\right)} { \left| T_{t} \right| -1 }\end{align*}</script><p>即$T_{t}$与$t$有相同的损失函数值，而$t$的结点少，因此对$T_{t}$进行剪枝。</p>
-<h2 id="在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​"><a href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​" class="headerlink" title="在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$"></a>在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$</h2><p>具体地，利用独立的验证数据集，测试子树序列 $T_0, T_1,  … , T_n$ 中各棵子树的平方误差或基尼指数。平方误差或基尼指数最小的决策树被认为是最优的决策树。在子树序列中，每棵子树 $T_0, T_1,  … , T_n$ 都对应一个参数$\alpha_1, \alpha_2, … , \alpha_n$。所以，当最优子树$T_k$确定时，对应的$\alpha_k$也确定了，即得到最优决策树$T_{\alpha}$。</p>
-<h2 id="CART剪枝算法"><a href="#CART剪枝算法" class="headerlink" title="CART剪枝算法"></a>CART剪枝算法</h2><p>输入：CART决策树$T_{0}$<br>输出：最优决策树$T_{\alpha}​$</p>
+<h2 id="在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n"><a href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n" class="headerlink" title="在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n$"></a>在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n$</h2><p>具体地，利用独立的验证数据集，测试子树序列 $T_0, T_1,  … , T_n$ 中各棵子树的平方误差或基尼指数。平方误差或基尼指数最小的决策树被认为是最优的决策树。在子树序列中，每棵子树 $T_0, T_1,  … , T_n$ 都对应一个参数$\alpha_1, \alpha_2, … , \alpha_n$。所以，当最优子树$T_k$确定时，对应的$\alpha_k$也确定了，即得到最优决策树$T_{\alpha}$。</p>
+<h2 id="CART剪枝算法"><a href="#CART剪枝算法" class="headerlink" title="CART剪枝算法"></a>CART剪枝算法</h2><p>输入：CART决策树$T_{0}$<br>输出：最优决策树$T_{\alpha}$</p>
 <ol>
 <li><p>设$k=0, T=T_{0}$</p>
 </li>
@@ -469,15 +469,15 @@
 <li><p>自下而上地对各内部结点$t$计算$ C\left(T_{t}\right),\left| T_{t} \right|$，以及</p>
 <script type="math/tex; mode=display">
 \begin{align*} \\ & g\left(t\right) =  \dfrac{C\left( t \right) - C \left(T_{t}\right)} { \left| T_{t} \right| -1 }
-\\ & \alpha = \min \left( \alpha, g\left( t \right) \right) \end{align*}</script><p>其中，$T_{t}​$表示以$t​$为根结点的子树，$ C\left(T_{t}\right)​$是对训练数据的预测误差，$\left| T_{t} \right|​$是$T_{t}​$的叶结点个数。</p>
+\\ & \alpha = \min \left( \alpha, g\left( t \right) \right) \end{align*}</script><p>其中，$T_{t}$表示以$t$为根结点的子树，$ C\left(T_{t}\right)$是对训练数据的预测误差，$\left| T_{t} \right|$是$T_{t}$的叶结点个数。</p>
 </li>
-<li><p>自下而上地访问内部结点$t​$，如果有$g\left(t\right)=\alpha​$，则进行剪枝，并对叶结点$t​$以多数表决法决定其类别，得到树$T​$</p>
+<li><p>自下而上地访问内部结点$t$，如果有$g\left(t\right)=\alpha$，则进行剪枝，并对叶结点$t$以多数表决法决定其类别，得到树$T$</p>
 </li>
 <li><p>设$k=k+1, \alpha_{k}=\alpha, T_{k}=T$</p>
 </li>
-<li><p>如果$T​$不是由根结点单独构成的树，则回到步骤4.</p>
+<li><p>如果$T$不是由根结点单独构成的树，则回到步骤4.</p>
 </li>
-<li><p>采用交叉验证法在子树序列$T_{0},T_{1},\cdots,T_{n}​$中选取最优子树$T_{\alpha}​$</p>
+<li><p>采用交叉验证法在子树序列$T_{0},T_{1},\cdots,T_{n}$中选取最优子树$T_{\alpha}$</p>
 </li>
 </ol>
 
@@ -606,7 +606,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CART生成"><span class="nav-number">1.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树的生成"><span class="nav-number">1.1.</span> <span class="nav-text">回归树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">1.1.1.</span> <span class="nav-text">最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类树的生成"><span class="nav-number">1.2.</span> <span class="nav-text">分类树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART生成算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">CART生成算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CART剪枝"><span class="nav-number">2.</span> <span class="nav-text">CART剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝，形成一个子树序列-T-0-T-1-…-T-n"><span class="nav-number">2.1.</span> <span class="nav-text">剪枝，形成一个子树序列 $T_0, T_1,  … , T_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n​"><span class="nav-number">2.2.</span> <span class="nav-text">在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n​$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART剪枝算法"><span class="nav-number">2.3.</span> <span class="nav-text">CART剪枝算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CART生成"><span class="nav-number">1.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树的生成"><span class="nav-number">1.1.</span> <span class="nav-text">回归树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小二乘回归树生成算法"><span class="nav-number">1.1.1.</span> <span class="nav-text">最小二乘回归树生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类树的生成"><span class="nav-number">1.2.</span> <span class="nav-text">分类树的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CART生成算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">CART生成算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CART剪枝"><span class="nav-number">2.</span> <span class="nav-text">CART剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝，形成一个子树序列-T-0-T-1-…-T-n"><span class="nav-number">2.1.</span> <span class="nav-text">剪枝，形成一个子树序列 $T_0, T_1,  … , T_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在剪枝得到的子树序列-T-0-T-1-…-T-n-中通过交叉验证选取最优子树-T-n"><span class="nav-number">2.2.</span> <span class="nav-text">在剪枝得到的子树序列  $T_0, T_1,  … , T_n$ 中通过交叉验证选取最优子树$T_n$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART剪枝算法"><span class="nav-number">2.3.</span> <span class="nav-text">CART剪枝算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -682,7 +682,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

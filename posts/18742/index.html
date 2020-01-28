@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="并行,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="good good study up up every day">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shenghai&#39;s blog | shxt">
-<meta property="og:url" content="http://www.zhangshenghai.com/tags/V2Ray/index.html">
+<meta name="description" content="12345import multiprocessingfrom joblib import Parallel, delayednum_cores = multiprocessing.cpu_count()Parallel(n_jobs=num_cores-2)(delayed(方法)(i) for i in tqdm(num))">
+<meta name="keywords" content="并行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python并行执行方法体">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/18742/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="good good study up up every day">
+<meta property="og:description" content="12345import multiprocessingfrom joblib import Parallel, delayednum_cores = multiprocessing.cpu_count()Parallel(n_jobs=num_cores-2)(delayed(方法)(i) for i in tqdm(num))">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-21T04:56:17.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
-<meta name="twitter:description" content="good good study up up every day">
+<meta name="twitter:title" content="Python并行执行方法体">
+<meta name="twitter:description" content="12345import multiprocessingfrom joblib import Parallel, delayednum_cores = multiprocessing.cpu_count()Parallel(n_jobs=num_cores-2)(delayed(方法)(i) for i in tqdm(num))">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/tags/V2Ray/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/18742/">
 
 
 
 
 
-  <title>标签: V2Ray | shenghai's blog | shxt</title>
+  <title>Python并行执行方法体 | shenghai's blog | shxt</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,52 +290,169 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>V2Ray<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/18742/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/26401/" itemprop="url">
-              
-                <span itemprop="name">V2Ray的Linux客户端配置</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Python并行执行方法体</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-09T14:13:14+08:00" content="2019-03-09">
-          03-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T12:53:28+08:00">
+                2019-11-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">from</span> joblib <span class="keyword">import</span> Parallel, delayed</span><br><span class="line"></span><br><span class="line">num_cores = multiprocessing.cpu_count()</span><br><span class="line">Parallel(n_jobs=num_cores<span class="number">-2</span>)(delayed(方法)(i) <span class="keyword">for</span> i <span class="keyword">in</span> tqdm(num))</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/并行/" rel="tag"><i class="fa fa-tag"></i> 并行</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/13706/" rel="next" title="R语言中五种计算C-index的方法">
+                <i class="fa fa-chevron-left"></i> R语言中五种计算C-index的方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -341,6 +460,15 @@
 
 
           
+
+  
+ 	<div id="gitalk-container">
+ 	</div>
+
+  
+
+
+
 
         </div>
         
@@ -548,6 +676,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -589,7 +721,37 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
