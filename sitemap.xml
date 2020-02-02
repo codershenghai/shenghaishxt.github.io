@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.zhangshenghai.com/playlist/index.html</loc>
+    
+    <lastmod>2020-02-02T06:31:37.015Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.zhangshenghai.com/about/index.html</loc>
     
     <lastmod>2020-01-28T01:09:53.071Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>http://www.zhangshenghai.com/posts/59250/</loc>
     
     <lastmod>2019-07-02T02:42:25.771Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.zhangshenghai.com/playlist/index.html</loc>
-    
-    <lastmod>2019-06-29T08:11:00.987Z</lastmod>
     
   </url>
   
@@ -492,14 +492,14 @@
   </url>
   
   <url>
-    <loc>http://www.zhangshenghai.com/posts/63093/</loc>
+    <loc>http://www.zhangshenghai.com/posts/20007/</loc>
     
     <lastmod>2019-02-28T11:45:59.058Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.zhangshenghai.com/posts/20007/</loc>
+    <loc>http://www.zhangshenghai.com/posts/63093/</loc>
     
     <lastmod>2019-02-28T11:45:59.058Z</lastmod>
     
