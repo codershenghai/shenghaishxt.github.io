@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关联Gitbook到Github]]></title>
+    <url>%2Fposts%2F41100%2F</url>
+    <content type="text"><![CDATA[关于Gitbook的使用网上资源很多，但把Gitbook关联到Github还是有些坑的，这里整理一下。 新建仓库与gh-pages分支首先在Github新建仓库，选择初始化README文件，假设仓库名称为book。首先克隆仓库到本地，然后创建gh-pages分支后push回远程仓库（注意，这里的分支名必须为gh-pages）。 1234git clone git@github.com:USER_NAME/book.gitcd bookgit checkout -b gh-pagesgit push -u origin gh-pages 如果在将分支push到远程仓库时出现error: src refspec gh-pages does not match any，可能是目录中没有文件的原因，空目录是无法提交的。有可能是上一步没有初始化README文件，需要重新新建文件再push。 1234touch README.MDgit add README git commit -m &apos;first commit&apos;git push origin master 这里，gh-pages分支就创建好了，github会为我们自动分配一个访问的网址：http://username.github.io/book 同步gitbook到gh-pages现在我们可以切换到主分支，将gh-pages分支的内容clone下来（注意，clone下来的gh-pages和book仓库一样，也可以看作是一个完整独立的仓库，也有.git隐藏文件夹），存放到pages文件夹下： 12git checkout mastergit clone -b gh-pages git@github.com:USERNAME/book.git pages 这个pages文件夹就是gh-pages仓库，现在我们需要将gitbook的页面资源文件放到这个文件夹下。 在README.md和SUMMARY.md的目录下启动终端，执行gitbook build命令，可以得到一个_book文件夹，复制里面的所有内容到pages目录下，然后在pages目录下启动终端，push到仓库： 123git add .git commit -m &quot;update&quot;git push -u origin gh-pages:gh-pages 到这里就大功告成啦，可以打开 http://username.github.io/book 看看效果了。]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Gitbook</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python并行执行方法体]]></title>
     <url>%2Fposts%2F18742%2F</url>
     <content type="text"><![CDATA[12345import multiprocessingfrom joblib import Parallel, delayednum_cores = multiprocessing.cpu_count()Parallel(n_jobs=num_cores-2)(delayed(方法)(i) for i in tqdm(num))]]></content>
@@ -417,8 +429,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Linux</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
