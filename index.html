@@ -396,12 +396,8 @@
       
         
           
-          在自定义比较器时，总是将升序降序弄混，这里总结一下。
-在实现Comparator接口时，必须实现Compare函数：
-1public int compare(Customer o1, Customer o2) &#123;&#125;
-这个函数有两个参数用于比较：
-
-当返回负数时，表示不需要交换o1
+          Comparable接口定义Comparable是排序接口，如果一个类实现了Comparable接口，意味着这个类是支持排序的，即实现这个类的对象的List或Array可以通过Collections.sort或Arrays.sort进行排序。
+Comparable接口来自java.lang包，它仅仅
           ...
           <!--noindex-->
           <div class="post-button text-center">
