@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
 <meta property="og:description" content="Comparable接口定义Comparable是排序接口，如果一个类实现了Comparable接口，意味着这个类是支持排序的，即实现这个类的对象的List或Array可以通过Collections.sort或Arrays.sort进行排序。 Comparable接口来自java.lang包，它仅仅只有一个方法： 12345package java.lang;public interface Co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-11T14:01:48.976Z">
+<meta property="og:updated_time" content="2020-03-11T15:04:30.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中易混淆的两个接口：Comparable和Comparator">
 <meta name="twitter:description" content="Comparable接口定义Comparable是排序接口，如果一个类实现了Comparable接口，意味着这个类是支持排序的，即实现这个类的对象的List或Array可以通过Collections.sort或Arrays.sort进行排序。 Comparable接口来自java.lang包，它仅仅只有一个方法： 12345package java.lang;public interface Co">
@@ -414,9 +414,9 @@
 </blockquote>
 <p>解释一下，这个函数中的重写的compare方法用于实现降序：</p>
 <ol>
-<li><p>在这个函数中，若<code>o1.age &gt; o2.age</code>，那么<code>o2.age - o1.age &lt; 0</code>，返回负数，交换o1和o2的顺序，降序</p>
+<li><p>在这个函数中，若<code>o1.age &gt; o2.age</code>，那么<code>o2.age - o1.age &lt; 0</code>，返回负数，不需要交换o1和o2的顺序，降序</p>
 </li>
-<li><p>同样，若<code>o1.age &lt; o2.age</code>，那么<code>o2.age - o1.age &gt; 0</code>，返回正数，不交换o1和o2的顺序，还是降序。</p>
+<li><p>同样，若<code>o1.age &lt; o2.age</code>，那么<code>o2.age - o1.age &gt; 0</code>，返回正数，需要不交换o1和o2的顺序，还是降序。</p>
 </li>
 </ol>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Java中有两种排序方式：</p>
