@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="good good study up up every day">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shenghai&#39;s blog | shxt">
-<meta property="og:url" content="http://www.zhangshenghai.com/tags/Algorithm/index.html">
+<meta name="description" content="注解简介注解的本质是一个接口，该接口默认继承Annotation接口，使用@interface进行定义。注解主要有三类：元注解、自定义注解以及框架定义的注解。  接口里面的成员方法称为注解的属性 定义了属性，要在使用的时候给属性赋值 如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值 若只有一个属性且名为value，则使用时可以直接写值 数组赋值时使用 { } 包裹，数组只有">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java自定义注解">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/550/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="good good study up up every day">
+<meta property="og:description" content="注解简介注解的本质是一个接口，该接口默认继承Annotation接口，使用@interface进行定义。注解主要有三类：元注解、自定义注解以及框架定义的注解。  接口里面的成员方法称为注解的属性 定义了属性，要在使用的时候给属性赋值 如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值 若只有一个属性且名为value，则使用时可以直接写值 数组赋值时使用 { } 包裹，数组只有">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-13T07:46:20.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
-<meta name="twitter:description" content="good good study up up every day">
+<meta name="twitter:title" content="Java自定义注解">
+<meta name="twitter:description" content="注解简介注解的本质是一个接口，该接口默认继承Annotation接口，使用@interface进行定义。注解主要有三类：元注解、自定义注解以及框架定义的注解。  接口里面的成员方法称为注解的属性 定义了属性，要在使用的时候给属性赋值 如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值 若只有一个属性且名为value，则使用时可以直接写值 数组赋值时使用 { } 包裹，数组只有">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/tags/Algorithm/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/550/">
 
 
 
 
 
-  <title>标签: Algorithm | shenghai's blog | shxt</title>
+  <title>Java自定义注解 | shenghai's blog | shxt</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,286 +290,203 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Algorithm<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/550/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/20007/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER10 线性规划在近似算法中的应用</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java自定义注解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-12T15:02:00+08:00" content="2018-12-12">
-          12-12
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-13T15:44:33+08:00">
+                2020-03-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/55620/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER9 线性规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-11T17:58:00+08:00" content="2018-12-11">
-          12-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/63466/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER8 近似算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-10T08:19:00+08:00" content="2018-12-10">
-          12-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/64398/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER7 NP完全性</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-09T21:34:00+08:00" content="2018-12-09">
-          12-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/40122/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER6 动态规划</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T18:08:00+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/57540/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER5 分治法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-05T19:12:00+08:00" content="2018-12-05">
-          12-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/17200/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER4 贪心算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-03T09:18:00+08:00" content="2018-12-03">
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/63093/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER3 最大匹配问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-02T16:45:00+08:00" content="2018-12-02">
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/16099/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER2 最大流与最小割</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-01T16:06:00+08:00" content="2018-12-01">
-          12-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/36105/" itemprop="url">
-              
-                <span itemprop="name">CHAPTER1 函数的增长与递归式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-27T15:09:00+08:00" content="2018-11-27">
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="注解简介"><a href="#注解简介" class="headerlink" title="注解简介"></a>注解简介</h1><p>注解的本质是一个接口，该接口默认继承Annotation接口，使用<strong>@interface</strong>进行定义。注解主要有三类：元注解、自定义注解以及框架定义的注解。</p>
+<ul>
+<li>接口里面的成员方法称为<strong>注解的属性</strong></li>
+<li>定义了属性，要在使用的时候给属性赋值</li>
+<li>如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值</li>
+<li>若只有一个属性且名为value，则使用时可以直接写值</li>
+<li>数组赋值时使用 { } 包裹，数组只有一个值时可以不用 { }</li>
+</ul>
+<h1 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h1><p>首先我们要知道什么是<strong>元注解</strong>，元注解可以看作是用在注解上的注解。基础的元注解有四个：</p>
+<ul>
+<li><p>@Target() ：描述注解能够作用的位置。      </p>
+<ul>
+<li>ElementType.FIELD：说明自定义的注解可以用于类的变量</li>
+<li>ElementType.METHOD：说明自定义的注解可以用于类的方法</li>
+<li>ElementType.TYPE：说明自定义的注解可以用于类本身、接口或 enum类型</li>
+</ul>
+</li>
+<li><p>@Retention() ： 描述注解被保留的阶段</p>
+<ul>
+<li>@Retention(RetentionPolicy.RUNTIME)：表示注解可以一直保留到运行时，因此可以通过反射获取注解信息</li>
+<li>@Retention(RetentionPolicy.CLASS)：表示注解被编译器编译进 class文件，但运行时会忽略    </li>
+<li>@Retention(RetentionPolicy.SOURCE)：表示注解仅在源文件中有效，编译时就会被忽略</li>
+</ul>
+</li>
+<li><p>@Documented ： 描述注解是否被抽取到api文档中</p>
+</li>
+<li><p>@Inherited ： 描述注解是否被子类继承</p>
+</li>
+</ul>
+<p>可以看到，在描述注解被保留的阶段的时候，生命周期从长到短的顺序是RUNTIME &gt; CLASS &gt; SOURCE。因此，如果需要使用反射在运行时动态获取注解的信息，是必须使用@Retention(RetentionPolicy.RUNTIME)的，就像接下来要实现的例子一样。</p>
+<h1 id="利用注解来校验类中的字段"><a href="#利用注解来校验类中的字段" class="headerlink" title="利用注解来校验类中的字段"></a>利用注解来校验类中的字段</h1><p>首先自定义一个注解。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.FIELD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Length &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">errorMsg</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后定义一个Person类，包含ID、name以及sex字段，并设置set方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Length</span>(min = <span class="number">8</span>, max = <span class="number">8</span>, errorMsg = <span class="string">"错误！id必须为8位！"</span>)</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后我们可以利用反射的原理编写一个测试主函数，看我们自定义的注解是否能够检测字段id是否满足设置的要求。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">lengthTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">validate</span><span class="params">(Object object)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line">        <span class="comment">// 通过反射获取对象的字段</span></span><br><span class="line">        Field[] fields = object.getClass().getDeclaredFields();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 逐个字段检验，看哪个字段上标了注解</span></span><br><span class="line">        <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">            <span class="keyword">if</span> (field.isAnnotationPresent(Length.class)) &#123;</span><br><span class="line">                <span class="comment">// 如果标了注解，则通过反射获取到该字段上注解的详细信息(包括各种参数)</span></span><br><span class="line">                Length length = field.getAnnotation(Length.class);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 设置反射后能够得到私有变量</span></span><br><span class="line">                field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 获取对象字段的实际长度</span></span><br><span class="line">                <span class="keyword">int</span> value = ((String) field.get(object)).length();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 检验对象字段实际长度是否合法，合法什么都不做，不合法输出错误信息</span></span><br><span class="line">                <span class="keyword">if</span> (value &lt; length.min() || value &gt; length.max()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> length.errorMsg();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        person.setId(<span class="string">"1234567"</span>);</span><br><span class="line">        person.setName(<span class="string">"小美"</span>);</span><br><span class="line">        person.setSex(<span class="string">"女"</span>);</span><br><span class="line">        System.out.println(validate(person));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后，强调一下，反射的知识真的很重要！</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/6363/" rel="next" title="Java中易混淆的两个接口：Comparable和Comparator">
+                <i class="fa fa-chevron-left"></i> Java中易混淆的两个接口：Comparable和Comparator
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -575,6 +494,15 @@
 
 
           
+
+  
+ 	<div id="gitalk-container">
+ 	</div>
+
+  
+
+
+
 
         </div>
         
@@ -595,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -656,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注解简介"><span class="nav-number">1.</span> <span class="nav-text">注解简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元注解"><span class="nav-number">2.</span> <span class="nav-text">元注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用注解来校验类中的字段"><span class="nav-number">3.</span> <span class="nav-text">利用注解来校验类中的字段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -782,6 +735,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -823,7 +780,37 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
