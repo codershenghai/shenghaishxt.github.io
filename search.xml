@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[反射之.getClass、.class、Class.forName的区别]]></title>
+    <url>%2Fposts%2F52479%2F</url>
+    <content type="text"><![CDATA[Java反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。 传统的编程方法要求程序员在编译阶段决定使用的类型，但是在反射的帮助下，编程人员可以动态获取这些信息，从而编写更加具有可移植性的代码。 获得Class对象.getClass、.class、Class.forName是三种获得Class对象的方法。因为一切皆为对象，所以类型也不例外。 getClass()接在对象的后面。getClass()是Object类中的方法，而Object类是所有Java类的父类。 .class接在任意一个Java类型的后面，在编译期加载（静态加载）。 Class.forName是Class类中的一个静态方法，从指定的classloader中装载类，返回与给定字符串对应类或接口的Class对象，在运行期加载（动态加载）。 关于静态加载和动态加载： 静态加载的类的源程序在编译时期加载（必须存在），而动态加载的类在编译时期可以缺席（源程序不存在时编译器也不会报错）。 当类找不到的时候，静态加载方式会抛出异常”NoClassDefFoundError”，而动态加载方式则抛出”ClassNotFoundException”异常。 这三种方法获得的Class对象都是一模一样的，我们可以写一段简短的代码来验证一下。 123456789101112public class CompareObject &#123; public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException &#123; Class c1 = new Robot().getClass(); //使用.getClass()创建Class对象 Class c2 = Robot.class; // 使用.class创建Class对象 Class c3 = Class.forName("com.shenghai.javabasic.reflect.Robot"); //使用反射创建Class对象 if (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c2 == c3) System.out.println("three classes are equal"); &#125;&#125;// 输出为 three classes are equal 从Class对象中获取该类的各种信息在得到Class对象之后，我们可以调用以下这些方法来获取该类的各种信息，包括类名、父类以及它所实现接口的名字等。 12345678public static void printClassInfo(Class c) &#123; System.out.println(c.getName()); //获得该Class对象的全称名称 System.out.println(c.getSuperclass()); //getSuperclass()获得该Class对象的直接父类 System.out.println(c.getInterfaces()); //getInterfaces()获得该Class对象实现的所有接口 System.out.println(c.isArray()); //isArray()判断该Class对象是否为数组类 System.out.println(c.getMethods()); //getMethods()取得该Class对象所有共有方法 System.out.println(c.getClassLoader()); //getClassLoader()取得该Class对象的类装载器&#125;]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Java反射</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[了解一下什么是外部排序算法]]></title>
     <url>%2Fposts%2F34086%2F</url>
     <content type="text"><![CDATA[以前我们学习的排序算法，比如冒泡排序、插入排序、快速排序等都是属于内部排序，即所有排序操作都是在内存中完成。然而如果需要排序的文件比整个内存还大时，这时就无法将文件一次性放到内存中，需要借助外部存储来进行排序，这就是外部排序。 外部排序有两个步骤，分别是分与合： 分：首先将大文件分成n个小文件，每个小文件的大小需要小于内存的大小。然后依次将这些小文件放到内存中调用内排进行排序，处理完毕后会得到n个有序的小文件。 合：有了n个有序的小文件，怎么合并成1个有序的大文件呢？我们可以进行归并排序。 举个例子，我们有三个小文件，内存的大小为3： 文件1：3， 6， 9 文件2：2， 4， 8 文件3：1， 5， 7 首先比较每个文件中的最小值，得出最小值后写入大文件。第一步比较3、2、1，拿出了最小值1写入大文件，第二步比较3、2、5，拿出了最小值2写入大文件，第三步比较3、4、5，拿出了最小值3写入大文件……循环执行这个步骤，最后即可完成排序。 上面的这个步骤其实就是3路平衡归并。因此，对于实际的场景中，对于 k-路平衡归并中的 k 值得选择，增加 k 可以减少归并的次数，从而减少外存读写的次数。但 k 的值也不是越大越好，k越大，在内存中选择最小值的时候也会更加花费时间。一般情况下，对于具有 m 个初始归并段进行 k-路平衡归并时，归并的次数为$⌊log_k⁡m ⌋$。 从公式中可以看出，要想提高算法效率，可以从两个角度实现： 一是增加 k-路平衡归并中的 k 值。 二是尽量减少初始归并段的数量m，增加每个归并段的容量。 但其实这两个角度是有矛盾之处的，实际场景中需要就综合考虑，平衡这两者了。]]></content>
