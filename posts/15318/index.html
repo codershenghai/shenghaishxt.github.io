@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java、数据结构,">
 
 
 
@@ -79,16 +79,23 @@
 
 
 
-<meta name="description" content="good good study up up every day">
-<meta property="og:type" content="website">
-<meta property="og:title" content="shenghai&#39;s blog | shxt">
-<meta property="og:url" content="http://www.zhangshenghai.com/categories/随笔/index.html">
+<meta name="description" content="Trie 树也称为字典树、单词查找树，最大的特点就是共享字符串的公共前缀，这样可以达到节省空间的目的。像我们在使用搜索引擎输入某些关键字的时候，搜索引擎会自动弹出一些相关的信息，这些都是通过 Trie 树实现的。   Trie 树的数据结构Trie  树的根节点不存任何数据，每个分支都代表一个完整的字符串。来看看 Trie 树的结构：  从上图可以归纳出Trie树的基本性质：  根节点不包含字符">
+<meta name="keywords" content="Java、数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Trie 树原理及其敏感词过滤的实现">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/15318/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="good good study up up every day">
+<meta property="og:description" content="Trie 树也称为字典树、单词查找树，最大的特点就是共享字符串的公共前缀，这样可以达到节省空间的目的。像我们在使用搜索引擎输入某些关键字的时候，搜索引擎会自动弹出一些相关的信息，这些都是通过 Trie 树实现的。   Trie 树的数据结构Trie  树的根节点不存任何数据，每个分支都代表一个完整的字符串。来看看 Trie 树的结构：  从上图可以归纳出Trie树的基本性质：  根节点不包含字符">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200530132434.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200530131806.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200530130452.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200530132844.png">
+<meta property="og:updated_time" content="2020-05-30T05:43:25.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shenghai&#39;s blog | shxt">
-<meta name="twitter:description" content="good good study up up every day">
+<meta name="twitter:title" content="Trie 树原理及其敏感词过滤的实现">
+<meta name="twitter:description" content="Trie 树也称为字典树、单词查找树，最大的特点就是共享字符串的公共前缀，这样可以达到节省空间的目的。像我们在使用搜索引擎输入某些关键字的时候，搜索引擎会自动弹出一些相关的信息，这些都是通过 Trie 树实现的。   Trie 树的数据结构Trie  树的根节点不存任何数据，每个分支都代表一个完整的字符串。来看看 Trie 树的结构：  从上图可以归纳出Trie树的基本性质：  根节点不包含字符">
+<meta name="twitter:image" content="http://image.shenghaishxt.cn/20200530132434.png">
 
 
 
@@ -118,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/categories/随笔/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/15318/">
 
 
 
 
 
-  <title>分类: 随笔 | shenghai's blog | shxt</title>
+  <title>Trie 树原理及其敏感词过滤的实现 | shenghai's blog | shxt</title>
   
 
 
@@ -143,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 	
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -288,291 +295,198 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>随笔<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/15318/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/15318/" itemprop="url">
-              
-                <span itemprop="name">Trie 树原理及其敏感词过滤的实现</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Trie 树原理及其敏感词过滤的实现</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-05-29T17:09:12+08:00" content="2020-05-29">
-          05-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-29T17:09:12+08:00">
+                2020-05-29
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/23425/" itemprop="url">
-              
-                <span itemprop="name">实现单例模式的三种方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-03-28T10:47:06+08:00" content="2020-03-28">
-          03-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/52479/" itemprop="url">
-              
-                <span itemprop="name">反射之.getClass、.class、Class.forName的区别</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-03-17T22:42:42+08:00" content="2020-03-17">
-          03-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/34086/" itemprop="url">
-              
-                <span itemprop="name">了解一下什么是外部排序算法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-03-14T14:52:36+08:00" content="2020-03-14">
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/550/" itemprop="url">
-              
-                <span itemprop="name">Java自定义注解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-03-13T15:44:33+08:00" content="2020-03-13">
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/6363/" itemprop="url">
-              
-                <span itemprop="name">Java中易混淆的两个接口：Comparable和Comparator</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-03-11T17:21:07+08:00" content="2020-03-11">
-          03-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/41100/" itemprop="url">
-              
-                <span itemprop="name">关联Gitbook到Github</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-09T02:16:17+08:00" content="2020-02-09">
-          02-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/18742/" itemprop="url">
-              
-                <span itemprop="name">Python并行执行方法体</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-21T12:53:28+08:00" content="2019-11-21">
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/13706/" itemprop="url">
-              
-                <span itemprop="name">R语言中五种计算C-index的方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-16T23:21:33+08:00" content="2019-10-16">
-          10-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/posts/64948/" itemprop="url">
-              
-                <span itemprop="name">解决R语言安装包时出现package '' is not available(for R version 3.6.1)的问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-16T10:01:41+08:00" content="2019-10-16">
-          10-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <blockquote>
+<p>Trie 树也称为字典树、单词查找树，最大的特点就是共享字符串的公共前缀，这样可以达到节省空间的目的。像我们在使用搜索引擎输入某些关键字的时候，搜索引擎会自动弹出一些相关的信息，这些都是通过 Trie 树实现的。</p>
+</blockquote>
+<p><img src="http://image.shenghaishxt.cn/20200530132434.png" alt></p>
+<h1 id="Trie-树的数据结构"><a href="#Trie-树的数据结构" class="headerlink" title="Trie 树的数据结构"></a>Trie 树的数据结构</h1><p>Trie  树的根节点不存任何数据，每个分支都代表一个完整的字符串。来看看 Trie 树的结构：</p>
+<p><img src="http://image.shenghaishxt.cn/20200530131806.png" alt></p>
+<p><strong>从上图可以归纳出Trie树的基本性质：</strong></p>
+<ol>
+<li>根节点不包含字符，除根节点外的每一个子节点都包含一个字符。</li>
+<li>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。</li>
+<li>每个节点的所有子节点包含的字符互不相同。</li>
+<li>从第一字符开始有连续重复的字符只占用一个节点，比如上面的 to 和 ten，中重复的单词 t 只占用了一个节点。</li>
+</ol>
+<p><strong>从这几条基本性质我们可以抽象出节点的 class 属性：</strong></p>
+<ol>
+<li>是否为叶子节点的标志位 isWord。</li>
+<li>既能存储当前节点的值也能存储其所有的子节点的数据结构HashMap。</li>
+</ol>
+<h1 id="先从稍微简单的实现开始"><a href="#先从稍微简单的实现开始" class="headerlink" title="先从稍微简单的实现开始"></a>先从稍微简单的实现开始</h1><p>在 Java 中，Trie 树可以使用 HashMap 实现，因为一个节点的子节点个数未知，而 HashMap 可以动态扩展，而且可以在 O(1) 的时间复杂度内判断某个子节点是否存在。以 LeetCode 208 为例，来看看这种实现方式。</p>
+<p><img src="http://image.shenghaishxt.cn/20200530130452.png" alt></p>
+<p>首先定义 Trie 树的节点，节点的结构为 HashMap，key 为字符串中的字符，value 为这个节点的子节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 子节点(key是下级字符，value是下级节点)</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Character, TrieNode&gt; subNodes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加子节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSubNode</span><span class="params">(Character c, TrieNode subNode)</span> </span>&#123;</span><br><span class="line">        subNodes.put(c, subNode);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取子节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TrieNode <span class="title">getSubNode</span><span class="params">(Character c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> subNodes.get(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来看看 Trie 树的主函数，在初始化树时，使用构造函数构造一个不存数据的根节点。在插入字符串时，从根节点开始判断树中是否已经包含了这个字符串的当前字符，如果不存在这个字符则新建节点保存当前字符，插入结束的时候设置结束标识，这里简单的用<code>&#39;#&#39;</code>来标记。</p>
+<p>search() 和 startsWith() 函数也是类似，从根节点开始查找 HashMap 中是否存在对应的子节点。这两个函数的唯一区别是在字符串遍历完成的时候，search() 需要判断当前字符是否已经走到了 Trie 树的叶子节点，而 startsWith() 函数不需要。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</span><br><span class="line">    TrieNode root;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Trie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Inserts a word into the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode curNode = <span class="keyword">this</span>.root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = word.charAt(i);</span><br><span class="line">            TrieNode subNode = curNode.getSubNode(c);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果没有这个节点则新建</span></span><br><span class="line">            <span class="keyword">if</span> (subNode == <span class="keyword">null</span>) &#123;</span><br><span class="line">                subNode = <span class="keyword">new</span> TrieNode();</span><br><span class="line">                curNode.addSubNode(c, subNode);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 指向子节点，进入下一循环</span></span><br><span class="line">            curNode = subNode;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置结束标识</span></span><br><span class="line">        curNode.addSubNode(<span class="string">'#'</span>, <span class="keyword">new</span> TrieNode());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if the word is in the trie. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode curNode = <span class="keyword">this</span>.root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</span><br><span class="line">            curNode = curNode.getSubNode(word.charAt(i));</span><br><span class="line">            <span class="keyword">if</span> (curNode == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> curNode.getSubNode(<span class="string">'#'</span>) != <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String prefix)</span> </span>&#123;</span><br><span class="line">        TrieNode curNode = <span class="keyword">this</span>.root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prefix.length(); i++) &#123;</span><br><span class="line">            curNode = curNode.getSubNode(prefix.charAt(i));</span><br><span class="line">            <span class="keyword">if</span> (curNode == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="进一步实现敏感词过滤"><a href="#进一步实现敏感词过滤" class="headerlink" title="进一步实现敏感词过滤"></a>进一步实现敏感词过滤</h1><p>在实现敏感词过滤前，首先需要初始化 Trie 树，将所有敏感词作为字符串全部插入到 Trie 树中。</p>
+<p>其实原理还是和之前一样的，只不过相对于上面的代码来说，我们需要多增加一个指针。因为敏感词在字符串的位置我们是不知道的嘛，所以我们只能增加一个指针，对整个字符串进行遍历，寻找敏感词开始的位置，剩下的逻辑就和上面的代码相似了，如下图所示。这里假设在 Trie 树中已经初始化好了 bca、bcf、de 这几个敏感词。</p>
+<p><img src="http://image.shenghaishxt.cn/20200530132844.png" alt></p>
+<p>首先 p1 指针指向 root，指针 p2 和 p3 指向字符串中的第一个字符。算法从字符 a 开始，检测有没有以 a 作为前缀的敏感词，在这里就直接判断 root 中有没有 a 这个子节点即可。没有的话将 p2 和 p3 同时右移，而如果存在以 a 作为前缀的敏感词，那么就只右移 p3 继续判断 p2 和 p3 之间的这个字符串是否是敏感词。如果在字符串中找到敏感词，那么可以用其他字符串如 <em>*</em> 代替。接下来不断循环直到整个字符串遍历完成就可以了。</p>
+<p>这样的算法时间复杂度是多少呢？构建敏感词的时间复杂度是可以忽略不计的，因为构建完成后我们是可以无数次使用的。所以我们来看看查找敏感词的时间复杂度。如果字符串的长度为 n，而每个敏感词查找的时间复杂度是 O(m)，我们需要对字符串遍历 n 遍，所以查找敏感词的这个过程的时间复杂度为 O(m * n)。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java、数据结构/" rel="tag"><i class="fa fa-tag"></i> Java、数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/25383/" rel="next" title="Spring AOP的简单理解">
+                <i class="fa fa-chevron-left"></i> Spring AOP的简单理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/随笔/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/categories/随笔/page/4/">4</a><a class="extend next" rel="next" href="/categories/随笔/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -580,6 +494,15 @@
 
 
           
+
+  
+ 	<div id="gitalk-container">
+ 	</div>
+
+  
+
+
+
 
         </div>
         
@@ -600,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Trie-树的数据结构"><span class="nav-number">1.</span> <span class="nav-text">Trie 树的数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先从稍微简单的实现开始"><span class="nav-number">2.</span> <span class="nav-text">先从稍微简单的实现开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进一步实现敏感词过滤"><span class="nav-number">3.</span> <span class="nav-text">进一步实现敏感词过滤</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -787,6 +735,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -828,7 +780,37 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
