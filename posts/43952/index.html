@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -79,25 +79,26 @@
 
 
 
-<meta name="description" content="关于匹配的几个定义匹配（Matching）一个匹配是一个边的子集合$M\subseteq E$，且满足对所有顶点$v\in V$，$M$中至多有一条边与$v$相关联。也可以简单地说，一个匹配就是一个边的集合，其中任意两条边之间都没有公共顶点。 下面给出一个例子：  最大匹配（Maximum Matching）简单地说，最大匹配是一个图的所有匹配中边数最多的那个匹配。给出一个例子：  二分图（Bip">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="[TOC] Synchronized 的使用方式第一种使用方式是使用同步代码块例如 synchronized (tasks) {}，其中，小括号里的对象是可以是任意的对象。我们并不是对这个 task 对象加锁，只是让它来维护秩序。这个人是谁其实并无所谓。但是，对于不同对象的同步控制，一定要选用两个线程都持有的对象才行。否则各自使用不同的对象，相当于聘用了两个看门人，各看各的门，毫无瓜葛。那么原本想">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CHAPTER3 最大匹配问题">
-<meta property="og:url" content="http://www.zhangshenghai.com/posts/63093/index.html">
+<meta property="og:title" content="并发编程之 Synchronized 锁重要知识点整理">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/43952/index.html">
 <meta property="og:site_name" content="shenghai&#39;s blog | shxt">
-<meta property="og:description" content="关于匹配的几个定义匹配（Matching）一个匹配是一个边的子集合$M\subseteq E$，且满足对所有顶点$v\in V$，$M$中至多有一条边与$v$相关联。也可以简单地说，一个匹配就是一个边的集合，其中任意两条边之间都没有公共顶点。 下面给出一个例子：  最大匹配（Maximum Matching）简单地说，最大匹配是一个图的所有匹配中边数最多的那个匹配。给出一个例子：  二分图（Bip">
+<meta property="og:description" content="[TOC] Synchronized 的使用方式第一种使用方式是使用同步代码块例如 synchronized (tasks) {}，其中，小括号里的对象是可以是任意的对象。我们并不是对这个 task 对象加锁，只是让它来维护秩序。这个人是谁其实并无所谓。但是，对于不同对象的同步控制，一定要选用两个线程都持有的对象才行。否则各自使用不同的对象，相当于聘用了两个看门人，各看各的门，毫无瓜葛。那么原本想">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543564294412.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543564418707.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543565323927.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543565692040.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543566626645.png">
-<meta property="og:image" content="http://www.zhangshenghai.com/images/1543566981146.png">
-<meta property="og:updated_time" content="2019-02-28T11:45:59.058Z">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200513170913.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200512170454.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200513163503.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200512162611.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200512162803.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200513132214.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200513152057.png">
+<meta property="og:updated_time" content="2020-06-02T01:46:19.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHAPTER3 最大匹配问题">
-<meta name="twitter:description" content="关于匹配的几个定义匹配（Matching）一个匹配是一个边的子集合$M\subseteq E$，且满足对所有顶点$v\in V$，$M$中至多有一条边与$v$相关联。也可以简单地说，一个匹配就是一个边的集合，其中任意两条边之间都没有公共顶点。 下面给出一个例子：  最大匹配（Maximum Matching）简单地说，最大匹配是一个图的所有匹配中边数最多的那个匹配。给出一个例子：  二分图（Bip">
-<meta name="twitter:image" content="http://www.zhangshenghai.com/images/1543564294412.png">
+<meta name="twitter:title" content="并发编程之 Synchronized 锁重要知识点整理">
+<meta name="twitter:description" content="[TOC] Synchronized 的使用方式第一种使用方式是使用同步代码块例如 synchronized (tasks) {}，其中，小括号里的对象是可以是任意的对象。我们并不是对这个 task 对象加锁，只是让它来维护秩序。这个人是谁其实并无所谓。但是，对于不同对象的同步控制，一定要选用两个线程都持有的对象才行。否则各自使用不同的对象，相当于聘用了两个看门人，各看各的门，毫无瓜葛。那么原本想">
+<meta name="twitter:image" content="http://image.shenghaishxt.cn//20200513170913.png">
 
 
 
@@ -127,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zhangshenghai.com/posts/63093/">
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/43952/">
 
 
 
 
 
-  <title>CHAPTER3 最大匹配问题 | shenghai's blog | shxt</title>
+  <title>并发编程之 Synchronized 锁重要知识点整理 | shenghai's blog | shxt</title>
   
 
 
@@ -311,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/63093/">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/43952/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shenghai">
@@ -328,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CHAPTER3 最大匹配问题</h1>
+          <h1 class="post-title" itemprop="name headline">并发编程之 Synchronized 锁重要知识点整理</h1>
         
 
         <div class="post-meta">
@@ -340,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T16:45:00+08:00">
-                2018-12-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T15:29:00+08:00">
+                2020-05-07
               </time>
             
 
@@ -363,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法设计与分析/" itemprop="url" rel="index">
-                    <span itemprop="name">算法设计与分析</span>
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
                   </a>
                 </span>
 
@@ -400,26 +401,70 @@
       
 
       
-        <h1 id="关于匹配的几个定义"><a href="#关于匹配的几个定义" class="headerlink" title="关于匹配的几个定义"></a>关于匹配的几个定义</h1><h2 id="匹配（Matching）"><a href="#匹配（Matching）" class="headerlink" title="匹配（Matching）"></a>匹配（Matching）</h2><p>一个匹配是一个边的子集合$M\subseteq E$，且满足对所有顶点$v\in V$，$M$中至多有一条边与$v$相关联。也可以简单地说，一个匹配就是一个边的集合，其中任意两条边之间都没有公共顶点。</p>
-<p>下面给出一个例子：</p>
-<p><img src="/images/1543564294412.png" alt="1543564294412"></p>
-<h2 id="最大匹配（Maximum-Matching）"><a href="#最大匹配（Maximum-Matching）" class="headerlink" title="最大匹配（Maximum Matching）"></a>最大匹配（Maximum Matching）</h2><p>简单地说，最大匹配是一个图的所有匹配中边数最多的那个匹配。给出一个例子：</p>
-<p><img src="/images/1543564418707.png" alt="1543564418707"></p>
-<h2 id="二分图（Bipartite-Graph）"><a href="#二分图（Bipartite-Graph）" class="headerlink" title="二分图（Bipartite Graph）"></a>二分图（Bipartite Graph）</h2><p>二分图是图论中的一种特殊模型，设$G=(V,E)$是一个无向图，如果顶点$V$可分割为两个互不相交的子集$(A,B)$，并且图中的每条边$(i，j)$所关联的两个顶点$i$和$j$分别属于这两个不同的顶点集，则称图$G$为一个二分图。</p>
-<h2 id="完全匹配（Perfect-Matching）"><a href="#完全匹配（Perfect-Matching）" class="headerlink" title="完全匹配（Perfect Matching）"></a>完全匹配（Perfect Matching）</h2><p>简单地说，当一个图的某个匹配中所有的顶点都是匹配点，那么这个匹配就是完美匹配。同样给出一个例子：</p>
-<p><img src="/images/1543565323927.png" alt="1543565323927"></p>
-<h1 id="在二分图中寻找最大匹配"><a href="#在二分图中寻找最大匹配" class="headerlink" title="在二分图中寻找最大匹配"></a>在二分图中寻找最大匹配</h1><p>从本质上来说，二分图匹配其实是最大流的一种特殊情况。是解决这个问题的关键技巧在于建立一个流网络，其中流对应于匹配，如下图所示。</p>
-<p><img src="/images/1543565692040.png" alt="1543565692040"></p>
-<p>可以看出，图中添加了源点s和汇点t，它们是不属于V的新顶点。令已有边的容量为无穷大，且令s和t分别连接二分图，并设置其容量为1。这时，我们通过Ford-Fulkerson方法计算得到的最大流就等于最大二分匹配。</p>
-<h1 id="在一般图中寻找最大匹配"><a href="#在一般图中寻找最大匹配" class="headerlink" title="在一般图中寻找最大匹配"></a>在一般图中寻找最大匹配</h1><p>在一般图中，我们使用<strong>增广路径（Agumenting path）</strong>来寻找最大匹配。如果一条路径的首尾是非匹配点，路径中除此之外（如果有）其他的点均是匹配点，那么这条路径就是一条<strong>增广路径</strong>。</p>
-<p>如下图所示，我们从非匹配点9出发，经过匹配点4、8、1、6，最后在非匹配点2停止。所以，9-&gt;4-&gt;8-&gt;1-&gt;6-&gt;2 就是一条增广路径。</p>
-<p><img src="/images/1543566626645.png" alt="1543566626645"></p>
-<p>由于增广路径的首尾是非匹配点，那么增广路径的首尾边必为非匹配边。由于增广路径中匹配边与非匹配边一次交替，所以非匹配边的数目比匹配边多一条。我们可以利用这个特性来改进匹配，只要将匹配边与非匹配边互换即可，如下图所示。</p>
-<p><img src="/images/1543566981146.png" alt="1543566981146"></p>
-<p>所以，只要不断地迭代这个过程，直至找不到增广路径为止，就可以找到一般图的最大匹配。</p>
+        <p>[TOC]</p>
+<h1 id="Synchronized-的使用方式"><a href="#Synchronized-的使用方式" class="headerlink" title="Synchronized 的使用方式"></a>Synchronized 的使用方式</h1><h2 id="第一种使用方式是使用同步代码块"><a href="#第一种使用方式是使用同步代码块" class="headerlink" title="第一种使用方式是使用同步代码块"></a>第一种使用方式是使用同步代码块</h2><p>例如 synchronized (tasks) {}，其中，小括号里的对象是可以是任意的对象。我们并不是对这个 task 对象加锁，只是让它来维护秩序。这个人是谁其实并无所谓。但是，对于不同对象的同步控制，一定要选用两个线程都持有的对象才行。否则各自使用不同的对象，相当于聘用了两个看门人，各看各的门，毫无瓜葛。那么原本想要串行执行的代码仍旧会并行执行。</p>
+<h2 id="第二种使用方式是使用-synchronized-关键字修饰实例方法"><a href="#第二种使用方式是使用-synchronized-关键字修饰实例方法" class="headerlink" title="第二种使用方式是使用 synchronized 关键字修饰实例方法"></a>第二种使用方式是使用 synchronized 关键字修饰实例方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public synchronized void eat()&#123;</span><br><span class="line">    .......</span><br><span class="line">  .......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你看，这里没有锁对象，是如何加锁的呢？其实同步方法的锁对象就是 this，即当前对象。这和下面代码把方法中代码全部用 synchronized(this) 括起来的效果是一样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void eat()&#123;</span><br><span class="line">    synchronized(this)&#123;</span><br><span class="line">        .......</span><br><span class="line">    .......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第三种使用方式是使用-synchronized-关键字修饰静态方法"><a href="#第三种使用方式是使用-synchronized-关键字修饰静态方法" class="headerlink" title="第三种使用方式是使用 synchronized 关键字修饰静态方法"></a>第三种使用方式是使用 synchronized 关键字修饰静态方法</h2><p>如果 synchroinized 修饰的是静态方法，那么锁对象就是静态方法所在的 Class 类文件。</p>
+<p>所以如果一个线程 A 调用一个实例对象的非静态 synchronized 方法，而线程 B 需要调用这个实例对象所属类的静态 synchronized 方法，是允许的，不会发生互斥现象，因为访问静态 synchronized 方法占用的锁是当前类的锁，而访问非静态 synchronized 方法占用的锁是当前实例对象锁。</p>
+<h1 id="Synchronized-的实现原理"><a href="#Synchronized-的实现原理" class="headerlink" title="Synchronized 的实现原理"></a>Synchronized 的实现原理</h1><h2 id="Synchronized-作用"><a href="#Synchronized-作用" class="headerlink" title="Synchronized 作用"></a>Synchronized 作用</h2><ol>
+<li>Synchronized可以保证在同一时刻，只有一个线程可以执行某一个方法或者代码块。</li>
+<li>同步的作用不仅仅是互斥，它的另一个作用就是共享可变性，当某个线程修改了可变数据并释放锁后，其它线程可以获取被修改变量的最新值。</li>
+<li>有效解决重排序问题。</li>
+<li>synchronized 也可以确保可见性，在一个线程执行完 synchronized 代码后，所有代码中对变量值的变化都能立即被其它线程所看到。</li>
+</ol>
+<h2 id="Java-对象在内存中的结构"><a href="#Java-对象在内存中的结构" class="headerlink" title="Java 对象在内存中的结构"></a>Java 对象在内存中的结构</h2><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：<strong>对象头</strong>（Header）、<strong>实例数据</strong>（对象的信息）和<strong>对齐填充</strong>（仅仅起着占位符的作用）。要理解锁机制，就必须先了解 HotSpot 虚拟机的对象头。</p>
+<p>对象头分为两个部分：</p>
+<ul>
+<li>第一部分是为 <strong>Mark Word</strong>，用于存储对象自身的运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分数据的长度在 32 位和 64 位的虚拟机（未开启压缩指针）中分别为 32 个比特和 64 个比特。这部分是实现轻量级锁和偏向锁的关键。</li>
+<li>第二部分用于存储 <strong>Klass Pointer（类型指针）</strong>，这是对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例。</li>
+</ul>
 <blockquote>
-<p>补充：若要寻找带权一般图上的最大匹配，则在上面算法的基础上加个权重和判断即可。</p>
+<p>如果是数组对象，还会有一个额外的部分用于存储数组长度（因为虚拟机可以通过普通 Java 对象的元数据信息确定 Java 对象的大小，但是从数组的元数据中无法确定数组的大小）。</p>
 </blockquote>
+<p><img src="http://image.shenghaishxt.cn//20200513170913.png" alt></p>
+<p>Mark Word会随着程序的运行发生变化，变化状态如下（32位虚拟机）：<br><img src="http://image.shenghaishxt.cn//20200512170454.png" alt></p>
+<p>synchronized 的对象锁，锁标识位为10，其中指针指向的是 <strong>monitor 对象（也称为管程或监视器锁）的起始地址</strong>。每个对象都存在着一个 monitor 与之关联，monitor 对象存在于每个对象的对象头中。</p>
+<h2 id="Monitor-机制"><a href="#Monitor-机制" class="headerlink" title="Monitor 机制"></a>Monitor 机制</h2><p>在 Java 虚拟机 (HotSpot) 中，monitor 是由 ObjectMonitor 实现的。不只是 synchronized，java.lang.Object 类中的 wait(), notify(), notifyAll() 等方法都依赖于 ObjectMonitor 的实现，这是 JVM 内部基于 C++ 实现的一套机制。基本原理如下图所示：<br><img src="http://image.shenghaishxt.cn//20200513163503.png" alt></p>
+<p>ObjectMonitor中有两个队列，_WaitSet 和 _EntryList，用来保存 ObjectWaiter 对象列表( 每个等待锁的线程都会被封装成 ObjectWaiter 对象)，_owner 指向持有 ObjectMonitor 对象的线程，当多个线程同时访问一段同步代码时，首先会进入 _EntryList 集合，当线程获取到对象的 monitor 后进入 _Owner 区域并把 monitor 中的 owner 变量设置为当前线程，同时 monitor 中的计数器 count 加 1，若线程调用 wait() 方法，将释放当前持有的 monitor，owner 变量恢复为null，count 自减1，同时该线程进入 WaitSe t集合中等待被唤醒。若当前线程执行完毕也将释放 monitor (锁)并复位变量的值，以便其他线程进入获取 monitor (锁)。</p>
+<p>由此看来，monitor 对象存在于每个 Java 对象的对象头中(存储的指针的指向)，synchronized 锁便是通过这种方式获取锁的，也是为什么 Java 中任意对象可以作为锁的原因，同时也是 notify/notifyAll/wait 等方法存在于顶级对象 Object 中的原因。</p>
+<h2 id="Synchronized-底层原理"><a href="#Synchronized-底层原理" class="headerlink" title="Synchronized 底层原理"></a>Synchronized 底层原理</h2><ol>
+<li><strong>同步语句块</strong>的实现使用的是 monitorenter 和 monitorexit 指令，monitorenter 指向同步代码块的开始位置，monitorexit 指向同步代码块的结束位置。</li>
+<li><strong>同步方法</strong>依靠的是方法修饰符上的 ACC_SYNCHRONIZED 标志隐式实现。</li>
+</ol>
+<h2 id="Synchronized-效率低的原因"><a href="#Synchronized-效率低的原因" class="headerlink" title="Synchronized 效率低的原因"></a>Synchronized 效率低的原因</h2><p>synchronized 通过 Monitor 来实现线程同步，Monitor 是依赖于底层的操作系统的 Mutex Lock（互斥锁）来实现的线程同步。而操作系统实现线程之间的切换就<strong>需要从用户态转换到核心态</strong>，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。</p>
+<p>因此，这种依赖于操作系统 Mutex Lock 所实现的锁我们称之为“重量级锁”。JDK6 中对 Synchronized 做的种种优化，其核心都是为了减少这种重量级锁的使用。JDK1.6 以后，为了减少获得锁和释放锁所带来的性能消耗，提高性能，引入了“轻量级锁”和“偏向锁”。</p>
+<h1 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h1><p>高效并发是从JDK 5升级到JDK 6后一项重要的改进项，HotSpot虚拟机开发团队在这个版本上花费了大量的资源去实现各种锁优化技术，如适应性自旋（Adaptive Spinning）、锁消除（Lock Elimination）、锁膨胀（Lock Coarsening）、轻量级锁（Lightweight Locking）、偏向锁（Biased Locking）等，这些技术都是为了在线程之间更高效地共享数据及解决竞争问题，从而提高程序的执行效率。</p>
+<h2 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h2><p>如果 JVM 检测到不可能存在共享数据竞争，这时 JVM 会对这些同步锁进行锁消除。锁消除的依据是逃逸分析的数据支持。<br><img src="http://image.shenghaishxt.cn//20200512162611.png" alt></p>
+<h2 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h2><p>如果一系列的连续操作都对同一个对象反复加锁和解锁，甚至加锁操作是出现在循环体之中的，那即使没有线程竞争，频繁地进行互斥同步操作也会导致不必要的性能损耗。虚拟机将会把加锁同步的范围扩展（粗化）到整个操作序列的外部。<br><img src="http://image.shenghaishxt.cn//20200512162803.png" alt></p>
+<h2 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h2><p>偏向锁是指一段同步代码一直被一个线程所访问，那么该线程会自动获取锁，降低获取锁的代价。</p>
+<p>在大多数情况下，锁总是由同一线程多次获得，不存在多线程竞争，所以出现了偏向锁。其目标就是在只有一个线程执行同步代码块时能够提高性能。</p>
+<p>当一个线程访问同步代码块并获取锁时，会在 Mark Word 里存储锁偏向的线程 ID。在线程进入和退出同步块时不再通过 CAS 操作来加锁和解锁，而是检测 Mark Word 里是否存储着指向当前线程的偏向锁。引入偏向锁是为了在无多线程竞争的情况下尽量减少不必要的轻量级锁执行路径，因为<strong>轻量级锁的获取及释放依赖多次 CAS 原子指令，而偏向锁只需要在置换 ThreadID 的时候依赖一次 CAS 原子指令即可。</strong></p>
+<p>偏向锁只有遇到其他线程尝试竞争偏向锁时，持有偏向锁的线程才会释放锁，线程不会主动释放偏向锁。偏向锁的撤销，需要等待全局安全点（在这个时间点上没有字节码正在执行），它会首先暂停拥有偏向锁的线程，判断锁对象是否处于被锁定状态。撤销偏向锁后恢复到无锁（标志位为“01”）或轻量级锁（标志位为“00”）的状态。</p>
+<h2 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h2><ol>
+<li>当锁是偏向锁的时候，被另外的线程访问，虚拟机会在当前线程的栈帧中建立一个名为<strong>锁记录</strong>的空间，用于存储锁对象目前的 Mark Word 的拷贝。</li>
+<li>然后，虚拟机使用 CAS 操作尝试把对象的 Mark Word 更新为指向<strong>锁记录</strong>的指针。如果这个更新动作成功了，即代表该线程拥有了这个对象的锁，并且对象 Mark Word 的锁标志位转变为“00”，表示此对象处于轻量级锁状态。</li>
+<li>如果这个更新操作失败了，虚拟机首先检查对象的 Mark Word 是否指向当前线程的栈帧，如果是，说明当前线程已经拥有了这个对象的锁，那就直接进入同步块执行即可。如果不是，说明这个锁对象已经被其他线程抢占了，继续锁升级。<strong>若当前只有一个等待线程，则该线程通过自旋进行等待。但是当自旋超过一定的次数（自旋锁默认大小是 10 次），或者一个线程在持有锁，一个在自旋，又有第三个来访时，轻量级锁升级为重量级锁。</strong></li>
+</ol>
+<p>对于轻量级锁，其性能提升的依据是『对于绝大部分的锁，在整个生命周期内都是不会存在竞争的』，如果打破这个依据则除了互斥的开销外，还有额外的CAS操作，因此在有多线程竞争的情况下，轻量级锁比重量级锁更慢；</p>
+<h2 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h2><p>在轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段。现在绝大多数的个人电脑和服务器都是多路（核）处理器系统，如果物理机器有一个以上的处理器或者处理器核心，能让两个或以上的线程同时并行执行，我们就可以让后面请求锁的那个线程“稍等一会”，但不放弃处理器的执行时间，看看持有锁的线程是否很快就会释放锁。为了让线程等待，我们只须让线程执行一个忙循环（自旋），这项技术就是所谓的<strong>自旋锁</strong>。</p>
+<p>自旋等待本身虽然避免了线程切换的开销，但它是要占用处理器时间的，所以如果锁被占用的时间很短，自旋等待的效果就会非常好，反之如果锁被占用的时间很长，那么自旋的线程只会白白消耗处理器资源，这就会带来性能的浪费。</p>
+<p>自旋锁的实现原理同样也是 CAS。</p>
+<h2 id="自适应自旋锁"><a href="#自适应自旋锁" class="headerlink" title="自适应自旋锁"></a>自适应自旋锁</h2><p>所谓自适应就意味着自旋的次数不再是固定的，它是由前一次在同一个锁上的自旋时间及锁的拥有者的状态来决定。它怎么做呢？线程如果自旋成功了，那么下次自旋的次数会更加多，因为虚拟机认为既然上次成功了，那么此次自旋也很有可能会再次成功，那么它就会允许自旋等待持续的次数更多。反之，如果对于某个锁，很少有自旋能够成功的，那么在以后要获取这个锁的时候自旋的次数会减少甚至省略掉自旋过程，以免浪费处理器资源。</p>
+<h1 id="锁的四种状态"><a href="#锁的四种状态" class="headerlink" title="锁的四种状态"></a>锁的四种状态</h1><p>锁主要存在四种状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。注意锁可以升级不可降级，这种策略是为了提高获得锁和释放锁的效率。<br><img src="http://image.shenghaishxt.cn//20200513132214.png" alt></p>
+<p>轻量级锁的实现方式为自旋锁。</p>
+<h1 id="三种锁的对比"><a href="#三种锁的对比" class="headerlink" title="三种锁的对比"></a>三种锁的对比</h1><ol>
+<li>偏向锁通过对比 Mark Word 解决加锁问题，避免执行 CAS 操作。偏向锁适用于只有一个线程访问同步块的场景。</li>
+<li>轻量级锁是通过用 CAS 操作和自旋来解决加锁问题，避免线程阻塞和唤醒而影响性能。轻量级锁适合追求响应时间，锁占用时间很短的场景。</li>
+<li>重量级锁是将除了拥有锁的线程以外的线程都阻塞。重量级锁适合追求吞吐量，锁占用时间较长的场景。</li>
+</ol>
+<p><img src="http://image.shenghaishxt.cn//20200513152057.png" alt></p>
+<hr>
+<p>参考：</p>
+<ol>
+<li><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></li>
+</ol>
 
       
     </div>
@@ -437,7 +482,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
         </div>
       
@@ -450,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/16099/" rel="next" title="CHAPTER2 最大流与最小割">
-                <i class="fa fa-chevron-left"></i> CHAPTER2 最大流与最小割
+              <a href="/posts/25383/" rel="next" title="Spring AOP的简单理解">
+                <i class="fa fa-chevron-left"></i> Spring AOP的简单理解
               </a>
             
           </div>
@@ -460,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/17200/" rel="prev" title="CHAPTER4 贪心算法">
-                CHAPTER4 贪心算法 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/15318/" rel="prev" title="Trie 树原理及其敏感词过滤的实现">
+                Trie 树原理及其敏感词过滤的实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -599,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于匹配的几个定义"><span class="nav-number">1.</span> <span class="nav-text">关于匹配的几个定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配（Matching）"><span class="nav-number">1.1.</span> <span class="nav-text">匹配（Matching）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大匹配（Maximum-Matching）"><span class="nav-number">1.2.</span> <span class="nav-text">最大匹配（Maximum Matching）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分图（Bipartite-Graph）"><span class="nav-number">1.3.</span> <span class="nav-text">二分图（Bipartite Graph）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全匹配（Perfect-Matching）"><span class="nav-number">1.4.</span> <span class="nav-text">完全匹配（Perfect Matching）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在二分图中寻找最大匹配"><span class="nav-number">2.</span> <span class="nav-text">在二分图中寻找最大匹配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在一般图中寻找最大匹配"><span class="nav-number">3.</span> <span class="nav-text">在一般图中寻找最大匹配</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronized-的使用方式"><span class="nav-number">1.</span> <span class="nav-text">Synchronized 的使用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种使用方式是使用同步代码块"><span class="nav-number">1.1.</span> <span class="nav-text">第一种使用方式是使用同步代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种使用方式是使用-synchronized-关键字修饰实例方法"><span class="nav-number">1.2.</span> <span class="nav-text">第二种使用方式是使用 synchronized 关键字修饰实例方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三种使用方式是使用-synchronized-关键字修饰静态方法"><span class="nav-number">1.3.</span> <span class="nav-text">第三种使用方式是使用 synchronized 关键字修饰静态方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronized-的实现原理"><span class="nav-number">2.</span> <span class="nav-text">Synchronized 的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized-作用"><span class="nav-number">2.1.</span> <span class="nav-text">Synchronized 作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-对象在内存中的结构"><span class="nav-number">2.2.</span> <span class="nav-text">Java 对象在内存中的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monitor-机制"><span class="nav-number">2.3.</span> <span class="nav-text">Monitor 机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized-底层原理"><span class="nav-number">2.4.</span> <span class="nav-text">Synchronized 底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized-效率低的原因"><span class="nav-number">2.5.</span> <span class="nav-text">Synchronized 效率低的原因</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁优化"><span class="nav-number">3.</span> <span class="nav-text">锁优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#锁消除"><span class="nav-number">3.1.</span> <span class="nav-text">锁消除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁粗化"><span class="nav-number">3.2.</span> <span class="nav-text">锁粗化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏向锁"><span class="nav-number">3.3.</span> <span class="nav-text">偏向锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轻量级锁"><span class="nav-number">3.4.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自旋锁"><span class="nav-number">3.5.</span> <span class="nav-text">自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应自旋锁"><span class="nav-number">3.6.</span> <span class="nav-text">自适应自旋锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的四种状态"><span class="nav-number">4.</span> <span class="nav-text">锁的四种状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三种锁的对比"><span class="nav-number">5.</span> <span class="nav-text">三种锁的对比</span></a></li></ol></div>
             
 
           </div>
