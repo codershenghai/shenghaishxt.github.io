@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MySQL如何清空一张表]]></title>
+    <url>%2Fposts%2F10517%2F</url>
+    <content type="text"><![CDATA[删除表信息的方式有两种： 12truncate table table_name;delete * from table_name; truncate 和 detele 清空表数据的区别： truncate 是整体删除（速度较快），delete 是逐条删除（速度较慢） truncate 不写服务器 log，delete 写服务器 log truncate 的自增列会被重置为初始值，又重新从 1 开始记录，而不是接着原来的 ID 数。而 delete 删除之后，依旧是接着被删除的最近那一条记录的 ID 后加 1 进行记录]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Monitor 机制]]></title>
     <url>%2Fposts%2F22649%2F</url>
     <content type="text"><![CDATA[Monitor 是什么？管程，英文是 Monitor。Monitor 是在 Mutex 和 Semaphore 的基础上更高层次的同步原语。Monitor 实际上是属于编程语言的范畴，比如 C 语言就不支持 Monitor，而 Java 语言支持。一般的 Monitor 实现模式是提供语法糖，而具体如何实现 Monitor 机制，就是属于编译器的工作了，Java 就是这么做的。Monitor 的重要特点是，在同一个时刻，只有一个线程能够进入 Monitor 中定义的临界区，这使得 Monitor 能够达到互斥的效果。 Monitor 基本组成Monitor 机制需要几个元素来进行配合，分别是： 临界区 Monitor 对象及锁 条件变量以及定义在 Monitor 对象上的 wait、signal 操作 Monitor 对象是用来阻塞无法进入临界区的线程的，这个 Monitor 对象内部会有相应的数据结构，例如列表，来保存被阻塞的线程。同时由于 Monitor 机制本质上是基于 mutex 这种同步原语的，所以 Monitor 对象还必须维护一个基于 mutex 的锁。 条件变量是用于在适当的时候能够阻塞或唤醒线程，这个条件可以来自程序代码的逻辑，也可以来自 Monitor 对象的内部。由于 Monitor 对象内部采用了数据结构来保存被阻塞的队列，因此它必须对外提供两个 API 来阻塞或唤醒线程，分别是 wait() 和 notify()。 Java 中的 MonitorMonitor 具体的实现方式，不同的编程语言可能都不一样。以下以 Java 语言为例子，来看看 Monitor 在 Java 中的实现方式。 在使用 synchronized 关键字的时候，往往需要指定一个对象与之关联。如果 synchronized 修饰的是静态代码块，那么关联的对象就是我们指定的那个对象；如果 synchronized 修饰的是实例方法，那么其关联的对象就是当前对象 this；如果 synchronized 修饰的是静态方法，那么其关联的对象是当前类 this.class。总之，synchronized 需要关联一个对象，而这个对象就是 Monitor 对象。在Monitor 机制中，Monitor 对象用于维护 mutex 以及定义 wait、signal、notify 等 API 来管理线程的阻塞和唤醒。 java.lang.Object 类定义了 wait()、notify()、notifyAll() 方法，这些方法的具体实现依赖于一个叫 ObjectMonitor 模式的实现，这是 JVM 内部基于 C++ 实现的一套机制。基本原理如下图所示： 当一个线程需要获取 Object 的锁时，会被放入 Entry Set 中进行等待，如果该线程获取到了锁，就成为当前锁的 Owner。调用 wait() 方法可以将锁释放，进入 Wait Set 中进行等待，Entry Set 中的其他线程在这个时候就有机会获得锁。当条件变量成立时，Wait Set 中被阻塞的线程也可以重新进入 Entry Set 去竞争锁。 由此看来，Monitor 对象存在于每个 Java 对象的对象头中(存储的指针的指向)，synchronized 锁便是通过这种方式获取锁的，也是为什么 Java 中任意对象可以作为锁的原因，同时也是 notify/notifyAll/wait 等方法存在于顶级对象 Object 中的原因。]]></content>
