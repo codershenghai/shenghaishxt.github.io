@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JVM,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 类加载的过程 1.1 加载（Loading）这一步是读取到类文件产生的二进制流（findClass()），并将字节流所代表的静态存储结构转换为方法区的运行时数据结构（defineClass()）。初步校验cafe babe魔法数（二进制中前四个字节为0xCAFEBABE用来标识该文件是 Java 文件，这是很多软件的做法，比如zip压缩文件）、常量池、文件长度、是否有父类等，然后在 Java">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM 类加载机制剖析">
+<meta property="og:url" content="http://www.zhangshenghai.com/posts/63490/index.html">
+<meta property="og:site_name" content="shenghai&#39;s blog | shxt">
+<meta property="og:description" content="1. 类加载的过程 1.1 加载（Loading）这一步是读取到类文件产生的二进制流（findClass()），并将字节流所代表的静态存储结构转换为方法区的运行时数据结构（defineClass()）。初步校验cafe babe魔法数（二进制中前四个字节为0xCAFEBABE用来标识该文件是 Java 文件，这是很多软件的做法，比如zip压缩文件）、常量池、文件长度、是否有父类等，然后在 Java">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200612190805.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200830104535.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200830105319.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200828151334.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn//20200523142238.png">
+<meta property="og:image" content="http://image.shenghaishxt.cn/20200830140239.png">
+<meta property="og:updated_time" content="2020-08-31T02:40:15.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM 类加载机制剖析">
+<meta name="twitter:description" content="1. 类加载的过程 1.1 加载（Loading）这一步是读取到类文件产生的二进制流（findClass()），并将字节流所代表的静态存储结构转换为方法区的运行时数据结构（defineClass()）。初步校验cafe babe魔法数（二进制中前四个字节为0xCAFEBABE用来标识该文件是 Java 文件，这是很多软件的做法，比如zip压缩文件）、常量池、文件长度、是否有父类等，然后在 Java">
+<meta name="twitter:image" content="http://image.shenghaishxt.cn/20200612190805.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zhangshenghai.com/posts/63490/">
+
+
+
+
+
+  <title>JVM 类加载机制剖析 | shenghai's blog | shxt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shenghai's blog | shxt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">good good study up up every day</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-playlist">
+          <a href="/playlist/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br>
+            
+            歌单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zhangshenghai.com/posts/63490/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shenghai">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shenghai's blog | shxt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM 类加载机制剖析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-31T10:39:19+08:00">
+                2020-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-类加载的过程"><a href="#1-类加载的过程" class="headerlink" title="1. 类加载的过程"></a>1. 类加载的过程</h1><p><img src="http://image.shenghaishxt.cn/20200612190805.png" alt><br><img src="http://image.shenghaishxt.cn/20200830104535.png" alt></p>
+<h2 id="1-1-加载（Loading）"><a href="#1-1-加载（Loading）" class="headerlink" title="1.1 加载（Loading）"></a>1.1 加载（Loading）</h2><p>这一步是读取到类文件产生的二进制流（<code>findClass()</code>），并将字节流所代表的静态存储结构转换为方法区的运行时数据结构（<code>defineClass()</code>）。初步校验<code>cafe babe</code>魔法数（二进制中前四个字节为<code>0xCAFEBABE</code>用来标识该文件是 Java 文件，这是很多软件的做法，比如<code>zip压缩文件</code>）、常量池、文件长度、是否有父类等，然后在 Java堆中创建对应类的<code>java.lang.Class</code>实例，类中存储的各部分信息也需要对应放入<strong>运行时数据区</strong>中（例如静态变量、类信息等放入方法区）。</p>
+<blockquote>
+<p>这里我们可能会有一个疑问，为什么 JVM 允许还没有进行验证、准备和解析的类信息放入方法区呢？<br>答案是加载阶段和链接阶段的部分动作（比如一部分字节码文件格式验证动作）是<strong>交叉进行</strong>的，也就是说<strong>加载阶段还没完成，链接阶段可能已经开始了</strong>。但这些夹杂在加载阶段的动作（验证文件格式等）仍然属于链接操作。</p>
+</blockquote>
+<p>以下是一个 Class 文件具有的基本结构的简单图示：<br><img src="http://image.shenghaishxt.cn/20200830105319.png" alt></p>
+<h2 id="1-2-链接（Linking）"><a href="#1-2-链接（Linking）" class="headerlink" title="1.2 链接（Linking）"></a>1.2 链接（Linking）</h2><h3 id="1-2-1-验证：确保被加载的类的正确性"><a href="#1-2-1-验证：确保被加载的类的正确性" class="headerlink" title="1.2.1 验证：确保被加载的类的正确性"></a>1.2.1 验证：确保被加载的类的正确性</h3><p>验证是连接阶段的第一步，这一阶段的目的是<strong>为了确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全</strong>。验证阶段大致会完成<code>4</code>个阶段的检验动作：</p>
+<ul>
+<li><strong>文件格式验证</strong>：验证字节流是否符合 Class 文件格式的规范；例如：是否以<code>0xCAFEBABE</code>开头、主次版本号是否在当前虚拟机的处理范围之内、常量池中的常量是否有不被支持的类型。</li>
+<li><strong>元数据验证</strong>：对字节码描述的信息进行语义分析（注意：对比<code>javac</code>编译阶段的语义分析），以保证其描述的信息符合 Java 语言规范的要求；例如：这个类是否有父类，除了<code>java.lang.Object</code>之外。</li>
+<li><strong>字节码验证</strong>：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。</li>
+<li><strong>符号引用验证</strong>：确保解析动作能正确执行。</li>
+</ul>
+<p><strong>验证阶段是非常重要的，但不是必须的</strong>，它对程序运行期没有影响，如果所引用的类经过反复验证，那么可以考虑采用<code>-Xverifynone</code>参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
+<h3 id="1-2-2-准备：为类的静态变量分配内存，并将其初始化为默认值"><a href="#1-2-2-准备：为类的静态变量分配内存，并将其初始化为默认值" class="headerlink" title="1.2.2 准备：为类的静态变量分配内存，并将其初始化为默认值"></a>1.2.2 准备：为类的静态变量分配内存，并将其初始化为默认值</h3><p>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段，这些内存都将在<strong>方法区</strong>中分配。对于该阶段有以下两点需要注意：</p>
+<ul>
+<li>这时候进行内存分配的<strong>仅包括类变量</strong>（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在 Java 堆中。</li>
+<li>这里所设置的<strong>初始值通常情况下是数据类型默认的零值</strong>（如<code>0</code>、<code>0L</code>、<code>null</code>、<code>false</code>等），而不是被在 Java 代码中被显式地赋予的值。</li>
+</ul>
+<blockquote>
+<p>注：如果类字段的字段属性表中存在 ConstantValue 属性，即<strong>同时被<code>final</code>和<code>static</code>修饰</strong>，那么在准备阶段变量<code>value</code>就会被初始化为 ConstValue 属性所指定的值。<br>例如，假设这里有一个类变量<code>public static int value = 666;</code>，在准备阶段时初始值是<code>0</code>而不是<code>666</code>，在<strong>初始化阶段</strong>才会被真正赋值为<code>666</code>。假设是一个静态类变量<code>public static final int value = 666;</code>，则在准备阶段 JVM 就已经赋值为<code>666</code>了。</p>
+</blockquote>
+<h3 id="1-2-3-解析：把类中的符号引用转换为直接引用（重要）"><a href="#1-2-3-解析：把类中的符号引用转换为直接引用（重要）" class="headerlink" title="1.2.3 解析：把类中的符号引用转换为直接引用（重要）"></a>1.2.3 解析：把类中的符号引用转换为直接引用（重要）</h3><p>解析阶段是虚拟机将常量池内的<strong>符号引用</strong>替换为<strong>直接引用</strong>的过程，解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符<code>7</code>类符号引用进行。</p>
+<p>-『符号引用』的作用是在编译的过程中，JVM 并不知道引用的具体地址，所以用符号引用进行代替，而在解析阶段将会将这个符号引用转换为真正的内存地址。<br>-『直接引用』可以理解为指向<strong>类、变量、方法</strong>的指针，指向<strong>实例</strong>的指针和一个<strong>间接定位</strong>到对象的对象句柄。</p>
+<h2 id="1-3-初始化（Initialzation）"><a href="#1-3-初始化（Initialzation）" class="headerlink" title="1.3 初始化（Initialzation）"></a>1.3 初始化（Initialzation）</h2><p>初始化，为类的静态变量赋予正确的初始值，JVM 负责对类进行初始化，主要对类变量进行初始化。在 Java 中对类变量进行初始值设定有两种方式：</p>
+<ol>
+<li>声明类变量是指定初始值；</li>
+<li>使用静态代码块为类变量指定初始值；</li>
+</ol>
+<p><strong>JVM 初始化步骤：</strong></p>
+<ol>
+<li>假如这个类还没有被加载和连接，则程序先加载并连接该类。</li>
+<li>假如该类的直接父类还没有被初始化，则先初始化其直接父类。</li>
+<li>假如类中有初始化语句，则系统依次执行这些初始化语句。</li>
+</ol>
+<p><strong>类初始化时机</strong>：只有当对类的主动使用的时候才会导致类的初始化。</p>
+<h1 id="2-在-JVM-中如何判断两个-Class-对象是否为同一个类？"><a href="#2-在-JVM-中如何判断两个-Class-对象是否为同一个类？" class="headerlink" title="2. 在 JVM 中如何判断两个 Class 对象是否为同一个类？"></a>2. 在 JVM 中如何判断两个 Class 对象是否为同一个类？</h1><ol>
+<li>同一个 .class 文件；</li>
+<li>被同一个虚拟机加载；</li>
+<li>被同一个类加载器加载；</li>
+</ol>
+<blockquote>
+<p>比较两个类是否 <strong>相等</strong>，只有在这两个类是由同一个类加载器加载的前提下才有意义，否则，即使这两个类来源于同一个 Class 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那么这两个类就必定不相等。</p>
+</blockquote>
+<h1 id="3-ClassLoader-类结构分析"><a href="#3-ClassLoader-类结构分析" class="headerlink" title="3. ClassLoader 类结构分析"></a>3. ClassLoader 类结构分析</h1><p>ClassLoader 的主要责任就是加载类。ClassLoader 通过一个类的名字定位并且把这个 class 文件加载进 JVM 的内存里，生成可以表示这个类的结构。ClassLoader 是JDK 为我们提供的一个基础的类加载器，它本身是一个抽象类。</p>
+<p>以下就是 ClassLoader 的主要方法了：<br><img src="http://image.shenghaishxt.cn/20200828151334.png" alt></p>
+<h2 id="defineClass"><a href="#defineClass" class="headerlink" title="defineClass()"></a>defineClass()</h2><p><code>defineClass()</code>用于将<code>byte</code>字节流解析成 JVM 能够识别的 Class 对象。有了这个方法意味着我们不仅可以通过<code>.class</code>文件实例化对象，还可以通过其他方式实例化对象，例如通过网络接收到一个类的字节码。</p>
+<blockquote>
+<p>注意，如果直接调用这个方法生成类的 Class 对象，这个类的 Class 对象还没有<code>resolve</code>，JVM 会在这个对象真正实例化时才调用<code>resolveClass()</code>进行链接。</p>
+</blockquote>
+<h2 id="findClass"><a href="#findClass" class="headerlink" title="findClass()"></a>findClass()</h2><p><code>findClass()</code>通常和<code>defineClass()</code>一起使用，我们需要直接覆盖 ClassLoader 父类的<code>findClass()</code>方法来实现类的加载规则，从而取得要加载类的字节码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">protected Class findClass(String name) throws ClassNotFoundException &#123;  </span><br><span class="line">    throw new ClassNotFoundException(name);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你不想重新定义加载类的规则，也没有复杂的处理逻辑，只想在运行时能够加载自己制定的一个类，那么你可以用<code>this.getClass().getClassLoader().loadClass(&quot;class&quot;)</code>调用 ClassLoader 的<code>loadClass()</code>方法来获取这个类的 Class 对象，这个<code>loadClass()</code>还有重载方法，你同样可以决定在什么时候解析这个类。</p>
+<h2 id="loadClass"><a href="#loadClass" class="headerlink" title="loadClass()"></a>loadClass()</h2><p><code>loadClass()</code>用于接受一个全类名，然后返回一个 Class 类型的对象。（该方法的源码蕴含了著名的双亲委派模型）</p>
+<h2 id="resolveClass"><a href="#resolveClass" class="headerlink" title="resolveClass()"></a>resolveClass()</h2><p><code>resolveClass()</code>用于对 Class 进行<strong>链接</strong>，也就是把单一的 Class 加入到有继承关系的类树中。如果你想在类被加载到 JVM 中时就被链接（Link），那么可以在调用<code>defineClass()</code>之后紧接着调用一个<code>resolveClass()</code>方法，当然你也可以选择让 JVM 来解决什么时候才链接这个类（通常是真正被实例化的时候）。</p>
+<p>ClassLoader 是个抽象类，它还有很多子类，如果我们要实现自己的 ClassLoader，一般都会继承<strong>URLClassLoader</strong>这个子类，因为这个类已经帮我们实现了大部分工作。</p>
+<p>例如，我们来看一下<code>java.net.URLClassLoader.findClass()</code>方法的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 入参为 Class 的 binary name，如 java.lang.String  </span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Class <span class="title">findClass</span><span class="params">(<span class="keyword">final</span> String name)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;  </span><br><span class="line">    <span class="comment">// 以上代码省略  </span></span><br><span class="line">    <span class="comment">// 通过 binary name 生成包路径，如 java.lang.String -&gt; java/lang/String.class  </span></span><br><span class="line">    String path = name.replace(<span class="string">'.'</span>, <span class="string">'/'</span>).concat(<span class="string">".class"</span>);  </span><br><span class="line">    <span class="comment">// 根据包路径，找到该 Class 的文件资源  </span></span><br><span class="line">    Resource res = ucp.getResource(path, <span class="keyword">false</span>);  </span><br><span class="line">    <span class="keyword">if</span> (res != <span class="keyword">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            <span class="comment">// 调用 defineClass 生成 java.lang.Class 对象  </span></span><br><span class="line">            <span class="keyword">return</span> defineClass(name, res);  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ClassNotFoundException(name, e);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 以下代码省略  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="4-深入理解双亲委派模型"><a href="#4-深入理解双亲委派模型" class="headerlink" title="4. 深入理解双亲委派模型"></a>4. 深入理解双亲委派模型</h1><h2 id="4-1-JVM-的三个类加载器"><a href="#4-1-JVM-的三个类加载器" class="headerlink" title="4.1 JVM 的三个类加载器"></a>4.1 JVM 的三个类加载器</h2><p>一个 Java 类是依靠类加载器被加载进 JVM 的，在 JVM 中有自带的三个类加载器：</p>
+<ul>
+<li><strong>Bootstrap ClassLoader（启动类加载器）</strong>：最顶层的加载类，主要加载  <strong>核心类库</strong>，<code>%JRE_HOME%\lib</code>下的<code>rt.jar</code>、<code>resources.jar</code>、<code>charsets.jar</code>和<code>class</code>等。</li>
+<li><strong>Extention ClassLoader（扩展类加载器）</strong>：用于加载目录<code>%JRE_HOME%\lib\ext</code>目录下的<code>jar</code>包和<code>class</code>文件。</li>
+<li><strong>Appclass Loader（应用程序加载器）</strong>：加载当前应用的<code>classpath</code>的所有类。</li>
+</ul>
+<h2 id="4-2-双亲委派模型的工作过程"><a href="#4-2-双亲委派模型的工作过程" class="headerlink" title="4.2 双亲委派模型的工作过程"></a>4.2 双亲委派模型的工作过程</h2><ol>
+<li>当前 ClassLoader 首先从<strong>自己已经加载的类中查询是否此类已经加载</strong>，如果已经加载则直接返回原来已经加载的类。(每个类加载器都有自己的加载缓存，当一个类被加载了以后就会放入缓存，等下次加载的时候就可以直接返回了。)</li>
+<li>当前 ClassLoader 的缓存中没有找到被加载的类的时候，<strong>委托父类加载器去加载</strong>，父类加载器采用同样的策略，首先查看自己的缓存，然后委托父类的父类去加载，一直到 Bootstrap ClassLoader。（当所有的父类加载器都没有加载的时候，再由当前的类加载器加载，并将其放入它自己的缓存中，以便下次有加载请求的时候直接返回。）<br><img src="http://image.shenghaishxt.cn//20200523142238.png" alt><br><img src="http://image.shenghaishxt.cn/20200830140239.png" alt></li>
+</ol>
+<h2 id="4-3-双亲委派模型带来了什么好处"><a href="#4-3-双亲委派模型带来了什么好处" class="headerlink" title="4.3 双亲委派模型带来了什么好处"></a>4.3 双亲委派模型带来了什么好处</h2><p>双亲委派模型保证了 Java 程序的稳定运行，可以避免类的重复加载，也保证了 Java 的核心 API 不被篡改。如果没有使用双亲委派模型，而是每个类加载器加载自己的话就会出现一些问题。比如我们编写一个称为<code>java.lang.Object</code>类的话，那么程序运行的时候，系统就会出现多个不同的<code>Object</code>类。</p>
+<h2 id="4-4-loadClass-方法解析"><a href="#4-4-loadClass-方法解析" class="headerlink" title="4.4 loadClass() 方法解析"></a>4.4 loadClass() 方法解析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">protected Class&lt;?&gt; loadClass(String name, boolean resolve)</span><br><span class="line">    throws ClassNotFoundException</span><br><span class="line">&#123;</span><br><span class="line">    synchronized (getClassLoadingLock(name)) &#123;</span><br><span class="line">        // 首先检查该类是否已经被加载过了</span><br><span class="line">        Class&lt;?&gt; c = findLoadedClass(name);</span><br><span class="line">        if (c == null) &#123;</span><br><span class="line">            long t0 = System.nanoTime();</span><br><span class="line">            try &#123;</span><br><span class="line">                if (parent != null) &#123;</span><br><span class="line">                // 父加载器不为空则调用父加载器的 loadClass() 方法</span><br><span class="line">                    c = parent.loadClass(name, false);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                // 父加载器为空则调用 Bootstrap ClassLoader</span><br><span class="line">                    c = findBootstrapClassOrNull(name);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">                // ClassNotFoundException thrown if class not found</span><br><span class="line">                // from the non-null parent class loader</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (c == null) &#123;</span><br><span class="line">                // If still not found, then invoke findClass in order</span><br><span class="line">                // to find the class.</span><br><span class="line">                long t1 = System.nanoTime();</span><br><span class="line">                // 父加载器都没有在缓存中找到该类，则调用 findClass() 方法</span><br><span class="line">                c = findClass(name);</span><br><span class="line"></span><br><span class="line">                // this is the defining class loader; record the stats</span><br><span class="line">                sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);</span><br><span class="line">                sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);</span><br><span class="line">                sun.misc.PerfCounter.getFindClasses().increment();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (resolve) &#123;</span><br><span class="line">            // 调用 resolveClass() 方法对类进行链接</span><br><span class="line">            resolveClass(c);</span><br><span class="line">        &#125;</span><br><span class="line">        return c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类加载的入口是从 loadClass() 方法开始的，而类加载器的双亲委派模型也是在这里实现的。在加载类期间，调用线程会一直持有一把锁。接着的逻辑就是类的双亲委派模型机制的实现，系统会首先判断当前类是否被加载过。已经被加载的类会直接返回。否则把类加载的任务交给父类加载器执行，直到父类加载器为空，此时会返回通过 JDK 提供的系统启动类加载器加载的类。如果最后发现该类仍然没有被加载过，则由当前类加载器调用 findClass() 方法继续加载该类。</p>
+<p>ClassLoader 不提供 findClass() 方法的具体实现，要求我们根据自己的需要来重写该方法。我们可以看看 URLClassLoader 对 findClass() 方法的实现，发现类加载的工作又被代理给了 defineClass() 方法。</p>
+<p>defineClass() 方法主要是把字节数组转化成类的实例。同时 defineClass() 方法是 final 和 native 的，具体是由虚拟机实现。</p>
+<h2 id="4-5-实现自己的类加载器"><a href="#4-5-实现自己的类加载器" class="headerlink" title="4.5 实现自己的类加载器"></a>4.5 实现自己的类加载器</h2><h3 id="4-5-1-什么情况下需要自定义类加载器"><a href="#4-5-1-什么情况下需要自定义类加载器" class="headerlink" title="4.5.1 什么情况下需要自定义类加载器"></a>4.5.1 什么情况下需要自定义类加载器</h3><p>1️⃣ <strong>隔离加载类</strong>。在某些框架内进行中间件与应用的模块隔离，把类加载器到不同的环境。比如，阿里内某容器框架通过自定义类加载器确保应用中依赖的<code>jar</code>包不会影响到中间件运行时使用的<code>jar</code>包。</p>
+<p>2️⃣ <strong>修改类加载方式</strong>。类的加载模型并非强制，除了 Bootstrap 外，其他的加载并非一定要引入，或者根据实际情况在某个时间点进行按需的动态加载。</p>
+<p>3️⃣ <strong>扩展加载源</strong>。比如从数据库、网络，甚至是电视机顶盒进行加载。（下面👇我们会编写一个从网络加载类的例子）</p>
+<p>4️⃣ <strong>防止源码泄露</strong>。Java 代码容易被编译和篡改，可以进行编译加密。那么类加载器也需要自定义，还原加密的字节码。</p>
+<h3 id="4-5-2-怎么自定义-ClassLoader"><a href="#4-5-2-怎么自定义-ClassLoader" class="headerlink" title="4.5.2 怎么自定义 ClassLoader"></a>4.5.2 怎么自定义 ClassLoader</h3><p>实现一个自定义的类加载器比较简单：继承 ClassLoader，重写<code>findClass()</code>方法，调用<code>defineClass()</code>方法，就差不多行了。</p>
+<p>最好不要直接重写 loadClass() 方法，因为 loadClass() 这个方法是实现双亲委托模型逻辑的地方，擅自修改这个方法会导致模型被破坏，容易造成问题。当然，如果是刻意要破坏双亲委托模型就另说。</p>
+<h2 id="4-6-JVM-能否对同一个类加载两次？（怎么破坏双亲委派模型？）"><a href="#4-6-JVM-能否对同一个类加载两次？（怎么破坏双亲委派模型？）" class="headerlink" title="4.6 JVM 能否对同一个类加载两次？（怎么破坏双亲委派模型？）"></a>4.6 JVM 能否对同一个类加载两次？（怎么破坏双亲委派模型？）</h2><p>由于双亲委派模型机制，通常情况下可以保证一个类只被加载一次。</p>
+<p>但其实在某些情况下，我们可能需要加载两个不同的类，但是不巧的是这两个类的名字完全一样，这时候双亲委托模型就无法满足我们的要求了，我们就要重写 loadClass 方法破坏双亲委托模型，让同一个类被不同的 ClassLoader 加载多次。</p>
+<hr>
+<p>参考：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/5c2cd08dfe89" target="_blank" rel="noopener">VM类加载器-源码分析</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzUyMTg0NDA2Ng==&amp;mid=2247486103&amp;idx=1&amp;sn=835e030fb927ba426bc0039722c55c51&amp;chksm=f9d5ae9acea2278c55d6a089c0c52bf86b17f5a3387ccee8835c7c79c9978bedf160c461ce7e&amp;scene=90&amp;xtrack=1&amp;sessionid=1598587259&amp;subscene=93&amp;clicktime=1598587382#rd" target="_blank" rel="noopener">一文带你深扒ClassLoader内核，揭开它的神秘面纱！</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/47819/" rel="next" title="进程间的通信方式">
+                <i class="fa fa-chevron-left"></i> 进程间的通信方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+ 	<div id="gitalk-container">
+ 	</div>
+
+  
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shenghai</p>
+              <p class="site-description motion-element" itemprop="description">good good study up up every day</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-类加载的过程"><span class="nav-number">1.</span> <span class="nav-text">1. 类加载的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-加载（Loading）"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 加载（Loading）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-链接（Linking）"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 链接（Linking）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-验证：确保被加载的类的正确性"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 验证：确保被加载的类的正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-准备：为类的静态变量分配内存，并将其初始化为默认值"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 准备：为类的静态变量分配内存，并将其初始化为默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-解析：把类中的符号引用转换为直接引用（重要）"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 解析：把类中的符号引用转换为直接引用（重要）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-初始化（Initialzation）"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 初始化（Initialzation）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在-JVM-中如何判断两个-Class-对象是否为同一个类？"><span class="nav-number">2.</span> <span class="nav-text">2. 在 JVM 中如何判断两个 Class 对象是否为同一个类？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ClassLoader-类结构分析"><span class="nav-number">3.</span> <span class="nav-text">3. ClassLoader 类结构分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#defineClass"><span class="nav-number">3.1.</span> <span class="nav-text">defineClass()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findClass"><span class="nav-number">3.2.</span> <span class="nav-text">findClass()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loadClass"><span class="nav-number">3.3.</span> <span class="nav-text">loadClass()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resolveClass"><span class="nav-number">3.4.</span> <span class="nav-text">resolveClass()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-深入理解双亲委派模型"><span class="nav-number">4.</span> <span class="nav-text">4. 深入理解双亲委派模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-JVM-的三个类加载器"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 JVM 的三个类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-双亲委派模型的工作过程"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 双亲委派模型的工作过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-双亲委派模型带来了什么好处"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 双亲委派模型带来了什么好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-loadClass-方法解析"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 loadClass() 方法解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-实现自己的类加载器"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 实现自己的类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-1-什么情况下需要自定义类加载器"><span class="nav-number">4.5.1.</span> <span class="nav-text">4.5.1 什么情况下需要自定义类加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-2-怎么自定义-ClassLoader"><span class="nav-number">4.5.2.</span> <span class="nav-text">4.5.2 怎么自定义 ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-JVM-能否对同一个类加载两次？（怎么破坏双亲委派模型？）"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 JVM 能否对同一个类加载两次？（怎么破坏双亲委派模型？）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shenghai</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+        ﻿
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '08a34024c7a6ddfb2ebf',
+          clientSecret: 'cc5fd7df568462e80b8db1fde4886dfb511a0ca4',
+          repo: 'shenghaishxt.github.io',
+          owner: 'shenghaishxt',
+          admin: ['shenghaishxt'],
+          id: location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
